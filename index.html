@@ -736,7 +736,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     <div>
       <span class="eyebrow">Regalo para ti</span>
       <h2 class="titulo-seccion" id="t-regalo">Calcula cuánto puede crecer tu dinero.</h2>
-      <p class="intro">Te regalo mi Calculadora Financiera. Pones cuánto puedes aportar cada mes y ves en qué año llegas a tu meta. Déjame tus datos y te la abro al instante.</p>
+      <p class="intro">Te regalo mi Calculadora Financiera. Pones cuánto puedes aportar cada mes y ves en qué año llegas a tu meta.</p>
     </div>
     <div class="form-tarjeta">
       <form id="form-regalo" novalidate data-origen="Calculadora">
@@ -889,6 +889,7 @@ const CONFIG = {
   // URL del Apps Script publicado (Google Sheet "Leads Página Web AQ Finanzas")
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxu--EmxJbwO2DJcQ3NXgV_Dplv2YPyA51DjBiSJFi-AxpRXHyFsZLL4WmIibB0UKmrwQ/exec",
   CALENDLY: "https://calendly.com/aqfinanzas-info/llamada-1-a-1-excedente",
+  FORMULARIOS: false,          // true = pide datos antes de Calendly y muestra el regalo
   VENTANA_REGALO_SEG: 40,      // segundos antes de mostrar el regalo (una vez cada 7 días)
 };
 
@@ -951,6 +952,7 @@ const mLlamada = document.getElementById("modal-llamada");
 let origenBoton = "";
 document.querySelectorAll("[data-agendar]").forEach(b=>b.addEventListener("click",()=>{
   origenBoton = b.dataset.agendar;
+  if(!CONFIG.FORMULARIOS){ mostrarCalendly(CONFIG.CALENDLY+"?hide_gdpr_banner=1"); abrir(mLlamada); return; }
   const prev = leer("aq_lead");
   if(prev){ ["nombre","correo"].forEach(k=>{ const i=document.getElementById("l-"+k); if(i && !i.value) i.value = prev[k]||""; }); }
   abrir(mLlamada);
@@ -962,14 +964,16 @@ document.getElementById("form-llamada").addEventListener("submit",e=>{
   d.interes = "Llamada 1 a 1 (botón: "+origenBoton+")";
   enviarLead(d); guardar("aq_lead",{nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp});
   if(window.fbq) fbq("track","Lead",{content_name:"Llamada 1 a 1"});
-  const url = CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp);
-  document.getElementById("enlace-calendly").href = url;
-  const c = document.getElementById("contenedor-calendly");
-  c.innerHTML = `<iframe class="calendly" src="${url}&embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname)}" title="Calendario para agendar la llamada"></iframe>`;
-  form.hidden = true;
-  document.getElementById("paso-calendario").hidden = false;
-  document.getElementById("caja-llamada").classList.add("ancha");
+  mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp));
 });
+function mostrarCalendly(url){
+  document.getElementById("enlace-calendly").href = url;
+  document.getElementById("contenedor-calendly").innerHTML = `<iframe class="calendly" src="${url}&embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname)}" title="Calendario para agendar la llamada"></iframe>`;
+  document.getElementById("form-llamada").hidden = true;
+  const p=document.getElementById("paso-calendario"); p.hidden=false;
+  p.querySelector(".paso-tag").textContent = CONFIG.FORMULARIOS ? "Paso 2 de 2 · Elige tu horario" : "Elige el día y la hora de tu llamada";
+  document.getElementById("caja-llamada").classList.add("ancha");
+}
 // Calendly avisa cuando se agenda
 window.addEventListener("message",e=>{
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
@@ -992,10 +996,18 @@ function formRegalo(form, listo){
   });
 }
 formRegalo(document.getElementById("form-regalo"), document.getElementById("regalo-listo"));
+if(!CONFIG.FORMULARIOS){
+  document.getElementById("form-regalo").hidden = true;
+  const l=document.getElementById("regalo-listo"); l.hidden=false;
+  l.querySelector(".paso-tag").textContent="Gratis";
+  l.querySelector("h3").textContent="Tu Calculadora Financiera";
+  l.querySelector("p").textContent="Ábrela, pon tus números y mira en qué año llegas a tu meta.";
+}
 const mRegalo = document.getElementById("modal-regalo");
 formRegalo(document.getElementById("form-pop"), mRegalo.querySelector(".listo"));
 // La ventana aparece una sola vez cada 7 días, y nunca a quien ya dejó sus datos
 (function(){
+  if(!CONFIG.FORMULARIOS) return;
   const visto = leer("aq_pop"), dio = leer("aq_lead");
   if(dio || (visto && Date.now()-visto < 7*864e5)) return;
   let hecho=false;
