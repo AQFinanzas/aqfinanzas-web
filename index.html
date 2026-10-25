@@ -87,6 +87,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .portada-foto{max-width:360px}
 }
 
+
+/* Cintillo de medios */
+.cintillo{background:var(--blanco);border-bottom:1px solid var(--linea);padding-block:26px 22px;overflow:hidden}
+.cintillo-titulo{text-align:center;font-family:var(--f-dato);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);padding-inline:16px}
+.cinta{margin-top:18px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pista{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:72px;width:max-content;animation:desliza 38s linear infinite}
+.pista li{flex:0 0 auto;display:flex;align-items:center}
+.pista img{height:56px;width:auto;max-width:none;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.05);opacity:.72;transition:filter .3s ease,opacity .3s ease}
+.pista li:hover img{filter:none;opacity:1}
+.cinta:hover .pista{animation-play-state:paused}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:760px){.pista{gap:44px;animation-duration:28s}.pista img{height:44px}}
+@media (prefers-reduced-motion:reduce){.pista{animation:none;flex-wrap:wrap;justify-content:center;width:auto;row-gap:20px}.pista li[aria-hidden]{display:none}.pista li:nth-child(n+7){display:none}}
+
 /* Cifras */
 .cifras{background:var(--blanco);border-bottom:1px solid var(--linea)}
 .cifras .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-block:34px}
@@ -397,6 +411,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
       <img src="img/aq-hero.webp" alt="Alejandro Quiñones, estratega de inversión" width="1000" height="1136" fetchpriority="high">
     </div>
   </div>
+</section>
+
+
+<!-- CINTILLO DE MEDIOS -->
+<section class="cintillo" aria-label="Medios que me han invitado como experto financiero">
+  <p class="cintillo-titulo">Me han invitado como experto financiero</p>
+  <div class="cinta"><ul class="pista"><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="Gerente" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="Bloomberg" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="RCN Noticias" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="Noticias Caracol" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="Radio Panamá 94.5 FM" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="Globovisión" loading="eager" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="Gerente" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="Bloomberg" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="RCN Noticias" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="Noticias Caracol" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="Radio Panamá 94.5 FM" loading="eager" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="Globovisión" loading="eager" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="" height="56"></li></ul></div>
 </section>
 
 <!-- CIFRAS -->
