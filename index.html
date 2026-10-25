@@ -114,7 +114,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .credenciales{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
 .credenciales li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
 .credenciales svg{flex:0 0 22px;width:22px;height:22px;color:var(--azul);margin-top:2px}
-@media (max-width:860px){.sobre .wrap{grid-template-columns:1fr;gap:40px}.sello{right:12px}}
+@media (max-width:860px){.sobre .wrap{grid-template-columns:1fr;gap:40px}.sobre-foto{max-width:480px;width:100%;margin-inline:auto}.sello{right:12px}}
 
 /* Método RCR */
 .metodo{background:var(--noche);color:var(--blanco);position:relative;overflow:hidden}
@@ -288,6 +288,12 @@ footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
 .en-vivo .acciones{margin-top:26px}
 @media (max-width:760px){.en-vivo{grid-template-columns:1fr;padding:20px;gap:24px}.en-vivo .reel{max-width:280px;margin-inline:auto;width:100%}.flechas{display:none}.carril{grid-auto-columns:62%}}
 
+
+.sub-titulo{font-size:1.4rem;color:var(--marino);margin-top:64px;letter-spacing:-.02em}
+.videos-yt{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:20px}
+.video.yt button{font-size:.98rem}
+.sobre-video{margin-top:28px;max-width:420px}
+
 /* Preguntas */
 .preguntas .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
 .preguntas .wrap>div:first-child{position:sticky;top:110px}
@@ -424,6 +430,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Autor del libro «La Arquitectura del Dinero».</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Conferencista internacional y consultor para medios de comunicación.</li>
       </ul>
+      <div class="video sobre-video"><button type="button" data-yt="1GNPGRXHAnc" style="--fondo:url('https://i.ytimg.com/vi/1GNPGRXHAnc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Video · 6 min</small>¿Por qué te puedo ayudar?</button></div>
     </div>
   </div>
 </section>
@@ -649,6 +656,16 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         <div class="reel"><video preload="none" playsinline poster="reels/reel-jose-montero.jpg" src="reels/reel-jose-montero.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de José Montero"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-kenya-fernandez.jpg" src="reels/reel-kenya-fernandez.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Kenya Fernández"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Kenya Fernández</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-rosangel.jpg" src="reels/reel-rosangel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Rosangel González"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Rosangel González</b></button></div>
+    </div>
+    <h3 class="sub-titulo">Entrevistas con mis alumnos</h3>
+    <div class="videos-yt">
+      <div class="video yt"><button type="button" data-yt="a4QTJ6vmKjc" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Henry Gómez</button></div>
+      <div class="video yt"><button type="button" data-yt="E5ZAjkfbF8s" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Reinaldo Mejías</button></div>
+      <div class="video yt"><button type="button" data-yt="iry2OPL5MlE" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Jon Mikel de Iribar</button></div>
+      <div class="video yt"><button type="button" data-yt="hUq6Mx7zJ3c" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Carlos Garay</button></div>
+      <div class="video yt"><button type="button" data-yt="5L3QItiO5Fc" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Edilberto Russel</button></div>
+      <div class="video yt"><button type="button" data-yt="iRNU6p6mN64" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>José Montero</button></div>
+      <div class="video yt"><button type="button" data-yt="5ArDg-f0ZzI" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Mikel Chivite</button></div>
     </div>
     <div class="en-vivo">
       <div class="reel grande"><video preload="none" playsinline poster="reels/reel-opero-en-vivo.jpg" src="reels/reel-opero-en-vivo.mp4"></video><button type="button" class="reel-play" aria-label="Ver video: opero en vivo con mis alumnos"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Opero en vivo</b></button></div>
@@ -988,6 +1005,9 @@ formRegalo(document.getElementById("form-pop"), mRegalo.querySelector(".listo"))
 })();
 
 /* ===== Videos (cargan al tocar) ===== */
+document.querySelectorAll("[data-yt]").forEach(b=>b.addEventListener("click",()=>{
+  b.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Video de AQ Finanzas"></iframe>`;
+}));
 document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",()=>{
   b.parentElement.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Entrevista de Alejandro Quiñones"></iframe>`;
 }));
