@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alejandro Quiñones · AQ Finanzas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Alejandro Quiñones, estratega de inversión y creador del Método RCR. Aprende a invertir en la bolsa de Nueva York con reglas claras. Agenda tu llamada 1 a 1.">
+<meta property="og:title" content="Alejandro Quiñones · AQ Finanzas">
+<meta property="og:description" content="Invierte en la bolsa de Nueva York con método, no con emoción. Agenda tu llamada 1 a 1.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/logo-aq-color.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Lora:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: marino profundo + papel azulado; bloques que alternan claro/oscuro; el naranja solo marca la idea clave y la acción. */
+:root{
+  --marino:#01005A;      /* títulos, bandas oscuras */
+  --noche:#05061C;       /* fondo más profundo */
+  --papel:#F5F7FC;       /* fondo claro */
+  --blanco:#FFFFFF;
+  --naranja:#F04A03;     /* una palabra clave y botones */
+  --naranja-hover:#D63F00;
+  --azul:#2A94F8;        /* acentos */
+  --tinta:#1B1D3A;       /* texto en claro */
+  --gris:#5B6080;        /* texto secundario en claro */
+  --linea:#DDE3F0;
+  --claro-sobre-oscuro:#B9C2E8;
+  --f-display:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-cuerpo:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-cita:"Lora",Georgia,"Times New Roman",serif;
+  --f-dato:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:14px;
+  --ancho:1160px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--f-cuerpo);font-size:17px;line-height:1.6;font-optical-sizing:auto}
+img{max-width:100%;height:auto;display:block}
+[hidden]{display:none!important}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin:0;text-wrap:balance;font-variation-settings:"opsz" 32}
+p{margin:0}
+.wrap{max-width:var(--ancho);margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-dato);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);font-weight:500}
+.clave{color:var(--naranja)}
+section{scroll-margin-top:72px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:700 1rem/1 var(--f-cuerpo);padding:1.05em 1.6em;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}
+.btn-primario{background:var(--naranja);color:var(--blanco);box-shadow:0 10px 24px -10px rgba(240,74,3,.7)}
+.btn-primario:hover{background:var(--naranja-hover);transform:translateY(-1px)}
+.btn-secundario{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn-secundario:hover{background:rgba(255,255,255,.08)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.btn svg{width:18px;height:18px}
+
+/* Barra superior */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--noche)}
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,6,28,.88);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);color:var(--blanco);border-bottom:1px solid rgba(255,255,255,.06)}
+.barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.barra img{height:40px;width:auto}
+.menu{display:flex;gap:26px;font-size:.92rem;font-weight:500}
+.menu a{text-decoration:none;opacity:.82}
+.menu a:hover{opacity:1}
+.barra .btn{padding:.8em 1.2em;font-size:.9rem}
+@media (max-width:900px){.menu{display:none}}
+
+/* Portada */
+.portada{position:relative;background:radial-gradient(120% 90% at 85% 10%,#1a2a9e 0%,var(--marino) 42%,var(--noche) 100%);color:var(--blanco);overflow:hidden}
+.portada canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.portada .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:end;padding-block:72px 0}
+.portada-texto{padding-bottom:84px;min-width:0}
+.portada h1{font-size:clamp(2.5rem,5.6vw,4.6rem);margin-top:18px}
+.portada .sub{margin-top:22px;font-size:1.14rem;color:var(--claro-sobre-oscuro);max-width:34em}
+.portada .sub strong{color:var(--blanco);font-weight:600}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.nota{margin-top:14px;font-size:.88rem;color:var(--claro-sobre-oscuro);display:flex;align-items:center;gap:8px}
+.nota::before{content:"";width:8px;height:8px;border-radius:50%;background:#3BD17F;box-shadow:0 0 0 4px rgba(59,209,127,.18)}
+.portada-foto{align-self:end;justify-self:center;max-width:520px;width:100%}
+.portada-foto img{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45))}
+@media (max-width:860px){
+  .portada .wrap{grid-template-columns:1fr;padding-top:48px}
+  .portada-texto{padding-bottom:8px}
+  .portada-foto{max-width:360px}
+}
+
+/* Cifras */
+.cifras{background:var(--blanco);border-bottom:1px solid var(--linea)}
+.cifras .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-block:34px}
+.cifra{padding:6px 22px;border-left:1px solid var(--linea)}
+.cifra:first-child{border-left:0;padding-left:0}
+.cifra b{display:block;font-family:var(--f-display);font-weight:800;font-size:2.2rem;letter-spacing:-.03em;color:var(--marino);font-variant-numeric:tabular-nums;line-height:1.1}
+.cifra span{font-size:.92rem;color:var(--gris)}
+@media (max-width:760px){.cifra b{font-size:1.75rem}.cifra{padding:4px 14px}.cifras .wrap{grid-template-columns:1fr 1fr;row-gap:22px}.cifra:nth-child(3){border-left:0;padding-left:0}}
+
+/* Secciones genéricas */
+.bloque{padding-block:104px}
+.titulo-seccion{font-size:clamp(2rem,4vw,3.1rem);color:var(--marino);margin-top:14px}
+.intro{margin-top:18px;color:var(--gris);font-size:1.08rem;max-width:40em}
+
+/* Sobre mí */
+.sobre .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.sobre-foto{position:relative}
+.sobre-foto img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;object-position:center 18%;width:100%;height:auto}
+.sello{position:absolute;right:-18px;bottom:28px;background:var(--marino);color:var(--blanco);border-radius:12px;padding:16px 18px;max-width:240px;box-shadow:0 20px 40px -18px rgba(1,0,90,.6)}
+.sello small{font-family:var(--f-dato);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
+.sello p{font-weight:600;font-size:.95rem;line-height:1.35;margin-top:6px}
+.sobre-texto p+p{margin-top:16px}
+.sobre-texto .lead{font-size:1.22rem;color:var(--tinta);font-weight:500;line-height:1.5}
+.sobre-texto p{color:var(--gris)}
+.credenciales{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
+.credenciales li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
+.credenciales svg{flex:0 0 22px;width:22px;height:22px;color:var(--azul);margin-top:2px}
+@media (max-width:860px){.sobre .wrap{grid-template-columns:1fr;gap:40px}.sello{right:12px}}
+
+/* Método RCR */
+.metodo{background:var(--noche);color:var(--blanco);position:relative;overflow:hidden}
+.metodo .titulo-seccion{color:var(--blanco)}
+.metodo .intro{color:var(--claro-sobre-oscuro)}
+.rcr{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.pilar{border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:30px 26px;background:linear-gradient(180deg,rgba(42,148,248,.08),rgba(42,148,248,0) 60%)}
+.pilar .letra{font-family:var(--f-display);font-weight:800;font-size:4.2rem;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--azul)}
+.pilar h3{font-size:1.45rem;margin-top:14px}
+.pilar p{margin-top:10px;color:var(--claro-sobre-oscuro);font-size:.98rem}
+.regla{margin-top:18px;font-family:var(--f-dato);font-size:.8rem;color:var(--blanco);opacity:.75;border-top:1px dashed rgba(255,255,255,.18);padding-top:14px}
+@media (max-width:860px){.rcr{grid-template-columns:1fr}}
+
+/* Acelerador */
+.acelerador{background:var(--blanco)}
+.acel-caja{display:grid;grid-template-columns:1.05fr .95fr;border-radius:22px;overflow:hidden;background:var(--marino);color:var(--blanco);box-shadow:0 40px 80px -40px rgba(1,0,90,.55)}
+.acel-texto{padding:60px 56px;min-width:0}
+.acel-texto .titulo-seccion{color:var(--blanco)}
+.acel-texto .intro{color:var(--claro-sobre-oscuro)}
+.promesa{margin-top:26px;font-family:var(--f-cita);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--blanco);border-left:3px solid var(--naranja);padding-left:18px}
+.pasos{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:14px;counter-reset:p}
+.pasos li{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;counter-increment:p}
+.pasos li::before{content:counter(p);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);font-weight:700;font-size:.9rem}
+.pasos b{display:block;font-weight:700}
+.pasos span{color:var(--claro-sobre-oscuro);font-size:.95rem}
+.acel-texto .acciones{margin-top:36px}
+.acel-foto{position:relative;min-height:420px}
+.acel-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.acel-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--marino) 0%,rgba(1,0,90,0) 35%)}
+@media (max-width:900px){.acel-caja{grid-template-columns:1fr}.acel-foto{min-height:320px;order:-1}.acel-foto::after{background:linear-gradient(0deg,var(--marino) 0%,rgba(1,0,90,0) 45%)}.acel-texto{padding:36px 24px 44px}}
+
+/* Membresía */
+.membresia{padding-block:0 104px;background:var(--blanco)}
+.memb{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;border:1.5px dashed var(--linea);border-radius:18px;padding:30px 32px;background:var(--papel)}
+.memb img{width:150px;height:auto;mix-blend-mode:multiply}
+.memb h3{font-size:1.5rem;color:var(--marino)}
+.memb p{color:var(--gris);margin-top:8px;max-width:46em}
+.chip{display:inline-block;font-family:var(--f-dato);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--marino);color:var(--blanco);padding:8px 12px;border-radius:999px;white-space:nowrap}
+@media (max-width:760px){.memb{grid-template-columns:1fr;gap:16px}.memb img{width:120px}}
+
+/* Testimonios */
+.testimonios .cabeza{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.muro{columns:4 240px;column-gap:18px;margin-top:48px}
+.muro figure{break-inside:avoid;margin:0 0 18px;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);overflow:hidden}
+.muro figure img{width:100%;height:auto}
+.muro figcaption{padding:12px 16px;font-size:.88rem;color:var(--gris);border-top:1px solid var(--linea)}
+.muro figcaption b{color:var(--tinta)}
+.cita-alumno{padding:22px 20px;font-family:var(--f-cita);font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--tinta)}
+.muro:not(.abierto) figure.extra{display:none}
+.aviso-chico{margin-top:10px;font-size:.8rem;color:var(--gris)}
+
+/* Medios */
+.medios{background:var(--noche);color:var(--blanco)}
+.medios .titulo-seccion{color:var(--blanco)}
+.medios .intro{color:var(--claro-sobre-oscuro)}
+.paises{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.paises span{font-family:var(--f-dato);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;color:var(--claro-sobre-oscuro)}
+.galeria-tv{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:12px;margin-top:48px}
+.galeria-tv img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.galeria-tv .g1{grid-column:span 3;grid-row:span 2}
+.galeria-tv .g2{grid-column:span 3}
+.galeria-tv .g3{grid-column:span 3}
+@media (max-width:760px){.galeria-tv{grid-template-columns:1fr 1fr;grid-auto-rows:130px}.galeria-tv .g1{grid-column:span 2;grid-row:span 2}.galeria-tv .g2,.galeria-tv .g3{grid-column:span 1}}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#0d0f2e;border:1px solid rgba(255,255,255,.1)}
+.video button{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:var(--blanco);background:linear-gradient(0deg,rgba(5,6,28,.85),rgba(5,6,28,.2)),var(--fondo) center/cover no-repeat;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;padding:20px;text-align:left;font:600 1rem var(--f-cuerpo)}
+.video button small{font-family:var(--f-dato);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azul)}
+.video .play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.video .play svg{width:24px;height:24px;margin-left:3px}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:760px){.videos{grid-template-columns:1fr}}
+
+/* Conferencias */
+.conferencias .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:12px}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.collage .alto{grid-row:span 2}
+.cert{margin-top:28px;display:flex;gap:16px;align-items:center;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);padding:18px 20px}
+.cert svg{flex:0 0 40px;width:40px;height:40px;color:var(--naranja)}
+.cert b{display:block;color:var(--marino)}
+.cert span{font-size:.92rem;color:var(--gris)}
+@media (max-width:860px){.conferencias .wrap{grid-template-columns:1fr;gap:36px}.collage{grid-template-rows:150px 150px}}
+
+/* Libro */
+.libro{background:#000;color:var(--blanco)}
+.libro .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;padding-block:80px}
+.libro .titulo-seccion{color:var(--blanco)}
+.libro .intro{color:#C8CCDD}
+.libro img{width:100%;max-width:460px;margin-inline:auto}
+@media (max-width:860px){.libro .wrap{grid-template-columns:1fr}}
+
+/* Calculadora (captura) */
+.regalo{background:linear-gradient(135deg,#2A94F8 0%,#0F3FC4 55%,var(--marino) 100%);color:var(--blanco)}
+.regalo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-block:88px}
+.regalo .titulo-seccion{color:var(--blanco)}
+.regalo .intro{color:#DCE6FF}
+.regalo .eyebrow{color:#FFD9C7}
+.form-tarjeta{background:var(--blanco);color:var(--tinta);border-radius:18px;padding:30px;box-shadow:0 30px 60px -30px rgba(1,0,90,.7)}
+.form-tarjeta h3{font-size:1.3rem;color:var(--marino);letter-spacing:-.015em}
+@media (max-width:860px){.regalo .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* Formularios */
+.campos{display:grid;gap:12px;margin-top:18px}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.fila{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:.84rem;font-weight:600;color:var(--tinta)}
+input,select{font:500 1rem var(--f-cuerpo);color:var(--tinta);background:var(--papel);border:1.5px solid var(--linea);border-radius:10px;padding:.85em .9em;width:100%;min-width:0}
+input:focus,select:focus{border-color:var(--azul);background:var(--blanco);outline:none;box-shadow:0 0 0 4px rgba(42,148,248,.18)}
+.tel{display:grid;grid-template-columns:118px 1fr;gap:8px}
+.privacidad{font-size:.78rem;color:var(--gris);margin-top:4px}
+.form-tarjeta .btn,.modal .btn{width:100%;margin-top:6px}
+.error{color:#C2290C;font-size:.85rem;font-weight:600}
+.listo{display:grid;gap:14px;text-align:left}
+.listo h3{font-size:1.35rem;color:var(--marino)}
+.listo p{color:var(--gris)}
+
+/* Cierre */
+.cierre{background:var(--papel)}
+.cierre .wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.cierre img{width:260px;border-radius:50%;aspect-ratio:1;object-fit:cover;object-position:center 15%;border:6px solid var(--blanco);box-shadow:0 20px 50px -24px rgba(1,0,90,.5)}
+.cierre blockquote{margin:0;font-family:var(--f-cita);font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.35;color:var(--marino)}
+.cierre blockquote em{color:var(--naranja)}
+.cierre .acciones{margin-top:30px}
+@media (max-width:760px){.cierre .wrap{grid-template-columns:1fr;gap:28px}.cierre img{width:180px}}
+
+/* Pie */
+footer{background:var(--noche);color:var(--claro-sobre-oscuro);font-size:.9rem}
+footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
+.pie-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.pie-top img{height:44px;width:auto}
+.redes{display:flex;gap:10px;flex-wrap:wrap}
+.redes a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:9px 14px;color:var(--blanco)}
+.redes a:hover{border-color:var(--azul)}
+.redes svg{width:16px;height:16px}
+.legal{font-size:.78rem;line-height:1.6;border-top:1px solid rgba(255,255,255,.08);padding-top:22px}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(5,6,28,.72);backdrop-filter:blur(4px)}
+.modal-caja{position:relative;background:var(--blanco);border-radius:20px;width:min(560px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:34px 30px 28px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.modal-caja.ancha{width:min(980px,100%);padding:20px}
+.modal h3{font-size:1.55rem;color:var(--marino)}
+.modal .intro{font-size:.98rem;margin-top:8px}
+.cerrar{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--papel);cursor:pointer;display:grid;place-items:center;color:var(--tinta)}
+.cerrar svg{width:18px;height:18px}
+.calendly{width:100%;height:min(720px,calc(100dvh - 120px));border:0;border-radius:12px;display:block}
+.paso-tag{font-family:var(--f-dato);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
+
+/* Botón flotante en celular */
+.flotante{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,rgba(245,247,252,1) 60%,rgba(245,247,252,0));display:none}
+.flotante .btn{width:100%}
+@media (max-width:760px){.flotante.visible{display:block}body{padding-bottom:0}}
+
+
+/* Reels */
+.reels{background:var(--blanco)}
+.reels .cabeza{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.flechas{display:flex;gap:10px}
+.flecha{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--linea);background:var(--blanco);color:var(--marino);cursor:pointer;display:grid;place-items:center}
+.flecha:hover{border-color:var(--marino)}
+.flecha svg{width:20px;height:20px}
+.carril{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(200px,22vw,250px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:40px;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.reel{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:16px;overflow:hidden;background:var(--noche);scroll-snap-align:start}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-play{position:absolute;inset:0;border:0;cursor:pointer;background:linear-gradient(0deg,rgba(5,6,28,.8),rgba(5,6,28,0) 45%);color:var(--blanco);display:flex;align-items:flex-end;padding:16px;font:700 1rem var(--f-cuerpo);text-align:left}
+.reel-play .play{position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.reel-play .play svg{width:22px;height:22px;margin-left:3px}
+.reel.sonando .reel-play{display:none}
+.en-vivo{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-top:72px;background:var(--papel);border-radius:22px;padding:32px}
+.en-vivo h3{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--marino);margin-top:12px}
+.en-vivo p{color:var(--gris);margin-top:14px;max-width:36em}
+.en-vivo .acciones{margin-top:26px}
+@media (max-width:760px){.en-vivo{grid-template-columns:1fr;padding:20px;gap:24px}.en-vivo .reel{max-width:280px;margin-inline:auto;width:100%}.flechas{display:none}.carril{grid-auto-columns:62%}}
+
+/* Preguntas */
+.preguntas .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.preguntas .wrap>div:first-child{position:sticky;top:110px}
+.lista-faq{display:grid;gap:12px;min-width:0}
+details{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);padding:0 22px}
+details[open]{border-color:#BFCBEA;box-shadow:0 14px 30px -24px rgba(1,0,90,.4)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:700;color:var(--marino);font-size:1.04rem}
+summary::-webkit-details-marker{display:none}
+summary svg{flex:0 0 20px;width:20px;height:20px;color:var(--naranja);transition:transform .2s ease}
+details[open] summary svg{transform:rotate(45deg)}
+details p{padding:0 0 20px;color:var(--gris)}
+@media (max-width:860px){.preguntas .wrap{grid-template-columns:1fr;gap:32px}.preguntas .wrap>div:first-child{position:static}}
+
+
+/* Simulador */
+.simulador{background:var(--papel)}
+.sim{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;margin-top:48px;border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -46px rgba(1,0,90,.5);border:1px solid var(--linea)}
+.sim-controles{background:var(--blanco);padding:36px 34px;display:grid;gap:26px;align-content:start;min-width:0}
+.ctrl{border:0;margin:0;padding:0;min-width:0}
+.ctrl-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.ctrl-top label,.escenarios legend{font-size:.92rem;font-weight:600;color:var(--tinta);display:block}
+.ctrl output{font-family:var(--f-display);font-weight:800;font-size:1.35rem;color:var(--marino);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--naranja) var(--p,50%),var(--linea) var(--p,50%));padding:0;border:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--blanco);border:3px solid var(--naranja);box-shadow:0 4px 12px -2px rgba(240,74,3,.5);transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:active{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--blanco);border:3px solid var(--naranja)}
+.escenarios legend{margin-bottom:12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--papel);padding:5px;border-radius:12px}
+.seg label{position:relative;display:block;text-align:center;font-size:.82rem;font-weight:600;padding:10px 6px;border-radius:9px;cursor:pointer;color:var(--gris);transition:background .15s,color .15s}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--marino);color:var(--blanco)}
+.seg label:has(input:focus-visible){outline:3px solid var(--azul);outline-offset:2px}
+.sim-aviso{font-size:.78rem;color:var(--gris);line-height:1.5}
+.sim-resultado{background:var(--noche);color:var(--blanco);padding:36px 34px;display:grid;gap:18px;align-content:start;min-width:0}
+.anio{font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,7vw,5.2rem);line-height:1;letter-spacing:-.04em;margin-top:6px;font-variant-numeric:tabular-nums}
+.anio b{color:var(--naranja)}
+.r-detalle{color:var(--claro-sobre-oscuro);font-size:.98rem;margin-top:8px}
+.r-detalle strong{color:var(--blanco)}
+.grafico{position:relative;height:240px}
+.grafico canvas{position:absolute;inset:0;width:100%;height:100%}
+.leyenda{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--claro-sobre-oscuro)}
+.leyenda span{display:inline-flex;align-items:center;gap:7px}
+.leyenda i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.leyenda i.linea-meta{height:0;border-top:2px dashed var(--naranja);border-radius:0;width:16px}
+@media (max-width:860px){.sim{grid-template-columns:1fr}.sim-controles,.sim-resultado{padding:26px 20px}}
+
+/* Entrada de la portada y detalles */
+@keyframes sube{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.portada-texto>*{animation:sube .7s cubic-bezier(.2,.7,.2,1) both}
+.portada-texto>*:nth-child(2){animation-delay:.08s}.portada-texto>*:nth-child(3){animation-delay:.16s}.portada-texto>*:nth-child(4){animation-delay:.24s}.portada-texto>*:nth-child(5){animation-delay:.3s}
+.portada-foto{animation:sube .9s .15s cubic-bezier(.2,.7,.2,1) both}
+.pilar{transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.pilar:hover{transform:translateY(-4px);border-color:rgba(42,148,248,.5)}
+.pilar:hover .letra{color:var(--azul)}
+.pilar .letra{transition:color .25s ease}
+.muro figure,.reel,.galeria-tv img,.collage img{transition:transform .3s ease,box-shadow .3s ease}
+.muro figure:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(1,0,90,.5)}
+.galeria-tv img:hover,.collage img:hover{transform:scale(1.015)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.pilar,.muro figure,.galeria-tv img,.collage img{transition:none}.portada-texto>*,.portada-foto{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="wrap">
+    <a href="#inicio" aria-label="AQ Finanzas, inicio"><img src="img/logo-aq-blanco.webp" alt="AQ Finanzas · Alejandro Quiñones" width="480" height="363"></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#metodo">Método RCR</a>
+      <a href="#simulador">Tu meta</a>
+      <a href="#acelerador">Acelerador</a>
+      <a href="#alumnos">Alumnos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#medios">Medios</a>
+          </nav>
+    <button class="btn btn-primario" type="button" data-agendar="barra">Agenda tu llamada</button>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- PORTADA -->
+<section class="portada" aria-labelledby="t-portada">
+  <canvas id="velas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="portada-texto">
+      <span class="eyebrow">Estratega de inversión · Creador del Método RCR</span>
+      <h1 id="t-portada">Invierte en la bolsa de Nueva York con método, <span class="clave">no con emoción.</span></h1>
+      <p class="sub">Soy <strong>Alejandro Quiñones</strong>. Hace más de 15 años ayudo a personas como tú a construir su patrimonio con reglas claras: Rentabilidad, Consistencia y Riesgo.</p>
+      <div class="acciones">
+        <button class="btn btn-primario" type="button" data-agendar="portada">
+          Agenda tu llamada 1 a 1
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <a class="btn btn-secundario" href="#sobre-mi">Conoce mi historia</a>
+      </div>
+      <p class="nota">30 minutos por Zoom, conmigo. Sin costo.</p>
+    </div>
+    <div class="portada-foto">
+      <img src="img/aq-hero.webp" alt="Alejandro Quiñones, estratega de inversión" width="1000" height="1136" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<!-- CIFRAS -->
+<section class="cifras" aria-label="Trayectoria en cifras">
+  <div class="wrap">
+    <div class="cifra"><b>+15</b><span>años en finanzas</span></div>
+    <div class="cifra"><b>+3.500</b><span>personas acompañadas en sus finanzas</span></div>
+    <div class="cifra"><b>+30.000</b><span>asistentes a cursos y conferencias</span></div>
+    <div class="cifra"><b>+200 mil</b><span>seguidores en redes</span></div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="bloque sobre" id="sobre-mi" aria-labelledby="t-sobre">
+  <div class="wrap">
+    <div class="sobre-foto">
+      <img src="img/foto-dsc-6588.jpg" alt="Alejandro Quiñones de traje, con los brazos cruzados" loading="lazy" width="1067" height="1600">
+      <div class="sello">
+        <small>Certificación</small>
+        <p>Stock Market Investor · avalado por Florida Global University</p>
+      </div>
+    </div>
+    <div class="sobre-texto">
+      <span class="eyebrow">Quién soy</span>
+      <h2 class="titulo-seccion" id="t-sobre">Soy como tú: quiero asegurar el presente y el futuro de mi familia.</h2>
+      <p class="lead" style="margin-top:22px">Soy administrador de empresas, estratega financiero e inversionista en la bolsa de valores de Nueva York.</p>
+      <p>Enseño a otros a dar el paso como inversionistas independientes, con un método que se puede repetir y medir. He dado cientos de cursos, conferencias y talleres en varios países, y los medios de Colombia, Estados Unidos, Panamá y Venezuela me consultan como experto financiero.</p>
+      <ul class="credenciales">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Creador del Método RCR: Rentabilidad, Consistencia y Riesgo.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Certificado como Stock Market Investor por el Center of Education and Leadership.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Autor del libro «La Arquitectura del Dinero».</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Conferencista internacional y consultor para medios de comunicación.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO RCR -->
+<section class="bloque metodo" id="metodo" aria-labelledby="t-metodo">
+  <div class="wrap">
+    <span class="eyebrow">Mi metodología</span>
+    <h2 class="titulo-seccion" id="t-metodo">Método RCR: tres reglas antes de poner un solo dólar.</h2>
+    <p class="intro">La mayoría pierde dinero en la bolsa por improvisar. Con el Método RCR cada decisión pasa por tres filtros, siempre en el mismo orden.</p>
+    <div class="rcr">
+      <article class="pilar">
+        <div class="letra" aria-hidden="true">R</div>
+        <h3>Rentabilidad</h3>
+        <p>Tu dinero trabaja con un objetivo medible. Sabes qué buscas en cada operación y por qué entras.</p>
+        <p class="regla">Entrada · objetivo · salida</p>
+      </article>
+      <article class="pilar">
+        <div class="letra" aria-hidden="true">C</div>
+        <h3>Consistencia</h3>
+        <p>Reglas que repites aunque el mercado haga ruido. El resultado viene de la disciplina, no de un golpe de suerte.</p>
+        <p class="regla">Mismo proceso · cada semana</p>
+      </article>
+      <article class="pilar">
+        <div class="letra" aria-hidden="true">R</div>
+        <h3>Riesgo</h3>
+        <p>Antes de entrar sabes cuánto puedes perder. Cada operación lleva su stop loss, siempre.</p>
+        <p class="regla">Stop loss definido · antes de entrar</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- SIMULADOR -->
+<section class="bloque simulador" id="simulador" aria-labelledby="t-sim">
+  <div class="wrap">
+    <div class="sim-cabeza">
+      <span class="eyebrow">Haz tus números</span>
+      <h2 class="titulo-seccion" id="t-sim">¿En qué año llegas a tu meta?</h2>
+      <p class="intro">Mueve los controles y mira cómo trabaja el interés compuesto cuando aportas con constancia. Es el mismo ejercicio que hacemos en la llamada, con tus números reales.</p>
+    </div>
+    <div class="sim">
+      <div class="sim-controles">
+        <div class="ctrl">
+          <div class="ctrl-top"><label for="s-meta">Tu meta</label><output id="o-meta"></output></div>
+          <input type="range" id="s-meta" min="20000" max="1000000" step="10000" value="200000">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-top"><label for="s-inicial">Con cuánto empiezas</label><output id="o-inicial"></output></div>
+          <input type="range" id="s-inicial" min="0" max="100000" step="500" value="5000">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-top"><label for="s-aporte">Aporte cada mes</label><output id="o-aporte"></output></div>
+          <input type="range" id="s-aporte" min="0" max="5000" step="50" value="400">
+        </div>
+        <fieldset class="ctrl escenarios">
+          <legend>Escenario de rentabilidad anual</legend>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="tasa" value="0.06">Prudente · 6%</label>
+            <label><input type="radio" name="tasa" value="0.10" checked>Moderado · 10%</label>
+            <label><input type="radio" name="tasa" value="0.14">Activo · 14%</label>
+          </div>
+        </fieldset>
+        <p class="sim-aviso">Escenarios ilustrativos con tasa fija. El mercado no rinde lo mismo cada año y puedes perder dinero. No es una promesa de rentabilidad.</p>
+      </div>
+      <div class="sim-resultado">
+        <div class="sim-numero">
+          <span class="eyebrow" style="color:var(--claro-sobre-oscuro)">Llegarías a tu meta en</span>
+          <p class="anio"><b id="r-anio">2041</b></p>
+          <p class="r-detalle" id="r-detalle"></p>
+        </div>
+        <div class="grafico"><canvas id="grafico" aria-label="Gráfico del crecimiento del patrimonio frente a la meta" role="img"></canvas></div>
+        <div class="leyenda"><span><i style="background:var(--azul)"></i>Crecimiento</span><span><i style="background:rgba(255,255,255,.35)"></i>Lo que aportas</span><span><i class="linea-meta"></i>Tu meta</span></div>
+        <button class="btn btn-primario" type="button" data-agendar="simulador">Revisemos tu plan en una llamada</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACELERADOR -->
+<section class="bloque acelerador" id="acelerador" aria-labelledby="t-acel">
+  <div class="wrap">
+    <div class="acel-caja">
+      <div class="acel-texto">
+        <span class="eyebrow">Acompañamiento personal</span>
+        <h2 class="titulo-seccion" id="t-acel">Acelerador <span class="clave">Excedente</span></h2>
+        <p class="intro">Es mi acompañamiento para quienes quieren invertir su propio dinero con criterio. Trabajo con un número limitado de alumnos a la vez, porque cada camino se arma según tu capital, tu tiempo y tu meta. Por eso no hay un paquete igual para todos: lo definimos juntos en una llamada.</p>
+        <p class="promesa">No te prometo ganancias. Te prometo que dejas de depender de otros para invertir tu dinero.</p>
+        <ol class="pasos">
+          <li><div><b>Agendas tu llamada</b><span>Eliges el horario que te quede mejor.</span></div></li>
+          <li><div><b>Conversamos 30 minutos</b><span>Revisamos dónde estás hoy y a dónde quieres llegar.</span></div></li>
+          <li><div><b>Decides con claridad</b><span>Si el Acelerador es para ti, te muestro cómo lo hacemos.</span></div></li>
+        </ol>
+        <div class="acciones">
+          <button class="btn btn-primario" type="button" data-agendar="acelerador">Agenda tu llamada 1 a 1</button>
+        </div>
+      </div>
+      <div class="acel-foto">
+        <img src="img/aq-brazos.jpg" alt="Alejandro Quiñones en su oficina" loading="lazy" width="900" height="1115">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBRESÍA -->
+<section class="membresia" aria-labelledby="t-memb">
+  <div class="wrap">
+    <div class="memb">
+      <img src="img/logo-logo-excedente-1080-x-800-px.png" alt="Excedente" loading="lazy" width="1080" height="800">
+      <div>
+        <h3 id="t-memb">Después del Acelerador: Membresía Excedente</h3>
+        <p>Quienes terminan el Acelerador pueden seguir dentro de la comunidad Excedente, con clases en vivo cada semana para seguir operando con el método junto a otros inversionistas.</p>
+      </div>
+      <span class="chip">Solo para egresados</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="bloque testimonios" id="alumnos" aria-labelledby="t-alumnos">
+  <div class="wrap">
+    <div class="cabeza">
+      <div>
+        <span class="eyebrow">Lo que dicen mis alumnos</span>
+        <h2 class="titulo-seccion" id="t-alumnos">Personas comunes que decidieron tomar el control de su dinero.</h2>
+      </div>
+      <button class="btn btn-secundario" type="button" data-agendar="testimonios" style="color:var(--marino)">Quiero dar ese paso</button>
+    </div>
+    <div class="muro" id="muro">
+      <figure>
+        <img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo agradeciendo por aprender a invertir" loading="lazy" width="685" height="356">
+        <figcaption><b>Ana Caicedo</b> · alumna</figcaption>
+      </figure>
+      <figure>
+        <img src="img/testi-testimonio-daniel-sifontes.jpg" alt="Mensaje de WhatsApp de Daniel Sifontes agradeciendo el curso" loading="lazy" width="1178" height="1279">
+        <figcaption><b>Daniel Sifontes</b> · alumno</figcaption>
+      </figure>
+      <figure>
+        <img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María en la comunidad Excedente" loading="lazy" width="1123" height="1600">
+        <figcaption><b>Eva María</b> · comunidad Excedente</figcaption>
+      </figure>
+      <figure>
+        <img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de WhatsApp de Yuly Sosa" loading="lazy" width="713" height="1075">
+        <figcaption><b>Yuly Sosa</b> · alumna</figcaption>
+      </figure>
+      <figure>
+        <img src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" alt="Mensaje de Fabiola Cestari sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Fabiola Cestari</b></figcaption>
+      </figure>
+      <figure>
+        <img src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" alt="Mensaje de José Haeckermann sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>José Haeckermann</b></figcaption>
+      </figure>
+      <figure>
+        <img src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" alt="Mensaje de Silvia Hernández sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Silvia Hernández</b></figcaption>
+      </figure>
+      <figure>
+        <img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Domingo Russo</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de Alumno del Método RCR sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Alumno del Método RCR</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-1062.jpg" alt="Mensaje de Edwins Caro sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Edwins Caro</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Yubeidy Pérez</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>J. D. Márquez</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-1198.jpg" alt="Mensaje de Marjorie Hernández sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Marjorie Hernández</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-1201.jpg" alt="Mensaje de Reinaldo Mejía sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Reinaldo Mejía</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-2589.jpg" alt="Mensaje de Alexander Tovar sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Alexander Tovar</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-2590.jpg" alt="Mensaje de Alumno de la comunidad sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Alumno de la comunidad</b></figcaption>
+      </figure>
+      <figure class="extra">
+        <img src="img/clase-img-3691.jpg" alt="Mensaje de Mariana Díaz sobre su experiencia con el Método RCR" loading="lazy">
+        <figcaption><b>Mariana Díaz</b></figcaption>
+      </figure>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:8px"><button class="btn btn-secundario" type="button" id="ver-mas" style="color:var(--marino)">Ver más mensajes de alumnos</button></div>
+    <p class="aviso-chico">Experiencias individuales de alumnos. No garantizan resultados.</p>
+  </div>
+</section>
+
+
+<!-- REELS -->
+<section class="bloque reels" id="reels" aria-labelledby="t-reels">
+  <div class="wrap">
+    <div class="cabeza">
+      <div>
+        <span class="eyebrow">En video</span>
+        <h2 class="titulo-seccion" id="t-reels">Escúchalo de ellos.</h2>
+        <p class="intro">Alumnos de distintos países cuentan cómo empezaron a invertir con el Método RCR.</p>
+      </div>
+      <div class="flechas"><button type="button" class="flecha" data-dir="-1" aria-label="Anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="flecha" data-dir="1" aria-label="Siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+    </div>
+    <div class="carril" id="carril">
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-otoniel.jpg" src="reels/reel-otoniel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Otoniel"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Otoniel</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-javier-forsyth.jpg" src="reels/reel-javier-forsyth.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Javier Forsyth"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Javier Forsyth</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-aleida-palma.jpg" src="reels/reel-aleida-palma.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Aleida Palma"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Aleida Palma</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-eusbely-donalles.jpg" src="reels/reel-eusbely-donalles.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Eusbely Donalles"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Eusbely Donalles</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-italo-ral.jpg" src="reels/reel-italo-ral.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Italo Ral"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Italo Ral</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-jose-montero.jpg" src="reels/reel-jose-montero.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de José Montero"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-kenya-fernandez.jpg" src="reels/reel-kenya-fernandez.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Kenya Fernández"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Kenya Fernández</b></button></div>
+        <div class="reel"><video preload="none" playsinline poster="reels/reel-rosangel.jpg" src="reels/reel-rosangel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Rosangel González"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Rosangel González</b></button></div>
+    </div>
+    <div class="en-vivo">
+      <div class="reel grande"><video preload="none" playsinline poster="reels/reel-opero-en-vivo.jpg" src="reels/reel-opero-en-vivo.mp4"></video><button type="button" class="reel-play" aria-label="Ver video: opero en vivo con mis alumnos"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Opero en vivo</b></button></div>
+      <div>
+        <span class="eyebrow">Así son mis clases</span>
+        <h3>Opero en vivo, frente a mis alumnos.</h3>
+        <p>Cada semana abro el mercado con mis alumnos y aplicamos el método en tiempo real: buscamos la oportunidad, la evaluamos con las tres reglas y definimos el stop loss antes de entrar.</p>
+        <div class="acciones"><button class="btn btn-primario" type="button" data-agendar="reels">Agenda tu llamada 1 a 1</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIOS -->
+<section class="bloque medios" id="medios" aria-labelledby="t-medios">
+  <div class="wrap">
+    <span class="eyebrow">En los medios</span>
+    <h2 class="titulo-seccion" id="t-medios">Me invitan como experto financiero en televisión, radio y prensa.</h2>
+    <p class="intro">Explico la economía y las inversiones en lenguaje sencillo, para que cualquier persona entienda qué pasa con su dinero.</p>
+    <div class="paises"><span>Colombia</span><span>Estados Unidos</span><span>Panamá</span><span>Venezuela</span></div>
+    <div class="galeria-tv">
+      <img class="g1" src="img/evento-1687270803358.jpg" alt="Alejandro Quiñones entrevistado en un set de televisión" loading="lazy">
+      <img class="g2" src="img/evento-1687270803352.jpg" alt="Entrevista en estudio de televisión" loading="lazy">
+      <img class="g3" src="img/evento-1687270803363.jpg" alt="Alejandro en cámara durante una entrevista" loading="lazy">
+    </div>
+    <div class="videos">
+      <div class="video"><button type="button" data-vimeo="927697221" style="--fondo:url('img/evento-1687270803341.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Fragmento de entrevista en televisión</button></div>
+      <div class="video"><button type="button" data-vimeo="927695394" style="--fondo:url('img/evento-1687270803346.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Fragmento de entrevista en televisión</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCIAS -->
+<section class="bloque conferencias" aria-labelledby="t-conf">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Conferencias y talleres</span>
+      <h2 class="titulo-seccion" id="t-conf">Más de 30 mil personas en salas de varios países.</h2>
+      <p class="intro">Llevo la educación financiera a empresas, universidades y eventos. Hablo de ahorro, inversión y de cómo construir patrimonio en familia.</p>
+      <div class="cert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 8 5-3 5 3-1.5-8"/></svg>
+        <div><b>Stock Market Investor</b><span>Inversionista Bursátil Profesional · Center of Education and Leadership, avalado por Florida Global University</span></div>
+      </div>
+    </div>
+    <div class="collage">
+      <img class="alto" src="img/medio-screenshot-20210203-104337.jpg" alt="Alejandro en el escenario frente a un auditorio lleno" loading="lazy" style="object-position:85% center">
+      <img src="img/medio-screenshot-20200908-143714-com-instagram-android.jpg" alt="Conferencia de Alejandro Quiñones" loading="lazy">
+      <img src="img/medio-screenshot-20210203-104648.jpg" alt="Auditorio en un evento de educación financiera" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- LIBRO -->
+<section class="libro" id="libro" aria-labelledby="t-libro">
+  <div class="wrap">
+    <img src="img/libro-arquitectura-del-dinero-1.png" alt="Libro La Arquitectura del Dinero, de Alejandro Quiñones" loading="lazy" width="1080" height="1080">
+    <div>
+      <span class="eyebrow">Mi libro</span>
+      <h2 class="titulo-seccion" id="t-libro">La Arquitectura del Dinero</h2>
+      <p class="intro">Un libro para ordenar tus finanzas como se construye una casa: primero los cimientos, después la estructura y al final lo que la hace crecer. Lo escribí para que cualquier familia pueda entender su dinero y tomar mejores decisiones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGALO / CAPTURA -->
+<section class="regalo" id="calculadora" aria-labelledby="t-regalo">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Regalo para ti</span>
+      <h2 class="titulo-seccion" id="t-regalo">Calcula cuánto puede crecer tu dinero.</h2>
+      <p class="intro">Te regalo mi Calculadora Financiera. Pones cuánto puedes aportar cada mes y ves en qué año llegas a tu meta. Déjame tus datos y te la abro al instante.</p>
+    </div>
+    <div class="form-tarjeta">
+      <form id="form-regalo" novalidate data-origen="Calculadora">
+        <h3>Recibe la Calculadora Financiera</h3>
+        <div class="campos">
+          <label for="r-nombre">Nombre<input id="r-nombre" name="nombre" autocomplete="given-name" required placeholder="Tu nombre"></label>
+          <label for="r-correo">Correo<input id="r-correo" name="correo" type="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com"></label>
+          <label for="r-tel">WhatsApp
+            <span class="tel">
+              <select id="r-pais" name="pais" aria-label="País"></select>
+              <input id="r-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Número">
+            </span>
+          </label>
+          <p class="error" hidden></p>
+          <button class="btn btn-primario" type="submit">Quiero mi calculadora</button>
+          <p class="privacidad">Uso tus datos solo para enviarte contenido de AQ Finanzas. Puedes darte de baja cuando quieras.</p>
+        </div>
+      </form>
+      <div class="listo" id="regalo-listo" hidden>
+        <span class="paso-tag">Listo</span>
+        <h3>Aquí tienes tu calculadora.</h3>
+        <p>También te la envié a tu correo para que la tengas a mano.</p>
+        <a class="btn btn-primario" href="https://calculadorafinanciera.aqfinanzas.com" target="_blank" rel="noopener">Abrir la Calculadora Financiera</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PREGUNTAS -->
+<section class="bloque preguntas" id="preguntas" aria-labelledby="t-faq">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 class="titulo-seccion" id="t-faq">Lo que más me preguntan antes de la llamada.</h2>
+      <p class="intro">¿Tienes otra duda? Escríbela cuando agendes y la vemos juntos.</p>
+      <div class="acciones"><button class="btn btn-primario" type="button" data-agendar="preguntas">Agenda tu llamada 1 a 1</button></div>
+    </div>
+    <div class="lista-faq">
+      <details><summary>¿La llamada tiene algún costo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No. Es una llamada de 30 minutos por Zoom, conmigo, sin costo. Revisamos dónde estás hoy, a dónde quieres llegar y si el Acelerador es para ti.</p></details>
+      <details><summary>¿Necesito experiencia para empezar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No. Muchos de mis alumnos empezaron sin haber invertido nunca. El método está pensado para que aprendas paso a paso, con reglas claras.</p></details>
+      <details><summary>¿Cuánto dinero necesito para invertir?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Depende de tu meta y de cuánto puedes aportar cada mes. Se puede empezar con poco y crecer con aportes constantes. En la llamada revisamos tu caso en particular.</p></details>
+      <details><summary>¿Qué incluye el Acelerador Excedente?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Es un acompañamiento personal que se ajusta a cada persona. Por eso no lo resumo aquí: en la llamada te explico cómo trabajamos según tu capital, tu tiempo y tu meta.</p></details>
+      <details><summary>¿Me garantizas ganancias?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No. Nadie serio puede garantizarlas. Invertir siempre tiene riesgo. Lo que te enseño es a controlarlo: saber cuánto puedes perder antes de entrar en cualquier operación.</p></details>
+      <details><summary>¿Desde qué país puedo participar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Desde cualquier país. Todo es en línea y en español. Tengo alumnos en Colombia, Venezuela, México, Estados Unidos, Chile, Panamá y otros países.</p></details>
+      <details><summary>¿Cuánto tiempo necesito dedicarle?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Lo definimos según tu rutina. El método está hecho para personas que trabajan y tienen familia: no necesitas estar pegado a la pantalla todo el día.</p></details>
+      <details><summary>¿Qué pasa después de agendar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Recibes la confirmación en tu correo con el enlace de Zoom. Antes de la llamada te escribo por WhatsApp para recordártela.</p></details>
+      <details><summary>¿Qué es la Membresía Excedente?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Es la comunidad para seguir operando con el método después del Acelerador, con clases en vivo cada semana. Solo pueden entrar quienes terminan el Acelerador.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="bloque cierre" aria-labelledby="t-cierre">
+  <div class="wrap">
+    <img src="img/foto-aq-foto-6-tortuga-bn.jpg" alt="Alejandro Quiñones" loading="lazy" width="1136" height="1408">
+    <div>
+      <h2 class="eyebrow" id="t-cierre" style="font-family:var(--f-dato);font-weight:500;letter-spacing:.14em">De lo que estoy más orgulloso</h2>
+      <blockquote style="margin-top:14px">Ser esposo, padre y hombre de familia. Porque ¿de qué sirve todo el éxito del mundo <em>si no tienes con quién disfrutarlo?</em></blockquote>
+      <div class="acciones">
+        <button class="btn btn-primario" type="button" data-agendar="cierre">Agenda tu llamada 1 a 1</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-top">
+      <img src="img/logo-aq-blanco.webp" alt="AQ Finanzas" width="480" height="363" loading="lazy">
+      <div class="redes">
+        <a href="https://www.instagram.com/aqfinanzas/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</a>
+        <a href="https://www.tiktok.com/@aqfinanzas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.4 2.2 1.9 3.8 4 4v3.2c-1.5 0-2.9-.5-4-1.3v6.4A5.7 5.7 0 1 1 10.8 9.6v3.3a2.5 2.5 0 1 0 2.5 2.5V3h3.2Z"/></svg>TikTok</a>
+        <a href="https://x.com/aqconsultor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.7 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L1.7 3h6.4l4.4 5.9L17.7 3Zm-1.1 16.2h1.7L7.2 4.7H5.4l11.2 14.5Z"/></svg>X</a>
+        <a href="https://www.threads.com/@aqfinanzas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 8.5C16 5.5 13.8 4 11.8 4 7.5 4 5 7.5 5 12s2.5 8 6.8 8c3.4 0 6.2-2 6.2-5 0-2.6-2.1-4-4.8-4-2.4 0-4 1.3-4 3 0 1.5 1.3 2.6 3 2.6 2.6 0 3.8-2.2 3.8-5.6"/></svg>Threads</a>
+      </div>
+    </div>
+    <p>¿Escribirme? <span style="color:var(--blanco);user-select:all">info@aqfinanzas.com</span></p>
+    <p class="legal">© 2026 Alejandro Quiñones · AQ Finanzas. Invertir en la bolsa de valores implica riesgos, incluida la posible pérdida del capital. Los resultados dependen de cada persona, su disciplina y su contexto. Los testimonios son experiencias individuales y no garantizan resultados. El contenido de esta página es educativo y no constituye asesoría financiera personalizada ni promesa de rentabilidad.</p>
+  </div>
+</footer>
+
+<div class="flotante" id="flotante"><button class="btn btn-primario" type="button" data-agendar="flotante">Agenda tu llamada 1 a 1</button></div>
+
+<!-- MODAL LLAMADA -->
+<div class="modal" id="modal-llamada" role="dialog" aria-modal="true" aria-labelledby="t-modal" hidden>
+  <div class="modal-caja" id="caja-llamada">
+    <button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <form id="form-llamada" novalidate data-origen="Llamada 1 a 1">
+      <span class="paso-tag">Paso 1 de 2</span>
+      <h3 id="t-modal" style="margin-top:8px">Agenda tu llamada 1 a 1</h3>
+      <p class="intro">Déjame tus datos y en el siguiente paso eliges el día y la hora.</p>
+      <div class="campos">
+        <label for="l-nombre">Nombre y apellido<input id="l-nombre" name="nombre" autocomplete="name" required placeholder="Tu nombre completo"></label>
+        <label for="l-correo">Correo<input id="l-correo" name="correo" type="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com"></label>
+        <label for="l-tel">WhatsApp
+          <span class="tel">
+            <select id="l-pais" name="pais" aria-label="País"></select>
+            <input id="l-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Número">
+          </span>
+        </label>
+        <p class="error" hidden></p>
+        <button class="btn btn-primario" type="submit">Elegir día y hora</button>
+        <p class="privacidad">Llamada de 30 minutos por Zoom. Uso tus datos solo para confirmar y recordarte la llamada.</p>
+      </div>
+    </form>
+    <div id="paso-calendario" hidden>
+      <span class="paso-tag">Paso 2 de 2 · Elige tu horario</span>
+      <div id="contenedor-calendly" style="margin-top:12px"></div>
+      <p class="privacidad" style="margin-top:10px">¿No carga el calendario? <a id="enlace-calendly" href="https://calendly.com/aqfinanzas-info/llamada-1-a-1-excedente" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL REGALO (aparece una vez) -->
+<div class="modal" id="modal-regalo" role="dialog" aria-modal="true" aria-labelledby="t-pop" hidden>
+  <div class="modal-caja">
+    <button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <form id="form-pop" novalidate data-origen="Ventana regalo">
+      <span class="paso-tag">Regalo</span>
+      <h3 id="t-pop" style="margin-top:8px">¿En qué año llegas a tu meta?</h3>
+      <p class="intro">Te regalo mi Calculadora Financiera. Déjame tus datos y te la abro ya.</p>
+      <div class="campos">
+        <label for="p-nombre">Nombre<input id="p-nombre" name="nombre" autocomplete="given-name" required placeholder="Tu nombre"></label>
+        <label for="p-correo">Correo<input id="p-correo" name="correo" type="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com"></label>
+        <label for="p-tel">WhatsApp
+          <span class="tel">
+            <select id="p-pais" name="pais" aria-label="País"></select>
+            <input id="p-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Número">
+          </span>
+        </label>
+        <p class="error" hidden></p>
+        <button class="btn btn-primario" type="submit">Quiero mi calculadora</button>
+        <button class="btn" type="button" data-cerrar style="background:none;color:var(--gris);padding:.6em;font-weight:500">Ahora no, gracias</button>
+      </div>
+    </form>
+    <div class="listo" hidden>
+      <span class="paso-tag">Listo</span>
+      <h3>Aquí tienes tu calculadora.</h3>
+      <a class="btn btn-primario" href="https://calculadorafinanciera.aqfinanzas.com" target="_blank" rel="noopener">Abrir la Calculadora Financiera</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN ===== */
+const CONFIG = {
+  // URL del Apps Script publicado (Google Sheet "Leads Página Web AQ Finanzas")
+  SCRIPT_URL: "",
+  CALENDLY: "https://calendly.com/aqfinanzas-info/llamada-1-a-1-excedente",
+  VENTANA_REGALO_SEG: 40,      // segundos antes de mostrar el regalo (una vez cada 7 días)
+};
+
+/* ===== Países ===== */
+const PAISES = [
+  ["CO","Colombia","57"],["VE","Venezuela","58"],["MX","México","52"],["US","Estados Unidos","1"],["PA","Panamá","507"],
+  ["CL","Chile","56"],["PE","Perú","51"],["EC","Ecuador","593"],["AR","Argentina","54"],["ES","España","34"],
+  ["DO","Rep. Dominicana","1"],["CR","Costa Rica","506"],["GT","Guatemala","502"],["UY","Uruguay","598"],["PY","Paraguay","595"],
+  ["BO","Bolivia","591"],["HN","Honduras","504"],["SV","El Salvador","503"],["NI","Nicaragua","505"],["PR","Puerto Rico","1"],
+  ["CA","Canadá","1"],["OT","Otro país",""]
+];
+document.querySelectorAll('select[name="pais"]').forEach(s=>{
+  s.innerHTML = PAISES.map(([c,n,p])=>`<option value="${c}">${c==="OT"?n:`${n} +${p}`}</option>`).join("");
+});
+
+/* ===== Datos de la visita (UTM) ===== */
+const qs = new URLSearchParams(location.search);
+const UTM = { source: qs.get("utm_source")||"", campaign: qs.get("utm_campaign")||"" };
+const guardar = (k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const leer = (k)=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+
+/* ===== Envío al Sheet ===== */
+function enviarLead(datos){
+  if(!CONFIG.SCRIPT_URL){ console.warn("Falta SCRIPT_URL: el registro no se guardó", datos); return Promise.resolve(); }
+  return fetch(CONFIG.SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(datos)}).catch(()=>{});
+}
+function leerForm(form){
+  const f = new FormData(form);
+  const pais = PAISES.find(p=>p[0]===f.get("pais")) || PAISES[0];
+  const num = String(f.get("whatsapp")||"").replace(/\D/g,"");
+  return {
+    nombre:String(f.get("nombre")||"").trim(),
+    correo:String(f.get("correo")||"").trim().toLowerCase(),
+    whatsapp: num ? (pais[2] && !num.startsWith(pais[2]) ? pais[2]+num : num) : "",
+    pais: pais[1], origen: form.dataset.origen, pagina: location.href.split("?")[0],
+    utm_source: UTM.source, utm_campaign: UTM.campaign
+  };
+}
+function validar(form,d){
+  const err = form.querySelector(".error");
+  let msg = "";
+  if(d.nombre.length<2) msg="Escribe tu nombre.";
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.correo)) msg="Revisa tu correo: parece incompleto.";
+  else if(d.whatsapp.length<8) msg="Escribe tu número de WhatsApp completo.";
+  err.textContent = msg; err.hidden = !msg;
+  return !msg;
+}
+
+/* ===== Modales ===== */
+let ultimoFoco = null;
+function abrir(m){ ultimoFoco=document.activeElement; m.hidden=false; document.body.style.overflow="hidden"; const i=m.querySelector("input:not([type=hidden])"); if(i) setTimeout(()=>i.focus(),30); }
+function cerrar(m){ m.hidden=true; document.body.style.overflow=""; if(ultimoFoco) ultimoFoco.focus(); }
+document.querySelectorAll(".modal").forEach(m=>{
+  m.addEventListener("click",e=>{ if(e.target===m || e.target.closest("[data-cerrar]")) cerrar(m); });
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") document.querySelectorAll(".modal:not([hidden])").forEach(cerrar); });
+
+/* ===== Llamada 1 a 1 ===== */
+const mLlamada = document.getElementById("modal-llamada");
+let origenBoton = "";
+document.querySelectorAll("[data-agendar]").forEach(b=>b.addEventListener("click",()=>{
+  origenBoton = b.dataset.agendar;
+  const prev = leer("aq_lead");
+  if(prev){ ["nombre","correo"].forEach(k=>{ const i=document.getElementById("l-"+k); if(i && !i.value) i.value = prev[k]||""; }); }
+  abrir(mLlamada);
+}));
+document.getElementById("form-llamada").addEventListener("submit",e=>{
+  e.preventDefault();
+  const form=e.target, d=leerForm(form);
+  if(!validar(form,d)) return;
+  d.interes = "Llamada 1 a 1 (botón: "+origenBoton+")";
+  enviarLead(d); guardar("aq_lead",{nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp});
+  if(window.fbq) fbq("track","Lead",{content_name:"Llamada 1 a 1"});
+  const url = CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp);
+  document.getElementById("enlace-calendly").href = url;
+  const c = document.getElementById("contenedor-calendly");
+  c.innerHTML = `<iframe class="calendly" src="${url}&embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname)}" title="Calendario para agendar la llamada"></iframe>`;
+  form.hidden = true;
+  document.getElementById("paso-calendario").hidden = false;
+  document.getElementById("caja-llamada").classList.add("ancha");
+});
+// Calendly avisa cuando se agenda
+window.addEventListener("message",e=>{
+  if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
+    const prev = leer("aq_lead")||{};
+    enviarLead({...prev, origen:"Llamada agendada", interes:"Agendó en Calendly", pagina:location.href.split("?")[0], utm_source:UTM.source, utm_campaign:UTM.campaign});
+    if(window.fbq) fbq("track","Schedule");
+  }
+});
+
+/* ===== Regalo: calculadora ===== */
+function formRegalo(form, listo){
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    const d=leerForm(form);
+    if(!validar(form,d)) return;
+    d.interes="Calculadora Financiera";
+    enviarLead(d); guardar("aq_lead",{nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp}); guardar("aq_regalo",Date.now());
+    if(window.fbq) fbq("track","Lead",{content_name:"Calculadora"});
+    form.hidden=true; listo.hidden=false;
+  });
+}
+formRegalo(document.getElementById("form-regalo"), document.getElementById("regalo-listo"));
+const mRegalo = document.getElementById("modal-regalo");
+formRegalo(document.getElementById("form-pop"), mRegalo.querySelector(".listo"));
+// La ventana aparece una sola vez cada 7 días, y nunca a quien ya dejó sus datos
+(function(){
+  const visto = leer("aq_pop"), dio = leer("aq_lead");
+  if(dio || (visto && Date.now()-visto < 7*864e5)) return;
+  let hecho=false;
+  const mostrar=()=>{ if(hecho || !mLlamada.hidden) return; hecho=true; guardar("aq_pop",Date.now()); abrir(mRegalo); };
+  setTimeout(mostrar, CONFIG.VENTANA_REGALO_SEG*1000);
+  document.addEventListener("mouseout",e=>{ if(!e.relatedTarget && e.clientY<8) mostrar(); });
+})();
+
+/* ===== Videos (cargan al tocar) ===== */
+document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",()=>{
+  b.parentElement.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Entrevista de Alejandro Quiñones"></iframe>`;
+}));
+
+
+
+/* ===== Simulador ===== */
+(function(){
+  const $=id=>document.getElementById(id);
+  const fmt=n=>"US$ "+Math.round(n).toLocaleString("es-CO");
+  const corto=n=> n>=1e6 ? "US$ "+(n/1e6).toLocaleString("es-CO",{maximumFractionDigits:1})+" M" : "US$ "+Math.round(n/1000).toLocaleString("es-CO")+" mil";
+  const cv=$("grafico"), ctx=cv.getContext("2d");
+  const hoy=new Date().getFullYear();
+  function pinta(inp){ const p=(inp.value-inp.min)/(inp.max-inp.min)*100; inp.style.setProperty("--p",p+"%"); }
+  function calcular(){
+    const meta=+$("s-meta").value, ini=+$("s-inicial").value, ap=+$("s-aporte").value;
+    const tasa=+document.querySelector('input[name="tasa"]:checked').value;
+    ["s-meta","s-inicial","s-aporte"].forEach(i=>pinta($(i)));
+    $("o-meta").textContent=corto(meta); $("o-inicial").textContent=fmt(ini); $("o-aporte").textContent=fmt(ap);
+    const rm=Math.pow(1+tasa,1/12)-1;
+    let saldo=ini, aportado=ini, mes=0; const serie=[{v:saldo,a:aportado}];
+    while(saldo<meta && mes<12*60){ saldo=saldo*(1+rm)+ap; aportado+=ap; mes++; if(mes%12===0) serie.push({v:saldo,a:aportado}); }
+    if(mes%12!==0) serie.push({v:saldo,a:aportado});
+    const llega = saldo>=meta;
+    const anios = mes/12;
+    $("r-anio").textContent = llega ? (hoy+Math.ceil(anios)) : "+60 años";
+    $("r-detalle").innerHTML = llega
+      ? `En unos <strong>${anios<1?"meses":Math.ceil(anios)+" años"}</strong>. De ese patrimonio, <strong>${fmt(aportado)}</strong> lo pones tú y <strong>${fmt(Math.max(0,saldo-aportado))}</strong> lo genera el interés compuesto.`
+      : `Con estos números no llegas en 60 años. Sube tu aporte mensual o ajusta tu meta: eso es justo lo que revisamos en la llamada.`;
+    dibujar(serie,meta);
+  }
+  function dibujar(serie,meta){
+    const dpr=Math.min(2,devicePixelRatio||1), W=cv.clientWidth, H=cv.clientHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+    const max=Math.max(meta,serie[serie.length-1].v)*1.08, n=Math.max(serie.length-1,1);
+    const pl=4,pr=4,pt=10,pb=22, x=i=>pl+(W-pl-pr)*i/n, y=v=>pt+(H-pt-pb)*(1-v/max);
+    ctx.strokeStyle="rgba(255,255,255,.07)"; ctx.lineWidth=1;
+    for(let g=1;g<=3;g++){ const yy=pt+(H-pt-pb)*g/4; ctx.beginPath(); ctx.moveTo(pl,yy); ctx.lineTo(W-pr,yy); ctx.stroke(); }
+    const area=(k,fill)=>{ ctx.beginPath(); ctx.moveTo(x(0),y(0)); serie.forEach((p,i)=>ctx.lineTo(x(i),y(p[k]))); ctx.lineTo(x(serie.length-1),y(0)); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); };
+    const grad=ctx.createLinearGradient(0,pt,0,H-pb); grad.addColorStop(0,"rgba(42,148,248,.75)"); grad.addColorStop(1,"rgba(42,148,248,.08)");
+    area("v",grad); area("a","rgba(255,255,255,.22)");
+    ctx.beginPath(); serie.forEach((p,i)=>i?ctx.lineTo(x(i),y(p.v)):ctx.moveTo(x(i),y(p.v))); ctx.strokeStyle="#2A94F8"; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.setLineDash([6,5]); ctx.strokeStyle="#F04A03"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(pl,y(meta)); ctx.lineTo(W-pr,y(meta)); ctx.stroke(); ctx.setLineDash([]);
+    const ult=serie.length-1; ctx.fillStyle="#F04A03"; ctx.beginPath(); ctx.arc(x(ult),y(serie[ult].v),5,0,7); ctx.fill();
+    ctx.fillStyle="rgba(185,194,232,.85)"; ctx.font="500 11px 'IBM Plex Mono', monospace"; ctx.textBaseline="alphabetic";
+    ctx.textAlign="left"; ctx.fillText(String(hoy),pl,H-6);
+    ctx.textAlign="right"; ctx.fillText(String(hoy+Math.ceil((serie.length-1))),W-pr,H-6);
+  }
+  ["s-meta","s-inicial","s-aporte"].forEach(i=>$(i).addEventListener("input",calcular));
+  document.querySelectorAll('input[name="tasa"]').forEach(r=>r.addEventListener("change",calcular));
+  addEventListener("resize",calcular);
+  calcular();
+})();
+
+/* ===== Ver más testimonios ===== */
+document.getElementById("ver-mas").addEventListener("click",e=>{
+  const m=document.getElementById("muro"); const ab=m.classList.toggle("abierto");
+  e.currentTarget.textContent = ab ? "Ver menos" : "Ver más mensajes de alumnos";
+});
+
+/* ===== Reels ===== */
+document.querySelectorAll(".reel").forEach(r=>{
+  const v=r.querySelector("video"), b=r.querySelector(".reel-play");
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".reel video").forEach(o=>{ if(o!==v){ o.pause(); } });
+    v.controls=true; r.classList.add("sonando"); v.play().catch(()=>{});
+  });
+  v.addEventListener("pause",()=>{ if(v.ended){ r.classList.remove("sonando"); v.controls=false; } });
+});
+document.querySelectorAll(".flecha").forEach(f=>f.addEventListener("click",()=>{
+  const c=document.getElementById("carril"); c.scrollBy({left:Number(f.dataset.dir)*c.clientWidth*0.9,behavior:"smooth"});
+}));
+
+/* ===== Botón flotante en celular ===== */
+const flot = document.getElementById("flotante");
+const portada = document.querySelector(".portada");
+new IntersectionObserver(([e])=>flot.classList.toggle("visible",!e.isIntersecting)).observe(portada);
+
+/* ===== Velas de fondo en la portada ===== */
+(function(){
+  const cv=document.getElementById("velas"); if(!cv) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ctx=cv.getContext("2d");
+  let velas=[], W=0, H=0, dpr=1;
+  function generar(){
+    dpr=Math.min(2,window.devicePixelRatio||1);
+    W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n=Math.ceil(W/22)+2; let p=H*0.72; velas=[];
+    let seed=7; const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+    for(let i=0;i<n;i++){
+      const o=p, c=o-(rnd()-0.42)*H*0.07; const hi=Math.min(o,c)-rnd()*H*0.03, lo=Math.max(o,c)+rnd()*H*0.03;
+      velas.push({o,c,hi,lo}); p=c; if(p<H*0.22) p+=H*0.08; if(p>H*0.86) p-=H*0.08;
+    }
+  }
+  function dibujar(t){
+    ctx.clearRect(0,0,W,H);
+    const desp = reduce?0:(t/90)%22;
+    velas.forEach((v,i)=>{
+      const x=i*22-desp+6, sube=v.c<v.o;
+      ctx.strokeStyle=sube?"rgba(42,148,248,.55)":"rgba(240,74,3,.4)";
+      ctx.fillStyle=sube?"rgba(42,148,248,.32)":"rgba(240,74,3,.24)";
+      ctx.beginPath(); ctx.moveTo(x+5,v.hi); ctx.lineTo(x+5,v.lo); ctx.stroke();
+      const y=Math.min(v.o,v.c), h=Math.max(2,Math.abs(v.o-v.c)); ctx.fillRect(x,y,10,h);
+    });
+    if(!reduce) requestAnimationFrame(dibujar);
+  }
+  generar(); requestAnimationFrame(dibujar);
+  addEventListener("resize",()=>{generar(); if(reduce) dibujar(0);});
+})();
+</script>
+</body>
+</html>
