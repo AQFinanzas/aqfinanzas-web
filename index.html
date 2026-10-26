@@ -320,6 +320,16 @@ footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
 .calendly{width:100%;height:min(720px,calc(100dvh - 120px));border:0;border-radius:12px;display:block}
 .paso-tag{font-family:var(--f-dato);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
 
+
+/* Globo de WhatsApp (aparece tarde) */
+.wa{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;align-items:center;gap:10px;text-decoration:none;opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .4s ease,transform .4s ease}
+.wa.visible{opacity:1;transform:none;pointer-events:auto}
+.wa-icono{width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:transform .2s}
+.wa:hover .wa-icono{transform:scale(1.07)}
+.wa-icono svg{width:30px;height:30px;fill:#fff}
+.wa-texto{background:#fff;color:var(--marino);font-weight:600;font-size:.9rem;padding:10px 14px;border-radius:14px;box-shadow:0 10px 30px -12px rgba(1,0,90,.4);border:1px solid var(--linea,#DDE3F0);white-space:nowrap}
+@media (max-width:760px){.wa{bottom:calc(92px + env(safe-area-inset-bottom,0px));right:16px}.wa-icono{width:52px;height:52px}.wa-texto{display:none}}
+
 /* Botón flotante en celular */
 .flotante{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,rgba(245,247,252,1) 60%,rgba(245,247,252,0));display:none}
 .flotante .btn{width:100%}
@@ -860,6 +870,10 @@ fbq('track','PageView');
   </div>
 </footer>
 
+<a class="wa" id="wa" href="https://wa.me/573105104847?text=Hola%20Alejandro%2C%20vi%20tu%20p%C3%A1gina%20y%20tengo%20una%20duda%20antes%20de%20agendar" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+  <span class="wa-texto">¿Una duda antes de agendar?</span>
+  <span class="wa-icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></span>
+</a>
 <div class="flotante" id="flotante"><button class="btn btn-primario" type="button" data-agendar="flotante">Agenda tu llamada 1 a 1</button></div>
 
 <!-- MODAL LLAMADA -->
@@ -1198,6 +1212,16 @@ document.querySelectorAll(".reel").forEach(r=>{
 const flot = document.getElementById("flotante");
 const portada = document.querySelector(".portada");
 new IntersectionObserver(([e])=>flot.classList.toggle("visible",!e.isIntersecting)).observe(portada);
+
+
+/* ===== Globo de WhatsApp: aparece al 70 % de la página o a los 60 s ===== */
+(function(){
+  const wa=document.getElementById("wa"); if(!wa) return;
+  const mostrar=()=>wa.classList.add("visible");
+  setTimeout(mostrar,60000);
+  addEventListener("scroll",()=>{const h=document.documentElement; if((h.scrollTop+innerHeight)/h.scrollHeight>=0.7) mostrar();},{passive:true});
+  wa.addEventListener("click",()=>{ if(window.fbq) fbq("trackCustom","ClicWhatsApp",{boton:"globo"}); });
+})();
 
 /* ===== Velas de fondo en la portada ===== */
 (function(){
