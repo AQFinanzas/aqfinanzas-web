@@ -654,8 +654,8 @@ fbq('track','PageView');
       <div class="tarjeta">
         <h3>Qué pasa en la llamada</h3>
         <ol class="pasos">
-          <li><div><b>Respondes 4 preguntas</b><span>Me ayudan a preparar la llamada antes de vernos.</span></div></li>
-          <li><div><b>Eliges tu día y hora</b><span>La llamada es por Zoom, conmigo.</span></div></li>
+          <li><div><b>Eliges tu día y hora</b><span>Una hora por Zoom, conmigo. Se muestra en tu zona horaria.</span></div></li>
+          <li><div><b>Respondes unas preguntas breves</b><span>Me ayudan a preparar la llamada antes de vernos.</span></div></li>
           <li><div><b>Revisamos tu situación</b><span>Tu capital, tu tiempo y la meta que quieres alcanzar.</span></div></li>
           <li><div><b>Te digo tu siguiente paso</b><span>Si el Acelerador es para ti, te muestro cómo trabajamos. Si no, también te lo digo.</span></div></li>
         </ol>
@@ -1045,6 +1045,9 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape") document.querySele
 
 /* ===== Llamada 1 a 1 con filtro de 4 preguntas ===== */
 const COMUNIDAD = "https://go.wha.link/b22oMb";
+// FILTRO = false: el botón va directo al Calendly de campañas (la calificación se hace con las preguntas de Calendly).
+// true: muestra antes las 4 preguntas de la landing.
+const FILTRO = false;
 const mLlamada = document.getElementById("modal-llamada");
 const fFiltro = document.getElementById("form-filtro");
 const fDatos = document.getElementById("form-llamada");
@@ -1067,6 +1070,7 @@ function reiniciar(){
 document.querySelectorAll("[data-agendar]").forEach(b=>b.addEventListener("click",()=>{
   origenBoton = b.dataset.agendar;
   ev("ClicAgendarLlamada",{boton:origenBoton});
+  if(!FILTRO){ mostrarCalendly(CONFIG.CALENDLY+"?hide_gdpr_banner=1"); abrir(mLlamada); return; }
   const prev = leer("aq_lead");
   if(prev){ ["nombre","correo"].forEach(k=>{ const i=document.getElementById("l-"+k); if(i && !i.value) i.value = prev[k]||""; }); }
   abrir(mLlamada);
@@ -1117,14 +1121,14 @@ document.getElementById("nc-link").addEventListener("click",()=>ev("ClicComunida
 function mostrarCalendly(url){
   document.getElementById("enlace-calendly").href = url;
   document.getElementById("contenedor-calendly").innerHTML = `<iframe class="calendly" src="${url}&embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname)}" title="Calendario para agendar la llamada"></iframe>`;
-  fDatos.hidden = true;
+  fDatos.hidden = true; fFiltro.hidden = true;
   document.getElementById("paso-calendario").hidden = false;
   document.getElementById("caja-llamada").classList.add("ancha");
 }
 window.addEventListener("message",e=>{
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
     const prev = leer("aq_lead")||{};
-    enviarLead({...prev, origen:"Llamada agendada", interes:"Agendó en Calendly · "+LANDING+" · "+resumen(), pagina:location.href.split("?")[0], utm_source:UTM.source, utm_campaign:UTM.campaign});
+    if(FILTRO || prev.nombre) enviarLead({...prev, origen:"Llamada agendada", interes:"Agendó en Calendly · "+LANDING+" · "+resumen(), pagina:location.href.split("?")[0], utm_source:UTM.source, utm_campaign:UTM.campaign});
     if(window.fbq) fbq("track","Schedule",{landing:LANDING});
   }
 });
