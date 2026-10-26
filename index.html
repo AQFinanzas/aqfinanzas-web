@@ -183,13 +183,19 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* Testimonios */
 .testimonios .cabeza{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.muro{columns:4 240px;column-gap:18px;margin-top:48px}
-.muro figure{break-inside:avoid;margin:0 0 18px;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);overflow:hidden}
-.muro figure img{width:100%;height:auto}
+.muro{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 0 12px;min-width:0}
+.muro::-webkit-scrollbar{display:none}
+.muro figure{margin:0;scroll-snap-align:start;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.muro figure img{width:100%;height:440px;object-fit:contain;object-position:top center;background:#EEF1F8;display:block}
 .muro figcaption{padding:12px 16px;font-size:.88rem;color:var(--gris);border-top:1px solid var(--linea)}
 .muro figcaption b{color:var(--tinta)}
 .cita-alumno{padding:22px 20px;font-family:var(--f-cita);font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--tinta)}
-.muro:not(.abierto) figure.extra{display:none}
+.testi-car{position:relative;margin-top:44px}
+.testi-car .nav-car{z-index:2}
+.testi-car .t-prev{left:-22px}.testi-car .t-next{right:-22px}
+.t-contador{text-align:center;color:var(--gris);font-size:.88rem;margin-top:10px;font-variant-numeric:tabular-nums}
+@media (max-width:1060px){.muro{grid-auto-columns:calc((100% - 18px)/2)}.testi-car .t-prev{left:-10px}.testi-car .t-next{right:-10px}}
+@media (max-width:640px){.muro{grid-auto-columns:100%}.muro figure img{height:420px}.testi-car .t-prev{left:-6px}.testi-car .t-next{right:-6px}}
 .aviso-chico{margin-top:10px;font-size:.8rem;color:var(--gris)}
 
 /* Medios */
@@ -642,7 +648,9 @@ fbq('track','PageView');
       </div>
       <button class="btn btn-secundario" type="button" data-agendar="testimonios" style="color:var(--marino)">Quiero dar ese paso</button>
     </div>
-    <div class="muro" id="muro">
+    <div class="testi-car">
+      <button type="button" class="nav-car t-prev" aria-label="Mensajes anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="muro" id="muro" tabindex="0" aria-label="Mensajes de alumnos">
       <figure>
         <img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo agradeciendo por aprender a invertir" loading="lazy" width="685" height="356">
         <figcaption><b>Ana Caicedo</b> · alumna</figcaption>
@@ -675,44 +683,46 @@ fbq('track','PageView');
         <img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Domingo Russo</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de Alumno del Método RCR sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Alumno del Método RCR</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-1062.jpg" alt="Mensaje de Edwins Caro sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Edwins Caro</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Yubeidy Pérez</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>J. D. Márquez</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-1198.jpg" alt="Mensaje de Marjorie Hernández sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Marjorie Hernández</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-1201.jpg" alt="Mensaje de Reinaldo Mejía sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Reinaldo Mejía</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-2589.jpg" alt="Mensaje de Alexander Tovar sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Alexander Tovar</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-2590.jpg" alt="Mensaje de Alumno de la comunidad sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Alumno de la comunidad</b></figcaption>
       </figure>
-      <figure class="extra">
+      <figure>
         <img src="img/clase-img-3691.jpg" alt="Mensaje de Mariana Díaz sobre su experiencia con el Método RCR" loading="lazy">
         <figcaption><b>Mariana Díaz</b></figcaption>
       </figure>
+      </div>
+      <button type="button" class="nav-car t-next" aria-label="Mensajes siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
-    <div style="display:flex;justify-content:center;margin-top:8px"><button class="btn btn-secundario" type="button" id="ver-mas" style="color:var(--marino)">Ver más mensajes de alumnos</button></div>
+    <p class="t-contador">Mensajes <span id="t-n">1</span> de 17</p>
     <p class="aviso-chico">Experiencias individuales de alumnos. No garantizan resultados.</p>
   </div>
 </section>
@@ -1077,11 +1087,20 @@ document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",
   calcular();
 })();
 
-/* ===== Ver más testimonios ===== */
-document.getElementById("ver-mas").addEventListener("click",e=>{
-  const m=document.getElementById("muro"); const ab=m.classList.toggle("abierto");
-  e.currentTarget.textContent = ab ? "Ver menos" : "Ver más mensajes de alumnos";
-});
+/* ===== Carrusel de testimonios ===== */
+(function(){
+  const m=document.getElementById("muro"); if(!m) return;
+  const items=[...m.children], cont=document.getElementById("t-n");
+  const base=()=>items[0].offsetLeft;
+  const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
+  const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
+  const maxI=()=>items.length-porVista();
+  const ir=i=>{ if(i>maxI()) i=(actual()>=maxI())?0:maxI(); if(i<0) i=(actual()<=0)?maxI():0; m.scrollTo({left:items[i].offsetLeft-base(),behavior:"smooth"}); };
+  document.querySelector(".t-prev").addEventListener("click",()=>ir(actual()-porVista()));
+  document.querySelector(".t-next").addEventListener("click",()=>ir(actual()+porVista()));
+  const pinta=()=>{ const a=actual()+1, b=Math.min(items.length,a+porVista()-1); cont.textContent = a===b ? a : a+"–"+b; };
+  m.addEventListener("scroll",pinta,{passive:true}); addEventListener("resize",pinta); pinta();
+})();
 
 /* ===== Reels ===== */
 document.querySelectorAll(".reel").forEach(r=>{
