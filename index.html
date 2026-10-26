@@ -774,40 +774,6 @@ fbq('track','PageView');
   </div>
 </section>
 
-<!-- REGALO / CAPTURA -->
-<section class="regalo" id="calculadora" aria-labelledby="t-regalo">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">Regalo para ti</span>
-      <h2 class="titulo-seccion" id="t-regalo">Calcula cuánto puede crecer tu dinero.</h2>
-      <p class="intro">Te regalo mi Calculadora Financiera. Pones cuánto puedes aportar cada mes y ves en qué año llegas a tu meta.</p>
-    </div>
-    <div class="form-tarjeta">
-      <form id="form-regalo" novalidate data-origen="Calculadora">
-        <h3>Recibe la Calculadora Financiera</h3>
-        <div class="campos">
-          <label for="r-nombre">Nombre<input id="r-nombre" name="nombre" autocomplete="given-name" required placeholder="Tu nombre"></label>
-          <label for="r-correo">Correo<input id="r-correo" name="correo" type="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com"></label>
-          <label for="r-tel">WhatsApp
-            <span class="tel">
-              <select id="r-pais" name="pais" aria-label="País"></select>
-              <input id="r-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Número">
-            </span>
-          </label>
-          <p class="error" hidden></p>
-          <button class="btn btn-primario" type="submit">Quiero mi calculadora</button>
-          <p class="privacidad">Uso tus datos solo para enviarte contenido de AQ Finanzas. Puedes darte de baja cuando quieras. <a href="privacidad.html" target="_blank">Política de privacidad</a>.</p>
-        </div>
-      </form>
-      <div class="listo" id="regalo-listo" hidden>
-        <span class="paso-tag">Listo</span>
-        <h3>Aquí tienes tu calculadora.</h3>
-        <p>También te la envié a tu correo para que la tengas a mano.</p>
-        <a class="btn btn-primario" href="https://calculadorafinanciera.aqfinanzas.com" target="_blank" rel="noopener">Abrir la Calculadora Financiera</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- PREGUNTAS -->
@@ -1038,14 +1004,6 @@ function formRegalo(form, listo){
     if(window.fbq) fbq("track","Lead",{content_name:"Calculadora"});
     form.hidden=true; listo.hidden=false;
   });
-}
-formRegalo(document.getElementById("form-regalo"), document.getElementById("regalo-listo"));
-if(!CONFIG.FORMULARIOS){
-  document.getElementById("form-regalo").hidden = true;
-  const l=document.getElementById("regalo-listo"); l.hidden=false;
-  l.querySelector(".paso-tag").textContent="Gratis";
-  l.querySelector("h3").textContent="Tu Calculadora Financiera";
-  l.querySelector("p").textContent="Ábrela, pon tus números y mira en qué año llegas a tu meta.";
 }
 const mRegalo = document.getElementById("modal-regalo");
 formRegalo(document.getElementById("form-pop"), mRegalo.querySelector(".listo"));
