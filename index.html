@@ -190,12 +190,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .muro figcaption{padding:12px 16px;font-size:.88rem;color:var(--gris);border-top:1px solid var(--linea)}
 .muro figcaption b{color:var(--tinta)}
 .cita-alumno{padding:22px 20px;font-family:var(--f-cita);font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--tinta)}
-.testi-car{position:relative;margin-top:44px}
+.testi-car{position:relative;margin-top:44px;padding:22px;border-radius:24px;background:linear-gradient(160deg,#FFFFFF 0%,#EAF0FF 100%);border:1.5px solid rgba(42,148,248,.35);box-shadow:0 30px 60px -38px rgba(1,0,90,.45),inset 0 1px 0 rgba(255,255,255,.9)}
+.testi-car::before{content:"";position:absolute;left:28px;right:28px;top:-1.5px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--naranja),var(--azul))}
 .testi-car .nav-car{z-index:2}
-.testi-car .t-prev{left:-22px}.testi-car .t-next{right:-22px}
+.testi-car .t-prev{left:-20px}.testi-car .t-next{right:-20px}
 .t-contador{text-align:center;color:var(--gris);font-size:.88rem;margin-top:10px;font-variant-numeric:tabular-nums}
 @media (max-width:1060px){.muro{grid-auto-columns:calc((100% - 18px)/2)}.testi-car .t-prev{left:-10px}.testi-car .t-next{right:-10px}}
-@media (max-width:640px){.muro{grid-auto-columns:100%}.muro figure img{height:420px}.testi-car .t-prev{left:-6px}.testi-car .t-next{right:-6px}}
+@media (max-width:640px){.testi-car{padding:12px;border-radius:18px}.muro{grid-auto-columns:100%}.muro figure img{height:420px}.testi-car .t-prev{left:-6px}.testi-car .t-next{right:-6px}}
 .aviso-chico{margin-top:10px;font-size:.8rem;color:var(--gris)}
 
 /* Medios */
@@ -646,7 +647,7 @@ fbq('track','PageView');
         <span class="eyebrow">Lo que dicen mis alumnos</span>
         <h2 class="titulo-seccion" id="t-alumnos">Personas comunes que decidieron tomar el control de su dinero</h2>
       </div>
-      <button class="btn btn-secundario" type="button" data-agendar="testimonios" style="color:var(--marino)">Quiero dar ese paso</button>
+      <button class="btn btn-primario" type="button" data-agendar="testimonios">Quiero dar ese paso</button>
     </div>
     <div class="testi-car">
       <button type="button" class="nav-car t-prev" aria-label="Mensajes anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
