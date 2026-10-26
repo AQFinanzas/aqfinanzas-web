@@ -128,7 +128,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .intro{margin-top:18px;color:var(--gris);font-size:1.08rem;max-width:40em}
 
 /* Sobre mí */
-.sobre .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.sobre .wrap:not(.entrevistas){display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
 .sobre-foto{position:relative}
 .sobre-foto img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;object-position:center top;width:100%;height:auto}
 .sello{position:absolute;right:-18px;bottom:28px;background:var(--marino);color:var(--blanco);border-radius:12px;padding:16px 18px;max-width:240px;box-shadow:0 20px 40px -18px rgba(1,0,90,.6)}
@@ -140,7 +140,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .credenciales{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
 .credenciales li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
 .credenciales svg{flex:0 0 22px;width:22px;height:22px;color:var(--azul);margin-top:2px}
-@media (max-width:860px){.sobre .wrap{grid-template-columns:1fr;gap:40px}.sobre-foto{max-width:480px;width:100%;margin-inline:auto}.sello{right:12px}}
+@media (max-width:860px){.sobre .wrap:not(.entrevistas){grid-template-columns:1fr;gap:40px}.sobre-foto{max-width:480px;width:100%;margin-inline:auto}.sello{right:12px}}
 
 /* Método RCR */
 .metodo{background:var(--noche);color:var(--blanco);position:relative;overflow:hidden}
@@ -213,6 +213,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .video button.con-mini{background:var(--fondo) center/cover no-repeat}
 .video button.con-mini .play{top:auto;left:auto;right:22px;bottom:22px;margin:0;transition:transform .2s}
 .video button.con-mini:hover .play{transform:scale(1.08)}
+@media (max-width:1024px){.video button.con-mini .play{width:44px;height:44px;right:12px;bottom:12px}.video button.con-mini .play svg{width:18px;height:18px}}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 @media (max-width:760px){.videos{grid-template-columns:1fr}}
 
@@ -474,6 +475,13 @@ fbq('track','PageView');
       </ul>
     </div>
   </div>
+  <div class="wrap entrevistas">
+    <h3 class="sub-titulo" style="margin-top:72px">Fragmentos de mis entrevistas</h3>
+    <div class="videos">
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927697221" aria-label="Ver entrevista: tasas de interés, qué hacer con tu dinero" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927695394" aria-label="Ver entrevista en vivo: invertir con método, no con emoción" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+    </div>
+  </div>
 </section>
 
 <!-- MÉTODO RCR -->
@@ -731,10 +739,6 @@ fbq('track','PageView');
       <img class="g1" src="img/evento-1687270803358.jpg" alt="Alejandro Quiñones entrevistado en un set de televisión" loading="lazy">
       <img class="g2" src="img/evento-1687270803352.jpg" alt="Entrevista en estudio de televisión" loading="lazy">
       <img class="g3" src="img/evento-1687270803363.jpg" alt="Alejandro en cámara durante una entrevista" loading="lazy">
-    </div>
-    <div class="videos">
-      <div class="video"><button type="button" class="con-mini" data-vimeo="927697221" aria-label="Ver entrevista: tasas de interés, qué hacer con tu dinero" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
-      <div class="video"><button type="button" class="con-mini" data-vimeo="927695394" aria-label="Ver entrevista en vivo: invertir con método, no con emoción" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
     </div>
   </div>
 </section>
