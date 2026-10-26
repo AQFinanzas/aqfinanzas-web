@@ -374,6 +374,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.pilar,.muro figure,.galeria-tv img,.collage img{transition:none}.portada-texto>*,.portada-foto{animation:none}}
 </style>
+<!-- Píxel de Meta · AQ Finanzas · Landings -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1875412480497286');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1875412480497286&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -778,7 +785,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
           </label>
           <p class="error" hidden></p>
           <button class="btn btn-primario" type="submit">Quiero mi calculadora</button>
-          <p class="privacidad">Uso tus datos solo para enviarte contenido de AQ Finanzas. Puedes darte de baja cuando quieras.</p>
+          <p class="privacidad">Uso tus datos solo para enviarte contenido de AQ Finanzas. Puedes darte de baja cuando quieras. <a href="privacidad.html" target="_blank">Política de privacidad</a>.</p>
         </div>
       </form>
       <div class="listo" id="regalo-listo" hidden>
@@ -842,7 +849,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         <a href="https://www.threads.com/@aqfinanzas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 8.5C16 5.5 13.8 4 11.8 4 7.5 4 5 7.5 5 12s2.5 8 6.8 8c3.4 0 6.2-2 6.2-5 0-2.6-2.1-4-4.8-4-2.4 0-4 1.3-4 3 0 1.5 1.3 2.6 3 2.6 2.6 0 3.8-2.2 3.8-5.6"/></svg>Threads</a>
       </div>
     </div>
-    <p>¿Escribirme? <span style="color:var(--blanco);user-select:all">info@aqfinanzas.com</span></p>
+    <p>¿Escribirme? <span style="color:var(--blanco);user-select:all">info@aqfinanzas.com</span> · <a href="privacidad.html" style="color:var(--blanco)">Política de privacidad</a></p>
     <p class="legal">© 2026 Alejandro Quiñones · AQ Finanzas. Invertir en la bolsa de valores implica riesgos, incluida la posible pérdida del capital. Los resultados dependen de cada persona, su disciplina y su contexto. Los testimonios son experiencias individuales y no garantizan resultados. El contenido de esta página es educativo y no constituye asesoría financiera personalizada ni promesa de rentabilidad.</p>
   </div>
 </footer>
@@ -868,7 +875,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         </label>
         <p class="error" hidden></p>
         <button class="btn btn-primario" type="submit">Elegir día y hora</button>
-        <p class="privacidad">Llamada de 30 minutos por Zoom. Uso tus datos solo para confirmar y recordarte la llamada.</p>
+        <p class="privacidad">Llamada de 30 minutos por Zoom. Uso tus datos solo para confirmar y recordarte la llamada. <a href="privacidad.html" target="_blank">Política de privacidad</a>.</p>
       </div>
     </form>
     <div id="paso-calendario" hidden>
@@ -978,6 +985,7 @@ const mLlamada = document.getElementById("modal-llamada");
 let origenBoton = "";
 document.querySelectorAll("[data-agendar]").forEach(b=>b.addEventListener("click",()=>{
   origenBoton = b.dataset.agendar;
+  if(window.fbq) fbq("trackCustom","ClicAgendarLlamada",{boton:origenBoton});
   if(!CONFIG.FORMULARIOS){ mostrarCalendly(CONFIG.CALENDLY+"?hide_gdpr_banner=1"); abrir(mLlamada); return; }
   const prev = leer("aq_lead");
   if(prev){ ["nombre","correo"].forEach(k=>{ const i=document.getElementById("l-"+k); if(i && !i.value) i.value = prev[k]||""; }); }
