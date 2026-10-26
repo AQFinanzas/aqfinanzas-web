@@ -447,6 +447,12 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.pilar,.muro figure,.galeria-tv img,.collage img{transition:none}.portada-texto>*,.portada-foto{animation:none}}
 </style>
+<!-- Microsoft Clarity: mapas de calor y grabaciones. Pega el ID del proyecto en CLARITY_ID. -->
+<script>
+window.CLARITY_ID = "";
+if(window.CLARITY_ID){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",window.CLARITY_ID);}
+if(window.clarity) clarity("set","landing","Pagina principal");
+</script>
 <!-- Píxel de Meta · AQ Finanzas · Landings -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -1031,6 +1037,10 @@ function mostrarCalendly(url){
 }
 // Calendly avisa cuando se agenda
 window.addEventListener("message",e=>{
+  const ce = e.origin.includes("calendly.com") && e.data ? e.data.event : "";
+  if(ce==="calendly.profile_page_viewed" && window.fbq) fbq("trackCustom","CalendlyAbierto",{landing:"Pagina principal"});
+  if(ce==="calendly.date_and_time_selected" && window.fbq) fbq("trackCustom","CalendlyEligioHorario",{landing:"Pagina principal"});
+  if(ce && window.clarity) clarity("event",ce.replace("calendly.","Calendly_"));
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
     const prev = leer("aq_lead")||{};
     enviarLead({...prev, origen:"Llamada agendada", interes:"Agendó en Calendly", pagina:location.href.split("?")[0], utm_source:UTM.source, utm_campaign:UTM.campaign});

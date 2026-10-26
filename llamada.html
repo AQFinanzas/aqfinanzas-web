@@ -519,6 +519,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .btn-wa{background:#25D366;color:#fff;box-shadow:0 10px 24px -10px rgba(37,211,102,.7)}
 .btn-wa:hover{background:#1EBE5A}
 </style>
+<!-- Microsoft Clarity: mapas de calor y grabaciones. Pega el ID del proyecto en CLARITY_ID. -->
+<script>
+window.CLARITY_ID = "";
+if(window.CLARITY_ID){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",window.CLARITY_ID);}
+</script>
 <!-- Píxel de Meta · AQ Finanzas · Landings -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -1053,7 +1058,11 @@ const fFiltro = document.getElementById("form-filtro");
 const fDatos = document.getElementById("form-llamada");
 const pregs = [...fFiltro.querySelectorAll(".preg")];
 let origenBoton = "", pasoF = 0, respuestas = {};
-const ev = (n,p)=>{ if(window.fbq) fbq("trackCustom",n,Object.assign({landing:LANDING},p||{})); };
+const ev = (n,p)=>{
+  if(window.fbq) fbq("trackCustom",n,Object.assign({landing:LANDING},p||{}));
+  if(window.clarity){ const extra = p ? Object.values(p).join("_") : ""; clarity("event", n + (extra?"_"+extra:"")); }
+};
+if(window.clarity){ clarity("set","landing",LANDING); clarity("set","fuente",UTM.source||"directo"); if(UTM.campaign) clarity("set","campana",UTM.campaign); }
 
 function verPregunta(i){
   pasoF = i;
@@ -1126,7 +1135,10 @@ function mostrarCalendly(url){
   document.getElementById("caja-llamada").classList.add("ancha");
 }
 window.addEventListener("message",e=>{
+  if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.profile_page_viewed") ev("CalendlyAbierto");
+  if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.date_and_time_selected") ev("CalendlyEligioHorario");
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
+    ev("CalendlyAgendo");
     const prev = leer("aq_lead")||{};
     if(FILTRO || prev.nombre) enviarLead({...prev, origen:"Llamada agendada", interes:"Agendó en Calendly · "+LANDING+" · "+resumen(), pagina:location.href.split("?")[0], utm_source:UTM.source, utm_campaign:UTM.campaign});
     if(window.fbq) fbq("track","Schedule",{landing:LANDING});
@@ -1164,8 +1176,26 @@ document.querySelectorAll("[data-yt]").forEach(b=>b.addEventListener("click",()=
   b.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Video de AQ Finanzas"></iframe>`;
 }));
 document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",()=>{
-  b.parentElement.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Entrevista de Alejandro Quiñones"></iframe>`;
+  const caja = b.parentElement;
+  caja.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video de Alejandro Quiñones"></iframe>`;
+  medirVimeo(caja.querySelector("iframe"));
 }));
+/* ===== Medición del video: play, % visto (10…100) y cada minuto ===== */
+function medirVimeo(iframe){
+  const iniciar = ()=>{
+    const pl = new Vimeo.Player(iframe), marcas=[10,25,50,75,90,100], hechas=new Set(), minutos=new Set();
+    let empezo=false;
+    pl.on("play",()=>{ if(!empezo){ empezo=true; ev("VideoPlay"); } });
+    pl.on("timeupdate",d=>{
+      const pct = Math.floor(d.percent*100), min = Math.floor(d.seconds/60);
+      marcas.forEach(m=>{ if(pct>=m && !hechas.has(m)){ hechas.add(m); ev("VideoPorcentaje",{porcentaje:m}); } });
+      if(min>0 && !minutos.has(min)){ minutos.add(min); ev("VideoMinuto",{minuto:min}); }
+    });
+    pl.on("ended",()=>{ if(!hechas.has(100)){ hechas.add(100); ev("VideoPorcentaje",{porcentaje:100}); } });
+  };
+  if(window.Vimeo && window.Vimeo.Player) return iniciar();
+  const s=document.createElement("script"); s.src="https://player.vimeo.com/api/player.js"; s.onload=iniciar; document.head.appendChild(s);
+}
 
 
 
