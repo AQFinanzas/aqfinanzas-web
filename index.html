@@ -196,7 +196,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .testi-car .t-prev{left:-20px}.testi-car .t-next{right:-20px}
 .t-contador{text-align:center;color:var(--gris);font-size:.88rem;margin-top:10px;font-variant-numeric:tabular-nums}
 @media (max-width:1060px){.muro{grid-auto-columns:calc((100% - 18px)/2)}.testi-car .t-prev{left:-10px}.testi-car .t-next{right:-10px}}
-@media (max-width:640px){.testi-car{padding:12px;border-radius:18px}.muro{grid-auto-columns:100%}.muro figure img{height:420px}.testi-car .t-prev{left:-6px}.testi-car .t-next{right:-6px}}
+@media (max-width:640px){.muro .primero-movil{order:-1}.testi-car{padding:12px;border-radius:18px}.muro{grid-auto-columns:100%}.muro figure img{height:420px}.testi-car .t-prev{left:-6px}.testi-car .t-next{right:-6px}}
 .aviso-chico{margin-top:10px;font-size:.8rem;color:var(--gris)}
 
 /* Medios */
@@ -668,7 +668,7 @@ fbq('track','PageView');
         <img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María en la comunidad Excedente" loading="lazy" width="1123" height="1600">
         <figcaption><b>Eva María</b> · comunidad Excedente</figcaption>
       </figure>
-      <figure>
+      <figure class="primero-movil">
         <img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de WhatsApp de Yuly Sosa" loading="lazy" width="713" height="1075">
         <figcaption><b>Yuly Sosa</b> · alumna</figcaption>
       </figure>
@@ -1099,7 +1099,8 @@ document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",
 /* ===== Carrusel de testimonios ===== */
 (function(){
   const m=document.getElementById("muro"); if(!m) return;
-  const items=[...m.children], cont=document.getElementById("t-n");
+  const todos=[...m.children], cont=document.getElementById("t-n");
+  let items=todos; const ordenar=()=>{ items=[...todos].sort((a,b)=>a.offsetLeft-b.offsetLeft); }; ordenar(); addEventListener("resize",ordenar);
   const base=()=>items[0].offsetLeft;
   const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
   const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
