@@ -902,7 +902,7 @@ fbq('track','PageView');
     <div id="paso-calendario" hidden>
       <span class="paso-tag">Paso 2 de 2 · Elige tu horario</span>
       <div id="contenedor-calendly" style="margin-top:12px"></div>
-      <p class="privacidad" style="margin-top:10px">¿No carga el calendario? <a id="enlace-calendly" href="https://calendly.com/aqfinanzas-info/llamada-1-a-1-excedente" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p>
+      <p class="privacidad" style="margin-top:10px">¿No carga el calendario? <a id="enlace-calendly" href="https://calendly.com/aqfinanzas-info/llamada-1-a-1-campanas" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p>
     </div>
   </div>
 </div>
@@ -942,7 +942,7 @@ fbq('track','PageView');
 const CONFIG = {
   // URL del Apps Script publicado (Google Sheet "Leads Página Web AQ Finanzas")
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxu--EmxJbwO2DJcQ3NXgV_Dplv2YPyA51DjBiSJFi-AxpRXHyFsZLL4WmIibB0UKmrwQ/exec",
-  CALENDLY: "https://calendly.com/aqfinanzas-info/llamada-1-a-1-excedente",
+  CALENDLY: "https://calendly.com/aqfinanzas-info/llamada-1-a-1-campanas",
   FORMULARIOS: false,          // true = pide datos antes de Calendly y muestra el regalo
   VENTANA_REGALO_SEG: 40,      // segundos antes de mostrar el regalo (una vez cada 7 días)
 };
@@ -1019,7 +1019,7 @@ document.getElementById("form-llamada").addEventListener("submit",e=>{
   d.interes = "Llamada 1 a 1 (botón: "+origenBoton+")";
   enviarLead(d); guardar("aq_lead",{nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp});
   if(window.fbq) fbq("track","Lead",{content_name:"Llamada 1 a 1"});
-  mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp));
+  mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo));
 });
 function mostrarCalendly(url){
   document.getElementById("enlace-calendly").href = url;
