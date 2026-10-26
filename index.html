@@ -261,7 +261,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .libro .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;padding-block:80px}
 .libro .titulo-seccion{color:var(--blanco)}
 .libro .intro{color:#C8CCDD}
-.libro img{width:100%;max-width:460px;margin-inline:auto}
+.libro img{width:100%;max-width:400px;margin-inline:auto;filter:drop-shadow(0 30px 60px rgba(42,148,248,.18))}
+@media (max-width:860px){.libro img{max-width:300px}}
 @media (max-width:860px){.libro .wrap{grid-template-columns:1fr}}
 
 /* Calculadora (captura) */
@@ -807,7 +808,7 @@ fbq('track','PageView');
 <!-- LIBRO -->
 <section class="libro" id="libro" aria-labelledby="t-libro">
   <div class="wrap">
-    <img src="img/libro-arquitectura-del-dinero-1.png" alt="Libro La Arquitectura del Dinero, de Alejandro Quiñones" loading="lazy" width="1080" height="1080">
+    <img src="img/libro-arquitectura-3d.webp" alt="Libro La Arquitectura del Dinero, de Alejandro Quiñones" loading="lazy" width="690" height="858">
     <div>
       <span class="eyebrow">Mi libro</span>
       <h2 class="titulo-seccion" id="t-libro">La Arquitectura del Dinero</h2>
