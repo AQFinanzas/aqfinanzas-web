@@ -333,7 +333,11 @@ footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
 .flecha{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--linea);background:var(--blanco);color:var(--marino);cursor:pointer;display:grid;place-items:center}
 .flecha:hover{border-color:var(--marino)}
 .flecha svg{width:20px;height:20px}
-.carril{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(200px,22vw,250px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:40px;padding-bottom:12px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.carril{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;min-width:0}
+.carril::-webkit-scrollbar{display:none}
+.reels-car .r-prev{left:-20px}.reels-car .r-next{right:-20px}
+@media (max-width:1060px){.carril{grid-auto-columns:calc((100% - 32px)/3)}.reels-car .r-prev{left:-10px}.reels-car .r-next{right:-10px}}
+@media (max-width:640px){.carril{grid-auto-columns:calc((100% - 12px)/2);gap:12px}.reels-car .r-prev{left:-6px}.reels-car .r-next{right:-6px}.reel-play b{font-size:.85rem}}
 .reel{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:16px;overflow:hidden;background:var(--noche);scroll-snap-align:start}
 .reel video{width:100%;height:100%;object-fit:cover;display:block}
 .reel-play{position:absolute;inset:0;border:0;cursor:pointer;background:linear-gradient(0deg,rgba(5,6,28,.8),rgba(5,6,28,0) 45%);color:var(--blanco);display:flex;align-items:flex-end;padding:16px;font:700 1rem var(--f-cuerpo);text-align:left}
@@ -344,7 +348,7 @@ footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
 .en-vivo h3{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--marino);margin-top:12px}
 .en-vivo p{color:var(--gris);margin-top:14px;max-width:36em}
 .en-vivo .acciones{margin-top:26px}
-@media (max-width:760px){.en-vivo{grid-template-columns:1fr;padding:20px;gap:24px}.en-vivo .reel{max-width:280px;margin-inline:auto;width:100%}.flechas{display:none}.carril{grid-auto-columns:62%}}
+@media (max-width:760px){.en-vivo{grid-template-columns:1fr;padding:20px;gap:24px}.en-vivo .reel{max-width:280px;margin-inline:auto;width:100%}}
 
 
 .sub-titulo{font-size:1.4rem;color:var(--marino);margin-top:64px;letter-spacing:-.02em}
@@ -738,9 +742,10 @@ fbq('track','PageView');
         <h2 class="titulo-seccion" id="t-reels">Escúchalo de ellos</h2>
         <p class="intro">Alumnos de distintos países cuentan cómo empezaron a invertir con el Método RCR.</p>
       </div>
-      <div class="flechas"><button type="button" class="flecha" data-dir="-1" aria-label="Anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="flecha" data-dir="1" aria-label="Siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
     </div>
-    <div class="carril" id="carril">
+    <div class="testi-car reels-car">
+      <button type="button" class="nav-car r-prev" aria-label="Videos anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="carril" id="carril" tabindex="0" aria-label="Testimonios en video">
         <div class="reel"><video preload="none" playsinline poster="reels/reel-otoniel.jpg" src="reels/reel-otoniel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Otoniel"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Otoniel</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-javier-forsyth.jpg" src="reels/reel-javier-forsyth.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Javier Forsyth"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Javier Forsyth</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-aleida-palma.jpg" src="reels/reel-aleida-palma.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Aleida Palma"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Aleida Palma</b></button></div>
@@ -749,7 +754,10 @@ fbq('track','PageView');
         <div class="reel"><video preload="none" playsinline poster="reels/reel-jose-montero.jpg" src="reels/reel-jose-montero.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de José Montero"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-kenya-fernandez.jpg" src="reels/reel-kenya-fernandez.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Kenya Fernández"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Kenya Fernández</b></button></div>
         <div class="reel"><video preload="none" playsinline poster="reels/reel-rosangel.jpg" src="reels/reel-rosangel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Rosangel González"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Rosangel González</b></button></div>
+      </div>
+      <button type="button" class="nav-car r-next" aria-label="Videos siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
+    <p class="t-contador">Videos <span id="r-n">1</span> de 8</p>
     <h3 class="sub-titulo">Entrevistas con mis alumnos</h3>
     <div class="videos-yt">
       <div class="video yt"><button type="button" data-yt="a4QTJ6vmKjc" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Henry Gómez</button></div>
@@ -1112,9 +1120,19 @@ document.querySelectorAll(".reel").forEach(r=>{
   });
   v.addEventListener("pause",()=>{ if(v.ended){ r.classList.remove("sonando"); v.controls=false; } });
 });
-document.querySelectorAll(".flecha").forEach(f=>f.addEventListener("click",()=>{
-  const c=document.getElementById("carril"); c.scrollBy({left:Number(f.dataset.dir)*c.clientWidth*0.9,behavior:"smooth"});
-}));
+(function(){
+  const m=document.getElementById("carril"); if(!m) return;
+  const items=[...m.children], cont=document.getElementById("r-n");
+  const base=()=>items[0].offsetLeft;
+  const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
+  const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
+  const maxI=()=>items.length-porVista();
+  const ir=i=>{ if(i>maxI()) i=(actual()>=maxI())?0:maxI(); if(i<0) i=(actual()<=0)?maxI():0; m.scrollTo({left:items[i].offsetLeft-base(),behavior:"smooth"}); };
+  document.querySelector(".r-prev").addEventListener("click",()=>ir(actual()-porVista()));
+  document.querySelector(".r-next").addEventListener("click",()=>ir(actual()+porVista()));
+  const pinta=()=>{ const a=actual()+1, b=Math.min(items.length,a+porVista()-1); cont.textContent = a===b ? a : a+"–"+b; };
+  m.addEventListener("scroll",pinta,{passive:true}); addEventListener("resize",pinta); pinta();
+})();
 
 
 /* ===== Carrusel de conferencias ===== */
