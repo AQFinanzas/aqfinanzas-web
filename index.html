@@ -351,6 +351,25 @@ footer .wrap{padding-block:56px 40px;display:grid;gap:28px}
 @media (max-width:760px){.en-vivo{grid-template-columns:1fr;padding:20px;gap:24px}.en-vivo .reel{max-width:280px;margin-inline:auto;width:100%}}
 
 
+.ent-cabeza{margin-top:88px;max-width:46em}
+.ent-titulo{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--marino);margin-top:12px}
+.carril-ent{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-width:0}
+.carril-ent::-webkit-scrollbar{display:none}
+.carril-ent .video{scroll-snap-align:start;border:0;box-shadow:0 18px 36px -24px rgba(1,0,90,.6)}
+.ent-car .e-prev{left:-20px}.ent-car .e-next{right:-20px}
+.video.ent button{padding:0;display:block;background:#05061C;overflow:hidden;isolation:isolate}
+.video.ent button::before{content:"";position:absolute;inset:-12px;z-index:-2;background:var(--fondo) center/cover no-repeat;filter:blur(3px) saturate(.6) brightness(.55);transform:scale(1.04)}
+.video.ent button::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(1,0,90,.95) 0%,rgba(1,0,90,.78) 45%,rgba(1,0,90,.25) 100%)}
+.ent-top{position:absolute;top:16px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ent-top img{height:30px;width:auto}
+.ent-chip{background:var(--naranja);color:var(--blanco);font-weight:700;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.ent-txt{position:absolute;left:18px;right:84px;bottom:18px;display:grid;gap:4px;text-align:left}
+.ent-txt b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.1;letter-spacing:-.02em;color:var(--blanco)}
+.ent-txt span{color:#FFB08A;font-weight:600;font-size:.9rem;line-height:1.3}
+.video.ent .play{top:auto;left:auto;right:16px;bottom:16px;margin:0;width:54px;height:54px;transition:transform .2s}
+.video.ent button:hover .play{transform:scale(1.08)}
+@media (max-width:1060px){.carril-ent{grid-auto-columns:calc((100% - 18px)/2)}.ent-car .e-prev{left:-10px}.ent-car .e-next{right:-10px}}
+@media (max-width:640px){.carril-ent{grid-auto-columns:100%}.ent-car .e-prev{left:-6px}.ent-car .e-next{right:-6px}.ent-cabeza{margin-top:64px}}
 .sub-titulo{font-size:1.4rem;color:var(--marino);margin-top:64px;letter-spacing:-.02em}
 .videos-yt{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:20px}
 .video.yt button{font-size:.98rem}
@@ -758,16 +777,18 @@ fbq('track','PageView');
       <button type="button" class="nav-car r-next" aria-label="Videos siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
     <p class="t-contador">Videos <span id="r-n">1</span> de 8</p>
-    <h3 class="sub-titulo">Entrevistas con mis alumnos</h3>
-    <div class="videos-yt">
-      <div class="video yt"><button type="button" data-yt="a4QTJ6vmKjc" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Henry Gómez</button></div>
-      <div class="video yt"><button type="button" data-yt="E5ZAjkfbF8s" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Reinaldo Mejías</button></div>
-      <div class="video yt"><button type="button" data-yt="iry2OPL5MlE" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Jon Mikel de Iribar</button></div>
-      <div class="video yt"><button type="button" data-yt="hUq6Mx7zJ3c" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Carlos Garay</button></div>
-      <div class="video yt"><button type="button" data-yt="5L3QItiO5Fc" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Edilberto Russel</button></div>
-      <div class="video yt"><button type="button" data-yt="iRNU6p6mN64" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>José Montero</button></div>
-      <div class="video yt"><button type="button" data-yt="5ArDg-f0ZzI" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Mikel Chivite</button></div>
+    <div class="ent-cabeza">
+      <span class="eyebrow">Entrevistas</span>
+      <h3 class="ent-titulo">Conversé con mis alumnos sobre <span class="clave">su camino como inversionistas</span></h3>
+      <p class="intro">Entrevistas reales, sin guion: cómo empezaron, qué les costó y qué lograron aplicando el Método RCR con disciplina.</p>
     </div>
+    <div class="testi-car ent-car">
+      <button type="button" class="nav-car e-prev" aria-label="Entrevistas anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="carril-ent" id="carril-ent" tabindex="0" aria-label="Entrevistas con alumnos"><div class="video yt ent"><button type="button" data-yt="hUq6Mx7zJ3c" aria-label="Ver entrevista con Carlos Garay" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 7 min</span></span><span class="ent-txt"><b>Carlos Garay</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="E5ZAjkfbF8s" aria-label="Ver entrevista con Reinaldo Mejías" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Reinaldo Mejías</b><span>De cero a invertir con disciplina</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="iRNU6p6mN64" aria-label="Ver entrevista con José Montero" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 5 min</span></span><span class="ent-txt"><b>José Montero</b><span>+60 % de rentabilidad en un año</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5ArDg-f0ZzI" aria-label="Ver entrevista con Mikel Chivite" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 4 min</span></span><span class="ent-txt"><b>Mikel Chivite</b><span>+US$ 2.300 en 5 días</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="iry2OPL5MlE" aria-label="Ver entrevista con Jon Mikel de Iribar" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Jon Mikel de Iribar</b><span>+80 % de efectividad</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="a4QTJ6vmKjc" aria-label="Ver entrevista con Henry Gómez" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Henry Gómez</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5L3QItiO5Fc" aria-label="Ver entrevista con Edilberto Russel" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Edilberto Russel</b><span>Sus primeras ganancias con método</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div></div>
+      <button type="button" class="nav-car e-next" aria-label="Entrevistas siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="t-contador">Entrevistas <span id="e-n">1</span> de 7</p>
+    <p class="aviso-chico">Experiencias individuales de alumnos. Los resultados pasados no garantizan resultados futuros.</p>
   </div>
 </section>
 
@@ -1159,6 +1180,20 @@ document.querySelectorAll(".reel").forEach(r=>{
     const ur=!!img.closest(".logo-ur");
     procesar(img.getAttribute("src"), ur?150:238, ur?40:48).then(u=>{ img.src=u; }).catch(()=>{});
   });
+})();
+
+(function(){
+  const m=document.getElementById("carril-ent"); if(!m) return;
+  const items=[...m.children], cont=document.getElementById("e-n");
+  const base=()=>items[0].offsetLeft;
+  const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
+  const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
+  const maxI=()=>items.length-porVista();
+  const ir=i=>{ if(i>maxI()) i=(actual()>=maxI())?0:maxI(); if(i<0) i=(actual()<=0)?maxI():0; m.scrollTo({left:items[i].offsetLeft-base(),behavior:"smooth"}); };
+  document.querySelector(".e-prev").addEventListener("click",()=>ir(actual()-porVista()));
+  document.querySelector(".e-next").addEventListener("click",()=>ir(actual()+porVista()));
+  const pinta=()=>{ const a=actual()+1, b=Math.min(items.length,a+porVista()-1); cont.textContent = a===b ? a : a+"–"+b; };
+  m.addEventListener("scroll",pinta,{passive:true}); addEventListener("resize",pinta); pinta();
 })();
 
 /* ===== Botón flotante en celular ===== */
