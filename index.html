@@ -63,8 +63,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .barra img{height:40px;width:auto}
 .menu{display:flex;gap:26px;font-size:.92rem;font-weight:500}
-.menu a{text-decoration:none;opacity:.82}
-.menu a:hover{opacity:1}
+.menu a{position:relative;text-decoration:none;opacity:.8;padding:6px 2px;display:inline-block;transition:opacity .2s ease,transform .2s ease,color .2s ease}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--naranja);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
+.menu a:hover,.menu a:focus-visible{opacity:1;color:var(--blanco);transform:translateY(-1px) scale(1.12);font-weight:700}
+.menu a:hover::after,.menu a:focus-visible::after{transform:scaleX(1)}
 .barra .btn{padding:.8em 1.2em;font-size:.9rem}
 @media (max-width:900px){.menu{display:none}}
 
