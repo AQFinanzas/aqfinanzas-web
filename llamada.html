@@ -1201,6 +1201,14 @@ window.addEventListener("message",e=>{
   por.querySelector(".sub").innerHTML = 'Te muestro cómo invierto en la bolsa de Nueva York con el Método RCR y cómo puedes empezar tú. <strong>Al terminar, agenda tu llamada conmigo.</strong>';
 })();
 
+/* ===== Medición: reels de testimonios y preguntas frecuentes ===== */
+document.querySelectorAll(".reel .reel-play").forEach(b=>b.addEventListener("click",()=>{
+  ev("ReelPlay",{testimonio:(b.querySelector("b")||{}).textContent||"reel"});
+}));
+document.querySelectorAll(".lista-faq details").forEach(d=>d.addEventListener("toggle",()=>{
+  if(d.open) ev("PreguntaAbierta",{pregunta:d.querySelector("summary").textContent.trim().slice(0,80)});
+}));
+
 /* ===== Medición por bloques: qué secciones ve la gente ===== */
 (function(){
   const vistos = new Set();
