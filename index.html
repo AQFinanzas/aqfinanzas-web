@@ -210,6 +210,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .video button small{font-family:var(--f-dato);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
 .video .play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
 .video .play svg{width:24px;height:24px;margin-left:3px}
+.video button.con-mini{background:var(--fondo) center/cover no-repeat}
+.video button.con-mini .play{top:auto;left:auto;right:22px;bottom:22px;margin:0;transition:transform .2s}
+.video button.con-mini:hover .play{transform:scale(1.08)}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 @media (max-width:760px){.videos{grid-template-columns:1fr}}
 
@@ -730,8 +733,8 @@ fbq('track','PageView');
       <img class="g3" src="img/evento-1687270803363.jpg" alt="Alejandro en cámara durante una entrevista" loading="lazy">
     </div>
     <div class="videos">
-      <div class="video"><button type="button" data-vimeo="927697221" style="--fondo:url('img/evento-1687270803341.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Fragmento de entrevista en televisión</button></div>
-      <div class="video"><button type="button" data-vimeo="927695394" style="--fondo:url('img/evento-1687270803346.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><small>Entrevista</small>Fragmento de entrevista en televisión</button></div>
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927697221" aria-label="Ver entrevista: tasas de interés, qué hacer con tu dinero" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927695394" aria-label="Ver entrevista en vivo: invertir con método, no con emoción" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
     </div>
   </div>
 </section>
