@@ -218,7 +218,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:760px){.videos{grid-template-columns:1fr}}
 
 /* Conferencias */
-.conferencias .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.conferencias .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
 .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:12px}
 .collage img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .collage .alto{grid-row:span 2}
@@ -227,6 +227,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cert b{display:block;color:var(--marino)}
 .cert span{font-size:.92rem;color:var(--gris)}
 @media (max-width:860px){.conferencias .wrap{grid-template-columns:1fr;gap:36px}.collage{grid-template-rows:150px 150px}}
+
+
+/* Carrusel de conferencias */
+.carrusel{position:relative;min-width:0;border-radius:16px;overflow:hidden;background:var(--noche);box-shadow:0 30px 60px -36px rgba(1,0,90,.55)}
+.slides{list-style:none;margin:0;padding:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;aspect-ratio:16/9;max-width:100%}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:16/9}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.nav-car{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);color:var(--marino);display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+.nav-car svg{width:22px;height:22px}
+.nav-car:hover{background:var(--naranja);color:var(--blanco);transform:translateY(-50%) scale(1.06)}
+.nav-car.prev{left:14px}.nav-car.next{right:14px}
+.contador{position:absolute;right:14px;bottom:12px;margin:0;background:rgba(5,6,28,.7);color:var(--blanco);font-weight:700;font-size:.8rem;letter-spacing:.06em;padding:5px 11px;border-radius:999px;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.nav-car{width:40px;height:40px}.nav-car svg{width:18px;height:18px}.nav-car.prev{left:8px}.nav-car.next{right:8px}}
 
 /* Libro */
 .libro{background:#000;color:var(--blanco)}
@@ -498,15 +512,12 @@ fbq('track','PageView');
       <span class="eyebrow">Conferencias y talleres</span>
       <h2 class="titulo-seccion" id="t-conf">Más de 30 mil personas en salas de varios países.</h2>
       <p class="intro">Llevo la educación financiera a empresas, universidades y eventos. Hablo de ahorro, inversión y de cómo construir patrimonio en familia.</p>
-      <div class="cert">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 8 5-3 5 3-1.5-8"/></svg>
-        <div><b>Stock Market Investor</b><span>Inversionista Bursátil Profesional · Center of Education and Leadership, avalado por Florida Global University</span></div>
-      </div>
     </div>
-    <div class="collage">
-      <img class="alto" src="img/medio-screenshot-20210203-104337.jpg" alt="Alejandro en el escenario frente a un auditorio lleno" loading="lazy" style="object-position:85% center">
-      <img src="img/medio-screenshot-20200908-143714-com-instagram-android.jpg" alt="Conferencia de Alejandro Quiñones" loading="lazy">
-      <img src="img/medio-screenshot-20210203-104648.jpg" alt="Auditorio en un evento de educación financiera" loading="lazy">
+    <div class="carrusel" aria-roledescription="carrusel" aria-label="Fotos de conferencias y talleres">
+      <ul class="slides" id="slides" tabindex="0"><li class="slide"><img src="img/evento-01.jpg" alt="Auditorio lleno durante una conferencia" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-02.jpg" alt="Foto con los asistentes al terminar un taller" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-03.jpg" alt="Conferencia en teatro: ¿Por qué enseño educación financiera?" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-04.jpg" alt="Conferencia en sala de eventos" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-05.jpg" alt="Charla magistral frente al público" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-06.jpg" alt="Conferencia en Click" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-07.jpg" alt="Taller en auditorio" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-08.jpg" alt="Foto grupal con el público" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-09.jpg" alt="Asistentes en un taller de finanzas" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-10.jpg" alt="Sala completa en una conferencia" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-11.jpg" alt="Conferencia en sala de cine" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-12.jpg" alt="Alejandro en el escenario" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-13.jpg" alt="Alejandro con micrófono en un evento" loading="lazy" width="1280" height="720"></li><li class="slide"><img src="img/evento-14.jpg" alt="Alejandro en el escenario, traje y corbata roja" loading="lazy" width="1280" height="720"></li></ul>
+      <button type="button" class="nav-car prev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="nav-car next" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <p class="contador" aria-live="polite"><span id="car-n">1</span> / 14</p>
     </div>
   </div>
 </section>
@@ -1118,6 +1129,19 @@ document.querySelectorAll(".reel").forEach(r=>{
 document.querySelectorAll(".flecha").forEach(f=>f.addEventListener("click",()=>{
   const c=document.getElementById("carril"); c.scrollBy({left:Number(f.dataset.dir)*c.clientWidth*0.9,behavior:"smooth"});
 }));
+
+
+/* ===== Carrusel de conferencias ===== */
+(function(){
+  const ul=document.getElementById("slides"); if(!ul) return;
+  const n=ul.children.length, cont=document.getElementById("car-n");
+  const actual=()=>Math.round(ul.scrollLeft/ul.clientWidth);
+  const ir=i=>{ i=(i+n)%n; ul.scrollTo({left:i*ul.clientWidth,behavior:"smooth"}); };
+  document.querySelector(".nav-car.prev").addEventListener("click",()=>ir(actual()-1));
+  document.querySelector(".nav-car.next").addEventListener("click",()=>ir(actual()+1));
+  ul.addEventListener("scroll",()=>{ cont.textContent=actual()+1; },{passive:true});
+  ul.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"){e.preventDefault();ir(actual()+1)} if(e.key==="ArrowLeft"){e.preventDefault();ir(actual()-1)} });
+})();
 
 /* ===== Botón flotante en celular ===== */
 const flot = document.getElementById("flotante");
