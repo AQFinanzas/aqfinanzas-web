@@ -465,6 +465,25 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .prog-video{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.18);pointer-events:none}
 .prog-video i{display:block;height:100%;width:0;background:#F04A03;transition:width .25s linear}
 
+/* Portada con video: llamado a dar play y video primero en celular */
+.llamado{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(5,6,28,.62);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);color:#fff;text-align:center;transition:background .2s}
+.con-mini:hover .llamado{background:rgba(5,6,28,.5)}
+.video button .llamado small{font-family:var(--f-cuerpo);font-weight:500;font-size:.92rem;letter-spacing:0;text-transform:none;color:#E6EAFF}
+.llamado .pulso{width:92px;height:92px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;animation:pulso 1.6s ease-out infinite}
+.llamado .pulso svg{width:38px;height:38px;margin-left:5px}
+.llamado b{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.llamado small{font-size:.9rem;color:#E6EAFF;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.con-mini:hover .pulso{transform:scale(1.06)}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(240,74,3,.75)}70%{box-shadow:0 0 0 26px rgba(240,74,3,0)}100%{box-shadow:0 0 0 0 rgba(240,74,3,0)}}
+@media (prefers-reduced-motion:reduce){.llamado .pulso{animation:none}}
+@media (max-width:860px){
+  .portada.con-video .wrap{padding-top:18px}
+  .portada.con-video .portada-video{order:-1;margin:0 0 6px;max-width:100%}
+  .portada.con-video h1{font-size:2.1rem;margin-top:12px}
+  .portada.con-video .portada-texto{padding-bottom:48px}
+  .llamado .pulso{width:72px;height:72px}.llamado .pulso svg{width:30px;height:30px}
+}
+
 /* Problema */
 .problema{background:var(--blanco)}
 .dolores{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
@@ -1158,8 +1177,13 @@ window.addEventListener("message",e=>{
   if(!vm && !yt) return;
   const caja = document.getElementById("portada-media");
   caja.className = "video portada-video";
-  caja.innerHTML = `<button type="button" class="con-mini" ${vm?`data-vimeo="${vm.replace(/\D/g,"")}" data-h="${(qs.get("h")||"").replace(/[^\w]/g,"")}"`:`data-yt="${yt.replace(/[^\w-]/g,"")}"`} style="--fondo:url('img/miniatura-clase.jpg')" aria-label="Ver el video de Alejandro"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>`;
+  caja.innerHTML = `<button type="button" class="con-mini" ${vm?`data-vimeo="${vm.replace(/\D/g,"")}" data-h="${(qs.get("h")||"").replace(/[^\w]/g,"")}"`:`data-yt="${yt.replace(/[^\w-]/g,"")}"`} style="--fondo:url('img/miniatura-clase.jpg')" aria-label="Ver la clase de Alejandro"><span class="llamado"><span class="pulso"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Mira la clase</b><small>Toca aquí para verla</small></span></button>`;
   caja.querySelector("button").addEventListener("click",()=>ev("PlayVideoPortada"));
+  // Con video, el texto de la portada invita a ver la clase (no repite la miniatura)
+  const por = document.querySelector(".portada"); por.classList.add("con-video");
+  por.querySelector(".eyebrow").textContent = "Clase gratuita · Alejandro Quiñones";
+  por.querySelector("h1").innerHTML = 'Antes de agendar tu llamada, <span class="clave">mira esta clase</span>';
+  por.querySelector(".sub").innerHTML = 'Te muestro cómo invierto en la bolsa de Nueva York con el Método RCR y cómo puedes empezar tú. <strong>Al terminar, agenda tu llamada conmigo.</strong>';
 })();
 
 /* ===== Medición por bloques: qué secciones ve la gente ===== */
