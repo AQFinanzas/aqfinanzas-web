@@ -458,6 +458,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .portada-video button{background:linear-gradient(0deg,rgba(5,6,28,.75),rgba(5,6,28,.05)),var(--fondo) center 20%/cover no-repeat}
 @media (max-width:860px){.portada-video{margin-bottom:40px}}
 
+.capa-video{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;cursor:pointer;padding:0}
+.capa-video .play{display:none}
+.en-pausa .capa-video{background:rgba(5,6,28,.45)}
+.en-pausa .capa-video .play{display:grid}
+.prog-video{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.18);pointer-events:none}
+.prog-video i{display:block;height:100%;width:0;background:#F04A03;transition:width .25s linear}
+
 /* Problema */
 .problema{background:var(--blanco)}
 .dolores{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
@@ -1151,7 +1158,7 @@ window.addEventListener("message",e=>{
   if(!vm && !yt) return;
   const caja = document.getElementById("portada-media");
   caja.className = "video portada-video";
-  caja.innerHTML = `<button type="button" class="con-mini" ${vm?`data-vimeo="${vm.replace(/\D/g,"")}"`:`data-yt="${yt.replace(/[^\w-]/g,"")}"`} style="--fondo:url('img/miniatura-clase.jpg')" aria-label="Ver el video de Alejandro"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>`;
+  caja.innerHTML = `<button type="button" class="con-mini" ${vm?`data-vimeo="${vm.replace(/\D/g,"")}" data-h="${(qs.get("h")||"").replace(/[^\w]/g,"")}"`:`data-yt="${yt.replace(/[^\w-]/g,"")}"`} style="--fondo:url('img/miniatura-clase.jpg')" aria-label="Ver el video de Alejandro"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>`;
   caja.querySelector("button").addEventListener("click",()=>ev("PlayVideoPortada"));
 })();
 
@@ -1177,15 +1184,26 @@ document.querySelectorAll("[data-yt]").forEach(b=>b.addEventListener("click",()=
 }));
 document.querySelectorAll("[data-vimeo]").forEach(b=>b.addEventListener("click",()=>{
   const caja = b.parentElement;
-  caja.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video de Alejandro Quiñones"></iframe>`;
-  medirVimeo(caja.querySelector("iframe"));
+  const h = b.dataset.h ? "&h="+b.dataset.h : "";
+  caja.innerHTML = `<iframe src="https://player.vimeo.com/video/${b.dataset.vimeo}?autoplay=1&controls=0&title=0&byline=0&portrait=0&dnt=1${h}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video de Alejandro Quiñones"></iframe>
+    <button type="button" class="capa-video" aria-label="Pausar o continuar el video"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+    <div class="prog-video" aria-hidden="true"><i></i></div>`;
+  medirVimeo(caja.querySelector("iframe"), caja);
 }));
 /* ===== Medición del video: play, % visto (10…100) y cada minuto ===== */
-function medirVimeo(iframe){
+function medirVimeo(iframe, caja){
   const iniciar = ()=>{
     const pl = new Vimeo.Player(iframe), marcas=[10,25,50,75,90,100], hechas=new Set(), minutos=new Set();
     let empezo=false;
-    pl.on("play",()=>{ if(!empezo){ empezo=true; ev("VideoPlay"); } });
+    pl.on("play",()=>{ if(!empezo){ empezo=true; ev("VideoPlay"); } if(caja) caja.classList.remove("en-pausa"); });
+    pl.on("pause",()=>{ if(caja) caja.classList.add("en-pausa"); });
+    if(caja){
+      // Sin adelantar ni retroceder: solo pausar y continuar tocando el video.
+      const capa = caja.querySelector(".capa-video"), barra = caja.querySelector(".prog-video i");
+      capa.addEventListener("click",()=>{ pl.getPaused().then(p=> p ? pl.play() : pl.pause()); });
+      pl.on("timeupdate",d=>{ barra.style.width = (d.percent*100)+"%"; });
+      setTimeout(()=>{ pl.getPaused().then(p=>{ if(p) caja.classList.add("en-pausa"); }); },2500);
+    }
     pl.on("timeupdate",d=>{
       const pct = Math.floor(d.percent*100), min = Math.floor(d.seconds/60);
       marcas.forEach(m=>{ if(pct>=m && !hechas.has(m)){ hechas.add(m); ev("VideoPorcentaje",{porcentaje:m}); } });
