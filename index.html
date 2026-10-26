@@ -62,13 +62,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(0,0,0,.96);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);color:var(--blanco);border-bottom:2px solid var(--naranja);box-shadow:0 10px 30px -14px rgba(0,0,0,.7)}
 .barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .barra img{height:40px;width:auto}
-.menu{display:flex;gap:26px;font-size:.92rem;font-weight:500}
+.menu{display:flex;gap:clamp(14px,1.6vw,26px);font-size:clamp(.84rem,1vw,.92rem);font-weight:500;white-space:nowrap}
 .menu a{position:relative;text-decoration:none;opacity:.8;padding:6px 2px;display:inline-block;transition:opacity .2s ease,transform .2s ease,color .2s ease}
 .menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--naranja);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
 .menu a:hover,.menu a:focus-visible{opacity:1;color:var(--blanco);transform:translateY(-1px) scale(1.12);font-weight:700}
 .menu a:hover::after,.menu a:focus-visible::after{transform:scaleX(1)}
 .barra .btn{padding:.8em 1.2em;font-size:.9rem}
-@media (max-width:900px){.menu{display:none}}
+@media (max-width:1060px){.menu{display:none}}
 
 /* Portada */
 .portada{position:relative;background:radial-gradient(120% 90% at 85% 10%,#1a2a9e 0%,var(--marino) 42%,var(--noche) 100%);color:var(--blanco);overflow:hidden}
@@ -421,13 +421,14 @@ fbq('track','PageView');
     <a href="#inicio" aria-label="AQ Finanzas, inicio"><img src="img/logo-aq-blanco.webp" alt="AQ Finanzas · Alejandro Quiñones" width="480" height="363"></a>
     <nav class="menu" aria-label="Secciones">
       <a href="#sobre-mi">Sobre mí</a>
+      <a href="#medios">Medios</a>
+      <a href="#conferencias">Conferencias</a>
       <a href="#metodo">Método RCR</a>
       <a href="#simulador">Tu meta</a>
       <a href="#acelerador">Acelerador</a>
       <a href="#alumnos">Alumnos</a>
       <a href="#preguntas">Preguntas</a>
-      <a href="#medios">Medios</a>
-          </nav>
+    </nav>
     <button class="btn btn-primario" type="button" data-agendar="barra">Agenda tu llamada</button>
   </div>
 </header>
@@ -513,7 +514,7 @@ fbq('track','PageView');
 </section>
 
 <!-- CONFERENCIAS -->
-<section class="bloque conferencias" aria-labelledby="t-conf">
+<section class="bloque conferencias" id="conferencias" aria-labelledby="t-conf">
   <div class="wrap">
     <div>
       <span class="eyebrow">Conferencias y talleres</span>
