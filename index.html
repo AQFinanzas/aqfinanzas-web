@@ -885,6 +885,30 @@ fbq('track','PageView');
 
 
 <!-- PREGUNTAS -->
+<section class="bloque blog-home" id="blog" aria-labelledby="t-blog">
+  <style>
+  .blog-home .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  .blog-card{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;text-decoration:none;color:#1B1D3A;border:1px solid #DDE3F0;box-shadow:0 24px 50px -36px rgba(1,0,90,.45);transition:transform .2s}
+  .blog-card:hover{transform:translateY(-3px)}
+  .blog-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .blog-card div{padding:18px 20px 22px}
+  .blog-card span{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F04A03}
+  .blog-card h3{font-size:1.08rem;line-height:1.25;margin-top:8px;color:#01005A}
+  .blog-home .blog-cta{margin-top:30px;text-align:center}
+  @media (max-width:900px){.blog-home .blog-grid{grid-template-columns:1fr}}
+  </style>
+  <div class="wrap">
+    <span class="eyebrow">Blog</span>
+    <h2 class="titulo-seccion" id="t-blog">Aprende conmigo: artículos de finanzas, mentalidad y emprendimiento</h2>
+    <div class="blog-grid">
+      <a class="blog-card" href="/blog/fitness-financiero/"><img src="/blog/img/fitness-financiero.jpg" alt="Fitness financiero: cómo entrenar tu dinero igual que entrenas tu cuerpo" loading="lazy" width="1600" height="1000"><div><span>Finanzas personales</span><h3>Fitness financiero: cómo entrenar tu dinero igual que entrenas tu cuerpo</h3></div></a>
+      <a class="blog-card" href="/blog/verdades-y-mentiras-del-network-marketing/"><img src="/blog/img/verdades-y-mentiras-del-network-marketing.jpg" alt="Verdades y mentiras del network marketing: lo que debes saber antes" loading="lazy" width="1600" height="1000"><div><span>Emprendimiento</span><h3>Verdades y mentiras del network marketing: lo que debes saber antes</h3></div></a>
+      <a class="blog-card" href="/blog/senales-de-que-estas-quebrado/"><img src="/blog/img/senales-de-que-estas-quebrado.jpg" alt="Señales de que estás quebrado y debes hacer cambios en tus finanzas" loading="lazy" width="1600" height="1000"><div><span>Finanzas personales</span><h3>Señales de que estás quebrado y debes hacer cambios en tus finanzas</h3></div></a>
+    </div>
+    <div class="blog-cta"><a class="btn btn-primario" href="/blog/">Ver todos los artículos</a></div>
+  </div>
+</section>
+
 <section class="bloque preguntas" id="preguntas" aria-labelledby="t-faq">
   <div class="wrap">
     <div>
@@ -931,7 +955,7 @@ fbq('track','PageView');
         <a href="https://www.threads.com/@aqfinanzas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 8.5C16 5.5 13.8 4 11.8 4 7.5 4 5 7.5 5 12s2.5 8 6.8 8c3.4 0 6.2-2 6.2-5 0-2.6-2.1-4-4.8-4-2.4 0-4 1.3-4 3 0 1.5 1.3 2.6 3 2.6 2.6 0 3.8-2.2 3.8-5.6"/></svg>Threads</a>
       </div>
     </div>
-    <p>¿Escribirme? <span style="color:var(--blanco);user-select:all">info@aqfinanzas.com</span> · <a href="privacidad.html" style="color:var(--blanco)">Política de privacidad</a></p>
+    <p>¿Escribirme? <span style="color:var(--blanco);user-select:all">info@aqfinanzas.com</span> · <a href="/blog/" style="color:var(--blanco)">Blog</a> · <a href="privacidad.html" style="color:var(--blanco)">Política de privacidad</a></p>
     <p class="legal">© 2026 Alejandro Quiñones · AQ Finanzas. Invertir en la bolsa de valores implica riesgos, incluida la posible pérdida del capital. Los resultados dependen de cada persona, su disciplina y su contexto. Los testimonios son experiencias individuales y no garantizan resultados. El contenido de esta página es educativo y no constituye asesoría financiera personalizada ni promesa de rentabilidad.</p>
   </div>
 </footer>
