@@ -17,19 +17,20 @@ window.CATEGORIAS = [
   "Bolsa de Nueva York",
   "Método RCR",
   "Finanzas personales",
-  "Mentalidad"
+  "Mentalidad",
+  "Emprendimiento",
+  "Economía"
 ];
 
 window.ARTICULOS = [
-  // Ejemplo:
-  // {
-  //   slug: "como-empezar-a-invertir-en-la-bolsa-de-nueva-york",
-  //   titulo: "Cómo empezar a invertir en la bolsa de Nueva York desde Latinoamérica",
-  //   resumen: "Los pasos para abrir tu cuenta, elegir tus primeras inversiones y controlar el riesgo desde el día uno.",
-  //   categoria: "Primeros pasos",
-  //   fecha: "2026-11-03",
-  //   minutos: 7,
-  //   imagen: "/blog/img/como-empezar.jpg",
-  //   destacado: true
-  // },
+ {
+  "slug": "fitness-financiero",
+  "titulo": "Fitness financiero: cómo entrenar tu dinero igual que entrenas tu cuerpo",
+  "resumen": "Lograr un cuerpo sano y lograr el éxito financiero exigen lo mismo: disciplina, hábitos y pagar un precio. Así se aplica el fitness a tu dinero.",
+  "categoria": "Finanzas personales",
+  "fecha": "2019-09-19",
+  "minutos": 2,
+  "imagen": "/blog/img/fitness-financiero.jpg",
+  "destacado": false
+ }
 ];
