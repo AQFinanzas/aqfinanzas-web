@@ -937,11 +937,27 @@ fbq('track','PageView');
     <button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
 
     <form id="form-filtro" novalidate>
-      <span class="paso-tag" id="f-paso">Una pregunta rápida</span>
+      <span class="paso-tag" id="f-paso">Pregunta 1 de 3</span>
       <h3 id="t-modal" class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Prepara tu llamada 1 a 1</h3>
       <div class="prog"><i id="f-prog"></i></div>
       <fieldset class="preg" data-p="1">
-        <legend>¿Con qué capital te gustaría empezar o crecer tus inversiones?</legend>
+        <legend>¿Cómo te describes hoy como inversionista?</legend>
+        <div class="opciones">
+          <label><input type="radio" name="perfil" value="Aún no he invertido">Aún no he invertido, quiero empezar con buen pie</label>
+          <label><input type="radio" name="perfil" value="Ya invertí algo sin método">Ya invertí algo, pero sin un método claro</label>
+          <label><input type="radio" name="perfil" value="Ya invierto, siguiente nivel">Ya invierto y quiero llevarlo al siguiente nivel</label>
+        </div>
+      </fieldset>
+      <fieldset class="preg" data-p="2" hidden>
+        <legend>¿Qué te gustaría lograr con tus inversiones?</legend>
+        <div class="opciones">
+          <label><input type="radio" name="meta" value="Ingresos extra">Generar ingresos extra</label>
+          <label><input type="radio" name="meta" value="Patrimonio a mediano y largo plazo">Construir patrimonio a mediano y largo plazo</label>
+          <label><input type="radio" name="meta" value="Ambas cosas">Ambas cosas</label>
+        </div>
+      </fieldset>
+      <fieldset class="preg" data-p="3" hidden>
+        <legend>Para armar tu plan a tu medida, ¿con qué monto te gustaría empezar o hacer crecer tus inversiones?</legend>
         <div class="opciones">
           <label><input type="radio" name="capital" value="Menos de $1.000">Menos de US$ 1.000</label>
           <label><input type="radio" name="capital" value="Entre $1.000 y $5.000">Entre US$ 1.000 y 5.000</label>
@@ -1106,7 +1122,7 @@ document.getElementById("f-atras").addEventListener("click",()=>verPregunta(Math
 
 // Regla del filtro: califica para la llamada 1 a 1 con US$1.000 o más; menos de US$1.000 → Ruta Excedente 8S.
 function califica(){ return !!respuestas.capital && respuestas.capital!=="Menos de $1.000"; }
-const resumen = ()=>"Capital: "+(respuestas.capital||"-");
+const resumen = ()=>["Perfil: "+(respuestas.perfil||"-"),"Meta: "+(respuestas.meta||"-"),"Capital: "+(respuestas.capital||"-")].join(" | ");
 
 fDatos.addEventListener("submit",e=>{
   e.preventDefault();
