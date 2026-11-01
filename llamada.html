@@ -1137,6 +1137,11 @@ fDatos.addEventListener("submit",e=>{
     mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp)+"&a3="+encodeURIComponent(respuestas.capital||"")+"&utm_source="+encodeURIComponent(UTM.source||"web")+"&utm_campaign="+encodeURIComponent(UTM.campaign||"")+"&utm_content="+encodeURIComponent(LANDING));
   }else{
     ev("NoCalifica",{capital:"menos_1000"});
+    // Copia a la base de la app (Sheet "Base de Leads", pestaña Eventos) para la persecución de 3 días de la Ruta 8S.
+    try{ let dev=leer("aq_dev"); if(!dev){ dev="web-"+(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)); guardar("aq_dev",dev); }
+      fetch("https://app.aqfinanzas.com/api/lead",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},keepalive:true,
+        body:JSON.stringify({tipo:"llamada",dev:dev,nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp,origen:[UTM.source,UTM.campaign].filter(Boolean).join(" · ")||"landing",
+          detalle:{origen:"landing "+LANDING,perfil:respuestas.perfil||"",meta:respuestas.meta||"",capital:respuestas.capital||"",resultado:"Ruta 8S · menos de US$1.000",nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp,fuente:"landing"}})}).catch(()=>{}); }catch(e){}
     if(window.fbq) fbq("track","Lead",{content_name:"Ruta 8S · menos de US$1.000",landing:LANDING});
     fDatos.hidden = true;
     document.getElementById("nc-nombre").textContent = d.nombre.split(" ")[0];
