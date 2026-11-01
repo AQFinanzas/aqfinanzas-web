@@ -32,7 +32,6 @@ h1 span{color:var(--naranja)}
 .btn-pago:hover{background:var(--naranja-h);transform:translateY(-1px)}
 .nota{margin:12px 0 0;color:var(--gris);font-size:14px}
 .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-.btn-sec{background:#fff;color:var(--marino);border:2px solid var(--marino);padding:12px 22px;font-size:15px}
 .btn-wa{background:var(--verde);color:#fff;padding:12px 22px;font-size:15px}
 footer{text-align:center;color:var(--gris);font-size:13px;padding:10px 16px 30px}
 </style>
@@ -58,7 +57,6 @@ fbq('track','ViewContent',{content_name:'Video Ruta 8S'});
     <a class="btn btn-pago" id="pagar" href="https://pagoruta8s.aqfinanzas.com/">Quiero entrar a la Ruta 8S →</a>
     <p class="nota">Pago seguro con tarjeta de crédito o débito y otros métodos.</p>
     <div class="links">
-      <a class="btn btn-sec" id="venta" href="https://rutaexcedente8semanas.aqfinanzas.com/" target="_blank" rel="noopener">Ver todo lo que incluye</a>
       <a class="btn btn-wa" id="wa" href="https://wa.me/573105104847?text=Hola%20Alejandro%20%F0%9F%91%8B%20Vi%20el%20video%20de%20la%20Ruta%20Excedente%208S%20y%20tengo%20una%20pregunta." target="_blank" rel="noopener">Tengo una pregunta</a>
     </div>
   </div>
@@ -73,7 +71,6 @@ fbq('track','ViewContent',{content_name:'Video Ruta 8S'});
   pagar.href = (p197 ? 'https://aqfinanzas.github.io/pagoruta8s/' : 'https://pagoruta8s.aqfinanzas.com/') + q;
   function ev(n){ try{ fbq('trackCustom', n, {pagina:'video-ruta8s', precio: p197 ? 197 : 97}); }catch(e){} }
   pagar.addEventListener('click', function(){ ev('ClicPagoRuta8S'); try{ fbq('track','InitiateCheckout',{content_name:'Ruta 8S', value: p197 ? 197 : 97, currency:'USD'}); }catch(e){} });
-  document.getElementById('venta').addEventListener('click', function(){ ev('ClicVentaRuta8S'); });
   document.getElementById('wa').addEventListener('click', function(){ ev('ClicWhatsAppRuta8S'); });
 })();
 </script>
