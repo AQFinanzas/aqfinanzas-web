@@ -937,50 +937,25 @@ fbq('track','PageView');
     <button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
 
     <form id="form-filtro" novalidate>
-      <span class="paso-tag" id="f-paso">Pregunta 1 de 4</span>
+      <span class="paso-tag" id="f-paso">Una pregunta rápida</span>
       <h3 id="t-modal" class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Prepara tu llamada 1 a 1</h3>
       <div class="prog"><i id="f-prog"></i></div>
       <fieldset class="preg" data-p="1">
-        <legend>¿Qué quieres lograr en los próximos 6 meses?</legend>
+        <legend>¿Con qué capital te gustaría empezar o crecer tus inversiones?</legend>
         <div class="opciones">
-          <label><input type="radio" name="meta" value="Empezar a invertir por primera vez">Empezar a invertir por primera vez</label>
-          <label><input type="radio" name="meta" value="Dejar de perder por improvisar">Dejar de perder dinero por improvisar</label>
-          <label><input type="radio" name="meta" value="Hacer crecer lo que ya invierto">Ordenar y hacer crecer lo que ya invierto</label>
-          <label><input type="radio" name="meta" value="Construir patrimonio para mi familia">Construir un patrimonio para mi familia</label>
-        </div>
-      </fieldset>
-      <fieldset class="preg" data-p="2" hidden>
-        <legend>¿Cuándo quieres empezar?</legend>
-        <div class="opciones">
-          <label><input type="radio" name="cuando" value="Ya mismo">Ya mismo</label>
-          <label><input type="radio" name="cuando" value="En 1 a 3 meses">En 1 a 3 meses</label>
-          <label><input type="radio" name="cuando" value="Solo estoy explorando">Solo estoy explorando</label>
-        </div>
-      </fieldset>
-      <fieldset class="preg" data-p="3" hidden>
-        <legend>Si encuentras el acompañamiento adecuado, ¿cuánto puedes destinar a tu formación?</legend>
-        <div class="opciones">
-          <label><input type="radio" name="inversion" value="Menos de US$100">Menos de US$ 100</label>
-          <label><input type="radio" name="inversion" value="US$100 a 500">Entre US$ 100 y 500</label>
-          <label><input type="radio" name="inversion" value="US$500 a 1.000">Entre US$ 500 y 1.000</label>
-          <label><input type="radio" name="inversion" value="Más de US$1.000">Más de US$ 1.000</label>
-        </div>
-      </fieldset>
-      <fieldset class="preg" data-p="4" hidden>
-        <legend>¿Esta decisión la tomas solo o con alguien más?</legend>
-        <div class="opciones">
-          <label><input type="radio" name="decide" value="Yo solo">La tomo yo solo</label>
-          <label><input type="radio" name="decide" value="Con pareja o familia">Con mi pareja o familia</label>
-          <label><input type="radio" name="decide" value="Con un socio">Con un socio</label>
+          <label><input type="radio" name="capital" value="Menos de $1.000">Menos de US$ 1.000</label>
+          <label><input type="radio" name="capital" value="Entre $1.000 y $5.000">Entre US$ 1.000 y 5.000</label>
+          <label><input type="radio" name="capital" value="Entre $5.000 y $20.000">Entre US$ 5.000 y 20.000</label>
+          <label><input type="radio" name="capital" value="Más de $20.000">Más de US$ 20.000</label>
         </div>
       </fieldset>
       <button type="button" class="atras" id="f-atras" hidden>← Volver</button>
     </form>
 
     <form id="form-llamada" novalidate data-origen="Llamada 1 a 1" hidden>
-      <span class="paso-tag">Último paso antes de tu horario</span>
-      <h3 style="margin-top:8px">¿A dónde te envío la confirmación?</h3>
-      <p class="intro">Con estos datos te llega el enlace de Zoom y el recordatorio.</p>
+      <span class="paso-tag">Último paso</span>
+      <h3 style="margin-top:8px">¿A dónde te envío tu siguiente paso?</h3>
+      <p class="intro">Con estos datos te llega la confirmación por correo y WhatsApp.</p>
       <div class="campos">
         <label for="l-nombre">Nombre y apellido<input id="l-nombre" name="nombre" autocomplete="name" required placeholder="Tu nombre completo"></label>
         <label for="l-correo">Correo<input id="l-correo" name="correo" type="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com"></label>
@@ -1004,10 +979,10 @@ fbq('track','PageView');
 
     <div class="no-califica" id="no-califica" hidden>
       <span class="paso-tag">Tu mejor primer paso</span>
-      <h3><span id="nc-nombre"></span>, gracias por tus respuestas</h3>
-      <p>Por lo que me cuentas, hoy tu mejor primer paso es mi comunidad gratuita de WhatsApp. Ahí comparto clases y contenido para que empieces con bases sólidas y sin arriesgar de más.</p>
-      <p>Cuando estés listo para dar el siguiente paso, aquí estaré.</p>
-      <a class="btn btn-wa" id="nc-link" href="https://go.wha.link/b22oMb" target="_blank" rel="noopener">Unirme a la comunidad gratuita</a>
+      <h3><span id="nc-nombre"></span>, por donde estás hoy, esto es lo que más te va a servir</h3>
+      <p>Lo primero es tener <b>un plan y reglas claras</b> desde el primer día. Para eso creé la <b>Ruta Excedente 8S</b>: en 8 semanas aprendes paso a paso mi Método RCR, con más de 150 lecciones, herramientas, mi asistente de inversión con IA 24/7 y la comunidad privada con clases en vivo.</p>
+      <p>Pago único de <b>US$ 97</b>, con <b>7 días de garantía</b>.</p>
+      <a class="btn btn-primario" id="nc-link" href="https://rutaexcedente8semanas.aqfinanzas.com/" target="_blank" rel="noopener">Ver la Ruta Excedente 8S</a>
     </div>
   </div>
 </div>
@@ -1081,7 +1056,7 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape") document.querySele
 const COMUNIDAD = "https://go.wha.link/b22oMb";
 // FILTRO = false: el botón va directo al Calendly de campañas (la calificación se hace con las preguntas de Calendly).
 // true: muestra antes las 4 preguntas de la landing.
-const FILTRO = false;
+const FILTRO = true;
 const mLlamada = document.getElementById("modal-llamada");
 const fFiltro = document.getElementById("form-filtro");
 const fDatos = document.getElementById("form-llamada");
@@ -1096,7 +1071,7 @@ if(window.clarity){ clarity("set","landing",LANDING); clarity("set","fuente",UTM
 function verPregunta(i){
   pasoF = i;
   pregs.forEach((p,k)=>p.hidden = k!==i);
-  document.getElementById("f-paso").textContent = "Pregunta "+(i+1)+" de "+pregs.length;
+  document.getElementById("f-paso").textContent = pregs.length>1 ? "Pregunta "+(i+1)+" de "+pregs.length : "Una pregunta rápida";
   document.getElementById("f-prog").style.width = ((i+1)/pregs.length*100)+"%";
   document.getElementById("f-atras").hidden = i===0;
 }
@@ -1127,35 +1102,30 @@ fFiltro.addEventListener("change",e=>{
 reiniciar();
 document.getElementById("f-atras").addEventListener("click",()=>verPregunta(Math.max(0,pasoF-1)));
 
-// Regla del filtro (ajustable): no califica si destina menos de US$100,
-// o si solo está explorando y destina entre US$100 y 500.
-function califica(){
-  const inv = respuestas.inversion||"", cu = respuestas.cuando||"";
-  if(inv==="Menos de US$100") return false;
-  if(cu==="Solo estoy explorando" && inv==="US$100 a 500") return false;
-  return true;
-}
-const resumen = ()=>["Meta: "+(respuestas.meta||"-"),"Cuándo: "+(respuestas.cuando||"-"),"Formación: "+(respuestas.inversion||"-"),"Decide: "+(respuestas.decide||"-")].join(" | ");
+// Regla del filtro: califica para la llamada 1 a 1 con US$1.000 o más; menos de US$1.000 → Ruta Excedente 8S.
+function califica(){ return !!respuestas.capital && respuestas.capital!=="Menos de $1.000"; }
+const resumen = ()=>"Capital: "+(respuestas.capital||"-");
 
 fDatos.addEventListener("submit",e=>{
   e.preventDefault();
   const d=leerForm(fDatos);
   if(!validar(fDatos,d)) return;
   const ok = califica();
-  d.origen = ok ? "Llamada 1 a 1" : "Landing llamada · comunidad";
+  d.origen = ok ? "Llamada 1 a 1" : "Ruta 8S · menos de US$1.000";
   d.interes = (ok?"CALIFICA":"NO CALIFICA")+" · "+LANDING+" · botón "+origenBoton+" · "+resumen();
   enviarLead(d); guardar("aq_lead",{nombre:d.nombre,correo:d.correo,whatsapp:d.whatsapp,interes:d.interes});
   if(ok){
     if(window.fbq) fbq("track","Lead",{content_name:"Llamada 1 a 1",landing:LANDING});
-    mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp));
+    mostrarCalendly(CONFIG.CALENDLY + "?hide_gdpr_banner=1&name="+encodeURIComponent(d.nombre)+"&email="+encodeURIComponent(d.correo)+"&a1="+encodeURIComponent("+"+d.whatsapp)+"&a3="+encodeURIComponent(respuestas.capital||"")+"&utm_source="+encodeURIComponent(UTM.source||"web")+"&utm_campaign="+encodeURIComponent(UTM.campaign||"")+"&utm_content="+encodeURIComponent(LANDING));
   }else{
-    ev("NoCalifica");
+    ev("NoCalifica",{capital:"menos_1000"});
+    if(window.fbq) fbq("track","Lead",{content_name:"Ruta 8S · menos de US$1.000",landing:LANDING});
     fDatos.hidden = true;
     document.getElementById("nc-nombre").textContent = d.nombre.split(" ")[0];
     document.getElementById("no-califica").hidden = false;
   }
 });
-document.getElementById("nc-link").addEventListener("click",()=>ev("ClicComunidad"));
+document.getElementById("nc-link").addEventListener("click",()=>ev("ClicRuta8S"));
 function mostrarCalendly(url){
   document.getElementById("enlace-calendly").href = url;
   document.getElementById("contenedor-calendly").innerHTML = `<iframe class="calendly" src="${url}&embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname)}" title="Calendario para agendar la llamada"></iframe>`;
@@ -1164,7 +1134,7 @@ function mostrarCalendly(url){
   document.getElementById("caja-llamada").classList.add("ancha");
 }
 window.addEventListener("message",e=>{
-  if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.profile_page_viewed") ev("CalendlyAbierto");
+  if(e.origin.includes("calendly.com") && e.data && (e.data.event==="calendly.event_type_viewed"||e.data.event==="calendly.profile_page_viewed")) ev("CalendlyAbierto");
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.date_and_time_selected") ev("CalendlyEligioHorario");
   if(e.origin.includes("calendly.com") && e.data && e.data.event==="calendly.event_scheduled"){
     ev("CalendlyAgendo");
