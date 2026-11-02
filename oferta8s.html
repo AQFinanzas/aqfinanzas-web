@@ -270,6 +270,21 @@ p{margin:0}
 @media (max-width:900px){.tcard{flex-basis:calc((100% - 16px)/2)}}
 @media (max-width:600px){.tcard{flex-basis:86%}.tnav{display:none}}
 
+.rcar{position:relative;margin-top:36px}
+.rpista{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 12px}
+.rpista::-webkit-scrollbar{display:none}
+.reel{flex:0 0 calc((100% - 48px)/4);position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000;scroll-snap-align:start;border:1px solid rgba(255,255,255,.14)}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-play{position:absolute;inset:0;border:0;cursor:pointer;background:linear-gradient(0deg,rgba(5,6,28,.85),rgba(5,6,28,0) 45%);color:#fff;display:flex;align-items:flex-end;padding:14px;font:700 1rem Inter,sans-serif;text-align:left}
+.reel-play .play{position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.reel-play .play svg{width:22px;height:22px;margin-left:3px}
+.reel.sonando .reel-play{display:none}
+.rprev{left:-18px}.rnext{right:-18px}
+.aviso-chico{margin-top:14px;text-align:center;font-size:.8rem;color:var(--claro)}
+.eventos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.eventos img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+@media (max-width:900px){.reel{flex-basis:calc((100% - 16px)/2)}}
+@media (max-width:600px){.reel{flex-basis:72%}.rnav,.rprev,.rnext{display:none}}
 /* Preguntas */
 .faq{max-width:820px;margin:34px auto 0;display:grid;gap:10px}
 .faq details{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:4px 18px}
@@ -545,15 +560,29 @@ window.CLARITY_ID = "z3rvf294da";
       <p class="lead">Creador de Excedente y mentor en inversión. Llevo más de 15 años ayudando a personas en toda América Latina a transformar su relación con el dinero.</p>
       <p>Soy autor del libro "La Arquitectura del Dinero", inversionista activo en la bolsa de Nueva York y fui conductor del programa económico "Economía Mía" en Globovisión.</p>
       <p>Hoy, con Excedente, enseño a una nueva generación a invertir su excedente con método y con herramientas de inteligencia artificial, incluso si parten desde cero.</p>
+      <div class="eventos"><img src="img/evento-01.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-02.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-03.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-04.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-05.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-06.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"></div>
       <div class="cifras"><div><b>+15</b><span>años de experiencia</span></div><div><b>+45.000</b><span>personas formadas</span></div><div><b>+150</b><span>lecciones del método</span></div></div>
     </div>
+  </div>
+</section>
+
+<section class="bloque oscuro" id="videos">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow" style="color:#FFC83D">En video</span>
+      <h2 class="titulo">Escúchalo de ellos</h2>
+      <p class="intro">Alumnos de distintos países cuentan cómo empezaron a invertir con el Método RCR.</p>
+    </div>
+    <div class="rcar"><button type="button" class="tnav rprev" aria-label="Videos anteriores">‹</button><div class="rpista" id="rpista"><div class="reel"><video preload="none" playsinline poster="reels/reel-otoniel.jpg" src="reels/reel-otoniel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Otoniel"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Otoniel</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-javier-forsyth.jpg" src="reels/reel-javier-forsyth.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Javier Forsyth"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Javier Forsyth</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-aleida-palma.jpg" src="reels/reel-aleida-palma.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Aleida Palma"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Aleida Palma</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-eusbely-donalles.jpg" src="reels/reel-eusbely-donalles.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Eusbely Donalles"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Eusbely Donalles</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-italo-ral.jpg" src="reels/reel-italo-ral.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Italo Ral"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Italo Ral</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-jose-montero.jpg" src="reels/reel-jose-montero.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de José Montero"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-kenya-fernandez.jpg" src="reels/reel-kenya-fernandez.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Kenya Fernández"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Kenya Fernández</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-rosangel.jpg" src="reels/reel-rosangel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Rosangel González"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Rosangel González</b></button></div></div><button type="button" class="tnav rnext" aria-label="Videos siguientes">›</button></div>
+    <div class="tpuntos" id="rpuntos"></div>
+    <p class="aviso-chico">Experiencias individuales de alumnos. Los resultados pasados no garantizan resultados futuros.</p>
   </div>
 </section>
 
 <section class="bloque" style="background:#fff;border-block:1px solid var(--linea)">
   <div class="wrap">
     <div class="centro">
-      <span class="eyebrow">Lo que dicen mis alumnos</span>
+      <span class="eyebrow">Mensajes reales de WhatsApp</span>
       <h2 class="titulo">Personas reales, avanzando con método</h2>
     </div>
     <div class="tcar"><button type="button" class="tnav tprev" aria-label="Anterior">‹</button><div class="tpista" id="tpista"><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yubeidy Pérez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Excelente estrategia para el aprendizaje, muy didáctico."</blockquote><button type="button" class="tcap" data-src="img/clase-img-1063.jpg" aria-label="Ver mensaje completo de Yubeidy Pérez"><img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Daniel Sifontes</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Agradecido 100 % con tu curso… brutal, y a todo colega que me ha preguntado se lo he recomendado."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-daniel-sifontes.jpg" aria-label="Ver mensaje completo de Daniel Sifontes"><img src="img/testi-testimonio-daniel-sifontes.jpg" alt="Mensaje de Daniel Sifontes" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">F</span><div><b>Fabiola Cestari</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me parece súper completo, lo buscaba para conocer sobre inversión en la bolsa."</blockquote><button type="button" class="tcap" data-src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" aria-label="Ver mensaje completo de Fabiola Cestari"><img src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" alt="Mensaje de Fabiola Cestari" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">S</span><div><b>Silvia Hernández</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El detalle y la facilidad con que explicas genera confianza."</blockquote><button type="button" class="tcap" data-src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" aria-label="Ver mensaje completo de Silvia Hernández"><img src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" alt="Mensaje de Silvia Hernández" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yuly Sosa</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Al principio estuve a punto de tirar la toalla porque no entendía nada. Gracias por tu método."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-de-yuly-sosa.jpg" aria-label="Ver mensaje completo de Yuly Sosa"><img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de Yuly Sosa" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>José Haeckermann</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Es práctico y directo al grano, con un lenguaje sencillo."</blockquote><button type="button" class="tcap" data-src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" aria-label="Ver mensaje completo de José Haeckermann"><img src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" alt="Mensaje de José Haeckermann" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Domingo Russo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Muy didáctico y práctico tu curso; me ha dado una mejor visión."</blockquote><button type="button" class="tcap" data-src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" aria-label="Ver mensaje completo de Domingo Russo"><img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Alumna Excedente</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El método RCR es súper sencillo y fácil de aprender e implementar."</blockquote><button type="button" class="tcap" data-src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" aria-label="Ver mensaje completo de Alumna Excedente"><img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de Alumna Excedente" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>J. D. Márquez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me siento muy a gusto con el proceso y con los resultados que se van obteniendo."</blockquote><button type="button" class="tcap" data-src="img/clase-img-0948.jpg" aria-label="Ver mensaje completo de J. D. Márquez"><img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">E</span><div><b>Eva María</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"He visto muchos cursos, pero como este ninguno. Tenemos una joya invaluable en nuestras manos."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-2.jpg" aria-label="Ver mensaje completo de Eva María"><img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Ana Caicedo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado."</blockquote><button type="button" class="tcap" data-src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" aria-label="Ver mensaje completo de Ana Caicedo"><img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo" loading="lazy"><span>Ver mensaje completo</span></button></figure></div><button type="button" class="tnav tnext" aria-label="Siguiente">›</button></div>
@@ -636,6 +665,24 @@ window.CLARITY_ID = "z3rvf294da";
   }
   pintar(); setInterval(pintar, 1000);
 
+
+  // Videos de testimonios: uno a la vez
+  document.querySelectorAll('.reel').forEach(function(r){
+    var v = r.querySelector('video'), b = r.querySelector('.reel-play');
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.reel video').forEach(function(o){ if (o !== v) { o.pause(); o.closest('.reel').classList.remove('sonando'); } });
+      v.controls = true; v.play(); r.classList.add('sonando');
+      try { clarity('event', 'video_testimonio'); fbq('trackCustom', 'VioTestimonio', { pagina: 'oferta8s', alumno: b.querySelector('b').textContent }); } catch (x) {}
+    });
+  });
+  var rp = $('#rpista'), rcs = rp.querySelectorAll('.reel'), rpu = $('#rpuntos');
+  rcs.forEach(function(){ rpu.appendChild(document.createElement('i')); });
+  function rpaso(){ return rcs[0].getBoundingClientRect().width + 16; }
+  function rmarca(){ var i = Math.round(rp.scrollLeft / rpaso()); rpu.querySelectorAll('i').forEach(function(d, k){ d.classList.toggle('on', k === i); }); }
+  rp.addEventListener('scroll', rmarca, { passive: true }); rmarca();
+  $('.rprev').addEventListener('click', function(){ rp.scrollBy({ left: -rpaso(), behavior: 'smooth' }); });
+  $('.rnext').addEventListener('click', function(){ rp.scrollBy({ left: rpaso(), behavior: 'smooth' }); });
+
   // Carrusel de testimonios
   var pista = $('#tpista'), cards = pista.querySelectorAll('.tcard'), puntos = $('#tpuntos');
   cards.forEach(function(_, i){ var d = document.createElement('i'); puntos.appendChild(d); });
@@ -658,7 +705,7 @@ window.CLARITY_ID = "z3rvf294da";
   cl('set', 'landing', 'oferta8s'); cl('set', 'variante', variante); cl('set', 'fuente', P.utm_source || 'directo');
   if (P.utm_campaign) cl('set', 'campana', P.utm_campaign); if (P.utm_content) cl('set', 'anuncio', P.utm_content);
   cl('set', 'precio', String(precio()));
-  var hitos = {}, secciones = [['oferta', '#oferta'], ['bonos', '.bonos'], ['testimonios', '.testis'], ['preguntas', '.faq'], ['productos', '.productos']];
+  var hitos = {}, secciones = [['videos', '#videos'], ['oferta', '#oferta'], ['bonos', '.bonos'], ['testimonios', '.testis'], ['preguntas', '.faq'], ['productos', '.productos']];
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (!en.isIntersecting) return; var n = en.target.getAttribute('data-sec'); if (hitos[n]) return; hitos[n] = 1;
       cl('event', 'vio_' + n); try { fbq('trackCustom', 'VioSeccion', { pagina: 'oferta8s', seccion: n, variante: variante }); } catch (x) {} }); }, { threshold: .35 });
