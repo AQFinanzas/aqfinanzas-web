@@ -639,7 +639,8 @@ window.CLARITY_ID = "z3rvf294da";
   function vencido(){ return forzar197 || Date.now() - inicio >= PLAZO; }
   var URL97 = 'https://pagoruta8s.aqfinanzas.com/', URL197 = 'https://aqfinanzas.github.io/pagoruta8s/?p=197';
   function urlPago(){
-    var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(v|p)=/.test(x); }).join('&');
+    var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(v|p|src)=/.test(x); });
+    extra.push('src=oferta8s-' + (conVideo ? 'a' : 'b')); extra = extra.join('&');
     return vencido() ? URL197 + (extra ? '&' + extra : '') : URL97 + (extra ? '?' + extra : '');
   }
   function precio(){ return vencido() ? 197 : 97; }
@@ -720,7 +721,7 @@ window.CLARITY_ID = "z3rvf294da";
     var alPago = a.getAttribute('href').indexOf('http') === 0;
     try { fbq('trackCustom', alPago ? 'ClicPagoRuta8S' : 'ClicVerOferta', { pagina: 'oferta8s', variante: variante, precio: precio() }); } catch (x) {}
     cl('event', alPago ? 'clic_pago' : 'clic_ver_oferta'); if (alPago) cl('upgrade', 'clic_pago');
-    if (alPago) { try { fbq('track', 'InitiateCheckout', { content_name: 'Ruta 8S', value: precio(), currency: 'USD', variante: variante }); } catch (x) {} }
+    // InitiateCheckout lo envía la página de pago al abrir (una sola vez por persona).
   });
 })();
 </script>
