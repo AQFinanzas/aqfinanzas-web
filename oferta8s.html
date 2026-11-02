@@ -70,6 +70,14 @@ p{margin:0}
   .portada .media{order:2}
 }
 
+.heroft{position:relative;max-width:470px;margin:0 auto}
+.heroft img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.ins{position:absolute;bottom:14%;background:rgba(5,6,28,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;line-height:1.2}
+.ins b{font-size:1.25rem;font-weight:900}.ins span{font-size:.74rem;color:var(--claro)}
+.ins-a{left:-4%}.ins-b{right:-4%;bottom:4%}
+.ins-a::before,.ins-b::before{content:"";position:absolute;top:-1px;left:14px;right:14px;height:2px;background:var(--naranja);border-radius:2px}
+@media (max-width:900px){.heroft{max-width:340px}.ins-a{left:0}.ins-b{right:0}}
+.bono .mock.foto{background:#05061C;min-height:0}
 /* Mockups */
 .laptop{position:relative}
 .laptop .pantalla{background:#0E1030;border:10px solid #1D1F3A;border-bottom-width:12px;border-radius:12px 12px 4px 4px;aspect-ratio:16/10;overflow:hidden;position:relative}
@@ -152,6 +160,10 @@ p{margin:0}
 .prod ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
 .prod li{display:flex;gap:10px;align-items:flex-start;font-size:.97rem}
 .prod li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.mock.foto{padding:0;background:#05061C;min-height:0;aspect-ratio:4/3}
+.mock.foto img{width:100%;height:100%;object-fit:cover}
+.resumen{margin-top:14px!important;padding:10px 14px;border-left:3px solid var(--naranja);background:#FFF4EE;border-radius:0 10px 10px 0;color:var(--marino)!important;font-weight:600;font-size:.95rem}
+.bono .resumen{background:rgba(240,74,3,.14);color:#fff!important}
 .valor{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:8px 14px;border-radius:12px;background:#F2F5FD;border:1px dashed #C5CFEA;font-size:.92rem;color:var(--gris)}
 .valor b{color:var(--marino);font-size:1.08rem}
 .valor s{color:var(--marino);font-weight:800}
@@ -170,6 +182,7 @@ p{margin:0}
 @media (max-width:900px){.bonos{grid-template-columns:1fr}}
 
 /* Pila de valor */
+.paquete{max-width:760px;width:100%;margin:28px auto 0;border-radius:24px;box-shadow:0 40px 70px -40px rgba(1,0,90,.7)}
 .oferta{max-width:760px;margin:40px auto 0;background:#fff;border-radius:28px;border:2px solid var(--marino);box-shadow:0 40px 80px -40px rgba(1,0,90,.55);overflow:hidden}
 .oferta .cab{background:var(--marino);color:#fff;text-align:center;padding:18px 20px}
 .oferta .cab b{display:block;font-size:1.25rem}
@@ -234,12 +247,28 @@ p{margin:0}
 @media (max-width:820px){.sobre{grid-template-columns:minmax(0,1fr);gap:24px}.sobre img{max-width:min(380px,100%);margin:0 auto}}
 
 /* Testimonios */
-.testis{columns:4 230px;column-gap:14px;margin-top:36px}
-.testis figure{margin:0 0 14px;break-inside:avoid;background:#fff;border-radius:16px;padding:8px;border:1px solid var(--linea);box-shadow:0 20px 40px -30px rgba(1,0,90,.5)}
-.testis img{border-radius:10px;width:100%;max-height:520px;object-fit:cover;object-position:top}
-@media (max-width:520px){.testis{columns:auto;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}.testis figure{flex:0 0 84%;scroll-snap-align:center;margin:0}.testis img{max-height:460px}}
-.desliza{display:none;text-align:center;font-size:.85rem;color:var(--gris);margin-top:6px}
-@media (max-width:520px){.desliza{display:block}}
+.tcar{position:relative;margin-top:36px}
+.tpista{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 12px}
+.tpista::-webkit-scrollbar{display:none}
+.tcard{flex:0 0 calc((100% - 32px)/3);scroll-snap-align:start;margin:0;background:#fff;border:1px solid var(--linea);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 44px -34px rgba(1,0,90,.55)}
+.tcab{display:flex;gap:10px;align-items:center}
+.tav{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--azul),var(--marino))}
+.tcab b{display:block;color:var(--marino);font-size:.98rem}.tcab small{color:#E3A008;font-size:.78rem;font-weight:700}
+.tcard blockquote{margin:0;font-family:Lora,Georgia,serif;font-style:italic;font-size:1.02rem;line-height:1.45;color:var(--tinta);min-height:3.2em}
+.tcap{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:#EEF1F8;height:230px;display:block;width:100%}
+.tcap img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tcap::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,#fff 75%)}
+.tcap span{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:1;font-size:.8rem;font-weight:700;color:#fff;background:var(--marino);padding:6px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 14px -6px rgba(1,0,90,.6)}
+.tnav{position:absolute;top:44%;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--marino);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 10px 24px -10px rgba(1,0,90,.6)}
+.tprev{left:-18px}.tnext{right:-18px}
+.tpuntos{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.tpuntos i{width:8px;height:8px;border-radius:50%;background:#C9D1E8;transition:all .2s}
+.tpuntos i.on{width:22px;border-radius:4px;background:var(--naranja)}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,6,28,.9);display:grid;place-items:center;padding:20px}
+.lightbox img{max-width:min(560px,100%);max-height:86vh;border-radius:14px}
+.lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:1.2rem;cursor:pointer}
+@media (max-width:900px){.tcard{flex-basis:calc((100% - 16px)/2)}}
+@media (max-width:600px){.tcard{flex-basis:86%}.tnav{display:none}}
 
 /* Preguntas */
 .faq{max-width:820px;margin:34px auto 0;display:grid;gap:10px}
@@ -295,11 +324,11 @@ window.CLARITY_ID = "z3rvf294da";
         <div class="video"><iframe src="https://player.vimeo.com/video/1242131549?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="Ruta Excedente 8S"></iframe></div>
         <p class="video-nota">▶ En 5 minutos te muestro todo lo que trae, semana a semana.</p>
       </div>
-      <div id="sin-video" class="collage" hidden>
-        <div class="laptop m-laptop"><div class="pantalla"><div class="ui-curso"><div class="lista"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="vid"></div></div></div><div class="base"></div></div>
-        <img class="foto-aq" src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136">
-        <div class="phone m-phone"><div class="notch"></div><div class="pant"><div class="ui-chat"><div class="cab">Asistente Excedente</div><div class="burb yo">¿Qué hago si tengo US$100 este mes?</div><div class="burb ia">Primero revisemos tu perfil y tu colchón. Luego armamos tu plan paso a paso 👇</div></div></div></div>
-      </div>
+      <div id="sin-video" class="heroft" hidden>
+        <img src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136">
+        <div class="ins ins-a"><b>+15 años</b><span>invirtiendo y enseñando</span></div>
+        <div class="ins ins-b"><b>+45.000</b><span>personas formadas</span></div>
+      </div></div>
     </div>
   </div>
 </section>
@@ -329,71 +358,73 @@ window.CLARITY_ID = "z3rvf294da";
     <div class="productos">
 
       <article class="prod">
-        <div class="mock"><div class="laptop"><div class="pantalla"><div class="ui-curso"><div class="lista"><i class="ok"></i><i class="ok"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="vid"></div></div></div><div class="base"></div></div></div>
+        <div class="mock foto"><img src="img/oferta/rcr.jpg" alt="Método RCR en una plataforma de cursos" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#1 · El corazón del programa</span>
           <h3>Método RCR: Rentabilidad, Consistencia y Riesgo</h3>
           <p>Más de 150 lecciones con el paso a paso completo del método que enseño desde hace más de 15 años.</p>
           <ul><li>Rentabilidad realista, sin especulación</li><li>Consistencia: el hábito de invertir mes a mes</li><li>Gestión del riesgo para proteger tu dinero</li></ul>
+          <p class="resumen">En resumen: el método completo para invertir con reglas claras, no con emoción.</p>
           <div class="valor">Valor <s>US$467</s></div>
         </div>
       </article>
 
       <article class="prod">
-        <div class="mock"><div class="ruta" style="width:88%"><h4>Tu Ruta Excedente · 8 semanas</h4><div class="semanas"><i class="ok">S1</i><i class="ok">S2</i><i class="ok">S3</i><i class="on">S4</i><i>S5</i><i>S6</i><i>S7</i><i>S8</i></div><div class="barra-prog"><span></span></div></div></div>
+        <div class="mock foto"><img src="img/oferta/ruta.jpg" alt="Hoja de ruta de 8 semanas" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#2 · Tu camino guiado</span>
           <h3>Ruta Excedente 8S</h3>
           <p>Sabes qué hacer cada semana: ordenas tu dinero, entiendes el mercado y construyes tu base para invertir.</p>
           <ul><li>Un paso claro por semana, sin sentirte perdido</li><li>Ejercicios prácticos y evaluaciones</li><li>Tu progreso guardado en todo momento</li></ul>
+          <p class="resumen">En resumen: sabes qué hacer cada semana, de cero a tu primer portafolio.</p>
           <div class="valor">Valor <s>US$167</s></div>
         </div>
       </article>
 
       <article class="prod">
-        <div class="mock"><div class="laptop"><div class="pantalla"><div class="ui-vivo"><span class="badge-vivo">EN VIVO</span><span class="tk">SPY · 5 min</span><svg viewBox="0 0 150 90" preserveAspectRatio="none"><polyline points="0,70 30,62 60,52 90,40 120,30 150,20" fill="none" stroke="#2A94F8" stroke-width="1.2" stroke-dasharray="3 2"/><line x1="8" y1="60" x2="8" y2="82" stroke="#EF4444" stroke-width="1"/><rect x="4" y="64" width="8" height="12" fill="#EF4444"/><line x1="20" y1="55" x2="20" y2="80" stroke="#22C55E" stroke-width="1"/><rect x="16" y="58" width="8" height="14" fill="#22C55E"/><line x1="32" y1="50" x2="32" y2="72" stroke="#22C55E" stroke-width="1"/><rect x="28" y="52" width="8" height="14" fill="#22C55E"/><line x1="44" y1="46" x2="44" y2="66" stroke="#EF4444" stroke-width="1"/><rect x="40" y="50" width="8" height="10" fill="#EF4444"/><line x1="56" y1="40" x2="56" y2="62" stroke="#22C55E" stroke-width="1"/><rect x="52" y="42" width="8" height="14" fill="#22C55E"/><line x1="68" y1="36" x2="68" y2="56" stroke="#22C55E" stroke-width="1"/><rect x="64" y="38" width="8" height="12" fill="#22C55E"/><line x1="80" y1="38" x2="80" y2="58" stroke="#EF4444" stroke-width="1"/><rect x="76" y="42" width="8" height="10" fill="#EF4444"/><line x1="92" y1="30" x2="92" y2="50" stroke="#22C55E" stroke-width="1"/><rect x="88" y="32" width="8" height="12" fill="#22C55E"/><line x1="104" y1="24" x2="104" y2="46" stroke="#22C55E" stroke-width="1"/><rect x="100" y="26" width="8" height="14" fill="#22C55E"/><line x1="116" y1="20" x2="116" y2="40" stroke="#22C55E" stroke-width="1"/><rect x="112" y="22" width="8" height="12" fill="#22C55E"/><line x1="128" y1="22" x2="128" y2="42" stroke="#EF4444" stroke-width="1"/><rect x="124" y="26" width="8" height="10" fill="#EF4444"/><line x1="140" y1="14" x2="140" y2="34" stroke="#22C55E" stroke-width="1"/><rect x="136" y="16" width="8" height="12" fill="#22C55E"/></svg><span class="cam"></span></div></div><div class="base"></div></div></div>
+        <div class="mock foto"><img src="img/oferta/vivo.jpg" alt="Clase en vivo con gráfico de la bolsa" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#3 · Mercado real</span>
           <h3>Clases en vivo: martes, miércoles y jueves</h3>
           <p>Analizamos acciones y ETFs con el mercado abierto, y ves el Método RCR aplicado en tiempo real.</p>
           <ul><li>3 sesiones en vivo cada semana</li><li>Acceso inmediato a todas las grabaciones de 2026</li><li>Preguntas y respuestas en directo</li></ul>
+          <p class="resumen">En resumen: ves el método aplicado en el mercado real, 3 veces por semana.</p>
           <div class="valor">Valor <s>US$697</s></div>
         </div>
       </article>
 
       <article class="prod">
-        <div class="mock"><div class="phone"><div class="notch"></div><div class="pant"><div class="ui-chat"><div class="cab">Asistente Excedente</div><div class="burb yo">¿Qué es el ROA y cómo lo uso?</div><div class="burb ia">Mide qué tan bien una empresa usa sus activos para generar ganancias. Te muestro cómo leerlo 👇</div><div class="burb yo">¿Cómo reduzco el riesgo si empiezo?</div></div></div></div></div>
+        <div class="mock foto"><img src="img/oferta/ia.jpg" alt="Asistente de inversión con IA en el celular" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#4 · Disponible 24/7</span>
           <h3>Asistente de inversión con IA</h3>
           <p>Tu mentor virtual, entrenado con el contenido de Excedente, para resolver tus dudas a cualquier hora.</p>
           <ul><li>Entiende tu nivel y tu perfil</li><li>Respuestas claras sobre conceptos y estrategias</li><li>Te acompaña en cada módulo</li></ul>
+          <p class="resumen">En resumen: un mentor virtual que te responde a cualquier hora.</p>
           <div class="valor">Valor <s>US$267</s></div>
         </div>
       </article>
 
       <article class="prod">
-        <div class="mock" style="min-height:260px">
-          <div class="hoja" style="left:8%;top:22px;transform:rotate(-5deg)"><h4>Checklist · Mi primer portafolio</h4><div class="ck"><i></i><span></span></div><div class="ck"><i></i><span></span></div><div class="ck"><i></i><span></span></div><div class="ck"><i style="background:#DDE3F0"></i><span></span></div></div>
-          <div class="hoja" style="right:6%;top:64px;transform:rotate(4deg)"><h4>Calculadora · Interés compuesto</h4><div class="barras"><i style="height:20%"></i><i style="height:32%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:78%"></i><i style="height:100%"></i></div></div>
-          <div class="hoja" style="left:20%;top:150px;transform:rotate(-1deg)"><h4>Plantilla · Mis metas financieras</h4><div class="l"></div><div class="l" style="width:80%"></div><div class="l" style="width:60%"></div></div>
-        </div>
+        <div class="mock foto"><img src="img/oferta/kit.jpg" alt="Kit de herramientas, plantillas y calculadoras" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#5 · Para pasar a la acción</span>
           <h3>Kit de herramientas, plantillas y materiales</h3>
           <p>Todo lo práctico para aplicar lo que aprendes y no quedarte en la teoría.</p>
           <ul><li>Checklists para tu primer portafolio</li><li>Plantillas de planificación y seguimiento</li><li>Simuladores y calculadoras con IA</li></ul>
+          <p class="resumen">En resumen: todo lo práctico para pasar de la teoría a la acción.</p>
           <div class="valor">Valor <s>US$97</s></div>
         </div>
       </article>
 
       <article class="prod">
-        <div class="mock"><div class="phone"><div class="notch"></div><div class="pant"><div class="ui-wa"><div class="cab">Comunidad Privada "Excedente"<small>Alejandro, María, José y 214 más</small></div><div class="msgs"><div class="m"><b>María</b>¡Hoy armé mi primer portafolio! 🙌</div><div class="m v"><b>José</b>La clase de ayer me aclaró todo lo del stop loss</div><div class="m yo">¡Así se hace! Mañana seguimos en vivo 💪</div></div></div></div></div></div>
+        <div class="mock foto"><img src="img/oferta/comunidad.jpg" alt="Comunidad privada en el celular" width="1200" height="898" loading="lazy"></div>
         <div>
           <span class="num">#6 · No vas solo</span>
           <h3>Comunidad privada "Excedente"</h3>
           <p>Personas como tú, comprometidas con hacer crecer su dinero de forma inteligente y responsable.</p>
           <ul><li>Avances, dudas y logros compartidos</li><li>Eventos privados y entrenamientos sorpresa</li><li>Contenido y herramientas antes que nadie</li></ul>
+          <p class="resumen">En resumen: avanzas acompañado, nunca solo.</p>
           <div class="valor">Valor <s>US$67</s></div>
         </div>
       </article>
@@ -411,17 +442,19 @@ window.CLARITY_ID = "z3rvf294da";
     </div>
     <div class="bonos">
       <div class="bono">
-        <div class="mock"><div class="hoja" style="position:relative;width:78%"><h4>📈 Radar Bursátil Semanal</h4><div class="barras"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:70%"></i><i style="height:95%"></i></div><div class="l"></div><div class="l" style="width:70%"></div></div></div>
+        <div class="mock foto"><img src="img/oferta/radar-semanal.jpg" alt="Radar Bursátil Semanal en tablet" width="1200" height="898" loading="lazy"></div>
         <span class="tagb">Bono #1</span>
         <h3>Radar Bursátil Semanal</h3>
         <p>Cada domingo, lo más importante de Wall Street y qué vigilar en la semana, con enfoque educativo. Incluye todos los radares de 2026.</p>
+        <p class="resumen">En resumen: llegas a cada semana sabiendo qué vigilar.</p>
         <div class="valor">Valor <s>US$147</s></div>
       </div>
       <div class="bono">
-        <div class="mock"><div class="phone" style="width:46%;max-width:150px"><div class="notch"></div><div class="pant" style="background:linear-gradient(160deg,#14163C,#01005A);padding:30px 8px 8px;gap:6px"><div style="background:rgba(255,255,255,.12);border-radius:10px;padding:7px;color:#fff;font-size:9px;line-height:1.3"><b style="display:block;font-size:9.5px">⚡ Radar Diario</b>Acciones con movimiento para vigilar hoy</div><div style="background:rgba(255,255,255,.08);border-radius:10px;height:26px"></div><div style="background:rgba(255,255,255,.08);border-radius:10px;height:26px"></div></div></div></div>
+        <div class="mock foto"><img src="img/oferta/radar-diario.jpg" alt="Radar Diario en el celular" width="1200" height="898" loading="lazy"></div>
         <span class="tagb">Bono #2</span>
         <h3>Radar Diario de day trading</h3>
         <p>De lunes a viernes, escenarios del mercado para observar en la jornada y entrenar tu lectura del precio con criterio.</p>
+        <p class="resumen">En resumen: entrenas tu ojo con el mercado de cada día.</p>
         <div class="valor">Valor <s>US$147</s></div>
       </div>
       <div class="bono">
@@ -429,6 +462,7 @@ window.CLARITY_ID = "z3rvf294da";
         <span class="tagb">Bono #3</span>
         <h3>Mi libro "La Arquitectura del Dinero"</h3>
         <p>Los 17 principios para elevar tu inteligencia financiera y construir una base sólida antes de invertir.</p>
+        <p class="resumen">En resumen: la base de mentalidad financiera antes de invertir.</p>
         <div class="valor">Valor <s>US$27</s></div>
       </div>
     </div>
@@ -441,6 +475,7 @@ window.CLARITY_ID = "z3rvf294da";
       <span class="eyebrow">Tu acceso completo</span>
       <h2 class="titulo">Todo esto por un solo pago</h2>
     </div>
+    <img class="paquete" src="img/oferta/paquete.jpg" alt="Todo el programa Excedente en laptop, tablet y celular" width="1200" height="898" loading="lazy">
     <div class="oferta">
       <div class="cab"><b>Ruta Excedente 8S + 3 bonos</b><span>Acceso inmediato después del pago</span></div>
       <ul class="pila">
@@ -521,7 +556,9 @@ window.CLARITY_ID = "z3rvf294da";
       <span class="eyebrow">Lo que dicen mis alumnos</span>
       <h2 class="titulo">Personas reales, avanzando con método</h2>
     </div>
-    <div class="testis"><figure><img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez en la comunidad Excedente" loading="lazy"></figure><figure><img src="img/testi-testimonio-daniel-sifontes.jpg" alt="Mensaje de Daniel Sifontes" loading="lazy"></figure><figure><img src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" alt="Mensaje de Fabiola Cestari" loading="lazy"></figure><figure><img src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" alt="Mensaje de Silvia Hernández" loading="lazy"></figure><figure><img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de Yuly Sosa" loading="lazy"></figure><figure><img src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" alt="Mensaje de José Haeckermann" loading="lazy"></figure><figure><img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo" loading="lazy"></figure><figure><img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de una alumna sobre el Método RCR" loading="lazy"></figure><figure><img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María en la comunidad" loading="lazy"></figure><figure><img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez" loading="lazy"></figure><figure><img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo" loading="lazy"></figure></div><p class="desliza">Desliza para ver más →</p>
+    <div class="tcar"><button type="button" class="tnav tprev" aria-label="Anterior">‹</button><div class="tpista" id="tpista"><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yubeidy Pérez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Excelente estrategia para el aprendizaje, muy didáctico."</blockquote><button type="button" class="tcap" data-src="img/clase-img-1063.jpg" aria-label="Ver mensaje completo de Yubeidy Pérez"><img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Daniel Sifontes</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Agradecido 100 % con tu curso… brutal, y a todo colega que me ha preguntado se lo he recomendado."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-daniel-sifontes.jpg" aria-label="Ver mensaje completo de Daniel Sifontes"><img src="img/testi-testimonio-daniel-sifontes.jpg" alt="Mensaje de Daniel Sifontes" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">F</span><div><b>Fabiola Cestari</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me parece súper completo, lo buscaba para conocer sobre inversión en la bolsa."</blockquote><button type="button" class="tcap" data-src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" aria-label="Ver mensaje completo de Fabiola Cestari"><img src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" alt="Mensaje de Fabiola Cestari" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">S</span><div><b>Silvia Hernández</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El detalle y la facilidad con que explicas genera confianza."</blockquote><button type="button" class="tcap" data-src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" aria-label="Ver mensaje completo de Silvia Hernández"><img src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" alt="Mensaje de Silvia Hernández" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yuly Sosa</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Al principio estuve a punto de tirar la toalla porque no entendía nada. Gracias por tu método."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-de-yuly-sosa.jpg" aria-label="Ver mensaje completo de Yuly Sosa"><img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de Yuly Sosa" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>José Haeckermann</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Es práctico y directo al grano, con un lenguaje sencillo."</blockquote><button type="button" class="tcap" data-src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" aria-label="Ver mensaje completo de José Haeckermann"><img src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" alt="Mensaje de José Haeckermann" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Domingo Russo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Muy didáctico y práctico tu curso; me ha dado una mejor visión."</blockquote><button type="button" class="tcap" data-src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" aria-label="Ver mensaje completo de Domingo Russo"><img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Alumna Excedente</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El método RCR es súper sencillo y fácil de aprender e implementar."</blockquote><button type="button" class="tcap" data-src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" aria-label="Ver mensaje completo de Alumna Excedente"><img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de Alumna Excedente" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>J. D. Márquez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me siento muy a gusto con el proceso y con los resultados que se van obteniendo."</blockquote><button type="button" class="tcap" data-src="img/clase-img-0948.jpg" aria-label="Ver mensaje completo de J. D. Márquez"><img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">E</span><div><b>Eva María</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"He visto muchos cursos, pero como este ninguno. Tenemos una joya invaluable en nuestras manos."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-2.jpg" aria-label="Ver mensaje completo de Eva María"><img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Ana Caicedo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado."</blockquote><button type="button" class="tcap" data-src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" aria-label="Ver mensaje completo de Ana Caicedo"><img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo" loading="lazy"><span>Ver mensaje completo</span></button></figure></div><button type="button" class="tnav tnext" aria-label="Siguiente">›</button></div>
+    <div class="tpuntos" id="tpuntos"></div>
+    <div class="lightbox" id="lightbox" hidden><img alt=""><button type="button" aria-label="Cerrar">✕</button></div>
   </div>
 </section>
 
@@ -598,6 +635,21 @@ window.CLARITY_ID = "z3rvf294da";
     $$('#oferta .pagar, .cierre .pagar').forEach(function(a){ a.href = urlPago(); });
   }
   pintar(); setInterval(pintar, 1000);
+
+  // Carrusel de testimonios
+  var pista = $('#tpista'), cards = pista.querySelectorAll('.tcard'), puntos = $('#tpuntos');
+  cards.forEach(function(_, i){ var d = document.createElement('i'); puntos.appendChild(d); });
+  function paso(){ return cards[0].getBoundingClientRect().width + 16; }
+  function marcarP(){ var i = Math.round(pista.scrollLeft / paso()); puntos.querySelectorAll('i').forEach(function(d, k){ d.classList.toggle('on', k === i); }); }
+  pista.addEventListener('scroll', marcarP, { passive: true }); marcarP();
+  $('.tprev').addEventListener('click', function(){ pista.scrollBy({ left: -paso(), behavior: 'smooth' }); });
+  $('.tnext').addEventListener('click', function(){ pista.scrollBy({ left: paso(), behavior: 'smooth' }); });
+  var lb = $('#lightbox');
+  document.addEventListener('click', function(e){
+    var c = e.target.closest && e.target.closest('.tcap');
+    if (c) { lb.querySelector('img').src = c.getAttribute('data-src'); lb.hidden = false; try { clarity('event', 'testimonio_abierto'); } catch (x) {} return; }
+    if (!lb.hidden && (e.target === lb || e.target.closest('#lightbox button'))) lb.hidden = true;
+  });
 
   try { fbq('track', 'ViewContent', { content_name: 'Oferta Ruta 8S', variante: variante, value: precio(), currency: 'USD' }); } catch (e) {}
   // Medición: Clarity (mapas de calor y grabaciones) etiquetado por variante, fuente y anuncio; hasta dónde baja cada visita.
