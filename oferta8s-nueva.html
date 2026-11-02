@@ -58,8 +58,8 @@ p{margin:0}
 .precio-mini em{white-space:nowrap;font-style:normal;font-weight:800;font-size:.8rem;color:#0B0D2C;background:#FFC83D;padding:4px 9px;border-radius:999px}
 .portada .acciones{margin-top:18px}
 .portada .seguro{justify-content:flex-start;color:var(--claro)}
-.video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14)}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-vsl{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14)}
+.video-vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-nota{margin-top:10px;font-size:.84rem;color:var(--claro);text-align:center}
 .collage{position:relative;height:440px}
 .collage .foto-aq{position:absolute;right:0;bottom:-64px;width:78%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
@@ -304,30 +304,83 @@ footer p+p{margin-top:8px}
 .fijo .btn{width:100%}
 @media (max-width:640px){.fijo{display:block}}
 
-/* Cintillo de medios (igual que en aqfinanzas.com) */
-.cintillo{background:#fff;border-bottom:1px solid var(--linea);padding:24px 0 20px;overflow:hidden}
-.cintillo-titulo{text-align:center;font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:0 16px}
-.cinta{margin-top:16px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.pista{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:64px;width:max-content;animation:desliza 38s linear infinite}
+/* ===== Componentes copiados tal cual de aqfinanzas.com (index.html) ===== */
+:root{--blanco:#fff;--claro-sobre-oscuro:#B9C2E8;--f-display:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--f-cuerpo:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--f-dato:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+/* Cintillo de medios */
+.cintillo{background:var(--blanco);border-bottom:1px solid var(--linea);padding-block:26px 22px;overflow:hidden}
+.cintillo-titulo{text-align:center;font-family:var(--f-dato);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding-inline:16px}
+.cinta{margin-top:18px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pista{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:72px;width:max-content;animation:desliza 38s linear infinite}
 .pista li{flex:0 0 auto;display:flex;align-items:center}
-.pista img{height:50px;width:auto;max-width:none;filter:grayscale(1) contrast(1.05);opacity:.75}
-.pista .marca-texto{display:flex;flex-direction:column;align-items:center;line-height:1;color:#3a3f5c;opacity:.75}
-.pista .marca-texto b{font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
-@keyframes desliza{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.pista{animation:none}}
-/* Entrevistas en medios y con alumnos */
-.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:32px}
-.vbox{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0d0f2e;border:1px solid rgba(255,255,255,.12)}
-.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vbox button{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;background:linear-gradient(0deg,rgba(5,6,28,.88),rgba(5,6,28,.15)),var(--fondo) center/cover no-repeat;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:4px;padding:16px;text-align:left;font:600 .95rem Inter,sans-serif}
-.vbox button b{font-size:1.02rem}
-.vbox button small{color:#cfd5f5;font-weight:500}
-.vbox .pl{position:absolute;top:50%;left:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--naranja);display:grid;place-items:center}
-.vbox .pl svg{width:22px;height:22px;margin-left:3px}
-.paises{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.paises span{font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 13px;color:var(--claro)}
-@media (max-width:640px){#entrevistas .vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}#entrevistas .vbox{scroll-snap-align:start}}
-#entrevistas .desliza{display:none;text-align:center;font-size:.85rem;color:var(--gris);margin-top:10px}@media (max-width:640px){#entrevistas .desliza{display:block}}
+.pista img{height:56px;width:auto;max-width:none;filter:grayscale(1) contrast(1.05);opacity:.72;transition:filter .3s ease,opacity .3s ease}
+.pista li:hover img{filter:none;opacity:1}
+.cinta:hover .pista{animation-play-state:paused}
+.pista .marca-texto{display:flex;flex-direction:column;align-items:center;line-height:1;color:#3a3f5c;opacity:.75;transition:opacity .3s,color .3s;font-family:var(--f-display)}
+.pista .marca-texto b{font-weight:800;font-size:1.65rem;letter-spacing:-.02em}
+.pista .marca-texto small{font-family:var(--f-dato);font-weight:700;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+.pista li:hover .marca-texto{opacity:1;color:#C8102E}
+@media (max-width:760px){.pista .marca-texto b{font-size:1.3rem}}
+.logo-ur{display:inline-block;height:62px;width:50px;overflow:hidden;position:relative}
+.pista .logo-ur img{position:absolute;height:70px;width:auto;max-width:none;left:-21px;top:-1px;filter:grayscale(1) contrast(1.9) brightness(1.18);opacity:.8}
+.pista li:hover .logo-ur img{filter:contrast(1.4) brightness(1.12);opacity:1}
+.pista img.chico{height:38px}
+@media (max-width:760px){.pista img.chico{height:30px}.logo-ur{height:50px;width:40px}.pista .logo-ur img{height:56px;left:-17px}}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:760px){.pista{gap:44px;animation-duration:28s}.pista img{height:44px}}
+@media (prefers-reduced-motion:reduce){.pista{animation:none;flex-wrap:wrap;justify-content:center;width:auto;row-gap:20px}.pista li[aria-hidden]{display:none}.pista li:nth-child(n+8){display:none}}
+.titulo-seccion{font-size:clamp(2rem,4vw,3.1rem);color:var(--marino);margin-top:14px}
+.testi-car{position:relative;margin-top:44px;padding:22px;border-radius:24px;background:linear-gradient(160deg,#FFFFFF 0%,#EAF0FF 100%);border:1.5px solid rgba(42,148,248,.35);box-shadow:0 30px 60px -38px rgba(1,0,90,.45),inset 0 1px 0 rgba(255,255,255,.9)}
+.testi-car::before{content:"";position:absolute;left:28px;right:28px;top:-1.5px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--naranja),var(--azul))}
+.testi-car .nav-car{z-index:2}
+.t-contador{text-align:center;color:var(--gris);font-size:.88rem;margin-top:10px;font-variant-numeric:tabular-nums}
+/* Medios */
+.medios{background:var(--noche);color:var(--blanco)}
+.medios .titulo-seccion{color:var(--blanco)}
+.medios .intro{color:var(--claro-sobre-oscuro)}
+.paises{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.paises span{font-family:var(--f-dato);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;color:var(--claro-sobre-oscuro)}
+.galeria-tv{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:12px;margin-top:48px}
+.galeria-tv img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.galeria-tv .g1{grid-column:span 3;grid-row:span 2}
+.galeria-tv .g2{grid-column:span 3}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#0d0f2e;border:1px solid rgba(255,255,255,.1)}
+.video button{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:var(--blanco);background:linear-gradient(0deg,rgba(5,6,28,.85),rgba(5,6,28,.2)),var(--fondo) center/cover no-repeat;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;padding:20px;text-align:left;font:600 1rem var(--f-cuerpo)}
+.video button small{font-family:var(--f-dato);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.video .play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.video .play svg{width:24px;height:24px;margin-left:3px}
+.video button.con-mini{background:var(--fondo) center/cover no-repeat}
+.video button.con-mini .play{top:auto;left:auto;right:22px;bottom:22px;margin:0;transition:transform .2s}
+.video button.con-mini:hover .play{transform:scale(1.08)}
+@media (max-width:1024px){.video button.con-mini .play{width:44px;height:44px;right:12px;bottom:12px}.video button.con-mini .play svg{width:18px;height:18px}}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nav-car{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);color:var(--marino);display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+.nav-car svg{width:22px;height:22px}
+.nav-car:hover{background:var(--naranja);color:var(--blanco);transform:translateY(-50%) scale(1.06)}
+@media (max-width:760px){.nav-car{width:40px;height:40px}.nav-car svg{width:18px;height:18px}}
+.ent-cabeza{margin-top:88px;max-width:46em}
+.ent-titulo{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--marino);margin-top:12px}
+.carril-ent{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-width:0}
+.carril-ent::-webkit-scrollbar{display:none}
+.carril-ent .video{scroll-snap-align:start;border:0;box-shadow:0 18px 36px -24px rgba(1,0,90,.6)}
+.ent-car .e-prev{left:-20px}.ent-car .e-next{right:-20px}
+.video.ent button{padding:0;display:block;background:#05061C;overflow:hidden;isolation:isolate}
+.video.ent button::before{content:"";position:absolute;inset:-12px;z-index:-2;background:var(--fondo) center/cover no-repeat;filter:blur(3px) saturate(.6) brightness(.55);transform:scale(1.04)}
+.video.ent button::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(1,0,90,.95) 0%,rgba(1,0,90,.78) 45%,rgba(1,0,90,.25) 100%)}
+.ent-top{position:absolute;top:16px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ent-top img{height:30px;width:auto}
+.ent-chip{background:var(--naranja);color:var(--blanco);font-weight:700;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.ent-txt{position:absolute;left:18px;right:84px;bottom:18px;display:grid;gap:4px;text-align:left}
+.ent-txt b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.1;letter-spacing:-.02em;color:var(--blanco)}
+.ent-txt span{color:#FFB08A;font-weight:600;font-size:.9rem;line-height:1.3}
+.video.ent .play{top:auto;left:auto;right:16px;bottom:16px;margin:0;width:54px;height:54px;transition:transform .2s}
+.video.ent button:hover .play{transform:scale(1.08)}
+@media (max-width:1060px){.carril-ent{grid-auto-columns:calc((100% - 18px)/2)}.ent-car .e-prev{left:-10px}.ent-car .e-next{right:-10px}}
+@media (max-width:640px){.carril-ent{grid-auto-columns:100%}.ent-car .e-prev{left:-6px}.ent-car .e-next{right:-6px}.ent-cabeza{margin-top:64px}}
+.video.yt button{font-size:.98rem}
+#entrevistas .ent-cabeza{margin-top:0}
+#entrevistas .aviso-chico{color:var(--gris)}
+@media (max-width:640px){.testi-car{padding:12px;border-radius:18px}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -362,7 +415,7 @@ window.CLARITY_ID = "z3rvf294da";
     </div>
     <div class="media">
       <div id="con-video">
-        <div class="video"><iframe src="https://player.vimeo.com/video/1242131549?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="Ruta Excedente 8S"></iframe></div>
+        <div class="video-vsl"><iframe src="https://player.vimeo.com/video/1242131549?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="Ruta Excedente 8S"></iframe></div>
         <p class="video-nota">▶ En 5 minutos te muestro todo lo que trae, semana a semana.</p>
       </div>
       <div id="sin-video" class="heroft" hidden>
@@ -600,15 +653,15 @@ window.CLARITY_ID = "z3rvf294da";
 </section>
 
 <!-- EN LOS MEDIOS -->
-<section class="bloque oscuro" id="medios" data-sec="medios">
+<section class="bloque medios" id="medios" data-sec="medios" aria-labelledby="t-medios">
   <div class="wrap">
     <span class="eyebrow">En los medios</span>
-    <h2 style="font-size:clamp(1.7rem,3.6vw,2.5rem);margin-top:10px">Me invitan como experto financiero en televisión, radio y prensa</h2>
+    <h2 class="titulo-seccion" id="t-medios">Me invitan como experto financiero en televisión, radio y prensa</h2>
     <p class="intro">Explico la economía y las inversiones en lenguaje sencillo, para que cualquier persona entienda qué pasa con su dinero.</p>
     <div class="paises"><span>Colombia</span><span>Estados Unidos</span><span>Panamá</span><span>Venezuela</span></div>
-    <div class="vgrid">
-      <div class="vbox"><button type="button" data-vimeo="927697221" data-nom="Entrevista TV: tasas de interés" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Entrevista en televisión</b><small>Tasas de interés: qué hacer con tu dinero</small></button></div>
-      <div class="vbox"><button type="button" data-vimeo="927695394" data-nom="Entrevista en vivo: método" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Entrevista en vivo</b><small>Invertir con método, no con emoción</small></button></div>
+    <div class="videos" style="margin-top:40px">
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927697221" aria-label="Ver entrevista: tasas de interés, qué hacer con tu dinero" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927695394" aria-label="Ver entrevista en vivo: invertir con método, no con emoción" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
     </div>
   </div>
 </section>
@@ -630,11 +683,18 @@ window.CLARITY_ID = "z3rvf294da";
 <!-- ENTREVISTAS CON ALUMNOS -->
 <section class="bloque" id="entrevistas" data-sec="entrevistas">
   <div class="wrap">
-    <div class="centro"><span class="eyebrow">Entrevistas con alumnos</span>
-    <h2 style="font-size:clamp(1.7rem,3.6vw,2.5rem);margin-top:10px">Sin guion: cómo empezaron y qué les cambió</h2>
-    <p class="intro">Conversaciones reales con alumnos que aplican el Método RCR con disciplina.</p></div>
-    <div class="vgrid" id="vg-ent"><div class="vbox"><button type="button" data-yt="iRNU6p6mN64" data-nom="José Montero" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b><small>Entrevista · 5 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="hUq6Mx7zJ3c" data-nom="Carlos Garay" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Carlos Garay</b><small>Entrevista · 7 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="E5ZAjkfbF8s" data-nom="Reinaldo Mejías" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Reinaldo Mejías</b><small>Entrevista · 2 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="5ArDg-f0ZzI" data-nom="Mikel Chivite" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Mikel Chivite</b><small>Entrevista · 4 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="iry2OPL5MlE" data-nom="Jon Mikel de Iribar" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Jon Mikel de Iribar</b><small>Entrevista · 1 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="a4QTJ6vmKjc" data-nom="Henry Gómez" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Henry Gómez</b><small>Entrevista · 2 min · su experiencia con el Método RCR</small></button></div><div class="vbox"><button type="button" data-yt="5L3QItiO5Fc" data-nom="Edilberto Russel" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="pl"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><b>Edilberto Russel</b><small>Entrevista · 1 min · su experiencia con el Método RCR</small></button></div></div>
-    <p class="desliza">Desliza para ver las 7 entrevistas →</p>
+    <div class="ent-cabeza">
+      <span class="eyebrow">Entrevistas</span>
+      <h3 class="ent-titulo">Conversé con mis alumnos sobre <span class="clave">su camino como inversionistas</span></h3>
+      <p class="intro">Entrevistas reales, sin guion: cómo empezaron, qué les costó y qué lograron aplicando el Método RCR con disciplina.</p>
+    </div>
+    <div class="testi-car ent-car">
+      <button type="button" class="nav-car e-prev" aria-label="Entrevistas anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="carril-ent" id="carril-ent" tabindex="0" aria-label="Entrevistas con alumnos"><div class="video yt ent"><button type="button" data-yt="iRNU6p6mN64" aria-label="Ver entrevista con José Montero" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 5 min</span></span><span class="ent-txt"><b>José Montero</b><span>+60 % de rentabilidad en un año</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="hUq6Mx7zJ3c" aria-label="Ver entrevista con Carlos Garay" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 7 min</span></span><span class="ent-txt"><b>Carlos Garay</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="E5ZAjkfbF8s" aria-label="Ver entrevista con Reinaldo Mejías" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Reinaldo Mejías</b><span>De cero a invertir con disciplina</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5ArDg-f0ZzI" aria-label="Ver entrevista con Mikel Chivite" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 4 min</span></span><span class="ent-txt"><b>Mikel Chivite</b><span>+US$ 2.300 en 5 días</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="iry2OPL5MlE" aria-label="Ver entrevista con Jon Mikel de Iribar" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Jon Mikel de Iribar</b><span>+80 % de efectividad</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="a4QTJ6vmKjc" aria-label="Ver entrevista con Henry Gómez" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Henry Gómez</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5L3QItiO5Fc" aria-label="Ver entrevista con Edilberto Russel" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Edilberto Russel</b><span>Sus primeras ganancias con método</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div></div>
+      <button type="button" class="nav-car e-next" aria-label="Entrevistas siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="t-contador">Entrevistas <span id="e-n">1</span> de 7</p>
+    <p class="aviso-chico">Experiencias individuales de alumnos. Los resultados pasados no garantizan resultados futuros.</p>
   </div>
 </section>
 
@@ -786,6 +846,21 @@ window.CLARITY_ID = "z3rvf294da";
 })();
 </script>
 
+<script>
+(function(){
+  const m=document.getElementById("carril-ent"); if(!m) return;
+  const items=[...m.children], cont=document.getElementById("e-n");
+  const base=()=>items[0].offsetLeft;
+  const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
+  const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
+  const maxI=()=>items.length-porVista();
+  const ir=i=>{ if(i>maxI()) i=(actual()>=maxI())?0:maxI(); if(i<0) i=(actual()<=0)?maxI():0; m.scrollTo({left:items[i].offsetLeft-base(),behavior:"smooth"}); };
+  document.querySelector(".e-prev").addEventListener("click",()=>ir(actual()-porVista()));
+  document.querySelector(".e-next").addEventListener("click",()=>ir(actual()+porVista()));
+  const pinta=()=>{ const a=actual()+1, b=Math.min(items.length,a+porVista()-1); cont.textContent = a===b ? a : a+"–"+b; };
+  m.addEventListener("scroll",pinta,{passive:true}); addEventListener("resize",pinta); pinta();
+})();
+</script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 /* ===== Medición extra (2-nov-2026): todo lo que se puede marcar ===== */
@@ -804,7 +879,7 @@ window.CLARITY_ID = "z3rvf294da";
   try { var vi = document.querySelector('#con-video iframe, .portada iframe[src*="vimeo"]'); if (vi && window.Vimeo) { var pl = new Vimeo.Player(vi), marcas = {}; pl.on('play', function(){ if (!marcas.play) { marcas.play = 1; ev('VideoVSLPlay'); } }); pl.on('timeupdate', function(d){ var x = Math.floor(d.percent * 100); [25,50,75,95].forEach(function(m){ if (x >= m && !marcas[m]) { marcas[m] = 1; ev('VideoVSL' + m); } }); }); } } catch (e) {}
   // Entrevistas (medios y alumnos): cargan al tocar
   document.querySelectorAll('[data-yt],[data-vimeo]').forEach(function(b){ b.addEventListener('click', function(){
-    var esYt = !!b.dataset.yt, nom = b.dataset.nom || '';
+    var esYt = !!b.dataset.yt, nom = b.dataset.nom || (b.getAttribute('aria-label')||'').replace(/^Ver (entrevista( en vivo)?( con)?:? ?)/i,'');
     ev(b.closest('#medios') ? 'VioEntrevistaMedios' : 'VioEntrevistaAlumno', { video: nom });
     b.parentElement.innerHTML = esYt ? '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Entrevista"></iframe>' : '<iframe src="https://player.vimeo.com/video/' + b.dataset.vimeo + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Entrevista de Alejandro Quiñones"></iframe>';
   }); });
