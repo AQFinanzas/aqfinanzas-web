@@ -24,6 +24,106 @@ window.CATEGORIAS = [
 
 window.ARTICULOS = [
  {
+   "slug": "como-invertir-en-la-bolsa-de-nueva-york-desde-latinoamerica",
+   "titulo": "Cómo invertir en la bolsa de Nueva York desde Latinoamérica: guía 2026",
+   "resumen": "Desde Colombia, Venezuela, México o cualquier país: qué necesitas, cómo elegir el bróker, cómo hacer tu primera compra y los errores que debes evitar.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-02",
+   "minutos": 6,
+   "imagen": "/blog/img/como-invertir-en-la-bolsa-de-nueva-york-desde-latinoamerica.jpg",
+   "destacado": true
+ },
+ {
+   "slug": "interactive-brokers-desde-latinoamerica",
+   "titulo": "Interactive Brokers desde Latinoamérica: cómo abrir tu cuenta y si es seguro",
+   "resumen": "¿Es seguro? ¿Qué necesito para abrir la cuenta? ¿Cómo deposito? Lo que debes saber antes de usar el bróker más usado por los latinoamericanos.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/interactive-brokers-desde-latinoamerica.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "que-es-un-etf",
+   "titulo": "Qué es un ETF y por qué es la mejor puerta de entrada a la bolsa",
+   "resumen": "Con una sola compra puedes ser socio de cientos de empresas. Qué es un ETF, cómo funciona y por qué lo recomiendo a quien empieza.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/que-es-un-etf.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "como-invertir-en-el-sp-500",
+   "titulo": "Cómo invertir en el S&P 500 desde Latinoamérica (y por qué tanta gente lo hace)",
+   "resumen": "El índice más famoso del mundo, explicado: qué es, cómo invertir en él con un ETF y qué debes saber sobre sus caídas.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/como-invertir-en-el-sp-500.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "burbuja-de-la-ia-que-hacer-con-tus-inversiones",
+   "titulo": "¿Burbuja de la IA? Qué hacer con tus inversiones cuando todos hablan de crash",
+   "resumen": "Los videos más vistos de bolsa hablan de burbujas y caídas. Qué nos enseña la historia y cómo proteger tu portafolio sin dejarte llevar por el miedo.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-02",
+   "minutos": 6,
+   "imagen": "/blog/img/burbuja-de-la-ia-que-hacer-con-tus-inversiones.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "cuanto-dinero-necesito-para-invertir-en-bolsa",
+   "titulo": "¿Cuánto dinero necesitas para empezar a invertir en bolsa? La respuesta real",
+   "resumen": "No necesitas miles de dólares. Te explico con números cuánto necesitas, qué son las acciones fraccionadas y por qué la constancia vale más que el monto.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/cuanto-dinero-necesito-para-invertir-en-bolsa.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "invertir-en-dividendos",
+   "titulo": "Invertir en dividendos: cómo construir ingresos pasivos con acciones y ETF",
+   "resumen": "Cobrar por ser socio de grandes empresas. Qué son los dividendos, cómo elegir buenas pagadoras y las trampas que debes evitar.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/invertir-en-dividendos.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "tasas-de-interes-de-la-fed-y-la-bolsa",
+   "titulo": "Tasas de interés de la Fed y la bolsa: qué pasa con tus acciones cuando se mueven",
+   "resumen": "Cada anuncio de la Reserva Federal mueve los mercados. Te explico por qué pasa, qué sectores sufren o ganan y cómo no perder la cabeza.",
+   "categoria": "Economía",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/tasas-de-interes-de-la-fed-y-la-bolsa.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "impuestos-invertir-en-estados-unidos-desde-latinoamerica",
+   "titulo": "Impuestos al invertir en Estados Unidos desde Latinoamérica: lo que debes saber",
+   "resumen": "W-8BEN, retenciones sobre dividendos y el impuesto que casi nadie menciona. Lo básico que debes saber antes de invertir en Estados Unidos.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-02",
+   "minutos": 5,
+   "imagen": "/blog/img/impuestos-invertir-en-estados-unidos-desde-latinoamerica.jpg",
+   "destacado": false
+ },
+ {
+   "slug": "trading-o-inversion-a-largo-plazo",
+   "titulo": "Trading o inversión a largo plazo: cuál es para ti (y por qué no tienes que elegir uno)",
+   "resumen": "Day trading, swing o largo plazo: diferencias reales de tiempo, riesgo y capital, y cómo combinarlos con un método.",
+   "categoria": "Método RCR",
+   "fecha": "2026-11-02",
+   "minutos": 6,
+   "imagen": "/blog/img/trading-o-inversion-a-largo-plazo.jpg",
+   "destacado": false
+ },
+ {
   "slug": "verdades-y-mentiras-del-network-marketing",
   "titulo": "Verdades y mentiras del network marketing: lo que debes saber antes",
   "resumen": "¿Vale la pena el network marketing? Conozco la industria desde adentro: estas son las verdades y mentiras que debes conocer antes de entrar en ella.",
@@ -111,7 +211,7 @@ window.ARTICULOS = [
   "fecha": "2019-09-19",
   "minutos": 2,
   "imagen": "/blog/img/fitness-financiero.jpg",
-  "destacado": true
+  "destacado": false
  },
  {
   "slug": "modelo-de-negocios",
