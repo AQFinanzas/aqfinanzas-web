@@ -54,7 +54,7 @@ fbq('track','ViewContent',{content_name:'Video Ruta 8S'});
     <iframe src="https://player.vimeo.com/video/1242131549?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="Ruta Excedente 8S" loading="lazy"></iframe>
   </div>
   <div class="cta">
-    <a class="btn btn-pago" id="pagar" href="https://pagoruta8s.aqfinanzas.com/">Quiero entrar a la Ruta 8S →</a>
+    <a class="btn btn-pago" id="pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Quiero entrar a la Ruta 8S →</a>
     <p class="nota">Pago seguro con tarjeta de crédito o débito y otros métodos.</p>
     <div class="links">
       <a class="btn btn-wa" id="wa" href="https://wa.me/573105104847?text=Hola%20Alejandro%20%F0%9F%91%8B%20Vi%20el%20video%20de%20la%20Ruta%20Excedente%208S%20y%20tengo%20una%20pregunta." target="_blank" rel="noopener">Tengo una pregunta</a>
@@ -68,7 +68,7 @@ fbq('track','ViewContent',{content_name:'Video Ruta 8S'});
   var p197 = /[?&]p=197\b/.test(q);
   var pagar = document.getElementById('pagar');
   // ?p=197 → página de pago a US$197; si no, la de US$97. Los demás parámetros (utm) pasan tal cual.
-  pagar.href = (p197 ? 'https://aqfinanzas.github.io/pagoruta8s/' : 'https://pagoruta8s.aqfinanzas.com/') + q;
+  pagar.href = (p197 ? 'https://aqfinanzas.github.io/pagoruta8s/' : 'https://aqfinanzas.github.io/pagoruta8s/') + q;
   function ev(n){ try{ fbq('trackCustom', n, {pagina:'video-ruta8s', precio: p197 ? 197 : 97}); }catch(e){} }
   pagar.addEventListener('click', function(){ ev('ClicPagoRuta8S'); try{ fbq('track','InitiateCheckout',{content_name:'Ruta 8S', value: p197 ? 197 : 97, currency:'USD'}); }catch(e){} });
   document.getElementById('wa').addEventListener('click', function(){ ev('ClicWhatsAppRuta8S'); });

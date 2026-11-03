@@ -397,7 +397,7 @@ window.CLARITY_ID = "z3rvf294da";
   <div class="wrap">
     <img src="img/logo-aq-blanco.webp" alt="AQ Finanzas" width="45" height="34">
     <div class="cuenta"><span id="cuenta-txt">Precio especial termina en</span> <b id="cuenta-mini">47:59:59</b></div>
-    <a class="btn btn-pago pagar" href="#oferta">Quiero entrar</a>
+    <a class="btn btn-pago pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Quiero entrar</a>
   </div>
 </header>
 
@@ -409,7 +409,7 @@ window.CLARITY_ID = "z3rvf294da";
       <p class="sub">Un camino paso a paso, de 8 semanas, para que dejes de improvisar con tu dinero y empieces a invertir tu excedente con <strong>criterio, orden y riesgo controlado</strong>, aunque hoy no sepas nada de finanzas.</p>
       <div class="chips"><span>Método RCR</span><span>Clases en vivo</span><span>Asistente con IA 24/7</span><span>Comunidad privada</span></div>
       <div class="precio-mini"><s class="tachado-total">US$2.083</s><b><span class="precio">US$97</span></b><em class="ahorro-pct">AHORRAS 95 %</em></div>
-      <div class="acciones"><a class="btn btn-pago btn-grande pagar" href="#oferta">Empezar hoy por&nbsp;<span class="precio">US$97</span>&nbsp;→</a></div>
+      <div class="acciones"><a class="btn btn-pago btn-grande pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Empezar hoy por&nbsp;<span class="precio">US$97</span>&nbsp;→</a></div>
       <p class="seguro">🔒 Pago seguro · Garantía de 7 días</p>
     </div>
     <div class="media">
@@ -595,7 +595,7 @@ window.CLARITY_ID = "z3rvf294da";
         <div class="monto"><small>US$</small><span id="monto">97</span></div>
         <div class="ahorro" id="ahorro">Ahorras US$1.986 (95 %)</div>
         <div class="reloj" id="reloj"><div><b id="h">47</b><small>horas</small></div><div><b id="m">59</b><small>min</small></div><div><b id="s">59</b><small>seg</small></div></div>
-        <a class="btn btn-pago btn-grande pagar" href="#">Quiero entrar a la Ruta 8S →</a>
+        <a class="btn btn-pago btn-grande pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Quiero entrar a la Ruta 8S →</a>
         <p class="aviso197" id="aviso197">Cuando el contador llegue a cero, el precio sube a US$197.</p>
         <div class="metodos"><span>💳 Tarjeta de crédito o débito</span><span>PayPal</span><span>Zelle</span><span>Binance</span><span>Pago móvil</span></div>
       </div>
@@ -729,7 +729,7 @@ window.CLARITY_ID = "z3rvf294da";
   <div class="wrap">
     <h2>El mejor momento para empezar a invertir con método <span class="clave">es hoy</span></h2>
     <p class="intro">Todo el programa más los 3 bonos, por <b class="precio" style="color:#fff">US$97</b> en un solo pago.</p>
-    <a class="btn btn-pago btn-grande pagar" href="#">Quiero entrar a la Ruta 8S →</a>
+    <a class="btn btn-pago btn-grande pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Quiero entrar a la Ruta 8S →</a>
     <p class="seguro">🔒 Pago seguro · Garantía de 7 días · Acceso inmediato</p>
   </div>
 </section>
@@ -742,7 +742,7 @@ window.CLARITY_ID = "z3rvf294da";
   </div>
 </footer>
 
-<div class="fijo"><a class="btn btn-pago pagar" href="#oferta">Quiero entrar por <span class="precio">US$97</span> →</a></div>
+<div class="fijo"><a class="btn btn-pago pagar" href="https://aqfinanzas.github.io/pagoruta8s/">Quiero entrar por <span class="precio">US$97</span> →</a></div>
 
 <script>
 (function(){
@@ -756,7 +756,7 @@ window.CLARITY_ID = "z3rvf294da";
   var forzar197 = /[?&]p=197\b/.test(q);
   var TOTAL = 2083;
   function vencido(){ return forzar197 || Date.now() - inicio >= PLAZO; }
-  var URL97 = 'https://pagoruta8s.aqfinanzas.com/', URL197 = 'https://aqfinanzas.github.io/pagoruta8s/?p=197';
+  var URL97 = 'https://aqfinanzas.github.io/pagoruta8s/', URL197 = 'https://aqfinanzas.github.io/pagoruta8s/?p=197';
   function urlPago(){
     var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(v|p|src)=/.test(x); });
     extra.push('src=oferta8s-' + (conVideo ? 'a' : 'b')); extra = extra.join('&');
@@ -780,8 +780,8 @@ window.CLARITY_ID = "z3rvf294da";
       $('#h').textContent = dos(h); $('#m').textContent = dos(m); $('#s').textContent = dos(s);
       $('#cuenta-mini').textContent = dos(h) + ':' + dos(m) + ':' + dos(s);
     }
-    // Los botones de la oferta van al pago; los de arriba bajan a la oferta.
-    $$('#oferta .pagar, .cierre .pagar').forEach(function(a){ a.href = urlPago(); });
+    // Todos los botones van directo a la página de pago (con src y UTM).
+    $$('a.pagar').forEach(function(a){ a.href = urlPago(); });
   }
   pintar(); setInterval(pintar, 1000);
 
