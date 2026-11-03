@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escáner Swing RCR · Acciones con entrada, Stop Loss y fases en tu correo</title>
+<meta name="description" content="De lunes a viernes, al cierre del mercado, recibe en tu correo las acciones que cumplen el Método RCR, con su gráfico, posible entrada, Stop Loss, fases y temperatura. US$27 al mes.">
+<meta property="og:title" content="Escáner Swing RCR · Alejandro Quiñones">
+<meta property="og:description" content="Las acciones que cumplen el Método RCR, con entrada, Stop Loss y fases, en tu correo de lunes a viernes. US$27 al mes.">
+<meta property="og:image" content="https://aqfinanzas.com/img/escaner-producto.png">
+<link rel="canonical" href="https://aqfinanzas.com/escaner">
+<link rel="icon" href="img/logo-aq-color.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--marino:#01005A;--noche:#05061C;--papel:#F5F7FC;--naranja:#F04A03;--naranja-h:#D63F00;--azul:#2A94F8;--gris:#5B6080;--verde:#16A34A;--wa:#25D366;--linea:#E3E7F2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:#1B1D3A;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.top{background:linear-gradient(135deg,var(--noche),var(--marino));color:#fff;padding:18px 20px 70px}
+.top .in{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.logo{height:40px;display:block;margin:0 0 30px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--azul);text-transform:uppercase}
+h1{margin:10px 0 12px;font-size:clamp(30px,5.4vw,50px);font-weight:800;letter-spacing:-.02em;line-height:1.06}
+h1 span{color:var(--naranja)}
+.sub{margin:0 0 22px;color:#C3CAEE;font-size:clamp(16px,2.6vw,19px)}
+.hero-img{border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);width:100%;display:block}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:999px;padding:17px 32px;font-size:clamp(16px,3.6vw,19px);transition:transform .15s,background .15s;text-align:center}
+.btn-o{background:var(--naranja);color:#fff;box-shadow:0 10px 26px rgba(240,74,3,.35)}
+.btn-o:hover{background:var(--naranja-h);transform:translateY(-1px)}
+.mini{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;color:#C3CAEE;font-size:14px}
+.mini b{color:#fff}
+main{max-width:1040px;margin:0 auto;padding:0 18px}
+section{padding:54px 0 0}
+h2{font-size:clamp(24px,4vw,34px);margin:0 0 8px;color:var(--marino);letter-spacing:-.01em;line-height:1.15}
+.lead{color:var(--gris);margin:0 0 26px;font-size:17px;max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:20px}
+.card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:22px;margin-bottom:10px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--marino)}
+.card p{margin:0;color:var(--gris);font-size:15px}
+.muestra{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.muestra img{width:100%;border-radius:16px;border:1px solid var(--linea);box-shadow:0 16px 40px rgba(1,0,90,.12);background:#fff}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.lista li{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:12px 14px 12px 46px;position:relative;font-size:15.5px}
+.lista li b{color:var(--marino)}
+.lista li:before{content:attr(data-n);position:absolute;left:12px;top:12px;width:24px;height:24px;border-radius:50%;background:var(--naranja);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+.temp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.temp div{border-radius:12px;padding:12px;text-align:center;font-weight:700;font-size:14px}
+.semana{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.dia{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:14px}
+.dia small{display:block;color:var(--azul);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.dia b{display:block;color:var(--marino);margin-top:4px;font-size:15px;line-height:1.3}
+.precio{background:linear-gradient(135deg,var(--noche),var(--marino));color:#fff;border-radius:22px;padding:34px 26px;text-align:center;margin-top:8px}
+.precio .n{font-size:clamp(46px,9vw,64px);font-weight:800;line-height:1}
+.precio .n small{font-size:18px;color:#C3CAEE;font-weight:600}
+.precio ul{list-style:none;padding:0;margin:20px auto 24px;max-width:460px;text-align:left;display:grid;gap:8px}
+.precio li{padding-left:26px;position:relative;color:#E2E6FA}
+.precio li:before{content:"✓";position:absolute;left:0;color:#4ADE80;font-weight:800}
+.faq details{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.faq summary{font-weight:700;color:var(--marino);cursor:pointer}
+.faq p{margin:8px 0 0;color:var(--gris)}
+.autor{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:18px;padding:20px}
+.autor img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.aviso{font-size:12.5px;color:var(--gris);text-align:center;max-width:760px;margin:40px auto 0}
+footer{text-align:center;color:var(--gris);font-size:13px;padding:24px 16px 100px}
+.float{position:fixed;right:16px;bottom:16px;background:var(--wa);color:#fff;border-radius:99px;padding:12px 16px;font-weight:800;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.2);font-size:14.5px;z-index:5}
+@media (max-width:820px){.top .in,.muestra{grid-template-columns:1fr}.semana{grid-template-columns:1fr 1fr}.temp{grid-template-columns:1fr 1fr}.top{padding-bottom:40px}}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1875412480497286');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Escáner Swing RCR',value:27,currency:'USD'});
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="in">
+    <div>
+      <img class="logo" src="img/logo-aq-blanco.webp" alt="AQ Finanzas">
+      <span class="tag">Escáner Swing RCR · Método RCR</span>
+      <h1>Las acciones que cumplen mi método, <span>listas para operar</span>, en tu correo</h1>
+      <p class="sub">De lunes a viernes, al cierre del mercado, te llegan las acciones de EE. UU. que cumplen el Método RCR, cada una con su gráfico, posible entrada, Stop Loss y fases de ganancia.</p>
+      <div style="margin:0 0 12px;color:#C3CAEE;font-size:16px">Valor <s style="color:#FF8A5B;font-weight:700">US$300/mes</s> · hoy <b style="color:#fff;font-size:20px">US$27/mes</b></div>
+      <a class="btn btn-o js-pago" href="pago-escaner">Quiero el Escáner por US$27/mes →</a>
+      <div class="mini"><span>📬 <b>1 correo</b> al día</span><span>📈 <b>2 a 6 acciones</b> con gráfico</span><span>🔓 <b>Cancelas</b> cuando quieras</span></div>
+    </div>
+    <img class="hero-img" src="img/escaner-producto.png" alt="Ejemplo del Escáner Swing RCR: gráfico con entrada, Stop Loss y fases">
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>Deja de buscar acciones a ciegas</h2>
+    <p class="lead">El escáner revisa cada día miles de acciones de mediana y alta capitalización y te deja solo las que cumplen las tres partes del Método RCR.</p>
+    <div class="grid">
+      <div class="card"><div class="ic" style="background:#EAF4FC">📉</div><h3>Por debajo de la SMA 200</h3><p>Empresas que están en descuento frente a su promedio de 200 días: mucho espacio para subir.</p></div>
+      <div class="card"><div class="ic" style="background:#FFF0E6">🕯️</div><h3>Vela de confirmación</h3><p>El precio rompe la SMA 20 hacia arriba con una vela verde fuerte: la señal de entrada.</p></div>
+      <div class="card"><div class="ic" style="background:#E9F7EE">🏢</div><h3>Empresas sanas</h3><p>ROA mayor a 5% y ventas y utilidades creciendo. Nada de acciones de centavos.</p></div>
+      <div class="card"><div class="ic" style="background:#FDECEC">🛡️</div><h3>Riesgo medido</h3><p>Cada acción trae su Stop Loss y cuánto capital usar, para que una mala operación no te saque del juego.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="muestra">
+      <img src="img/escaner-producto.png" alt="Gráfico de ejemplo del correo">
+      <div>
+        <h2>Así te llega cada acción</h2>
+        <p class="lead">Todo explicado en el gráfico, para que sepas exactamente qué hacer.</p>
+        <ul class="lista">
+          <li data-n="1"><b>Posible entrada:</b> el precio de referencia, al cierre de la vela de confirmación.</li>
+          <li data-n="2"><b>Stop Loss:</b> justo debajo del mínimo de la vela, con el % de riesgo y el capital a usar.</li>
+          <li data-n="3"><b>4 fases de ganancia:</b> todas a la misma distancia (el 60% del Stop Loss). Al tocar la Fase 1 subes el stop a tu entrada y ya no pierdes.</li>
+          <li data-n="4"><b>Potencial hasta la SMA 200:</b> cuánto espacio tiene para subir.</li>
+          <li data-n="5"><b>Temperatura:</b> qué tan caliente está la oportunidad.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>La temperatura: para saber por cuál empezar</h2>
+    <p class="lead">Combina la calificación técnica de TradingView (compra o compra fuerte), el potencial hasta la SMA 200 y lo fundamental. Nunca es 100%: es una guía para priorizar, no una garantía.</p>
+    <div class="temp">
+      <div style="background:#EAF4FC;color:#1E2A78">Menos de 60°<br>Fría</div>
+      <div style="background:#FFF0E6;color:#993C1D">60° a 69°<br>Tibia</div>
+      <div style="background:#FFD9C2;color:#8A2A00">70° a 79°<br>Caliente</div>
+      <div style="background:#EF4B04;color:#fff">80° o más<br>Muy caliente</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Aprendes el método mientras recibes las señales</h2>
+    <p class="lead">Cada correo trae una lección corta. En una semana entiendes por qué el escáner elige cada acción.</p>
+    <div class="semana">
+      <div class="dia"><small>Lunes</small><b>La SMA 200: ¿está barata la acción?</b></div>
+      <div class="dia"><small>Martes</small><b>La SMA 20 y la vela de confirmación</b></div>
+      <div class="dia"><small>Miércoles</small><b>El Stop Loss y cuánto capital usar</b></div>
+      <div class="dia"><small>Jueves</small><b>Las 4 fases y el Stop Loss móvil</b></div>
+      <div class="dia"><small>Viernes</small><b>Lo fundamental: empresas que ganan dinero</b></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="autor">
+      <img src="img/aq-sobre-mi.jpg" alt="Alejandro Quiñones">
+      <div>
+        <h2 style="font-size:24px">Creado por Alejandro Quiñones</h2>
+        <p style="margin:0;color:var(--gris)">Estratega de inversión con más de 15 años en los mercados, autor de “La Arquitectura del Dinero” y creador del Método RCR (Rentabilidad, Consistencia, Riesgo), con el que han aprendido miles de alumnos en Latinoamérica.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio">
+    <div class="precio">
+      <div style="font-weight:700;color:var(--azul);letter-spacing:.14em;font-size:12px;text-transform:uppercase">Suscripción mensual</div>
+      <div style="color:#C3CAEE;font-size:17px;margin:6px 0 4px">Valor: <s style="color:#FF8A5B;font-weight:700">US$300 / mes</s></div>
+      <div class="n">US$27 <small>/ mes</small></div>
+      <div style="display:inline-block;margin-top:10px;background:#16A34A;color:#fff;font-weight:800;font-size:14px;padding:6px 14px;border-radius:99px">Ahorras 91% · precio de lanzamiento</div>
+      <ul>
+        <li>Correo de lunes a viernes al cierre del mercado</li>
+        <li>Acciones con gráfico, entrada, Stop Loss, fases y temperatura</li>
+        <li>Una lección del Método RCR en cada correo</li>
+        <li>Pago con tarjeta, Binance, Zelle, PayPal o Pago Móvil</li>
+        <li>Sin permanencia: cancelas cuando quieras</li>
+      </ul>
+      <a class="btn btn-o js-pago" href="pago-escaner">Suscribirme ahora →</a>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Necesito saber de bolsa?</summary><p>No. Cada acción viene explicada en el gráfico y cada correo trae una lección del método. Si estás empezando, te recomiendo practicar primero en una cuenta demo.</p></details>
+    <details><summary>¿A qué hora llega el correo?</summary><p>De lunes a viernes, al cierre del mercado de Nueva York (alrededor de las 4:00 p. m. hora de Nueva York), con las velas del día ya confirmadas.</p></details>
+    <details><summary>¿Cuántas acciones llegan?</summary><p>Depende del mercado: normalmente entre 2 y 6. Si un día ninguna cumple el método, te lo decimos: sin señal clara no hay operación.</p></details>
+    <details><summary>¿Qué bróker necesito?</summary><p>Cualquiera que te permita comprar acciones de EE. UU., por ejemplo Interactive Brokers. Las acciones también las puedes buscar en TradingView.</p></details>
+    <details><summary>¿Cómo cancelo?</summary><p>Si pagas con tarjeta, cancelas desde Hotmart cuando quieras. Con los otros métodos, simplemente no renuevas el mes siguiente.</p></details>
+  </section>
+
+  <p class="aviso">El Escáner Swing RCR es contenido educativo basado en el Método RCR. No es una recomendación de inversión ni asesoría financiera personalizada: cada persona decide y asume sus operaciones. Invertir en bolsa implica riesgo de pérdida. Los resultados pasados no garantizan resultados futuros.</p>
+</main>
+<footer>AQ Finanzas · Excedente · <a href="privacidad">Privacidad</a></footer>
+<a class="float" id="wa" href="https://wa.me/573105104847?text=Hola%20Alejandro%2C%20tengo%20una%20pregunta%20sobre%20el%20Esc%C3%A1ner%20Swing%20RCR." target="_blank" rel="noopener">💬 ¿Dudas? WhatsApp</a>
+<script>
+(function(){
+  var q = location.search.replace(/^\?/, '');
+  document.querySelectorAll('.js-pago').forEach(function(a){
+    if (q) a.href = a.getAttribute('href') + '?' + q;
+    a.addEventListener('click', function(){ try{ fbq('trackCustom','ClicPagoEscaner'); }catch(e){} });
+  });
+})();
+</script>
+</body>
+</html>
