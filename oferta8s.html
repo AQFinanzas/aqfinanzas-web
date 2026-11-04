@@ -390,18 +390,18 @@ fbq('track','PageView');
 window.CLARITY_ID = "z3rvf294da";
 (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",window.CLARITY_ID);
 </script>
-<style>/* Primera pantalla en celular (3-nov-2026): video y precio a la vista sin bajar */
+<style>/* Primera pantalla en celular (3-nov-2026): precio y botón de pago arriba; foto debajo (sin video) */
 @media (max-width:900px){
  .portada .wrap{padding-top:20px;padding-bottom:28px;gap:0}
  .portada .wrap>div:first-child{display:contents}
  .portada .eyebrow{order:1}
  .portada h1{order:2;font-size:1.75rem;margin-top:8px;line-height:1.12}
- .portada .media{order:3;margin-top:14px}
- .portada .precio-mini{order:4;margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+ .portada .media{order:6;margin-top:16px}
+ .portada .precio-mini{order:3;margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
  .portada .precio-mini b{font-size:2.4rem!important;line-height:1}
  .portada .precio-mini .ahorro-pct{margin:0!important}
- .portada .acciones{order:5;margin-top:10px}
- .portada .seguro{order:6}
+ .portada .acciones{order:4;margin-top:10px}
+ .portada .seguro{order:5}
  .mini-testi{order:7;display:flex!important}
  .portada .sub{order:8;margin-top:18px;font-size:1rem}
  .portada .chips{order:9}
@@ -439,11 +439,7 @@ window.CLARITY_ID = "z3rvf294da";
       <div class="mini-testi"><span style="font-size:1.6rem">💬</span><div><span class="st">★★★★★</span><br>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado." <b>— Ana Caicedo, alumna</b></div></div>
     </div>
     <div class="media">
-      <div id="con-video">
-        <div class="video-vsl"><iframe src="https://player.vimeo.com/video/1242131549?autoplay=1&amp;muted=1&amp;badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="Ruta Excedente 8S"></iframe></div>
-        <p class="video-nota">▶ En 5 minutos te muestro todo lo que trae, semana a semana.</p>
-      </div>
-      <div id="sin-video" class="heroft" hidden>
+      <div id="sin-video" class="heroft">
         <img src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136">
         <div class="ins ins-a"><b>+15 años</b><span>invirtiendo y enseñando</span></div>
         <div class="ins ins-b"><b>+45.000</b><span>personas formadas</span></div>
@@ -773,8 +769,8 @@ window.CLARITY_ID = "z3rvf294da";
 <script>
 (function(){
   var q = location.search || '', $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return document.querySelectorAll(s); };
-  var conVideo = !/[?&]v=sin\b/.test(q), variante = conVideo ? 'con-video' : 'sin-video';
-  if (!conVideo) { $('#con-video').hidden = true; $('#sin-video').hidden = false; }
+  // 3-nov-2026: una sola landing, sin video (el video no enganchaba). Se mide como 'sin-video'.
+  var conVideo = false, variante = 'sin-video';
 
   // Contador personal de 48 h desde la primera visita; ?p=197 muestra directo el precio después del plazo.
   var K = 'oferta8s_inicio', inicio = 0, PLAZO = 48 * 3600 * 1000;
