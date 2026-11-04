@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pago · Guía Binance US$7</title>
+<script>
+/* Prueba de 4 páginas de pago (guía US$7, desde 4-nov-2026).
+   Cada persona cae al azar en una de las 4 y siempre ve la misma (se guarda en su navegador).
+   Para forzar una: ?pv=1, ?pv=2, ?pv=3 o ?pv=4. Para sacar una de la prueba, quítala de ACTIVAS. */
+(function(){
+  var ACTIVAS = ['v1','v2','v3','v4'];
+  var q = new URLSearchParams(location.search), v = null, K = 'pagoguia_variante';
+  var f = q.get('pv'); if (f && ACTIVAS.indexOf('v'+f) >= 0) v = 'v'+f;
+  if (!v) { try { v = localStorage.getItem(K); } catch(e) {} }
+  if (ACTIVAS.indexOf(v) < 0) v = ACTIVAS[Math.floor(Math.random()*ACTIVAS.length)];
+  try { localStorage.setItem(K, v); } catch(e) {}
+  q.delete('pv');
+  var s = q.toString();
+  location.replace(v + '.html' + (s ? '?' + s : '') + location.hash);
+})();
+</script>
+</head>
+<body style="font-family:system-ui,sans-serif;text-align:center;padding:40px;color:#01005A">Cargando…</body>
+</html>
