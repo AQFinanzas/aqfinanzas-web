@@ -169,7 +169,7 @@ var CONFIG = {
   TASA_BS: 1000,                       // tasa del día en Bs por US$
   CIERRE: '',                          // opcional: fecha de cierre (ej. '2026-10-25T21:00:00-05:00'); vacío = siempre abierta
   WHATSAPP: '573105104847',            // soporte (recibe las capturas)
-  SCRIPT_URL: '',                      // pendiente: receptor de la pestaña "Guía US$7" del Sheet Pagos Excedente
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby-63vNJWmjuwFVBe_QRIxvqjR3UTrxJs015DSOpl56JYj1Fyqzvcb1kpeLpmkqP78o/exec',
   PAYPAL_COMISION: 0.044, PAYPAL_FIJO: 0.30
 };
 /* Métodos: el orden aquí es el orden en la página. Campos vacíos = no se muestran. */
@@ -295,7 +295,7 @@ $('#form').addEventListener('submit', function(e){
   $('#err').style.display='none';
   var met = METODOS.filter(function(x){return x.nombre===m})[0]||{};
   var pais = met.donde==='ve' || /^(\+?58|0?4\d{2})/.test(w.replace(/\s/g,'')) ? 'Venezuela' : 'Otro país';
-  var data = {producto:'Guía Binance US$7', nombre:n, correo:c, whatsapp:w, referencia:r, plan:'Guía Binance US$7', pais:pais, metodo:m,
+  var data = {producto:'Guía US$7', nombre:n, correo:c, whatsapp:w, referencia:r, plan:'Guía Binance', pais:pais, metodo:m,
     monto:montoTexto(met), tasa: met.moneda==='bs'?String(CONFIG.TASA_BS):'', fuente: 'pago-guia-v3'+(P197?'-197':'')+(src?'-'+src:'')};
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
   var msg = 'Hola, soy '+n+'. Ya pagué la guía de Binance con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
