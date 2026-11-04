@@ -207,15 +207,17 @@ document.querySelectorAll('.js-wa').forEach(function(a){a.href=wa(a.getAttribute
 var sentAPI = {};
 function addPayment(m){if(sentAPI[m])return;sentAPI[m]=1;ev('AddPaymentInfo',{value:CONFIG.PRECIO_USD,currency:'USD',content_name:m},true)}
 
+/* Monto único por visitante en Binance (7,01–7,99 USDT) para identificar el pago automáticamente */
+var USDT_UNICO=(function(){var k='pagoguia_usdt',x=null;try{x=localStorage.getItem(k)}catch(e){}if(!x||!/^7\.\d\d$/.test(x)){x=(CONFIG.PRECIO_USD+(1+Math.floor(Math.random()*99))/100).toFixed(2);try{localStorage.setItem(k,x)}catch(e){}}return x})();
 function montoDe(m){
   if(m.moneda==='bs') return '<b>'+fmtBs(BS)+'</b>';
-  if(m.moneda==='usdt') return '<b>'+CONFIG.PRECIO_USD+' USDT</b>';
+  if(m.moneda==='usdt') return '<b>'+USDT_UNICO+' USDT</b> <span class="k">(monto exacto: así confirmamos tu pago automático)</span>';
   if(m.moneda==='paypal') return '<b>$'+PAYPAL.toFixed(2)+' USD</b> <span class="k">(incluye la comisión de PayPal)</span>';
   return '<b>$'+CONFIG.PRECIO_USD+' USD</b>';
 }
 function montoTexto(m){
   if(m.moneda==='bs') return fmtBs(BS);
-  if(m.moneda==='usdt') return CONFIG.PRECIO_USD+' USDT';
+  if(m.moneda==='usdt') return USDT_UNICO+' USDT';
   if(m.moneda==='paypal') return '$'+PAYPAL.toFixed(2)+' USD';
   return '$'+CONFIG.PRECIO_USD+' USD';
 }
@@ -301,7 +303,7 @@ $('#form').addEventListener('submit', function(e){
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
   var msg = 'Hola, soy '+n+'. Ya pagué la guía de Binance con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
   $('#okWa').href = wa(msg);
-  ev('PagoReportado',{value:CONFIG.PRECIO_USD,currency:'USD',content_name:m})
+  ev('PagoReportado',{value:CONFIG.PRECIO_USD,currency:'USD',content_name:m});
   (CONFIG.SCRIPT_URL?fetch(CONFIG.SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true})
     .catch(function(){}):Promise.resolve()).then(function(){
       $('#form').style.display='none'; $('#ok').style.display='block'; $('#ok').scrollIntoView({behavior:'smooth'});
