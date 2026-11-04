@@ -17,7 +17,9 @@
   };
 
   fbq('track', 'PageView', {}, { eventID: nid() });
-  ev('InitiateCheckout', { value: PAGO.precio, currency: 'USD', content_name: 'Guia Binance Venezuela' }, true);
+  /* InitiateCheckout una sola vez por persona (si recarga o vuelve, no se cuenta de nuevo) */
+  var yaPago = false; try { yaPago = localStorage.getItem('pagoguia_ic') === '1'; localStorage.setItem('pagoguia_ic', '1'); } catch (e) {}
+  if (!yaPago) ev('InitiateCheckout', { value: PAGO.precio, currency: 'USD', content_name: 'Guia Binance Venezuela' }, true);
   ev('VioPago_' + V);
 
   /* Clarity: mapas de calor y grabaciones, etiquetados por variante */

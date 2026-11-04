@@ -340,7 +340,7 @@ footer{text-align:center;color:var(--gris);font-size:.82rem;padding:26px 20px 10
   function ev(n,d){d=d||{};d.pagina='guia-binance';try{fbq('trackCustom',n,d)}catch(e){}try{clarity('event',n)}catch(e){}}
   document.querySelectorAll('.js-cta').forEach(function(a){
     if(q) a.href=a.getAttribute('href')+q;
-    a.addEventListener('click',function(){ev('ClicComprarGuia',{pos:a.getAttribute('data-pos')});try{fbq('track','InitiateCheckout',{value:7,currency:'USD',content_name:'Guia Binance Venezuela'})}catch(e){}});
+    a.addEventListener('click',function(){ev('ClicComprarGuia',{pos:a.getAttribute('data-pos')});/* InitiateCheckout se cuenta solo al abrir la página de pago (pago-guia/medicion.js), una vez */});
   });
   var st=document.getElementById('sticky'),hero=document.querySelector('.hero');
   addEventListener('scroll',function(){st.classList.toggle('on',scrollY>hero.offsetHeight)},{passive:true});
