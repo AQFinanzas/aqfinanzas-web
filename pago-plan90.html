@@ -96,6 +96,8 @@ window.CLARITY_ID = "z3rvf294da";
 (function(){var q=new URLSearchParams(location.search);clarity("set","landing","pago-plan90");clarity("set","fuente",q.get("src")||q.get("utm_source")||"directo");if(q.get("utm_campaign"))clarity("set","campana",q.get("utm_campaign"));
 document.addEventListener("click",function(e){var a=e.target.closest("a,button");if(!a)return;var t=(a.innerText||"").trim().slice(0,40);clarity("event","clic_pago-plan90_"+t.replace(/[^\wáéíóúñ$]+/gi,"_"));},true);})();
 </script>
+<script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-14T02:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
+<style>.sin-hijos .solo-webinar{display:none!important}</style>
 </head>
 <body>
 <header>
@@ -138,10 +140,12 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
       <button type="button" data-f="contado" class="on">Pago completo<small>US$167 en un solo pago</small></button>
       <button type="button" data-f="partes">En 3 partes<small>US$67 hoy y 2 pagos más</small></button>
     </div>
+    <div class="solo-webinar">
     <h2 style="margin-top:18px">2. ¿Sumas accesos para más hijos?</h2>
-    <div class="k">Tu plan ya incluye 1 acceso gratis para un hijo. Cada acceso adicional cuesta US$37 (pago único) y es solo para niños y jóvenes de 8 a 17 años.</div>
+    <div class="k">Tu plan ya incluye 1 acceso gratis para un hijo. Cada acceso adicional cuesta US$37 (pago único) y es solo para niños y jóvenes de 8 a 17 años. <b style="color:#F14900">Solo por el webinar: disponible hasta el viernes 13 de noviembre a las 9:00 p. m. (hora Colombia). Es una sola compra: después no se pueden sumar más hijos.</b></div>
     <div class="hijos" id="hijos">
       <button type="button" data-h="0" class="on">No</button><button type="button" data-h="1">+1</button><button type="button" data-h="2">+2</button><button type="button" data-h="3">+3</button><button type="button" data-h="4">+4</button><button type="button" data-h="5">+5</button>
+    </div>
     </div>
     <div class="resumen" id="resumen"></div>
   </section>
@@ -229,7 +233,7 @@ var COLORES = {
 var $ = function(s){return document.querySelector(s)};
 
 function fmtBs(n){return 'Bs. '+n.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})}
-var FORMA='contado', HIJOS=0, BS=0, PAYPAL=0;
+var FORMA='contado', HIJOS=0, BS=0, PAYPAL=0; // fuera de la ventana del webinar la sección de hijos está oculta y HIJOS queda en 0
 var HOT = {contado:'https://pay.hotmart.com/O108374792Q?off=zujvlt0g', partes:'https://pay.hotmart.com/O108374792Q?off=zb6j76vv', hijo:'https://pay.hotmart.com/O108374919M?off=daj7y7c9'};
 function hoy(){ return (FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA) + HIJOS*CONFIG.HIJO; }
 function recalcular(){ CONFIG.PRECIO_USD = hoy(); BS = CONFIG.PRECIO_USD*CONFIG.TASA_BS; PAYPAL = Math.round((CONFIG.PRECIO_USD*(1+CONFIG.PAYPAL_COMISION)+CONFIG.PAYPAL_FIJO)*100)/100; }
