@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plan 90 Días Excedente · Aprende a invertir en la bolsa · Alejandro Quiñones</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="En 90 días aprende a invertir en la bolsa de Nueva York desde cero con la App Excedente, el Método RCR, copiloto con IA y clases en vivo. Incluye un acceso gratis para tu hijo.">
+<meta property="og:title" content="Plan 90 Días Excedente · Aprende a invertir desde cero">
+<meta property="og:description" content="App Excedente, Método RCR, copiloto con IA, clases en vivo y un acceso gratis para tu hijo. US$167 o 3 pagos de US$67.">
+<meta property="og:image" content="https://aqfinanzas.com/img/og.jpg">
+<link rel="icon" href="img/logo-aq-color.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@1,500&display=swap">
+<style>
+:root{--marino:#01005A;--noche:#05061C;--papel:#F5F7FC;--blanco:#fff;--naranja:#F04A03;--naranja-h:#D63F00;--azul:#2A94F8;--tinta:#1B1D3A;--gris:#5B6080;--linea:#DDE3F0;--claro:#B9C2E8;--verde:#1DB954;--r:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.eyebrow{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);font-weight:800}
+.clave{color:var(--naranja)}
+[hidden]{display:none!important}
+
+/* Barra superior con contador */
+.barra{position:sticky;top:0;z-index:50;background:#000;color:#fff;border-bottom:2px solid var(--naranja)}
+.barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.barra img{height:34px}
+.cuenta{display:flex;align-items:center;gap:10px;font-size:.82rem;color:#d8dcf3}
+.cuenta b{font-variant-numeric:tabular-nums;font-size:1.05rem;color:#fff;background:rgba(240,74,3,.22);border:1px solid rgba(240,74,3,.6);border-radius:8px;padding:3px 8px;letter-spacing:.02em}
+.barra .btn{padding:.7em 1.1em;font-size:.88rem}
+@media (max-width:640px){.barra .btn{display:none}.cuenta span{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:800 1.05rem/1.15 Inter,sans-serif;padding:1.05em 1.7em;border-radius:999px;border:0;cursor:pointer;text-decoration:none;text-align:center;transition:transform .15s,background .15s}
+.btn-pago{background:var(--naranja);color:#fff;box-shadow:0 14px 30px -12px rgba(240,74,3,.8)}
+.btn-pago:hover{background:var(--naranja-h);transform:translateY(-1px)}
+.btn-grande{font-size:clamp(1.05rem,3.8vw,1.3rem);padding:1.15em 2em;width:100%;max-width:520px}
+.seguro{margin-top:12px;font-size:.86rem;color:var(--gris);display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.oscuro .seguro{color:var(--claro)}
+
+/* Portada */
+.portada{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,#1a2a9e 0%,var(--marino) 45%,var(--noche) 100%);color:#fff}
+.portada .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-top:56px;padding-bottom:64px}
+.portada h1{font-size:clamp(2.1rem,5.2vw,3.9rem);margin-top:14px}
+.portada .sub{margin-top:18px;font-size:1.12rem;color:var(--claro);max-width:34em}
+.portada .sub strong{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.precio-mini{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-top:26px}
+.precio-mini s{color:#8E96C2;font-size:1.15rem}
+.precio-mini b{font-size:2.4rem;font-weight:900;letter-spacing:-.03em}
+.precio-mini em{white-space:nowrap;font-style:normal;font-weight:800;font-size:.8rem;color:#0B0D2C;background:#FFC83D;padding:4px 9px;border-radius:999px}
+.portada .acciones{margin-top:18px}
+.portada .seguro{justify-content:flex-start;color:var(--claro)}
+.video-vsl{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14)}
+.video-vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-nota{margin-top:10px;font-size:.84rem;color:var(--claro);text-align:center}
+.collage{position:relative;height:440px}
+.collage .foto-aq{position:absolute;right:0;bottom:-64px;width:78%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.collage .m-laptop{position:absolute;left:0;top:30px;width:62%;transform:rotate(-3deg)}
+.collage .m-phone{position:absolute;left:44%;top:190px;width:30%;transform:rotate(5deg)}
+@media (max-width:900px){
+  .portada .wrap{grid-template-columns:minmax(0,1fr);padding-top:36px;padding-bottom:44px;gap:28px}
+  .collage{height:330px;max-width:460px;margin:0 auto;width:100%}
+  .portada .media{order:2}
+}
+
+.heroft{position:relative;max-width:470px;margin:0 auto}
+.heroft img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.ins{position:absolute;bottom:14%;background:rgba(5,6,28,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;line-height:1.2}
+.ins b{font-size:1.25rem;font-weight:900}.ins span{font-size:.74rem;color:var(--claro)}
+.ins-a{left:-4%}.ins-b{right:-4%;bottom:4%}
+.ins-a::before,.ins-b::before{content:"";position:absolute;top:-1px;left:14px;right:14px;height:2px;background:var(--naranja);border-radius:2px}
+@media (max-width:900px){.heroft{max-width:340px}.ins-a{left:0}.ins-b{right:0}}
+.bono .mock.foto{background:#05061C;min-height:0}
+/* Mockups */
+.laptop{position:relative}
+.laptop .pantalla{background:#0E1030;border:10px solid #1D1F3A;border-bottom-width:12px;border-radius:12px 12px 4px 4px;aspect-ratio:16/10;overflow:hidden;position:relative}
+.laptop .base{height:12px;background:linear-gradient(#C9CEDF,#9EA4BE);border-radius:0 0 14px 14px;margin:0 -7%;position:relative}
+.laptop .base::after{content:"";position:absolute;left:42%;right:42%;top:0;height:4px;background:#8a90aa;border-radius:0 0 6px 6px}
+.phone{background:#0B0C1F;border-radius:26px;padding:7px;box-shadow:0 20px 40px -14px rgba(0,0,0,.55);aspect-ratio:9/18.5;position:relative}
+.phone .pant{background:#fff;border-radius:20px;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:34%;height:14px;background:#0B0C1F;border-radius:10px;z-index:3}
+.ui-curso{display:grid;grid-template-columns:38% 1fr;height:100%;font-size:9px;color:#fff}
+.ui-curso .lista{background:#14163C;padding:8px 6px;display:flex;flex-direction:column;gap:4px}
+.ui-curso .lista i{display:block;height:9px;border-radius:3px;background:rgba(255,255,255,.12)}
+.ui-curso .lista i.on{background:var(--naranja)}
+.ui-curso .lista i.ok{background:rgba(42,148,248,.55)}
+.ui-curso .vid{position:relative;background:url(img/miniatura-clase.jpg) center/cover}
+.ui-curso .vid::after{content:"";position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;border-radius:50%;background:rgba(240,74,3,.95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/14px no-repeat}
+.ui-vivo{height:100%;background:#0B0E26;position:relative;overflow:hidden}
+.ui-vivo svg{position:absolute;inset:18% 4% 6% 4%;width:92%;height:76%}
+.ui-vivo .cam{position:absolute;right:6px;bottom:6px;width:26%;aspect-ratio:1;border-radius:8px;background:url(img/avatar-aq-redes.jpg) center/cover;border:2px solid #fff}
+.ui-vivo .tk{position:absolute;left:8px;top:28px;color:#fff;font-size:9px;font-weight:700;opacity:.85}
+.badge-vivo{position:absolute;left:8px;top:8px;background:#E0245E;color:#fff;font-weight:800;font-size:10px;letter-spacing:.08em;padding:3px 7px;border-radius:5px;display:flex;gap:5px;align-items:center}
+.badge-vivo::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;animation:late 1.2s infinite}
+@keyframes late{50%{opacity:.25}}
+.ui-chat{padding:28px 8px 8px;display:flex;flex-direction:column;gap:6px;font-size:9.5px;line-height:1.3;background:#F4F6FC;height:100%}
+.ui-chat .cab{font-weight:800;font-size:10px;color:var(--marino);display:flex;align-items:center;gap:5px;margin-bottom:2px}
+.ui-chat .cab::before{content:"";width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--azul),var(--marino))}
+.burb{padding:6px 8px;border-radius:10px;max-width:86%}
+.burb.yo{align-self:flex-end;background:var(--marino);color:#fff;border-bottom-right-radius:3px}
+.burb.ia{background:#fff;color:#1B1D3A;border:1px solid #E1E5F2;border-bottom-left-radius:3px}
+.ui-wa{background:#ECE5DD;height:100%;display:flex;flex-direction:column;font-size:9.5px;line-height:1.3}
+.ui-wa .cab{background:#075E54;color:#fff;padding:24px 8px 7px;font-weight:700;font-size:10px}
+.ui-wa .cab small{display:block;font-weight:400;opacity:.8;font-size:8px}
+.ui-wa .msgs{padding:7px;display:flex;flex-direction:column;gap:5px}
+.ui-wa .m{background:#fff;border-radius:8px;padding:5px 7px;max-width:88%}
+.ui-wa .m b{display:block;font-size:8.5px;color:#C2185B}
+.ui-wa .m.v b{color:#1565C0}
+.ui-wa .m.yo{align-self:flex-end;background:#DCF8C6}
+.hoja{background:#fff;border-radius:10px;box-shadow:0 16px 34px -16px rgba(1,0,90,.45);padding:12px;position:absolute;width:62%;border:1px solid #E3E7F3}
+.hoja h4{margin:0 0 6px;font-size:10px;color:var(--marino);letter-spacing:.02em}
+.hoja .l{height:6px;border-radius:3px;background:#E6EAF5;margin-top:5px}
+.hoja .ck{display:flex;gap:5px;align-items:center;margin-top:5px}
+.hoja .ck i{width:9px;height:9px;border-radius:3px;background:var(--verde);flex:none}
+.hoja .ck span{height:6px;border-radius:3px;background:#E6EAF5;flex:1}
+.hoja .barras{display:flex;align-items:flex-end;gap:4px;height:44px;margin-top:6px}
+.hoja .barras i{flex:1;background:linear-gradient(var(--azul),#7CC0FF);border-radius:3px 3px 0 0}
+.hoja .barras i:nth-child(even){background:linear-gradient(var(--naranja),#FF9A66)}
+.ruta{background:linear-gradient(160deg,#fff,#EEF3FF);border-radius:14px;padding:14px;border:1px solid #DCE4F8;box-shadow:0 18px 36px -20px rgba(1,0,90,.45)}
+.ruta h4{margin:0;font-size:11px;color:var(--marino)}
+.semanas{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.semanas i{font-style:normal;font-weight:800;font-size:10px;text-align:center;padding:7px 0;border-radius:8px;background:#fff;border:1px solid #DCE4F8;color:var(--marino)}
+.semanas i.ok{background:var(--marino);color:#fff;border-color:var(--marino)}
+.semanas i.on{background:var(--naranja);color:#fff;border-color:var(--naranja)}
+.barra-prog{height:6px;border-radius:4px;background:#DCE4F8;margin-top:10px;overflow:hidden}
+.barra-prog span{display:block;height:100%;width:44%;background:linear-gradient(90deg,var(--azul),var(--naranja))}
+
+/* Secciones */
+.bloque{padding:88px 0}
+.oscuro{background:linear-gradient(160deg,var(--noche),var(--marino));color:#fff}
+.titulo{font-size:clamp(1.9rem,4vw,2.9rem);color:var(--marino);margin-top:12px}
+.oscuro .titulo{color:#fff}
+.intro{margin-top:14px;color:var(--gris);font-size:1.07rem;max-width:42em}
+.oscuro .intro{color:var(--claro)}
+.centro{text-align:center}.centro .intro{margin-left:auto;margin-right:auto}
+
+.logros{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
+.logro{background:#fff;border:1px solid var(--linea);border-radius:var(--r);padding:20px}
+.logro .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900;color:#fff;background:var(--marino)}
+.logro h3{font-size:1.06rem;margin-top:12px;color:var(--marino);letter-spacing:-.01em}
+.logro p{margin-top:6px;color:var(--gris);font-size:.95rem}
+
+/* Productos */
+.productos{display:flex;flex-direction:column;gap:22px;margin-top:44px}
+.prod{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:24px;padding:30px;box-shadow:0 30px 60px -46px rgba(1,0,90,.5)}
+.prod:nth-child(even) .mock{order:2}
+.mock{position:relative;min-height:250px;display:grid;place-items:center;background:radial-gradient(90% 90% at 50% 40%,#EAF0FF,#F7F9FE 70%);border-radius:18px;padding:22px;overflow:hidden}
+.mock .laptop{width:88%}
+.mock .phone{width:52%;max-width:200px}
+.num{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.14em;color:var(--naranja);text-transform:uppercase}
+.prod h3{font-size:clamp(1.35rem,2.6vw,1.75rem);color:var(--marino);margin-top:6px}
+.prod p{margin-top:10px;color:var(--gris)}
+.prod ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.prod li{display:flex;gap:10px;align-items:flex-start;font-size:.97rem}
+.prod li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.mock.foto{padding:0;background:#05061C;min-height:0;aspect-ratio:4/3}
+.mock.foto img{width:100%;height:100%;object-fit:cover}
+.resumen{margin-top:14px!important;padding:10px 14px;border-left:3px solid var(--naranja);background:#FFF4EE;border-radius:0 10px 10px 0;color:var(--marino)!important;font-weight:600;font-size:.95rem}
+.bono .resumen{background:rgba(240,74,3,.14);color:#fff!important}
+.valor{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:8px 14px;border-radius:12px;background:#F2F5FD;border:1px dashed #C5CFEA;font-size:.92rem;color:var(--gris)}
+.valor b{color:var(--marino);font-size:1.08rem}
+.valor s{color:var(--marino);font-weight:800}
+@media (max-width:820px){.prod{grid-template-columns:minmax(0,1fr);padding:18px;gap:18px}.prod:nth-child(even) .mock{order:0}.mock{min-height:210px}}
+
+/* Bonos */
+.bonos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.bono{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px;display:flex;flex-direction:column}
+.bono .mock{background:radial-gradient(90% 90% at 50% 40%,rgba(42,148,248,.28),rgba(255,255,255,.03) 70%);min-height:200px}
+.bono .tagb{margin-top:16px;font-size:.72rem;font-weight:800;letter-spacing:.14em;color:#FFC83D;text-transform:uppercase}
+.bono h3{font-size:1.2rem;margin-top:6px}
+.bono p{margin-top:8px;color:var(--claro);font-size:.95rem;flex:1}
+.bono .valor{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25);color:var(--claro)}
+.bono .valor s{color:#fff}
+.libro3d{width:56%;max-width:170px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.45))}
+@media (max-width:900px){.bonos{grid-template-columns:1fr}}
+
+/* Pila de valor */
+.paquete{max-width:760px;width:100%;margin:28px auto 0;border-radius:24px;box-shadow:0 40px 70px -40px rgba(1,0,90,.7)}
+.oferta{max-width:760px;margin:40px auto 0;background:#fff;border-radius:28px;border:2px solid var(--marino);box-shadow:0 40px 80px -40px rgba(1,0,90,.55);overflow:hidden}
+.oferta .cab{background:var(--marino);color:#fff;text-align:center;padding:18px 20px}
+.oferta .cab b{display:block;font-size:1.25rem}
+.oferta .cab span{font-size:.88rem;color:var(--claro)}
+.pila{list-style:none;margin:0;padding:10px 26px}
+.pila li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--linea);font-size:.98rem}
+.pila li span{display:flex;gap:10px;align-items:flex-start}
+.pila li span::before{content:"✓";flex:none;color:var(--verde);font-weight:900}
+.pila li.bn span::before{content:"🎁"}
+.pila li s{color:var(--gris);white-space:nowrap;font-variant-numeric:tabular-nums}
+.total{padding:18px 26px 6px;display:flex;justify-content:space-between;align-items:baseline;font-weight:800;color:var(--marino)}
+.total s{font-size:1.4rem;color:#9AA1BD}
+.hoy{text-align:center;padding:12px 26px 30px}
+.hoy .eti{font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja)}
+.hoy .monto{font-size:clamp(3.6rem,11vw,5.2rem);font-weight:900;letter-spacing:-.04em;color:var(--marino);line-height:1;margin-top:6px}
+.hoy .monto small{font-size:.32em;letter-spacing:0;font-weight:800;vertical-align:super;margin-right:4px}
+.ahorro{display:inline-block;margin-top:12px;font-weight:800;color:#0A7A3E;background:#E6F7EE;border:1px solid #BFE8D0;padding:7px 14px;border-radius:999px;font-size:.95rem}
+.reloj{margin:22px auto 18px;display:flex;justify-content:center;gap:10px}
+.reloj div{background:var(--noche);color:#fff;border-radius:12px;padding:10px 0;width:74px;text-align:center}
+.reloj b{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.reloj small{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--claro)}
+.aviso197{margin-top:8px;font-size:.9rem;color:var(--gris)}
+.metodos{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.metodos span{font-size:.76rem;font-weight:700;color:var(--gris);border:1px solid var(--linea);border-radius:8px;padding:4px 8px;background:#fff}
+
+/* Garantía */
+.garantia{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;max-width:860px;margin:0 auto;background:#fff;border:1px solid var(--linea);border-radius:24px;padding:30px}
+.sello7{width:130px;height:130px;border-radius:50%;background:conic-gradient(from 0deg,var(--naranja),#FFB347,var(--naranja));display:grid;place-items:center;position:relative}
+.sello7::before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--marino)}
+.sello7 b{position:relative;color:#fff;text-align:center;font-size:2.2rem;line-height:1;font-weight:900}
+.sello7 b small{display:block;font-size:.6rem;letter-spacing:.14em;margin-top:4px}
+.garantia h2{font-size:1.6rem;color:var(--marino)}
+.garantia p{margin-top:10px;color:var(--gris)}
+@media (max-width:640px){.garantia{grid-template-columns:1fr;text-align:center;justify-items:center;padding:22px}}
+
+/* Comparación */
+.compara{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:38px}
+.col{border-radius:22px;padding:24px}
+.col.mal{background:#fff;border:1px solid var(--linea)}
+.col.bien{background:var(--marino);color:#fff}
+.col h3{font-size:1.15rem}
+.col.mal h3{color:#8A1F11}
+.col ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:12px}
+.col li{display:flex;gap:10px;font-size:.97rem}
+.col.mal li{color:var(--gris)}
+.col.mal li::before{content:"✕";color:#C0392B;font-weight:900}
+.col.bien li{color:#DDE3FF}
+.col.bien li::before{content:"✓";color:#4ADE80;font-weight:900}
+@media (max-width:760px){.compara{grid-template-columns:minmax(0,1fr)}}
+
+/* Sobre mí */
+.sobre{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.sobre img{border-radius:22px;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.sobre>div{min-width:0}
+.sobre .lead{font-size:1.15rem;font-weight:500;margin-top:16px}
+.sobre p+p{margin-top:12px;color:var(--gris)}
+.cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.cifras div{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:12px}
+.cifras b{display:block;font-size:1.5rem;font-weight:900;color:var(--marino);letter-spacing:-.02em}
+.cifras span{font-size:.82rem;color:var(--gris)}
+@media (max-width:520px){.cifras b{font-size:1.15rem}.cifras div{padding:10px}}
+@media (max-width:820px){.sobre{grid-template-columns:minmax(0,1fr);gap:24px}.sobre img{max-width:min(380px,100%);margin:0 auto}}
+
+/* Testimonios */
+.tcar{position:relative;margin-top:36px}
+.tpista{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 12px}
+.tpista::-webkit-scrollbar{display:none}
+.tcard{flex:0 0 calc((100% - 32px)/3);scroll-snap-align:start;margin:0;background:#fff;border:1px solid var(--linea);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 44px -34px rgba(1,0,90,.55)}
+.tcab{display:flex;gap:10px;align-items:center}
+.tav{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--azul),var(--marino))}
+.tcab b{display:block;color:var(--marino);font-size:.98rem}.tcab small{color:#E3A008;font-size:.78rem;font-weight:700}
+.tcard blockquote{margin:0;font-family:Lora,Georgia,serif;font-style:italic;font-size:1.02rem;line-height:1.45;color:var(--tinta);min-height:3.2em}
+.tcap{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:#EEF1F8;height:230px;display:block;width:100%}
+.tcap img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tcap::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,#fff 75%)}
+.tcap span{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:1;font-size:.8rem;font-weight:700;color:#fff;background:var(--marino);padding:6px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 14px -6px rgba(1,0,90,.6)}
+.tnav{position:absolute;top:44%;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--marino);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 10px 24px -10px rgba(1,0,90,.6)}
+.tprev{left:-18px}.tnext{right:-18px}
+.tpuntos{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.tpuntos i{width:8px;height:8px;border-radius:50%;background:#C9D1E8;transition:all .2s}
+.tpuntos i.on{width:22px;border-radius:4px;background:var(--naranja)}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,6,28,.9);display:grid;place-items:center;padding:20px}
+.lightbox img{max-width:min(560px,100%);max-height:86vh;border-radius:14px}
+.lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:1.2rem;cursor:pointer}
+@media (max-width:900px){.tcard{flex-basis:calc((100% - 16px)/2)}}
+@media (max-width:600px){.tcard{flex-basis:86%}.tnav{display:none}}
+
+.rcar{position:relative;margin-top:36px}
+.rpista{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 12px}
+.rpista::-webkit-scrollbar{display:none}
+.reel{flex:0 0 calc((100% - 48px)/4);position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000;scroll-snap-align:start;border:1px solid rgba(255,255,255,.14)}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-play{position:absolute;inset:0;border:0;cursor:pointer;background:linear-gradient(0deg,rgba(5,6,28,.85),rgba(5,6,28,0) 45%);color:#fff;display:flex;align-items:flex-end;padding:14px;font:700 1rem Inter,sans-serif;text-align:left}
+.reel-play .play{position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.reel-play .play svg{width:22px;height:22px;margin-left:3px}
+.reel.sonando .reel-play{display:none}
+.rprev{left:-18px}.rnext{right:-18px}
+.aviso-chico{margin-top:14px;text-align:center;font-size:.8rem;color:var(--claro)}
+.eventos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.eventos img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+@media (max-width:900px){.reel{flex-basis:calc((100% - 16px)/2)}}
+@media (max-width:600px){.reel{flex-basis:72%}.rnav,.rprev,.rnext{display:none}}
+/* Preguntas */
+.faq{max-width:820px;margin:34px auto 0;display:grid;gap:10px}
+.faq details{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:4px 18px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--marino);padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--naranja)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 16px;color:var(--gris)}
+
+.cierre{text-align:center}
+.cierre h2{font-size:clamp(1.9rem,4.4vw,3rem)}
+.cierre .intro{margin:14px auto 26px}
+footer{background:#000;color:#8E94B8;font-size:.8rem;padding:28px 0 90px;text-align:center}
+footer p+p{margin-top:8px}
+/* Botón fijo en celular */
+.fijo{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(5,6,28,.92) 30%);display:none}
+.fijo .btn{width:100%}
+@media (max-width:640px){.fijo{display:block}}
+
+/* ===== Componentes copiados tal cual de aqfinanzas.com (index.html) ===== */
+:root{--blanco:#fff;--claro-sobre-oscuro:#B9C2E8;--f-display:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--f-cuerpo:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--f-dato:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+/* Cintillo de medios */
+.cintillo{background:var(--blanco);border-bottom:1px solid var(--linea);padding-block:26px 22px;overflow:hidden}
+.cintillo-titulo{text-align:center;font-family:var(--f-dato);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding-inline:16px}
+.cinta{margin-top:18px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pista{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:72px;width:max-content;animation:desliza 38s linear infinite}
+.pista li{flex:0 0 auto;display:flex;align-items:center}
+.pista img{height:56px;width:auto;max-width:none;filter:grayscale(1) contrast(1.05);opacity:.72;transition:filter .3s ease,opacity .3s ease}
+.pista li:hover img{filter:none;opacity:1}
+.cinta:hover .pista{animation-play-state:paused}
+.pista .marca-texto{display:flex;flex-direction:column;align-items:center;line-height:1;color:#3a3f5c;opacity:.75;transition:opacity .3s,color .3s;font-family:var(--f-display)}
+.pista .marca-texto b{font-weight:800;font-size:1.65rem;letter-spacing:-.02em}
+.pista .marca-texto small{font-family:var(--f-dato);font-weight:700;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+.pista li:hover .marca-texto{opacity:1;color:#C8102E}
+@media (max-width:760px){.pista .marca-texto b{font-size:1.3rem}}
+.logo-ur{display:inline-block;height:62px;width:50px;overflow:hidden;position:relative}
+.pista .logo-ur img{position:absolute;height:70px;width:auto;max-width:none;left:-21px;top:-1px;filter:grayscale(1) contrast(1.9) brightness(1.18);opacity:.8}
+.pista li:hover .logo-ur img{filter:contrast(1.4) brightness(1.12);opacity:1}
+.pista img.chico{height:38px}
+@media (max-width:760px){.pista img.chico{height:30px}.logo-ur{height:50px;width:40px}.pista .logo-ur img{height:56px;left:-17px}}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:760px){.pista{gap:44px;animation-duration:28s}.pista img{height:44px}}
+@media (prefers-reduced-motion:reduce){.pista{animation:none;flex-wrap:wrap;justify-content:center;width:auto;row-gap:20px}.pista li[aria-hidden]{display:none}.pista li:nth-child(n+8){display:none}}
+.titulo-seccion{font-size:clamp(2rem,4vw,3.1rem);color:var(--marino);margin-top:14px}
+.testi-car{position:relative;margin-top:44px;padding:22px;border-radius:24px;background:linear-gradient(160deg,#FFFFFF 0%,#EAF0FF 100%);border:1.5px solid rgba(42,148,248,.35);box-shadow:0 30px 60px -38px rgba(1,0,90,.45),inset 0 1px 0 rgba(255,255,255,.9)}
+.testi-car::before{content:"";position:absolute;left:28px;right:28px;top:-1.5px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--naranja),var(--azul))}
+.testi-car .nav-car{z-index:2}
+.t-contador{text-align:center;color:var(--gris);font-size:.88rem;margin-top:10px;font-variant-numeric:tabular-nums}
+/* Medios */
+.medios{background:var(--noche);color:var(--blanco)}
+.medios .titulo-seccion{color:var(--blanco)}
+.medios .intro{color:var(--claro-sobre-oscuro)}
+.paises{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.paises span{font-family:var(--f-dato);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;color:var(--claro-sobre-oscuro)}
+.galeria-tv{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:12px;margin-top:48px}
+.galeria-tv img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.galeria-tv .g1{grid-column:span 3;grid-row:span 2}
+.galeria-tv .g2{grid-column:span 3}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#0d0f2e;border:1px solid rgba(255,255,255,.1)}
+.video button{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:var(--blanco);background:linear-gradient(0deg,rgba(5,6,28,.85),rgba(5,6,28,.2)),var(--fondo) center/cover no-repeat;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;padding:20px;text-align:left;font:600 1rem var(--f-cuerpo)}
+.video button small{font-family:var(--f-dato);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.video .play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(240,74,3,.8)}
+.video .play svg{width:24px;height:24px;margin-left:3px}
+.video button.con-mini{background:var(--fondo) center/cover no-repeat}
+.video button.con-mini .play{top:auto;left:auto;right:22px;bottom:22px;margin:0;transition:transform .2s}
+.video button.con-mini:hover .play{transform:scale(1.08)}
+@media (max-width:1024px){.video button.con-mini .play{width:44px;height:44px;right:12px;bottom:12px}.video button.con-mini .play svg{width:18px;height:18px}}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nav-car{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);color:var(--marino);display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+.nav-car svg{width:22px;height:22px}
+.nav-car:hover{background:var(--naranja);color:var(--blanco);transform:translateY(-50%) scale(1.06)}
+@media (max-width:760px){.nav-car{width:40px;height:40px}.nav-car svg{width:18px;height:18px}}
+.ent-cabeza{margin-top:88px;max-width:46em}
+.ent-titulo{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--marino);margin-top:12px}
+.carril-ent{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-width:0}
+.carril-ent::-webkit-scrollbar{display:none}
+.carril-ent .video{scroll-snap-align:start;border:0;box-shadow:0 18px 36px -24px rgba(1,0,90,.6)}
+.ent-car .e-prev{left:-20px}.ent-car .e-next{right:-20px}
+.video.ent button{padding:0;display:block;background:#05061C;overflow:hidden;isolation:isolate}
+.video.ent button::before{content:"";position:absolute;inset:-12px;z-index:-2;background:var(--fondo) center/cover no-repeat;filter:blur(3px) saturate(.6) brightness(.55);transform:scale(1.04)}
+.video.ent button::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(1,0,90,.95) 0%,rgba(1,0,90,.78) 45%,rgba(1,0,90,.25) 100%)}
+.ent-top{position:absolute;top:16px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ent-top img{height:30px;width:auto}
+.ent-chip{background:var(--naranja);color:var(--blanco);font-weight:700;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.ent-txt{position:absolute;left:18px;right:84px;bottom:18px;display:grid;gap:4px;text-align:left}
+.ent-txt b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.1;letter-spacing:-.02em;color:var(--blanco)}
+.ent-txt span{color:#FFB08A;font-weight:600;font-size:.9rem;line-height:1.3}
+.video.ent .play{top:auto;left:auto;right:16px;bottom:16px;margin:0;width:54px;height:54px;transition:transform .2s}
+.video.ent button:hover .play{transform:scale(1.08)}
+@media (max-width:1060px){.carril-ent{grid-auto-columns:calc((100% - 18px)/2)}.ent-car .e-prev{left:-10px}.ent-car .e-next{right:-10px}}
+@media (max-width:640px){.carril-ent{grid-auto-columns:100%}.ent-car .e-prev{left:-6px}.ent-car .e-next{right:-6px}.ent-cabeza{margin-top:64px}}
+.video.yt button{font-size:.98rem}
+#entrevistas .ent-cabeza{margin-top:0}
+#entrevistas .aviso-chico{color:var(--gris)}
+@media (max-width:640px){.testi-car{padding:12px;border-radius:18px}}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1875412480497286');
+fbq('track','PageView');
+</script>
+<script>
+window.CLARITY_ID = "z3rvf294da";
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",window.CLARITY_ID);
+</script>
+<style>/* Primera pantalla en celular (3-nov-2026): precio y botón de pago arriba; foto debajo (sin video) */
+@media (max-width:900px){
+ .portada .wrap{padding-top:20px;padding-bottom:28px;gap:0}
+ .portada .wrap>div:first-child{display:contents}
+ .portada .eyebrow{order:1}
+ .portada h1{order:2;font-size:1.75rem;margin-top:8px;line-height:1.12}
+ .portada .media{order:6;margin-top:16px}
+ .portada .precio-mini{order:3;margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+ .portada .precio-mini b{font-size:2.4rem!important;line-height:1}
+ .portada .precio-mini .ahorro-pct{margin:0!important}
+ .portada .acciones{order:4;margin-top:10px}
+ .portada .seguro{order:5}
+ .mini-testi{order:7;display:flex!important}
+ .portada .sub{order:8;margin-top:18px;font-size:1rem}
+ .portada .chips{order:9}
+ .video-nota{display:none}
+ .heroft{max-width:none!important;height:230px;overflow:hidden;border-radius:16px}
+ .heroft img{height:230px;width:auto;margin:0 auto;display:block}
+ .heroft .ins{transform:scale(.8)}
+ .fijo{transform:translateY(120%);transition:transform .3s}
+ .fijo.ver{transform:none}
+}
+.mini-testi{display:none;gap:10px;align-items:center;margin-top:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px;font-size:.92rem;color:#E6E8FF}
+.mini-testi b{color:#fff}.mini-testi .st{color:#FFC24B;font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="wrap">
+    <img src="img/logo-aq-blanco.webp" alt="AQ Finanzas" width="45" height="34">
+    <div class="cuenta"><span>Plan 90 Días</span> <b>US$167</b></div>
+    <a class="btn btn-pago" href="#oferta">Quiero entrar</a>
+  </div>
+</header>
+
+<section class="portada">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Plan 90 Días Excedente</span>
+      <h1>Aprende a invertir en la bolsa de Nueva York <span class="clave">en 90 días</span>, y enséñale a tu hijo a hacerlo también</h1>
+      <p class="sub">La App Excedente te lleva paso a paso, desde cero hasta el Método RCR completo, con un <strong>copiloto de inteligencia artificial</strong>, clases en vivo conmigo y una comunidad privada. Y con tu plan recibes <strong>un acceso gratis para tu hijo</strong>.</p>
+      <div class="chips"><span>App Excedente</span><span>Método RCR</span><span>Copiloto con IA</span><span>Clases en vivo</span><span>Acceso para tu hijo</span></div>
+      <div class="precio-mini"><s class="tachado-total">US$1.709</s><b>US$167</b><em class="ahorro-pct">o 3 × US$67</em></div>
+      <div class="acciones"><a class="btn btn-pago btn-grande" href="#oferta">Quiero mi Plan 90 Días →</a></div>
+      <p class="seguro">🔒 Pago seguro con Hotmart · Garantía de 7 días</p>
+      <div class="mini-testi"><span style="font-size:1.6rem">💬</span><div><span class="st">★★★★★</span><br>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado." <b>— Ana Caicedo, alumna</b></div></div>
+    </div>
+    <div class="media">
+      <div id="sin-video" class="heroft">
+        <img src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136">
+        <div class="ins ins-a"><b>+15 años</b><span>invirtiendo y enseñando</span></div>
+        <div class="ins ins-b"><b>+45.000</b><span>personas formadas</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CINTILLO DE MEDIOS -->
+<section class="cintillo" aria-label="Medios que me han invitado como experto financiero">
+  <p class="cintillo-titulo">Me han invitado como experto financiero</p>
+  <div class="cinta"><ul class="pista"><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="Gerente" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="Bloomberg" class="chico" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="RCN Noticias" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="Noticias Caracol" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="Radio Panamá 94.5 FM" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="Globovisión" loading="lazy" height="56"></li><li><span class="logo-ur"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uni%C3%B3n_Radio.jpg/500px-Uni%C3%B3n_Radio.jpg" alt="Unión Radio Venezuela" loading="lazy"></span></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="" class="chico" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="" height="56"></li><li aria-hidden="true"><span class="logo-ur"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uni%C3%B3n_Radio.jpg/500px-Uni%C3%B3n_Radio.jpg" alt=""></span></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="Gerente" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="Bloomberg" class="chico" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="RCN Noticias" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="Noticias Caracol" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="Radio Panamá 94.5 FM" loading="lazy" height="56"></li><li><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="Globovisión" loading="lazy" height="56"></li><li><span class="logo-ur"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uni%C3%B3n_Radio.jpg/500px-Uni%C3%B3n_Radio.jpg" alt="Unión Radio Venezuela" loading="lazy"></span></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265898.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265903.jpg" alt="" class="chico" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265860.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265862.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265867.jpg" alt="" height="56"></li><li aria-hidden="true"><img src="https://storage.builderall.com//franquias/2/6138904/editor-html/12265871.jpg" alt="" height="56"></li><li aria-hidden="true"><span class="logo-ur"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uni%C3%B3n_Radio.jpg/500px-Uni%C3%B3n_Radio.jpg" alt=""></span></li></ul></div>
+</section>
+
+
+<section class="bloque">
+  <div class="wrap centro">
+    <span class="eyebrow">Lo que cambia en 90 días</span>
+    <h2 class="titulo">5 cosas que vas a lograr con tu Plan 90 Días</h2>
+    <p class="intro">No necesitas saber de finanzas ni tener un gran capital. Necesitas un método claro, práctica y alguien que te guíe.</p>
+    <div class="logros" style="text-align:left">
+      <div class="logro"><div class="n">1</div><h3>Entender la bolsa desde cero</h3><p>Qué es una acción, un ETF, una vela y un promedio, con lecciones cortas, con audio y animadas.</p></div>
+      <div class="logro"><div class="n">2</div><h3>Dominar el Método RCR</h3><p>Rentabilidad, Consistencia y Riesgo: las reglas que enseño desde hace más de 15 años.</p></div>
+      <div class="logro"><div class="n">3</div><h3>Practicar sin arriesgar tu dinero</h3><p>Operaciones en demo con el mercado real antes de pasar a tu cuenta.</p></div>
+      <div class="logro"><div class="n">4</div><h3>Resolver tus dudas al instante</h3><p>Tu copiloto con IA, entrenado con el método, te responde a cualquier hora.</p></div>
+      <div class="logro"><div class="n">5</div><h3>Educar financieramente a tu hijo</h3><p>Mientras tú aprendes, él aprende con lecciones hechas para su edad.</p></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="bloque" style="padding-top:0">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow">Todo lo que recibes</span>
+      <h2 class="titulo">Lo que te llevas en tu Plan 90 Días</h2>
+      <p class="intro">Cinco piezas que trabajan juntas para que pases de la teoría a la práctica.</p>
+    </div>
+    <div class="productos">
+
+      <article class="prod">
+        <div class="mock foto"><img src="img/oferta/rcr.jpg" alt="Lecciones del Método RCR" width="1200" height="898" loading="lazy"></div>
+        <div>
+          <span class="num">#1 · El corazón del plan</span>
+          <h3>App Excedente: de cero al Método RCR completo</h3>
+          <p>Más de 120 lecciones cortas, interactivas y con mi voz, organizadas por unidades. Avanzas a tu ritmo desde el celular o la computadora.</p>
+          <ul><li>Desde qué es la bolsa hasta las estrategias del Método RCR</li><li>Buscador para ir directo a cualquier tema</li><li>Premios Bronce, Plata y Oro al completar cada etapa</li></ul>
+          <p class="resumen">En resumen: todo el camino, paso a paso, en tu bolsillo.</p>
+          <div class="valor">Valor <s>US$467</s></div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="mock foto"><img src="img/oferta/ia.jpg" alt="Copiloto de inversión con IA en el celular" width="1200" height="898" loading="lazy"></div>
+        <div>
+          <span class="num">#2 · Disponible 24/7</span>
+          <h3>Copiloto de inversión con IA</h3>
+          <p>Un asistente entrenado con el Método RCR para resolver tus dudas mientras estudias y practicas.</p>
+          <ul><li>Te explica cualquier concepto con ejemplos</li><li>Te ayuda a revisar tus operaciones</li><li>Te acompaña en cada lección</li></ul>
+          <p class="resumen">En resumen: un mentor virtual que te responde a cualquier hora.</p>
+          <div class="valor">Valor <s>US$267</s></div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="mock foto"><img src="img/oferta/vivo.jpg" alt="Clase en vivo con gráfico de la bolsa" width="1200" height="898" loading="lazy"></div>
+        <div>
+          <span class="num">#3 · Mercado real</span>
+          <h3>Clases en vivo conmigo</h3>
+          <p>Analizamos acciones y ETFs con el mercado abierto y ves el Método RCR aplicado en tiempo real.</p>
+          <ul><li>Sesiones en vivo durante tus 90 días</li><li>Preguntas y respuestas en directo</li><li>Grabaciones para repasar</li></ul>
+          <p class="resumen">En resumen: ves el método aplicado en el mercado real.</p>
+          <div class="valor">Valor <s>US$697</s></div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="mock foto"><img src="img/oferta/kit.jpg" alt="Herramientas del Método RCR" width="1200" height="898" loading="lazy"></div>
+        <div>
+          <span class="num">#4 · Para pasar a la acción</span>
+          <h3>Herramientas del Método RCR</h3>
+          <p>Lo práctico para aplicar lo que aprendes, enlazado dentro de las lecciones.</p>
+          <ul><li>Registro de operaciones</li><li>Screener y radares de acciones</li><li>Guía para armar tu primera lista de acciones</li></ul>
+          <p class="resumen">En resumen: todo lo práctico para pasar de la teoría a la acción.</p>
+          <div class="valor">Valor <s>US$147</s></div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="mock foto"><img src="img/oferta/comunidad.jpg" alt="Comunidad privada en el celular" width="1200" height="898" loading="lazy"></div>
+        <div>
+          <span class="num">#5 · No vas solo</span>
+          <h3>Comunidad privada "Excedente"</h3>
+          <p>Personas como tú, comprometidas con hacer crecer su dinero de forma inteligente y responsable.</p>
+          <ul><li>Avances, dudas y logros compartidos</li><li>Avisos de clases y eventos</li><li>Contenido y herramientas antes que nadie</li></ul>
+          <p class="resumen">En resumen: avanzas acompañado, nunca solo.</p>
+          <div class="valor">Valor <s>US$67</s></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="bloque oscuro" id="familia">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow" style="color:#FFC83D">Incluido en tu plan</span>
+      <h2 class="titulo">Educación financiera para toda la familia</h2>
+      <p class="intro">Lo que tú aprendes, tu hijo también lo puede aprender, en su idioma y a su ritmo.</p>
+    </div>
+    <div class="bonos">
+      <div class="bono">
+        <div class="mock" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:linear-gradient(135deg,#F14900,#C93A00);border-radius:14px;font-size:4.5rem">👧🧒</div>
+        <span class="tagb">Gratis con tu plan</span>
+        <h3>1 acceso para tu hijo (8 a 17 años)</h3>
+        <p>Lecciones adaptadas a su edad: versión niños (8 a 12) con mucho Bruno, nuestra mascota, y versión jóvenes (13 a 17). Tú lo invitas desde la app y recibes cada semana un resumen de su avance.</p>
+        <p class="resumen">En resumen: tu hijo empieza a entender el dinero desde ya.</p>
+        <div class="valor">Valor <s>US$37</s></div>
+      </div>
+      <div class="bono">
+        <div class="mock" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:linear-gradient(135deg,#2793F8,#1C1982);border-radius:14px;font-size:4.5rem">➕👦</div>
+        <span class="tagb">¿Tienes más hijos?</span>
+        <h3>Accesos adicionales por US$37 cada uno</h3>
+        <p>Suma todos los que necesites, uno por cada hijo. Son exclusivos para niños y jóvenes de 8 a 17 años (no para adultos) y duran lo mismo que tu plan.</p>
+        <p class="resumen">En resumen: cada hijo con su propio camino.</p>
+      </div>
+      <div class="bono">
+        <div class="mock"><img class="libro3d" src="img/libro-arquitectura-3d.webp" alt="Libro La Arquitectura del Dinero" width="690" height="858" loading="lazy"></div>
+        <span class="tagb">Bono</span>
+        <h3>Mi libro "La Arquitectura del Dinero"</h3>
+        <p>Los 17 principios para elevar tu inteligencia financiera y construir una base sólida antes de invertir.</p>
+        <p class="resumen">En resumen: la base de mentalidad financiera antes de invertir.</p>
+        <div class="valor">Valor <s>US$27</s></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="oferta">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow">Tu acceso completo</span>
+      <h2 class="titulo">Todo esto en tu Plan 90 Días</h2>
+    </div>
+    <img class="paquete" src="img/oferta/paquete.jpg" alt="Todo el programa Excedente en laptop, tablet y celular" width="1200" height="898" loading="lazy">
+    <div class="oferta">
+      <div class="cab"><b>Plan 90 Días Excedente</b><span>Acceso inmediato después del pago</span></div>
+      <ul class="pila">
+        <li><span>App Excedente (+120 lecciones, Método RCR completo)</span><s>US$467</s></li>
+        <li><span>Copiloto de inversión con IA 24/7</span><s>US$267</s></li>
+        <li><span>Clases en vivo + grabaciones</span><s>US$697</s></li>
+        <li><span>Herramientas del Método RCR</span><s>US$147</s></li>
+        <li><span>Comunidad privada "Excedente"</span><s>US$67</s></li>
+        <li class="bn"><span>1 acceso gratis para tu hijo (8 a 17 años)</span><s>US$37</s></li>
+        <li class="bn"><span>Bono: libro "La Arquitectura del Dinero"</span><s>US$27</s></li>
+      </ul>
+      <div class="total"><span>Valor total</span><s class="tachado-total">US$1.709</s></div>
+      <div class="hoy">
+        <div class="eti">Tu inversión hoy</div>
+        <div class="monto"><small>US$</small><span>167</span></div>
+        <div class="ahorro">Un solo pago · Ahorras US$1.542 (90 %)</div>
+        <a class="btn btn-pago btn-grande pagar" data-off="zujvlt0g" href="#oferta">Pagar US$167 de contado →</a>
+        <p style="margin:18px 0 10px;font-weight:700">o, si lo prefieres,</p>
+        <a class="btn btn-grande pagar" data-off="zb6j76vv" href="#oferta" style="background:#fff;color:var(--marino);border:2px solid var(--marino)">3 pagos mensuales de US$67 →</a>
+        <p class="aviso197">90 días de acceso desde tu compra. Accesos para más hijos: US$37 cada uno, en la página de pago.</p>
+        <div class="metodos"><span>💳 Tarjeta de crédito o débito</span><span>PayPal</span><span>PSE</span><span>Efecty</span><span>Pago local</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" style="padding-top:0">
+  <div class="wrap">
+    <div class="garantia">
+      <div class="sello7"><b>7<small>DÍAS</small></b></div>
+      <div>
+        <h2>Garantía de satisfacción, 100 % sin riesgo</h2>
+        <p>Si en los primeros 7 días sientes que el Plan 90 Días no te da la claridad o el impulso que necesitas para empezar a invertir con método, Hotmart te devuelve el 100 % de tu dinero. Sin preguntas incómodas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" style="background:#fff;border-block:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow">Haz este análisis</span>
+      <h2 class="titulo">¿El camino tradicional o un método como Excedente?</h2>
+    </div>
+    <div class="compara">
+      <div class="col mal"><h3>Las vías tradicionales</h3><ul>
+        <li>Necesitas mucho capital para empezar: un negocio, un local o una propiedad.</li>
+        <li>Pasan años antes de recuperar lo invertido.</li>
+        <li>Dependes de terceros, de inventarios y de conocimientos técnicos complejos.</li>
+      </ul></div>
+      <div class="col bien"><h3>Con Excedente</h3><ul>
+        <li>Empiezas con tu excedente mensual, incluso con poco dinero.</li>
+        <li>En pocas semanas tienes un plan y tu primer portafolio armado con criterio.</li>
+        <li>Lo haces desde cualquier lugar, con un método claro y acompañamiento.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="wrap sobre">
+    <img src="img/aq-sobre-mi.jpg" alt="Alejandro Quiñones" width="1000" height="1249" loading="lazy">
+    <div>
+      <span class="eyebrow">¿Quién te va a guiar?</span>
+      <h2 class="titulo">Soy Alejandro Quiñones</h2>
+      <p class="lead">Creador de Excedente y mentor en inversión. Llevo más de 15 años ayudando a personas en toda América Latina a transformar su relación con el dinero.</p>
+      <p>Soy autor del libro "La Arquitectura del Dinero", inversionista activo en la bolsa de Nueva York y fui conductor del programa económico "Economía Mía" en Globovisión.</p>
+      <p>Hoy, con Excedente, enseño a una nueva generación a invertir su excedente con método y con herramientas de inteligencia artificial, incluso si parten desde cero.</p>
+      <div class="eventos"><img src="img/evento-01.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-02.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-03.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-04.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-05.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"><img src="img/evento-06.jpg" alt="Alejandro Quiñones en conferencia" loading="lazy"></div>
+      <div class="cifras"><div><b>+15</b><span>años de experiencia</span></div><div><b>+45.000</b><span>personas formadas</span></div><div><b>+120</b><span>lecciones en la app</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EN LOS MEDIOS -->
+<section class="bloque medios" id="medios" data-sec="medios" aria-labelledby="t-medios">
+  <div class="wrap">
+    <span class="eyebrow">En los medios</span>
+    <h2 class="titulo-seccion" id="t-medios">Me invitan como experto financiero en televisión, radio y prensa</h2>
+    <p class="intro">Explico la economía y las inversiones en lenguaje sencillo, para que cualquier persona entienda qué pasa con su dinero.</p>
+    <div class="paises"><span>Colombia</span><span>Estados Unidos</span><span>Panamá</span><span>Venezuela</span></div>
+    <div class="videos" style="margin-top:40px">
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927697221" aria-label="Ver entrevista: tasas de interés, qué hacer con tu dinero" style="--fondo:url('img/miniatura-entrevista-1.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+      <div class="video"><button type="button" class="con-mini" data-vimeo="927695394" aria-label="Ver entrevista en vivo: invertir con método, no con emoción" style="--fondo:url('img/miniatura-entrevista-2.jpg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bloque oscuro" id="videos">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow" style="color:#FFC83D">En video</span>
+      <h2 class="titulo">Escúchalo de ellos</h2>
+      <p class="intro">Alumnos de distintos países cuentan cómo empezaron a invertir con el Método RCR.</p>
+    </div>
+    <div class="rcar"><button type="button" class="tnav rprev" aria-label="Videos anteriores">‹</button><div class="rpista" id="rpista"><div class="reel"><video preload="none" playsinline poster="reels/reel-otoniel.jpg" src="reels/reel-otoniel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Otoniel"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Otoniel</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-javier-forsyth.jpg" src="reels/reel-javier-forsyth.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Javier Forsyth"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Javier Forsyth</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-aleida-palma.jpg" src="reels/reel-aleida-palma.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Aleida Palma"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Aleida Palma</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-eusbely-donalles.jpg" src="reels/reel-eusbely-donalles.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Eusbely Donalles"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Eusbely Donalles</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-italo-ral.jpg" src="reels/reel-italo-ral.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Italo Ral"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Italo Ral</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-jose-montero.jpg" src="reels/reel-jose-montero.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de José Montero"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>José Montero</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-kenya-fernandez.jpg" src="reels/reel-kenya-fernandez.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Kenya Fernández"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Kenya Fernández</b></button></div><div class="reel"><video preload="none" playsinline poster="reels/reel-rosangel.jpg" src="reels/reel-rosangel.mp4"></video><button type="button" class="reel-play" aria-label="Ver testimonio de Rosangel González"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><b>Rosangel González</b></button></div></div><button type="button" class="tnav rnext" aria-label="Videos siguientes">›</button></div>
+    <div class="tpuntos" id="rpuntos"></div>
+    <p class="aviso-chico">Experiencias individuales de alumnos. Los resultados pasados no garantizan resultados futuros.</p>
+  </div>
+</section>
+
+<!-- ENTREVISTAS CON ALUMNOS -->
+<section class="bloque" id="entrevistas" data-sec="entrevistas">
+  <div class="wrap">
+    <div class="ent-cabeza">
+      <span class="eyebrow">Entrevistas</span>
+      <h3 class="ent-titulo">Conversé con mis alumnos sobre <span class="clave">su camino como inversionistas</span></h3>
+      <p class="intro">Entrevistas reales, sin guion: cómo empezaron, qué les costó y qué lograron aplicando el Método RCR con disciplina.</p>
+    </div>
+    <div class="testi-car ent-car">
+      <button type="button" class="nav-car e-prev" aria-label="Entrevistas anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="carril-ent" id="carril-ent" tabindex="0" aria-label="Entrevistas con alumnos"><div class="video yt ent"><button type="button" data-yt="iRNU6p6mN64" aria-label="Ver entrevista con José Montero" style="--fondo:url('https://i.ytimg.com/vi/iRNU6p6mN64/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 5 min</span></span><span class="ent-txt"><b>José Montero</b><span>+60 % de rentabilidad en un año</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="hUq6Mx7zJ3c" aria-label="Ver entrevista con Carlos Garay" style="--fondo:url('https://i.ytimg.com/vi/hUq6Mx7zJ3c/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 7 min</span></span><span class="ent-txt"><b>Carlos Garay</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="E5ZAjkfbF8s" aria-label="Ver entrevista con Reinaldo Mejías" style="--fondo:url('https://i.ytimg.com/vi/E5ZAjkfbF8s/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Reinaldo Mejías</b><span>De cero a invertir con disciplina</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5ArDg-f0ZzI" aria-label="Ver entrevista con Mikel Chivite" style="--fondo:url('https://i.ytimg.com/vi/5ArDg-f0ZzI/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 4 min</span></span><span class="ent-txt"><b>Mikel Chivite</b><span>+US$ 2.300 en 5 días</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="iry2OPL5MlE" aria-label="Ver entrevista con Jon Mikel de Iribar" style="--fondo:url('https://i.ytimg.com/vi/iry2OPL5MlE/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Jon Mikel de Iribar</b><span>+80 % de efectividad</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="a4QTJ6vmKjc" aria-label="Ver entrevista con Henry Gómez" style="--fondo:url('https://i.ytimg.com/vi/a4QTJ6vmKjc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 2 min</span></span><span class="ent-txt"><b>Henry Gómez</b><span>Su experiencia con el Método RCR</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="video yt ent"><button type="button" data-yt="5L3QItiO5Fc" aria-label="Ver entrevista con Edilberto Russel" style="--fondo:url('https://i.ytimg.com/vi/5L3QItiO5Fc/hqdefault.jpg')"><span class="ent-top"><img src="img/logo-aq-blanco.webp" alt="" width="480" height="363"><span class="ent-chip">Entrevista · 1 min</span></span><span class="ent-txt"><b>Edilberto Russel</b><span>Sus primeras ganancias con método</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div></div>
+      <button type="button" class="nav-car e-next" aria-label="Entrevistas siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="t-contador">Entrevistas <span id="e-n">1</span> de 7</p>
+    <p class="aviso-chico">Experiencias individuales de alumnos. Los resultados pasados no garantizan resultados futuros.</p>
+  </div>
+</section>
+
+
+<section class="bloque" style="background:#fff;border-block:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="centro">
+      <span class="eyebrow">Mensajes reales de WhatsApp</span>
+      <h2 class="titulo">Personas reales, avanzando con método</h2>
+    </div>
+    <div class="tcar"><button type="button" class="tnav tprev" aria-label="Anterior">‹</button><div class="tpista" id="tpista"><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yubeidy Pérez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Excelente estrategia para el aprendizaje, muy didáctico."</blockquote><button type="button" class="tcap" data-src="img/clase-img-1063.jpg" aria-label="Ver mensaje completo de Yubeidy Pérez"><img src="img/clase-img-1063.jpg" alt="Mensaje de Yubeidy Pérez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Daniel Sifontes</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Agradecido 100 % con tu curso… brutal, y a todo colega que me ha preguntado se lo he recomendado."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-daniel-sifontes.jpg" aria-label="Ver mensaje completo de Daniel Sifontes"><img src="img/testi-testimonio-daniel-sifontes.jpg" alt="Mensaje de Daniel Sifontes" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">F</span><div><b>Fabiola Cestari</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me parece súper completo, lo buscaba para conocer sobre inversión en la bolsa."</blockquote><button type="button" class="tcap" data-src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" aria-label="Ver mensaje completo de Fabiola Cestari"><img src="img/clase-3f92aaed-5eba-4c20-a672-3796fd56efee.jpg" alt="Mensaje de Fabiola Cestari" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">S</span><div><b>Silvia Hernández</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El detalle y la facilidad con que explicas genera confianza."</blockquote><button type="button" class="tcap" data-src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" aria-label="Ver mensaje completo de Silvia Hernández"><img src="img/clase-dea85f7f-240e-4729-9ec6-ccddc51a292f.jpg" alt="Mensaje de Silvia Hernández" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">Y</span><div><b>Yuly Sosa</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Al principio estuve a punto de tirar la toalla porque no entendía nada. Gracias por tu método."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-de-yuly-sosa.jpg" aria-label="Ver mensaje completo de Yuly Sosa"><img src="img/testi-testimonio-de-yuly-sosa.jpg" alt="Mensaje de Yuly Sosa" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>José Haeckermann</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Es práctico y directo al grano, con un lenguaje sencillo."</blockquote><button type="button" class="tcap" data-src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" aria-label="Ver mensaje completo de José Haeckermann"><img src="img/clase-5d1dd8a5-5ba2-4fed-8940-892d46aab88e.jpg" alt="Mensaje de José Haeckermann" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">D</span><div><b>Domingo Russo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Muy didáctico y práctico tu curso; me ha dado una mejor visión."</blockquote><button type="button" class="tcap" data-src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" aria-label="Ver mensaje completo de Domingo Russo"><img src="img/clase-e83c3f58-443a-4a42-a6f5-115a89095c97.jpg" alt="Mensaje de Domingo Russo" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Alumna Excedente</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"El método RCR es súper sencillo y fácil de aprender e implementar."</blockquote><button type="button" class="tcap" data-src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" aria-label="Ver mensaje completo de Alumna Excedente"><img src="img/clase-6e09cf2b-b535-452a-8e27-5dcf0934d3f0.jpg" alt="Mensaje de Alumna Excedente" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">J</span><div><b>J. D. Márquez</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Me siento muy a gusto con el proceso y con los resultados que se van obteniendo."</blockquote><button type="button" class="tcap" data-src="img/clase-img-0948.jpg" aria-label="Ver mensaje completo de J. D. Márquez"><img src="img/clase-img-0948.jpg" alt="Mensaje de J. D. Márquez" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">E</span><div><b>Eva María</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"He visto muchos cursos, pero como este ninguno. Tenemos una joya invaluable en nuestras manos."</blockquote><button type="button" class="tcap" data-src="img/testi-testimonio-2.jpg" aria-label="Ver mensaje completo de Eva María"><img src="img/testi-testimonio-2.jpg" alt="Mensaje de Eva María" loading="lazy"><span>Ver mensaje completo</span></button></figure><figure class="tcard"><div class="tcab"><span class="tav">A</span><div><b>Ana Caicedo</b><small>Alumno(a) Excedente · ★★★★★</small></div></div><blockquote>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado."</blockquote><button type="button" class="tcap" data-src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" aria-label="Ver mensaje completo de Ana Caicedo"><img src="img/testi-captura-de-pantalla-2026-05-28-a-la-s-9-13-37-a-m.jpg" alt="Mensaje de Ana Caicedo" loading="lazy"><span>Ver mensaje completo</span></button></figure></div><button type="button" class="tnav tnext" aria-label="Siguiente">›</button></div>
+    <div class="tpuntos" id="tpuntos"></div>
+    <div class="lightbox" id="lightbox" hidden><img alt=""><button type="button" aria-label="Cerrar">✕</button></div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="wrap">
+    <div class="centro"><span class="eyebrow">Preguntas frecuentes</span><h2 class="titulo">Lo que me preguntan antes de entrar</h2></div>
+    <div class="faq">
+      <details><summary>¿Necesito experiencia previa?</summary><p>No. La app empieza desde cero: qué es la bolsa, cómo funciona y cómo dar tus primeros pasos con orden, hasta llegar al Método RCR completo.</p></details>
+      <details><summary>¿Cuánto dura el plan?</summary><p>Tienes 90 días de acceso completo desde tu compra: la app, el copiloto con IA, las clases en vivo y la comunidad.</p></details>
+      <details><summary>¿Cómo funciona el acceso para mi hijo?</summary><p>Con tu plan recibes un acceso gratis para un hijo de 8 a 17 años. Lo invitas desde tu perfil en la app, él entra a lecciones adaptadas a su edad y tú recibes cada semana un resumen de su avance.</p></details>
+      <details><summary>¿Puedo sumar más hijos?</summary><p>Sí. Cada acceso adicional cuesta US$37 y puedes comprar todos los que necesites, uno por cada hijo. Son exclusivos para niños y jóvenes de 8 a 17 años, no para adultos.</p></details>
+      <details><summary>¿Cuánto dinero necesito para empezar a invertir?</summary><p>Puedes empezar con tu excedente mensual, incluso con poco dinero. Además, practicas primero en demo, sin arriesgar tu dinero.</p></details>
+      <details><summary>¿Qué pasa si no entiendo algún tema?</summary><p>Tienes el copiloto con IA 24/7, las clases en vivo para preguntar en directo y la comunidad privada.</p></details>
+      <details><summary>¿Cómo pago?</summary><p>El pago es seguro a través de Hotmart: tarjeta de crédito o débito, PayPal y medios de pago locales según tu país. Puedes pagar US$167 de contado o 3 pagos mensuales de US$67. Al confirmarse el pago recibes tu acceso por correo.</p></details>
+      <details><summary>¿Y si no es para mí?</summary><p>Tienes 7 días de garantía. Si no te da el valor que esperabas, te devolvemos el 100 % de tu dinero.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="bloque oscuro cierre">
+  <div class="wrap">
+    <h2>El mejor momento para empezar a invertir con método <span class="clave">es hoy</span></h2>
+    <p class="intro">Tu Plan 90 Días completo, con un acceso para tu hijo, por <b style="color:#fff">US$167</b> o 3 pagos de US$67.</p>
+    <a class="btn btn-pago btn-grande" href="#oferta">Quiero mi Plan 90 Días →</a>
+    <p class="seguro">🔒 Pago seguro · Garantía de 7 días · Acceso inmediato</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 AQ Finanzas · Alejandro Quiñones · @aqfinanzas</p>
+    <p>Contenido educativo. Invertir implica riesgos y los resultados dependen de cada persona; nada de lo aquí expuesto es una recomendación de inversión ni una promesa de ganancias.</p>
+    <p>Este sitio no forma parte de Facebook ni de Meta Platforms, Inc., ni está respaldado por ellos.</p>
+  </div>
+</footer>
+
+<div class="fijo"><a class="btn btn-pago" href="#oferta">Quiero mi Plan 90 Días →</a></div>
+
+<script>
+(function(){
+  var q = location.search || '', $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return document.querySelectorAll(s); };
+  // 3-nov-2026: una sola landing, sin video (el video no enganchaba). Se mide como 'sin-video'.
+  var conVideo = false, variante = 'sin-video';
+
+  // Botones de pago: checkout de Hotmart del Plan 90 Días (contado y 3 pagos), conservando UTM.
+  var CHECKOUT = ''; // código del checkout de Hotmart (p. ej. A12345678B): se llena al activar el producto
+  function precio(){ return 167; }
+  function urlPago(off){
+    var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(off|src)=/.test(x); });
+    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&');
+  }
+  if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
+
+  // Videos de testimonios: uno a la vez
+  document.querySelectorAll('.reel').forEach(function(r){
+    var v = r.querySelector('video'), b = r.querySelector('.reel-play');
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.reel video').forEach(function(o){ if (o !== v) { o.pause(); o.closest('.reel').classList.remove('sonando'); } });
+      v.controls = true; v.play(); r.classList.add('sonando');
+      try { clarity('event', 'video_testimonio'); fbq('trackCustom', 'VioTestimonio', { pagina: 'plan90', alumno: b.querySelector('b').textContent }); } catch (x) {}
+    });
+  });
+  var rp = $('#rpista'), rcs = rp.querySelectorAll('.reel'), rpu = $('#rpuntos');
+  rcs.forEach(function(){ rpu.appendChild(document.createElement('i')); });
+  function rpaso(){ return rcs[0].getBoundingClientRect().width + 16; }
+  function rmarca(){ var i = Math.round(rp.scrollLeft / rpaso()); rpu.querySelectorAll('i').forEach(function(d, k){ d.classList.toggle('on', k === i); }); }
+  rp.addEventListener('scroll', rmarca, { passive: true }); rmarca();
+  $('.rprev').addEventListener('click', function(){ rp.scrollBy({ left: -rpaso(), behavior: 'smooth' }); });
+  $('.rnext').addEventListener('click', function(){ rp.scrollBy({ left: rpaso(), behavior: 'smooth' }); });
+
+  // Carrusel de testimonios
+  var pista = $('#tpista'), cards = pista.querySelectorAll('.tcard'), puntos = $('#tpuntos');
+  cards.forEach(function(_, i){ var d = document.createElement('i'); puntos.appendChild(d); });
+  function paso(){ return cards[0].getBoundingClientRect().width + 16; }
+  function marcarP(){ var i = Math.round(pista.scrollLeft / paso()); puntos.querySelectorAll('i').forEach(function(d, k){ d.classList.toggle('on', k === i); }); }
+  pista.addEventListener('scroll', marcarP, { passive: true }); marcarP();
+  $('.tprev').addEventListener('click', function(){ pista.scrollBy({ left: -paso(), behavior: 'smooth' }); });
+  $('.tnext').addEventListener('click', function(){ pista.scrollBy({ left: paso(), behavior: 'smooth' }); });
+  var lb = $('#lightbox');
+  document.addEventListener('click', function(e){
+    var c = e.target.closest && e.target.closest('.tcap');
+    if (c) { lb.querySelector('img').src = c.getAttribute('data-src'); lb.hidden = false; try { clarity('event', 'testimonio_abierto'); } catch (x) {} return; }
+    if (!lb.hidden && (e.target === lb || e.target.closest('#lightbox button'))) lb.hidden = true;
+  });
+
+  try { fbq('track', 'ViewContent', { content_name: 'Plan 90 Dias Excedente', variante: variante, value: precio(), currency: 'USD' }); } catch (e) {}
+  // Medición: Clarity (mapas de calor y grabaciones) etiquetado por variante, fuente y anuncio; hasta dónde baja cada visita.
+  var P = {}; q.replace(/^\?/, '').split('&').forEach(function(x){ var k = x.split('='); if (k[0]) P[k[0]] = decodeURIComponent((k[1] || '').replace(/\+/g, ' ')); });
+  function cl(){ try { if (window.clarity) clarity.apply(null, arguments); } catch (e) {} }
+  cl('set', 'landing', 'plan90'); cl('set', 'variante', variante); cl('set', 'fuente', P.utm_source || 'directo');
+  if (P.utm_campaign) cl('set', 'campana', P.utm_campaign); if (P.utm_content) cl('set', 'anuncio', P.utm_content);
+  cl('set', 'precio', String(precio()));
+  var hitos = {}, secciones = [['videos', '#videos'], ['oferta', '#oferta'], ['bonos', '.bonos'], ['testimonios', '.testis'], ['preguntas', '.faq'], ['productos', '.productos']];
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (!en.isIntersecting) return; var n = en.target.getAttribute('data-sec'); if (hitos[n]) return; hitos[n] = 1;
+      cl('event', 'vio_' + n); try { fbq('trackCustom', 'VioSeccion', { pagina: 'plan90', seccion: n, variante: variante }); } catch (x) {} }); }, { threshold: .35 });
+    secciones.forEach(function(x){ var el = $(x[1]); if (el) { el.setAttribute('data-sec', x[0]); io.observe(el); } });
+  }
+  var marcas = {};
+  window.addEventListener('scroll', function(){ var h = document.documentElement, pct = Math.round(100 * (h.scrollTop + innerHeight) / h.scrollHeight);
+    [25, 50, 75, 100].forEach(function(m){ if (pct >= m && !marcas[m]) { marcas[m] = 1; cl('event', 'scroll_' + m); } }); }, { passive: true });
+  document.addEventListener('toggle', function(e){ if (e.target.tagName === 'DETAILS' && e.target.open) cl('event', 'faq_' + e.target.querySelector('summary').textContent.slice(0, 30)); }, true);
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
+    var alPago = a.getAttribute('href').indexOf('http') === 0;
+    try { fbq('trackCustom', alPago ? 'ClicPagoPlan90' : 'ClicVerOferta', { pagina: 'plan90', variante: variante, precio: precio() }); } catch (x) {}
+    cl('event', alPago ? 'clic_pago' : 'clic_ver_oferta'); if (alPago) cl('upgrade', 'clic_pago');
+    // InitiateCheckout lo envía la página de pago al abrir (una sola vez por persona).
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const m=document.getElementById("carril-ent"); if(!m) return;
+  const items=[...m.children], cont=document.getElementById("e-n");
+  const base=()=>items[0].offsetLeft;
+  const actual=()=>{ let k=0,d=1e9; items.forEach((it,i)=>{const x=Math.abs(it.offsetLeft-base()-m.scrollLeft); if(x<d){d=x;k=i}}); return k; };
+  const porVista=()=>Math.max(1,Math.round(m.clientWidth/(items[1].offsetLeft-items[0].offsetLeft)));
+  const maxI=()=>items.length-porVista();
+  const ir=i=>{ if(i>maxI()) i=(actual()>=maxI())?0:maxI(); if(i<0) i=(actual()<=0)?maxI():0; m.scrollTo({left:items[i].offsetLeft-base(),behavior:"smooth"}); };
+  document.querySelector(".e-prev").addEventListener("click",()=>ir(actual()-porVista()));
+  document.querySelector(".e-next").addEventListener("click",()=>ir(actual()+porVista()));
+  const pinta=()=>{ const a=actual()+1, b=Math.min(items.length,a+porVista()-1); cont.textContent = a===b ? a : a+"–"+b; };
+  m.addEventListener("scroll",pinta,{passive:true}); addEventListener("resize",pinta); pinta();
+})();
+</script>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+/* ===== Medición extra (2-nov-2026): todo lo que se puede marcar ===== */
+(function(){
+  var q = location.search, variante = /[?&]v=sin\b/.test(q) ? 'sin-video' : 'con-video';
+  function ev(n, d){ d = d || {}; d.pagina = 'plan90'; d.variante = variante; try { fbq('trackCustom', n, d); } catch (e) {} try { if (window.clarity) clarity('event', n); } catch (e) {} }
+  var vencida = false;
+  try { if (window.clarity) { clarity('set', 'variante', variante); clarity('set', 'precio', '167'); } } catch (e) {}
+  ev('VioPlan90');
+  // Profundidad de lectura
+  var hechos = {}; function scroll(){ var h = document.documentElement, p = Math.round(100 * (h.scrollTop + innerHeight) / h.scrollHeight); [25,50,75,90].forEach(function(x){ if (p >= x && !hechos[x]) { hechos[x] = 1; ev('Scroll' + x); } }); }
+  addEventListener('scroll', scroll, { passive: true });
+  // Tiempo en la página
+  [30,60,120,300].forEach(function(t){ setTimeout(function(){ if (document.visibilityState === 'visible') ev('Tiempo' + t + 's'); }, t*1000); });
+  // Video principal (Vimeo): play y avance
+  try { var vi = document.querySelector('#con-video iframe, .portada iframe[src*="vimeo"]'); if (vi && window.Vimeo) { var pl = new Vimeo.Player(vi), marcas = {}; pl.on('play', function(){ if (!marcas.play) { marcas.play = 1; ev('VideoVSLPlay'); } }); pl.on('timeupdate', function(d){ var x = Math.floor(d.percent * 100); [25,50,75,95].forEach(function(m){ if (x >= m && !marcas[m]) { marcas[m] = 1; ev('VideoVSL' + m); } }); }); } } catch (e) {}
+  // Entrevistas (medios y alumnos): cargan al tocar
+  document.querySelectorAll('[data-yt],[data-vimeo]').forEach(function(b){ b.addEventListener('click', function(){
+    var esYt = !!b.dataset.yt, nom = b.dataset.nom || (b.getAttribute('aria-label')||'').replace(/^Ver (entrevista( en vivo)?( con)?:? ?)/i,'');
+    ev(b.closest('#medios') ? 'VioEntrevistaMedios' : 'VioEntrevistaAlumno', { video: nom });
+    b.parentElement.innerHTML = esYt ? '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Entrevista"></iframe>' : '<iframe src="https://player.vimeo.com/video/' + b.dataset.vimeo + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Entrevista de Alejandro Quiñones"></iframe>';
+  }); });
+  // Cintillo visto
+  try { var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) { ev('VioCintilloMedios'); io.disconnect(); } }); }, { threshold: .5 }); var c = document.querySelector('.cintillo'); if (c) io.observe(c); } catch (e) {}
+  // Clics en WhatsApp
+  document.addEventListener('click', function(e){ var a = e.target.closest('a[href*="wa.me"],a[href*="whatsapp"]'); if (a) { ev('ClicWhatsApp'); try { fbq('track', 'Contact'); } catch (x) {} } });
+})();
+/* Cintillo: logos sin fondo blanco */
+(function(){
+  document.querySelectorAll('.pista img').forEach(function(img){
+    var ur = !!img.closest('.logo-ur'), t = ur ? 150 : 238, k = ur ? 40 : 48, src = img.getAttribute('src');
+    var im = new Image(); im.crossOrigin = 'anonymous';
+    im.onload = function(){ try { var c = document.createElement('canvas'); c.width = im.naturalWidth; c.height = im.naturalHeight; var x = c.getContext('2d'); x.drawImage(im, 0, 0); var d = x.getImageData(0, 0, c.width, c.height), p = d.data; for (var i = 0; i < p.length; i += 4) { var mn = Math.min(p[i], p[i+1], p[i+2]); p[i+3] = Math.round(p[i+3] * Math.max(0, Math.min(1, (t - mn) / k))); } x.putImageData(d, 0, 0); img.src = c.toDataURL('image/png'); } catch (e) {} };
+    im.src = src + (src.indexOf('?') > -1 ? '&' : '?') + 'cors=1';
+  });
+})();
+</script>
+<script>/* barra fija: aparece al bajar de la primera pantalla */addEventListener("scroll",function(){var f=document.querySelector(".fijo");if(f)f.classList.toggle("ver",scrollY>650)},{passive:true});</script>
+</body>
+</html>
