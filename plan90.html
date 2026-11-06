@@ -760,7 +760,7 @@ window.CLARITY_ID = "z3rvf294da";
   function precio(){ return 167; }
   function urlPago(off){
     var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(off|src)=/.test(x); });
-    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&');
+    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&checkoutMode=10&' + extra.join('&'); // checkoutMode=10 = página de pago personalizada (con el acceso adicional de US$37)
   }
   if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
 
