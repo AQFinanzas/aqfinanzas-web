@@ -753,11 +753,11 @@ fbq('track','PageView');
         <li><span><b>Tú ves su avance</b>: cada domingo te llega un correo con lo que aprendieron y temas para conversar en casa.</span></li>
       </ol>
       <div class="acciones">
-        <span class="btn btn-primario" aria-disabled="true" style="cursor:default">
+        <a class="btn btn-primario" href="https://padres.hijosprosperos.com/?utm_source=aqfinanzas&amp;utm_medium=web&amp;utm_campaign=bloque_hp&amp;utm_content=ninos" data-hp="ninos">
           App para niños (8–12)
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-        <span class="btn btn-secundario" aria-disabled="true" style="cursor:default">App para jóvenes (13–17)</span>
+        </a>
+        <a class="btn btn-secundario" href="https://padres.hijosprosperos.com/?utm_source=aqfinanzas&amp;utm_medium=web&amp;utm_campaign=bloque_hp&amp;utm_content=jovenes" data-hp="jovenes">App para jóvenes (13–17)</a>
       </div>
       <p class="hp-nota">Contenido educativo, con lenguaje pensado para cada edad.</p>
     </div>
@@ -1369,6 +1369,7 @@ new IntersectionObserver(([e])=>flot.classList.toggle("visible",!e.isIntersectin
   addEventListener("resize",()=>{generar(); if(reduce) dibujar(0);});
 })();
 </script>
+<script>document.querySelectorAll('[data-hp]').forEach(a=>a.addEventListener('click',()=>{try{fbq('trackCustom','ClicHP',{origen:a.dataset.hp})}catch(e){}}));</script>
 <script>document.querySelectorAll('[data-app]').forEach(a=>a.addEventListener('click',()=>{try{fbq('trackCustom','ClicApp',{origen:a.dataset.app})}catch(e){}}));</script>
 </body>
 </html>
