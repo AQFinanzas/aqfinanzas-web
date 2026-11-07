@@ -55,17 +55,15 @@ footer{padding:24px 20px 36px;text-align:center;font-size:13px;color:#4A4380}
 <p class="price">US$47</p>
 <p class="note">Acceso para 1 hijo · un solo pago · de por vida</p>
 
-<!-- Aquí va el código del upsell de 1 clic que entrega Hotmart; reemplaza los dos botones de abajo -->
-<div id="hotmart-sales-funnel">
-<button class="yes" type="button" onclick="demo()">Sí, quiero que mi hijo aprenda a invertir<small>Se agrega con 1 clic, sin volver a escribir tu tarjeta</small></button>
-<button class="no" type="button" onclick="demo()">No, gracias. Por ahora solo la educación financiera.</button>
-</div>
-<p class="demo" id="demo" hidden>Vista previa: en la página real, estos botones los pone Hotmart y cobran con un clic.</p>
+<!-- HOTMART - Sales Funnel Widget (embudo «Upsell Hijos Prósperos» 289457) -->
+<div id="hotmart-sales-funnel"></div>
+<script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+<script>checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')</script>
+<p class="note">Se agrega con 1 clic, sin volver a escribir tu tarjeta.</p>
 
 <p class="more">¿Tienes más de un hijo? Escríbenos por WhatsApp y te damos su acceso.</p>
 </main>
 
 <footer>Hijos Prósperos es una marca de AQ Finanzas · Contenido educativo. No es asesoría financiera.</footer>
-<script>function demo(){document.getElementById('demo').hidden=false}</script>
 </body>
 </html>
