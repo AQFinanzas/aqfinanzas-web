@@ -429,6 +429,28 @@ details p{padding:0 0 20px;color:var(--gris)}
 .app-chip{position:absolute;right:2%;top:14%;background:#fff;color:var(--marino);font:700 .82rem/1 var(--f-dato);padding:10px 14px;border-radius:999px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5)}
 .app-chip span{color:var(--naranja)}
 @media (max-width:860px){.app .wrap{grid-template-columns:1fr;gap:40px}.app-movil{order:-1}.app-movil img{max-width:250px}.app-chip{right:6%;top:6%}}
+/* HIJOS PRÓSPEROS */
+.hp{background:linear-gradient(180deg,#FFF7F2 0%,#EEF6FB 100%);overflow:hidden}
+.hp .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.hp-logo{height:56px;width:auto;display:block;margin-bottom:18px}
+.hp .eyebrow{color:#ED480F}
+.hp .titulo-seccion{color:#170B5B}
+.hp .titulo-seccion .clave{color:#2D8EBB}
+.hp .intro{color:#3d3a5c;margin-top:16px;max-width:560px}
+.hp-pasos{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px;counter-reset:hp}
+.hp-pasos li{display:flex;gap:14px;align-items:flex-start;font-size:1.05rem;line-height:1.45;color:#3d3a5c}
+.hp-pasos li::before{counter-increment:hp;content:counter(hp);flex:0 0 32px;height:32px;border-radius:50%;background:#2D8EBB;color:#fff;font:800 .95rem/32px var(--f-dato);text-align:center}
+.hp-pasos b{color:#170B5B}
+.hp .acciones{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hp .btn-secundario{color:#170B5B}
+.hp .btn-secundario:hover{background:rgba(23,11,91,.06)}
+.hp-nota{font-size:.82rem;color:#6b6890;margin-top:16px}
+.hp-movil{position:relative;display:flex;justify-content:center}
+.hp-movil::before{content:"";position:absolute;inset:8% 4%;background:radial-gradient(closest-side,rgba(237,72,15,.28),rgba(45,142,187,0));filter:blur(24px)}
+.hp-movil img{position:relative;width:100%;max-width:330px;height:auto;filter:drop-shadow(0 36px 50px rgba(23,11,91,.35));transform:rotate(3deg)}
+.hp-chip{position:absolute;right:4%;bottom:14%;background:#170B5B;color:#fff;font:700 .82rem/1 var(--f-dato);padding:10px 14px;border-radius:999px;box-shadow:0 12px 30px -8px rgba(23,11,91,.5)}
+.hp-chip span{color:#ED480F}
+@media (max-width:860px){.hp .wrap{grid-template-columns:1fr;gap:40px}.hp-movil{order:-1}.hp-movil img{max-width:250px}.hp-chip{right:8%;bottom:8%}}
 
 .sim{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;margin-top:48px;border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -46px rgba(1,0,90,.5);border:1px solid var(--linea)}
 .sim-controles{background:var(--blanco);padding:36px 34px;display:grid;gap:26px;align-content:start;min-width:0}
@@ -501,6 +523,7 @@ fbq('track','PageView');
       <a href="#metodo">Método RCR</a>
       <a href="#simulador">Tu meta</a>
       <a href="#app">App</a>
+      <a href="#hijos-prosperos">Hijos Prósperos</a>
       <a href="/blog/">Blog</a>
       <a href="#acelerador">Ruta 8S</a>
       <a href="#alumnos">Alumnos</a>
@@ -708,6 +731,36 @@ fbq('track','PageView');
     <div class="app-movil">
       <img src="img/app-mockup.webp" alt="Pantalla de inicio de la app AQFinanzas IA con la ruta para invertir en 4 pasos" loading="lazy" width="383" height="825">
       <span class="app-chip"><span>●</span> Gratis</span>
+    </div>
+  </div>
+</section>
+
+<!-- HIJOS PRÓSPEROS -->
+<section class="bloque hp" id="hijos-prosperos" aria-labelledby="t-hp">
+  <div class="wrap">
+    <div class="hp-movil">
+      <img src="img/app-hp-mockup.webp" alt="Mapa de lecciones de la app Hijos Prósperos con Bruno, la mascota" loading="lazy" width="383" height="796">
+      <span class="hp-chip"><span>●</span> Niños y jóvenes</span>
+    </div>
+    <div>
+      <img class="hp-logo" src="img/logo-hp.png" alt="Hijos Prósperos" width="421" height="281" loading="lazy">
+      <span class="eyebrow">Hijos Prósperos · Para toda la familia</span>
+      <h2 class="titulo-seccion" id="t-hp">La primera app de educación financiera <span class="clave">de América Latina</span></h2>
+      <p class="intro">Creé Hijos Prósperos para que tus hijos aprendan a manejar el dinero desde pequeños, jugando. Lecciones cortas con mi voz, retos y premios, en una versión para niños de 8 a 12 años y otra para jóvenes de 13 a 17.</p>
+      <ol class="hp-pasos">
+        <li><span><b>Aprenden jugando</b> con Bruno: lecciones animadas, monedas, logros y certificado.</span></li>
+        <li><span><b>Las 7 piezas del dinero</b>: mentalidad, ahorro, gastos, deudas, ingresos, activos y su primera inversión.</span></li>
+        <li><span><b>Practican con situaciones reales</b>, como ir al mercado y decidir qué comprar.</span></li>
+        <li><span><b>Tú ves su avance</b>: cada domingo te llega un correo con lo que aprendieron y temas para conversar en casa.</span></li>
+      </ol>
+      <div class="acciones">
+        <a class="btn btn-primario" href="https://pro.aqfinanzas.com/hijos-prosperos/ninos/?utm_source=web&amp;utm_medium=home&amp;utm_campaign=bloque_hp" target="_blank" rel="noopener" data-app="hp-ninos">
+          App para niños (8–12)
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-secundario" href="https://pro.aqfinanzas.com/hijos-prosperos/jovenes/?utm_source=web&amp;utm_medium=home&amp;utm_campaign=bloque_hp" target="_blank" rel="noopener" data-app="hp-jovenes">App para jóvenes (13–17)</a>
+      </div>
+      <p class="hp-nota">Contenido educativo, con lenguaje pensado para cada edad.</p>
     </div>
   </div>
 </section>
