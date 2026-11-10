@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
+<!-- OJO: 90dias.html, 90dias-venezuela.html y 90dias-otro-pais.html son la MISMA página (copias). Cambiar siempre 90dias.html y volver a copiarla a las otras dos. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plan 90 Días Excedente · Aprende a invertir en la bolsa · Alejandro Quiñones</title>
@@ -784,13 +785,13 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   }
   if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
   // 10-nov-2026: desde Venezuela (enlace con ?pais=ve o zona horaria de Caracas) los botones van a la página de pago con Pago Móvil, Binance y Zelle; desde otros países, directo a Hotmart.
-  var ES_VE = /(^|[?&])pais=ve(&|$)/i.test(q); try { if (!/(^|[?&])pais=/i.test(q) && Intl.DateTimeFormat().resolvedOptions().timeZone === 'America/Caracas') ES_VE = true; } catch(e){}
-  function urlVE(off){ return 'pago-plan90.html?pais=ve&forma=' + (off === 'zb6j76vv' ? 'partes' : 'contado') + '&src=90dias' + (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : ''); }
+  var ES_VE = /venezuela/i.test(location.pathname) || /(^|[?&])pais=ve(&|$)/i.test(q); try { if (!/otro-pais/i.test(location.pathname) && !/(^|[?&])pais=/i.test(q) && Intl.DateTimeFormat().resolvedOptions().timeZone === 'America/Caracas') ES_VE = true; } catch(e){}
+  function urlVE(off){ return '/pago-plan90?pais=ve&forma=' + (off === 'zb6j76vv' ? 'partes' : 'contado') + '&src=90dias' + (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : ''); }
   if (ES_VE) $$('a.pagar').forEach(function(a){ a.href = urlVE(a.getAttribute('data-off')); });
   var metodosEl = document.querySelector('.hoy .metodos');
   if (metodosEl) metodosEl.insertAdjacentHTML('afterend', ES_VE
-    ? '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">🇻🇪 Pagas desde Venezuela: Pago Móvil, Binance, Zelle o tarjeta. <a href="https://aqfinanzas.com/90dias?pais=otro" style="color:var(--azul);font-weight:700">¿Estás en otro país?</a></p>'
-    : '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">¿Estás en Venezuela? <a href="pago-plan90.html?pais=ve&src=90dias" style="color:var(--azul);font-weight:700">Paga con Pago Móvil, Binance o Zelle →</a></p>');
+    ? '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">🇻🇪 Pagas desde Venezuela: Pago Móvil, Binance, Zelle o tarjeta. <a href="/90dias-otro-pais" style="color:var(--azul);font-weight:700">¿Estás en otro país?</a></p>'
+    : '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">¿Estás en Venezuela? <a href="/pago-plan90?pais=ve&src=90dias" style="color:var(--azul);font-weight:700">Paga con Pago Móvil, Binance o Zelle →</a></p>');
 
   // Videos de testimonios: uno a la vez
   document.querySelectorAll('.reel').forEach(function(r){

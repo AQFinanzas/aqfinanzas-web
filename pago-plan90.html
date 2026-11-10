@@ -340,7 +340,8 @@ $('#pais').addEventListener('click', function(e){
 /* 10-nov-2026: ?pais=ve|otro y ?forma=contado|partes llegan desde la página de venta (aqfinanzas.com/90dias) y se preseleccionan */
 (function(){ var qp = new URLSearchParams(location.search), p = qp.get('pais'), f = qp.get('forma');
   if (f === 'partes' || f === 'contado') { var bf = document.querySelector('#forma [data-f="' + f + '"]'); if (bf) bf.click(); }
-  if (p === 've' || p === 'otro') { var bp = document.querySelector('#pais [data-p="' + p + '"]'); if (bp) bp.click(); } })();
+  if (p === 've' || p === 'otro') { var bp = document.querySelector('#pais [data-p="' + p + '"]'); if (bp) bp.click(); }
+  if (p || f) { try { history.replaceState(null, '', location.pathname.replace(/\.html$/, '')); } catch(e){} } })();
 function fallback(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a)}
 
 /* Contador al cierre real */
