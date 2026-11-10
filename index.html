@@ -412,6 +412,14 @@ details p{padding:0 0 20px;color:var(--gris)}
 /* Simulador */
 .simulador{background:var(--papel)}
 .app{background:radial-gradient(120% 90% at 85% 10%,#14207a 0%,var(--marino) 45%,var(--noche) 100%);color:var(--blanco);overflow:hidden}
+.p90 .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.p90-img img{width:100%;height:auto;border-radius:20px;box-shadow:0 40px 80px -40px rgba(1,0,90,.55)}
+.p90-lista{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.p90-lista li{display:flex;gap:12px;align-items:flex-start;font-size:1.05rem;line-height:1.45}
+.p90-lista li::before{content:"✓";flex:0 0 26px;height:26px;border-radius:50%;background:rgba(240,74,3,.12);color:var(--naranja);font:800 .9rem/26px var(--f-dato);text-align:center}
+.p90 .acciones{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.p90-nota{font-size:.82rem;color:var(--gris);margin-top:14px}
+@media (max-width:860px){.p90 .wrap{grid-template-columns:1fr;gap:32px}.p90 .acciones .btn{width:100%;justify-content:center}}
 .app .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .app .titulo-seccion{color:var(--blanco)}
 .app .titulo-seccion .clave{color:var(--naranja)}
@@ -523,6 +531,7 @@ fbq('track','PageView');
       <a href="#metodo">Método RCR</a>
       <a href="#simulador">Tu meta</a>
       <a href="#app">App</a>
+      <a href="#plan-90">Plan 90 Días</a>
       <a href="#hijos-prosperos">Hijos Prósperos</a>
       <a href="/blog/">Blog</a>
       <a href="#alumnos">Alumnos</a>
@@ -730,6 +739,28 @@ fbq('track','PageView');
     <div class="app-movil">
       <img src="img/app-mockup.webp" alt="Pantalla de inicio de la app AQFinanzas IA con la ruta para invertir en 4 pasos" loading="lazy" width="383" height="825">
       <span class="app-chip"><span>●</span> Gratis</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN 90 DÍAS -->
+<section class="bloque p90" id="plan-90" aria-labelledby="t-p90">
+  <div class="wrap">
+    <div class="p90-img"><img src="img/oferta/v2/app.jpg" alt="App Excedente del Plan 90 Días: lecciones cortas con la voz de Alejandro Quiñones" loading="lazy" width="1200" height="898"></div>
+    <div>
+      <span class="eyebrow">Plan 90 Días · Excedente</span>
+      <h2 class="titulo-seccion" id="t-p90">De cero a invertir en la bolsa de Nueva York <span class="clave">en 90 días</span></h2>
+      <p class="intro">Eliges tu camino: day trading, patrimonio a mediano y largo plazo, o los dos. Aprendes con la App Excedente y practicas en cuenta demo con el mercado real, conmigo a tu lado.</p>
+      <ul class="p90-lista">
+        <li><span><b>App Excedente</b> con lecciones cortas y mi voz</span></li>
+        <li><span><b>Clases en vivo</b> con el mercado abierto y copiloto con IA</span></li>
+        <li><span><b>De regalo:</b> mi libro y acceso para tu hijo</span></li>
+      </ul>
+      <div class="acciones">
+        <a class="btn btn-primario" href="/vzla?utm_source=web&amp;utm_medium=home&amp;utm_campaign=bloque_p90" data-p90="vzla">🇻🇪 Estoy en Venezuela</a>
+        <a class="btn btn-secundario" href="/latam?utm_source=web&amp;utm_medium=home&amp;utm_campaign=bloque_p90" data-p90="latam">🌎 Estoy en otro país</a>
+      </div>
+      <p class="p90-nota">Contenido educativo. Invertir conlleva riesgo; las prácticas se hacen en cuenta demo.</p>
     </div>
   </div>
 </section>
