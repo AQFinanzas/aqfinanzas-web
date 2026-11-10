@@ -977,8 +977,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   }
   function abre(){ var c = $('cortina'); c.hidden = false; c.classList.remove('fuera'); document.body.style.overflow = 'hidden'; }
   function entra(k){ guarda(k); aplica(k); var c = $('cortina'); c.classList.add('fuera'); document.body.style.overflow = ''; setTimeout(function(){ c.hidden = true; }, 460); window.scrollTo(0, 0);
-    try { var u = new URL(location.href); u.searchParams.set('puerta', k); history.replaceState(null, '', u); } catch(e){} }
-  var q = new URLSearchParams(location.search).get('puerta'), ya = P[q] ? q : lee();
+     }
+  var q = new URLSearchParams(location.search).get('puerta'), ya = P[q] ? q : null; // la cortina sale siempre, salvo con ?puerta=
   if (P[ya]) { $('cortina').hidden = true; aplica(ya); } else { abre(); pregunta(0); }
 })();
 </script>
