@@ -152,7 +152,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
 
   <section id="metodos">
     <h2>3. Método de pago</h2>
-    <div class="pais" id="pais"><span>¿Desde dónde pagas?</span><button type="button" data-p="ve">🇻🇪 Venezuela</button><button type="button" data-p="otro">🌎 Otro país</button></div>
+    <div class="pais" id="pais" style="display:none"><button type="button" data-p="ve" class="on">🇻🇪 Venezuela</button></div><p class="k" style="margin:0 0 12px;font-weight:700">🇻🇪 Métodos de pago desde Venezuela</p>
     <div id="methods"></div>
   </section>
 
@@ -209,18 +209,18 @@ var CONFIG = {
 };
 /* Métodos: el orden aquí es el orden en la página. Campos vacíos = no se muestran. */
 var METODOS = [
-  {id:'hotmart', nombre:'Tarjeta de crédito o débito', donde:'all', moneda:'card',
-    link: 'https://pay.hotmart.com/O108374792Q'},
   {id:'pm', nombre:'Pago Móvil', donde:'ve', moneda:'bs', campos:[
     ['Banco','Banesco (0134)','0134'],['Teléfono','0424-679-1594','04246791594'],['Cédula','19.845.867','19845867'],['Titular','Roxana Vasquez',null]]},
+  {id:'banesco', nombre:'Transferencia Banesco', donde:'ve', moneda:'bs', campos:[
+    ['Cuenta corriente','0134-0073-3407-3106-2707','01340073340731062707'],['Titular','Roxana Vasquez',null],['Cédula','19.845.867','19845867'],['Banco','Banesco',null]]},
   {id:'binance', nombre:'Binance (USDT)', donde:'all', moneda:'usdt', campos:[
     ['ID de Binance Pay','42637855'],['Usuario','enmanuel',null],['Apodo','enma33',null],['Correo','eeum2018@gmail.com']]},
   {id:'zelle', nombre:'Zelle', donde:'all', moneda:'usd', campos:[
     ['Correo de Zelle','alejandroaquinonesi@gmail.com']]},
-  {id:'banesco', nombre:'Transferencia Banesco', donde:'ve', moneda:'bs', campos:[
-    ['Cuenta corriente','0134-0073-3407-3106-2707','01340073340731062707'],['Titular','Roxana Vasquez',null],['Cédula','19.845.867','19845867'],['Banco','Banesco',null]]},
   {id:'paypal', nombre:'PayPal', donde:'all', moneda:'paypal', campos:[
-    ['Correo de PayPal','comunidadfinancieraaq@gmail.com']]}
+    ['Correo de PayPal','comunidadfinancieraaq@gmail.com']]},
+  {id:'hotmart', nombre:'Tarjeta internacional', donde:'all', moneda:'card',
+    link: 'https://pay.hotmart.com/O108374792Q'}
 ];
 /* Campos: [etiqueta, lo que se ve, lo que se copia]. Si el 3.º es null, no lleva botón Copiar. */
 /* Color del encabezado de cada método: [fondo, texto, ícono] */
@@ -263,7 +263,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 
 var box = $('#methods'), sel = $('#f-metodo');
 function pintar(){
-var abierto = (box.querySelector('.method.abierto')||{}).getAttribute ? box.querySelector('.method.abierto').getAttribute('data-id') : 'hotmart';
+var abierto = (box.querySelector('.method.abierto')||{}).getAttribute ? box.querySelector('.method.abierto').getAttribute('data-id') : 'pm';
 var paisSel = ($('#pais .on')||{}).getAttribute ? $('#pais .on').getAttribute('data-p') : '';
 box.innerHTML=''; var selPrev = sel.value;
 sel.innerHTML = '<option value="">Elige una opción</option>';
@@ -272,7 +272,7 @@ METODOS.forEach(function(m){
   d.className = 'method'+(m.id===abierto?' abierto':'')+(paisSel==='otro'&&m.donde==='ve'?' oculto':''); d.setAttribute('data-donde', m.donde); d.setAttribute('data-id', m.id);
   var col = COLORES[m.id]||['#01005A','#fff','💳'];
   d.style.setProperty('--c',col[0]); d.style.setProperty('--t',col[1]);
-  var h = '<div class="mhead"><span class="mname"><span>'+col[2]+'</span>'+esc(m.nombre)+'</span><span><span class="tag">'+(m.donde==='ve'?'Venezuela':'Todos los países')+'</span><span class="flecha">▼</span></span></div><div class="mbody">';
+  var h = '<div class="mhead"><span class="mname"><span>'+col[2]+'</span>'+esc(m.nombre)+'</span><span><span class="flecha">▼</span></span></div><div class="mbody">';
   if(m.id==='hotmart'){
     var sck = src?'&sck='+src:'';
     h += '<div class="amount">Paso 1 · Tu plan: <b>'+(FORMA==='contado'?'US$167':'3 pagos de US$67')+'</b></div>';
