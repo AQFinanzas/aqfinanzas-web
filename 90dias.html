@@ -789,6 +789,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   function urlVE(off){ return '/pago-plan90?pais=ve&forma=' + (off === 'zb6j76vv' ? 'partes' : 'contado') + '&src=90dias' + (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : ''); }
   if (ES_VE) $$('a.pagar').forEach(function(a){ a.href = urlVE(a.getAttribute('data-off')); });
   var metodosEl = document.querySelector('.hoy .metodos');
+  if (ES_VE && metodosEl) metodosEl.innerHTML = '<span>📱 Pago Móvil</span><span>🏦 Transferencia Banesco</span><span>🟡 Binance (USDT)</span><span>💜 Zelle</span><span>🅿️ PayPal</span><span>💳 Tarjeta</span>'; // 10-nov-2026: en Venezuela se muestran todos sus métodos
   if (metodosEl) metodosEl.insertAdjacentHTML('afterend', ES_VE
     ? '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">🇻🇪 Pagas desde Venezuela: Pago Móvil, Binance, Zelle o tarjeta. <a href="/latam" style="color:var(--azul);font-weight:700">¿Estás en otro país?</a></p>'
     : '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">¿Estás en Venezuela? <a href="/pago-plan90?pais=ve&src=90dias" style="color:var(--azul);font-weight:700">Paga con Pago Móvil, Binance o Zelle →</a></p>');
