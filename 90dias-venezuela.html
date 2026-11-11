@@ -416,7 +416,7 @@ window.CLARITY_ID = "z3rvf294da";
 .mini-testi{display:none;gap:10px;align-items:center;margin-top:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px;font-size:.92rem;color:#E6E8FF}
 .mini-testi b{color:#fff}.mini-testi .st{color:#FFC24B;font-size:.85rem}
 </style>
-<script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-14T02:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
+<script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-13T00:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
 <style>.sin-hijos .solo-webinar{display:none!important}</style>
 
 <style id="puertas-css">
@@ -781,7 +781,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   function precio(){ return 167; }
   function urlPago(off){
     var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(off|src|pais|puerta)=/.test(x); });
-    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&checkoutMode=10&' + extra.join('&'); // checkoutMode=10 = página de pago personalizada (con el acceso adicional de US$37)
+    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&'); // 11-nov-2026: sin checkoutMode=10 (acceso de hijos US$37 suspendido)
   }
   if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
   // 10-nov-2026: desde Venezuela (enlace con ?pais=ve o zona horaria de Caracas) los botones van a la página de pago con Pago Móvil, Binance y Zelle; desde otros países, directo a Hotmart.

@@ -96,7 +96,7 @@ window.CLARITY_ID = "z3rvf294da";
 (function(){var q=new URLSearchParams(location.search);clarity("set","landing","pago-plan90");clarity("set","fuente",q.get("src")||q.get("utm_source")||"directo");if(q.get("utm_campaign"))clarity("set","campana",q.get("utm_campaign"));
 document.addEventListener("click",function(e){var a=e.target.closest("a,button");if(!a)return;var t=(a.innerText||"").trim().slice(0,40);clarity("event","clic_pago-plan90_"+t.replace(/[^\wáéíóúñ$]+/gi,"_"));},true);})();
 </script>
-<script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-14T02:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
+<script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-13T00:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
 <style>.sin-hijos .solo-webinar{display:none!important}</style>
 <script src="/plan90-reloj.js"></script>
 </head>
