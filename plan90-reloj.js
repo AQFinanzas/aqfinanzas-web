@@ -46,6 +46,25 @@
     }
   };
 
+
+  /* ---------- 11-nov-2026: la puerta elegida viaja con el pago ----------
+     Hotmart: va en sck (p90dt | p90pat | p90com) → Make la escribe en la columna Plan → el alta abre esa ruta.
+     Venezuela (pago-plan90): va como ?puerta= y también se lee del navegador. */
+  function puerta() {
+    var m = qs.match(/(?:^|[?&])puerta=(dt|pat|com)(?:&|$)/); if (m) return m[1];
+    try { var v = localStorage.getItem('p90-puerta'); if (/^(dt|pat|com)$/.test(v || '')) return v; } catch (e) {}
+    return '';
+  }
+  P90.puerta = puerta;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
+    var k = puerta(), h = a.getAttribute('href') || ''; if (!k) return;
+    h = h.replace(/([?&])(sck|puerta)=[^&]*/g, '$1').replace(/[?&]+$/, '').replace(/&&+/g, '&').replace(/\?&/, '?');
+    if (/pay\.hotmart\.com/.test(h)) h += (h.indexOf('?') < 0 ? '?' : '&') + 'sck=p90' + k;
+    else if (/pago-plan90/.test(h)) h += (h.indexOf('?') < 0 ? '?' : '&') + 'puerta=' + k;
+    a.setAttribute('href', h);
+  }, true);
+
   /* ---------- estilos del contador ---------- */
   var css = '.p90r{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:14px 0 6px;padding:12px 14px;border-radius:14px;background:#FFF4EE;border:1.5px solid #F7B08F;color:#01005A;font-size:.95rem;line-height:1.3}' +
     '.p90r .t{font-weight:800}.p90r small{display:block;font-weight:500;color:#5B6075;font-size:.82rem;margin-top:2px}' +

@@ -244,6 +244,9 @@ function recalcular(){ CONFIG.PRECIO_USD = hoy(); BS = CONFIG.PRECIO_USD*CONFIG.
 recalcular();
 $('#bsLine').style.display='none';
 var src = (new URLSearchParams(location.search).get('src')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,30);
+// 11-nov-2026: la puerta elegida en la página de venta (dt | pat | com) viaja con el pago hasta el alta
+var PUERTA = (window.P90 && P90.puerta) ? P90.puerta() : '';
+var PUERTA_TXT = {dt:'corto plazo', pat:'mediano y largo plazo', com:'completa'}[PUERTA] || '';
 
 function wa(msg){return 'https://wa.me/'+CONFIG.WHATSAPP+'?text='+encodeURIComponent(msg)}
 document.querySelectorAll('.js-wa').forEach(function(a){a.href=wa(a.getAttribute('data-msg'))});
@@ -278,7 +281,7 @@ METODOS.forEach(function(m){
   d.style.setProperty('--c',col[0]); d.style.setProperty('--t',col[1]);
   var h = '<div class="mhead"><span class="mname"><span>'+col[2]+'</span>'+esc(m.nombre)+'</span><span><span class="flecha">▼</span></span></div><div class="mbody">';
   if(m.id==='hotmart'){
-    var sck = src?'&sck='+src:'';
+    var sck = (PUERTA||src) ? '&sck='+(PUERTA?'p90'+PUERTA+(src?'_':''):'')+src : '';
     h += '<div class="amount">Paso 1 · Tu plan: <b>'+(FORMA==='contado'?'US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA)+'</b></div>';
     h += '<a class="btn btn-o js-hot" href="'+esc(HOT[FORMA]+(/pay\.hotmart/.test(HOT[FORMA])?sck:''))+'" target="_blank" rel="noopener">Pagar mi plan con tarjeta</a>';
     if(HIJOS>0){
@@ -364,7 +367,7 @@ $('#form').addEventListener('submit', function(e){
   $('#err').style.display='none';
   var met = METODOS.filter(function(x){return x.nombre===m})[0]||{};
   var pais = met.donde==='ve' || /^(\+?58|0?4\d{2})/.test(w.replace(/\s/g,'')) ? 'Venezuela' : 'Otro país';
-  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA+' (cuota 1)')+(HIJOS?' + '+HIJOS+' hijo(s)':''), hijos:HIJOS, pais:pais, metodo:m,
+  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA+' (cuota 1)')+(HIJOS?' + '+HIJOS+' hijo(s)':'')+(PUERTA_TXT?' · Puerta: '+PUERTA_TXT:''), hijos:HIJOS, pais:pais, metodo:m,
     monto:montoTexto(met), tasa: met.moneda==='bs'?String(CONFIG.TASA_BS):'', fuente: 'pago-plan90'+(src?'-'+src:'')};
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
   var msg = 'Hola, soy '+n+'. Ya pagué el Plan 90 Días Excedente ('+(FORMA==='contado'?'pago completo':'cuota 1 de 3')+(HIJOS?' + '+HIJOS+' acceso(s) de hijo':'')+') con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
