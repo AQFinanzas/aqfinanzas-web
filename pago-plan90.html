@@ -364,7 +364,7 @@ $('#form').addEventListener('submit', function(e){
   $('#err').style.display='none';
   var met = METODOS.filter(function(x){return x.nombre===m})[0]||{};
   var pais = met.donde==='ve' || /^(\+?58|0?4\d{2})/.test(w.replace(/\s/g,'')) ? 'Venezuela' : 'Otro país';
-  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado':'3 pagos (cuota 1)')+(HIJOS?' + '+HIJOS+' hijo(s)':''), hijos:HIJOS, pais:pais, metodo:m,
+  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA+' (cuota 1)')+(HIJOS?' + '+HIJOS+' hijo(s)':''), hijos:HIJOS, pais:pais, metodo:m,
     monto:montoTexto(met), tasa: met.moneda==='bs'?String(CONFIG.TASA_BS):'', fuente: 'pago-plan90'+(src?'-'+src:'')};
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
   var msg = 'Hola, soy '+n+'. Ya pagué el Plan 90 Días Excedente ('+(FORMA==='contado'?'pago completo':'cuota 1 de 3')+(HIJOS?' + '+HIJOS+' acceso(s) de hijo':'')+') con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
