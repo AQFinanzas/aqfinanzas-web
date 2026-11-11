@@ -98,6 +98,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
 </script>
 <script>/* Ventana del webinar: accesos de hijos solo del jue 12-nov 7 p. m. al vie 13-nov 9 p. m. (hora Colombia). Prueba: ?hijos=1 */(function(){var a=Date.parse('2026-11-13T00:00:00Z'),z=Date.parse('2026-11-14T02:00:00Z'),n=Date.now(),f=/[?&]hijos=1/.test(location.search);window.HIJOS_ABIERTO=f||(n>=a&&n<z);document.documentElement.classList.toggle('sin-hijos',!window.HIJOS_ABIERTO);})();</script>
 <style>.sin-hijos .solo-webinar{display:none!important}</style>
+<script src="/plan90-reloj.js"></script>
 </head>
 <body>
 <header>
@@ -199,7 +200,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
 <script>
 /* ===================== CONFIGURACIÓN (editar aquí) ===================== */
 var CONFIG = {
-  CONTADO: 167, CUOTA: 67, CUOTAS: 3, HIJO: 37,
+  CONTADO: (window.P90?P90.contado:167), CUOTA: (window.P90?P90.cuota:67), CUOTAS: 3, HIJO: 37, // 11-nov-2026: precio según el contador de 48 h (plan90-reloj.js)
   PRECIO_USD: 167, // se recalcula según lo que elija
   TASA_BS: 1100,                       // tasa del día en Bs por US$
   CIERRE: '',                          // opcional: fecha de cierre (ej. '2026-10-25T21:00:00-05:00'); vacío = siempre abierta
@@ -235,6 +236,9 @@ var $ = function(s){return document.querySelector(s)};
 function fmtBs(n){return 'Bs. '+n.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})}
 var FORMA='contado', HIJOS=0, BS=0, PAYPAL=0; // fuera de la ventana del webinar la sección de hijos está oculta y HIJOS queda en 0
 var HOT = {contado:'https://pay.hotmart.com/O108374792Q?off=zujvlt0g', partes:'https://pay.hotmart.com/O108374792Q?off=zb6j76vv', hijo:'https://pay.hotmart.com/O108374919M?off=daj7y7c9'};
+if (window.P90 && P90.vencido) { // 11-nov-2026: venció el precio de 48 h → ofertas de US$397 / 3 × US$147 (o WhatsApp si aún no existen)
+  HOT.contado = P90.OFF.contado2 ? 'https://pay.hotmart.com/O108374792Q?off='+P90.OFF.contado2 : P90.waPrecio('contado');
+  HOT.partes = P90.OFF.partes2 ? 'https://pay.hotmart.com/O108374792Q?off='+P90.OFF.partes2 : P90.waPrecio('partes'); }
 function hoy(){ return (FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA) + HIJOS*CONFIG.HIJO; }
 function recalcular(){ CONFIG.PRECIO_USD = hoy(); BS = CONFIG.PRECIO_USD*CONFIG.TASA_BS; PAYPAL = Math.round((CONFIG.PRECIO_USD*(1+CONFIG.PAYPAL_COMISION)+CONFIG.PAYPAL_FIJO)*100)/100; }
 recalcular();
@@ -275,14 +279,14 @@ METODOS.forEach(function(m){
   var h = '<div class="mhead"><span class="mname"><span>'+col[2]+'</span>'+esc(m.nombre)+'</span><span><span class="flecha">▼</span></span></div><div class="mbody">';
   if(m.id==='hotmart'){
     var sck = src?'&sck='+src:'';
-    h += '<div class="amount">Paso 1 · Tu plan: <b>'+(FORMA==='contado'?'US$167':'3 pagos de US$67')+'</b></div>';
-    h += '<a class="btn btn-o js-hot" href="'+esc(HOT[FORMA]+sck)+'" target="_blank" rel="noopener">Pagar mi plan con tarjeta</a>';
+    h += '<div class="amount">Paso 1 · Tu plan: <b>'+(FORMA==='contado'?'US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA)+'</b></div>';
+    h += '<a class="btn btn-o js-hot" href="'+esc(HOT[FORMA]+(/pay\.hotmart/.test(HOT[FORMA])?sck:''))+'" target="_blank" rel="noopener">Pagar mi plan con tarjeta</a>';
     if(HIJOS>0){
       h += '<div class="amount" style="margin-top:14px">Paso 2 · Accesos para tus hijos: <b>'+HIJOS+' × US$37</b></div>';
       h += '<a class="btn btn-b js-hot" href="'+esc(HOT.hijo+sck)+'" target="_blank" rel="noopener">Pagar acceso de hijo con tarjeta</a>';
       if(HIJOS>1) h += '<div class="note">Haz este pago '+HIJOS+' veces, uno por cada hijo.</div>';
     }
-    h += '<div class="note">Pago seguro por Hotmart'+(FORMA==='partes'?': Hotmart te cobra solo los otros 2 pagos de US$67, uno cada mes':'')+'. Con tarjeta recibes tu acceso por correo; no necesitas llenar el formulario.</div>';
+    h += '<div class="note">Pago seguro por Hotmart'+(FORMA==='partes'?': Hotmart te cobra solo los otros 2 pagos de US$'+CONFIG.CUOTA+', uno cada mes':'')+'. Con tarjeta recibes tu acceso por correo; no necesitas llenar el formulario.</div>';
   } else {
     h += '<div class="row"><div><div class="k">Monto exacto</div><div class="v">'+esc(montoTexto(m))+'</div></div><button class="copy" data-c="'+esc(montoTexto(m).replace(/^Bs\. /,'').replace(/ USDT| USD/,'').replace('$',''))+'" data-m="'+esc(m.nombre)+'">Copiar</button></div>';
     if(m.moneda==='bs') h += '<div class="k" style="margin:-4px 0 10px">Equivale a $'+CONFIG.PRECIO_USD+' USD a la tasa del día: '+CONFIG.TASA_BS.toLocaleString('es-VE')+' Bs/$</div>';
@@ -302,7 +306,7 @@ var r = '<div class="l"><span>Plan 90 Días ('+(FORMA==='contado'?'pago completo
 r += '<div class="l"><span>1 acceso para tu hijo</span><b>Gratis</b></div>';
 if(HIJOS>0) r += '<div class="l"><span>'+HIJOS+' acceso'+(HIJOS>1?'s':'')+' adicional'+(HIJOS>1?'es':'')+' × US$37</span><b>US$'+(HIJOS*CONFIG.HIJO)+'</b></div>';
 r += '<div class="l t"><span>Pagas hoy</span><span>US$'+hoy()+'</span></div>';
-if(FORMA==='partes') r += '<div class="k" style="margin-top:6px">Después pagas 2 cuotas más de US$67, una cada mes.</div>';
+if(FORMA==='partes') r += '<div class="k" style="margin-top:6px">Después pagas 2 cuotas más de US$'+CONFIG.CUOTA+', una cada mes.</div>';
 $('#resumen').innerHTML = r; $('#precioTop').textContent = '$'+hoy();
 }
 pintar();
