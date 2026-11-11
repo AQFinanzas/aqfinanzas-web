@@ -232,6 +232,9 @@ var COLORES = {
 /* ====================================================================== */
 
 var $ = function(s){return document.querySelector(s)};
+/* 11-nov-2026: pago de la cuota 2 o 3 (enlace del recordatorio): ?cuota=2|3&monto=67|147 → sin elegir forma ni hijos, monto fijo, sin tarjeta (Hotmart cobra sus cuotas solo) */
+var CUOTA_N = (function(){ var q=new URLSearchParams(location.search), n=+q.get('cuota'), m=+q.get('monto'); return (n===2||n===3) && (m===67||m===147) ? {n:n, m:m} : null; })();
+if (CUOTA_N) { CONFIG.CUOTA = CUOTA_N.m; METODOS = METODOS.filter(function(x){ return x.id !== 'hotmart'; }); }
 
 function fmtBs(n){return 'Bs. '+n.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})}
 var FORMA='contado', HIJOS=0, BS=0, PAYPAL=0; // fuera de la ventana del webinar la sección de hijos está oculta y HIJOS queda en 0
@@ -241,6 +244,7 @@ if (window.P90 && P90.vencido) { // 11-nov-2026: venció el precio de 48 h → o
   HOT.partes = P90.OFF.partes2 ? 'https://pay.hotmart.com/O108374792Q?off='+P90.OFF.partes2 : P90.waPrecio('partes'); }
 function hoy(){ return (FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA) + HIJOS*CONFIG.HIJO; }
 function recalcular(){ CONFIG.PRECIO_USD = hoy(); BS = CONFIG.PRECIO_USD*CONFIG.TASA_BS; PAYPAL = Math.round((CONFIG.PRECIO_USD*(1+CONFIG.PAYPAL_COMISION)+CONFIG.PAYPAL_FIJO)*100)/100; }
+if (CUOTA_N) FORMA='partes';
 recalcular();
 $('#bsLine').style.display='none';
 var src = (new URLSearchParams(location.search).get('src')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,30);
@@ -305,11 +309,11 @@ METODOS.forEach(function(m){
   d.innerHTML = h; box.appendChild(d);
 });
 if(selPrev) sel.value = selPrev;
-var r = '<div class="l"><span>Plan 90 Días ('+(FORMA==='contado'?'pago completo':'pago 1 de 3')+')</span><b>US$'+(FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA)+'</b></div>';
+var r = '<div class="l"><span>Plan 90 Días ('+(FORMA==='contado'?'pago completo':'pago '+(CUOTA_N?CUOTA_N.n:1)+' de 3')+')</span><b>US$'+(FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA)+'</b></div>';
 r += '<div class="l"><span>1 acceso para tu hijo</span><b>Gratis</b></div>';
 if(HIJOS>0) r += '<div class="l"><span>'+HIJOS+' acceso'+(HIJOS>1?'s':'')+' adicional'+(HIJOS>1?'es':'')+' × US$37</span><b>US$'+(HIJOS*CONFIG.HIJO)+'</b></div>';
 r += '<div class="l t"><span>Pagas hoy</span><span>US$'+hoy()+'</span></div>';
-if(FORMA==='partes') r += '<div class="k" style="margin-top:6px">Después pagas 2 cuotas más de US$'+CONFIG.CUOTA+', una cada mes.</div>';
+if(FORMA==='partes' && !CUOTA_N) r += '<div class="k" style="margin-top:6px">Después pagas 2 cuotas más de US$'+CONFIG.CUOTA+', una cada mes.</div>';
 $('#resumen').innerHTML = r; $('#precioTop').textContent = '$'+hoy();
 }
 pintar();
@@ -344,6 +348,10 @@ $('#pais').addEventListener('click', function(e){
   });
   try{fbq('trackCustom','EligioPais',{pais:p})}catch(x){}
 });
+/* 11-nov-2026: modo cuota 2/3 — encabezado y pasos */
+if (CUOTA_N) { var ar=$('#arma'); if(ar) ar.style.display='none';
+  var pr=$('header .price'); if(pr){ pr.querySelectorAll('.k').forEach(function(k){k.style.display='none'}); var t=document.createElement('div'); t.className='k'; t.style.marginBottom='4px'; t.textContent='Cuota '+CUOTA_N.n+' de 3'; pr.insertBefore(t, pr.firstChild); }
+  $('#precioTop').textContent='$'+CUOTA_N.m; var h1=document.querySelector('header h1'); if(h1) h1.textContent='Plan 90 Días · Cuota '+CUOTA_N.n+' de 3'; }
 /* 10-nov-2026: ?pais=ve|otro y ?forma=contado|partes llegan desde la página de venta (aqfinanzas.com/90dias) y se preseleccionan */
 (function(){ var qp = new URLSearchParams(location.search), p = qp.get('pais'), f = qp.get('forma');
   if (f === 'partes' || f === 'contado') { var bf = document.querySelector('#forma [data-f="' + f + '"]'); if (bf) bf.click(); }
@@ -367,10 +375,10 @@ $('#form').addEventListener('submit', function(e){
   $('#err').style.display='none';
   var met = METODOS.filter(function(x){return x.nombre===m})[0]||{};
   var pais = met.donde==='ve' || /^(\+?58|0?4\d{2})/.test(w.replace(/\s/g,'')) ? 'Venezuela' : 'Otro país';
-  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA+' (cuota 1)')+(HIJOS?' + '+HIJOS+' hijo(s)':'')+(PUERTA_TXT?' · Puerta: '+PUERTA_TXT:''), hijos:HIJOS, pais:pais, metodo:m,
+  var data = {producto:'Plan 90 Días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:(FORMA==='contado'?'Contado US$'+CONFIG.CONTADO:'3 pagos de US$'+CONFIG.CUOTA+' (cuota '+(CUOTA_N?CUOTA_N.n:1)+')')+(HIJOS?' + '+HIJOS+' hijo(s)':'')+(PUERTA_TXT?' · Puerta: '+PUERTA_TXT:''), hijos:HIJOS, pais:pais, metodo:m,
     monto:montoTexto(met), tasa: met.moneda==='bs'?String(CONFIG.TASA_BS):'', fuente: 'pago-plan90'+(src?'-'+src:'')};
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
-  var msg = 'Hola, soy '+n+'. Ya pagué el Plan 90 Días Excedente ('+(FORMA==='contado'?'pago completo':'cuota 1 de 3')+(HIJOS?' + '+HIJOS+' acceso(s) de hijo':'')+') con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
+  var msg = 'Hola, soy '+n+'. Ya pagué el Plan 90 Días Excedente ('+(FORMA==='contado'?'pago completo':'cuota '+(CUOTA_N?CUOTA_N.n:1)+' de 3')+(HIJOS?' + '+HIJOS+' acceso(s) de hijo':'')+') con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
   $('#okWa').href = wa(msg);
   try{fbq('trackCustom','PagoReportado',{value:CONFIG.PRECIO_USD,currency:'USD',content_name:m})}catch(e){}
   fetch(CONFIG.SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true})

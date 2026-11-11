@@ -146,6 +146,7 @@
 
   /* ---------- Página de pago (pago-plan90) ---------- */
   function pago() {
+    if (/(^|[?&])cuota=[23]/.test(qs)) return; // pago de cuota 2/3: monto fijo, sin contador
     if (!P90.vencido) {
       var pr = q('header .price .chips'); if (pr) { var c = caja('cen'); pr.insertAdjacentElement('beforebegin', c); relojes.push(c); }
       tic(); setInterval(tic, 1000);
