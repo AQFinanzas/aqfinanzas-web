@@ -10,7 +10,13 @@
             ?reloj=reiniciar (volver a empezar las 48 h en ese navegador)
    ============================================================ */
 (function () {
-  var HORAS = 48;
+  /* 12-nov-2026: dos plazos. Webinar = 24 h (?plazo=24 o src/utm con "webinar"/"clase"); app y demás = 48 h.
+     El plazo queda fijo en el navegador desde la primera visita (aq_p90_horas). */
+  var qs0 = location.search || '';
+  var HK = 'aq_p90_horas', HORAS = 0;
+  try { HORAS = +localStorage.getItem(HK) || 0; } catch (e) {}
+  var esWeb = /(^|[?&])plazo=24(&|$)/.test(qs0) || /(^|[?&])(src|utm_source|utm_campaign|origen)=[^&]*(webinar|clase)/i.test(qs0);
+  if (!HORAS || /(^|[?&])reloj=reiniciar/.test(qs0)) { HORAS = esWeb ? 24 : 48; try { localStorage.setItem(HK, String(HORAS)); } catch (e) {} }
   // Ofertas de Hotmart del producto 8906272 (checkout O108374792Q)
   var OFF = {
     contado: 'zujvlt0g',   // US$167
@@ -37,7 +43,7 @@
   function vencido() { return forzar || Date.now() >= fin; }
 
   var P90 = window.P90 = {
-    fin: fin, vencido: vencido(), OFF: OFF, WA: WA,
+    fin: fin, horas: HORAS, vencido: vencido(), OFF: OFF, WA: WA,
     contado: vencido() ? 397 : 167, cuota: vencido() ? 147 : 67,
     offContado: function () { return vencido() ? OFF.contado2 : OFF.contado; },
     offPartes: function () { return vencido() ? OFF.partes2 : OFF.partes; },
@@ -83,8 +89,8 @@
   }
   function caja(clase) {
     var d = document.createElement('div'); d.className = 'p90r ' + (clase || '');
-    d.innerHTML = '<div><div class="t">⏳ Este precio se mantiene solo por 48 horas</div><small>Después sube a US$397 (o 3 pagos de US$147).</small></div>' +
-      '<div class="d"><span data-h>48<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
+    d.innerHTML = '<div><div class="t">⏳ Este precio se mantiene solo por ' + HORAS + ' horas</div><small>Después sube a US$397 (o 3 pagos de US$147).</small></div>' +
+      '<div class="d"><span data-h>' + HORAS + '<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
     return d;
   }
   var relojes = [];
@@ -127,7 +133,7 @@
     // Venció: precio normal
     cambiarTextos(document.body);
     qa('.precio-mini .tachado-total').forEach(function (s) { s.style.display = 'none'; });
-    var pm2 = q('.precio-mini'); if (pm2) pm2.insertAdjacentHTML('afterend', '<div class="p90v">Tu precio especial de 48 horas (US$167) ya venció.</div>');
+    var pm2 = q('.precio-mini'); if (pm2) pm2.insertAdjacentHTML('afterend', '<div class="p90v">Tu precio especial de ' + HORAS + ' horas (US$167) ya venció.</div>');
     var tot = q('.total'); if (tot) tot.style.display = 'none';
     var mo = q('.hoy .monto span'); if (mo) mo.textContent = '397';
     var ah = q('.hoy .ahorro'); if (ah) ah.textContent = 'Un solo pago';
@@ -154,7 +160,7 @@
     }
     cambiarTextos(document.body);
     qa('header .price s').forEach(function (s) { s.parentNode.style.display = 'none'; });
-    var pr2 = q('header .price .chips'); if (pr2) pr2.insertAdjacentHTML('beforebegin', '<div class="p90v" style="background:rgba(255,255,255,.1);color:#fff">Tu precio especial de 48 horas (US$167) ya venció.</div>');
+    var pr2 = q('header .price .chips'); if (pr2) pr2.insertAdjacentHTML('beforebegin', '<div class="p90v" style="background:rgba(255,255,255,.1);color:#fff">Tu precio especial de ' + HORAS + ' horas (US$167) ya venció.</div>');
     // Los textos que la página vuelve a pintar al elegir forma de pago
     new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) cambiarTextos(n); }); }); })
       .observe(document.body, { childList: true, subtree: true });

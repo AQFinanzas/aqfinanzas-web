@@ -120,6 +120,10 @@ let conv = null;
 // País (para mostrar el enlace de pago correcto: Venezuela → /vzla, otro país → /latam)
 let tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
 const esVzla = tz === 'America/Caracas' || q.get('pais') === 've';
+// 12-nov-2026: webinar = 24 h para comprar; app/WhatsApp = 48 h
+const esWebinar = /webinar|clase/i.test(src);
+const PLAZO = esWebinar ? 24 : 48;
+const urlPago = (esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam') + (esWebinar ? '?plazo=24&src=webinar' : '?src=' + encodeURIComponent(src));
 
 function ev(n, extra) {
   try { fbq('trackCustom', n, Object.assign({ pagina: 'carla', origen: src }, extra || {})); } catch (e) {}
@@ -148,7 +152,7 @@ function tarjeta(titulo, texto, enlace, boton) {
 const clientTools = {
   mostrar_enlace: async ({ tipo }) => {
     if (tipo === 'pago') {
-      tarjeta('Tu acceso al Plan 90 Días', 'Aquí puedes hacer tu pago de forma segura.', esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam', 'Ir a pagar');
+      tarjeta('Tu acceso al Plan 90 Días', 'Aquí puedes hacer tu pago de forma segura. Tu precio especial dura ' + PLAZO + ' horas.', urlPago, 'Ir a pagar');
     } else if (tipo === 'llamada') {
       tarjeta('Agenda una llamada con Alejandro', 'Elige el día y la hora que mejor te queden.', 'https://calendly.com/aqfinanzas-info/llamada-1-a-1-campanas', 'Agendar llamada');
     } else if (tipo === 'clase') {
@@ -184,7 +188,7 @@ const LAMINAS = {
   precio: { t: 'Tu inversión hoy', html: () => `
     <div class="precio"><s>US$397</s><b>US$167</b><span>en un solo pago · ahorras 58 %</span></div>
     <div class="precio2">o <b>3 pagos mensuales de US$67</b></div>
-    <p class="aviso">⏳ Este precio especial dura solo 48 horas desde que abres la página del plan. Después sube a US$397 de contado o 3 pagos de US$147.</p>
+    <p class="aviso">⏳ Este precio especial dura solo ${PLAZO} horas. Después sube a US$397 de contado o 3 pagos de US$147.</p>
     <p class="aviso">🛡️ Garantía de 7 días: si no es para ti, te devuelven el 100 %.</p>` },
   metodos: { t: () => esVzla ? 'Cómo pagar desde Venezuela' : 'Cómo pagar desde tu país', html: () => esVzla ? `
     <ul class="met">
@@ -201,7 +205,7 @@ const LAMINAS = {
       <li><b>🅿️ PayPal</b><span>Aceptado</span></li>
       <li><b>🏦 Pagos locales</b><span>PSE, Efecty y otros según tu país</span></li>
     </ul>
-    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam', 'Ir a pagar'] },
+    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [urlPago, 'Ir a pagar'] },
   caminos: { t: 'Eliges tu camino', items: [
     ['⚡', 'Inversión de tiempo corto', 'Operar para tomar ganancias.'],
     ['🌱', 'Inversión de mediano y largo plazo', 'Construir patrimonio.'],
@@ -275,6 +279,7 @@ btnH.addEventListener('click', async () => {
         correo: q.get('e') || '',
         pais: esVzla ? 'Venezuela' : (tz || ''),
         origen: src,
+        plazo: PLAZO + ' horas',
         pregunta_origen: /webinar|clase/i.test(src)
           ? '¿Qué fue lo que más te gustó de la clase de Alejandro?'
           : /app|whatsapp/i.test(src)
