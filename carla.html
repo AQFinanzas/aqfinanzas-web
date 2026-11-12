@@ -63,6 +63,18 @@ p{margin:0}
 .tarjeta a{display:inline-flex;margin-top:12px;padding:.75em 1.3em;border-radius:999px;border:2px solid var(--naranja);color:#fff;font-weight:800;text-decoration:none;transition:background .15s}
 .tarjeta a:hover{background:var(--naranja)}
 
+.lamina .lt{font-size:1.2rem;font-weight:900;margin-bottom:6px}
+.items,.met{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.items li{display:flex;gap:12px;align-items:flex-start}
+.items i{font-style:normal;font-size:1.4rem;line-height:1.2;flex:none;width:30px;text-align:center}
+.items b{font-size:1rem}.items span{display:block;color:var(--claro);font-size:.92rem}
+.met li{display:flex;justify-content:space-between;gap:10px;background:rgba(0,0,0,.25);border-radius:12px;padding:10px 12px;flex-wrap:wrap}
+.met span{color:var(--claro);font-size:.92rem}
+.precio{text-align:center;margin-top:8px}.precio s{color:var(--claro);font-size:1.1rem}
+.precio b{display:block;font-size:2.6rem;color:var(--naranja);line-height:1.1}
+.precio span{color:var(--claro);font-size:.92rem}
+.precio2{text-align:center;margin-top:8px}
+.aviso{margin-top:12px!important;font-size:.88rem!important;color:#e6e9f8!important}
 .error{display:none;margin-top:16px;background:rgba(192,38,45,.18);border:1px solid rgba(192,38,45,.6);border-radius:14px;padding:12px 14px;font-size:.92rem}
 footer{margin-top:auto;text-align:center;color:#7e86b8;font-size:.76rem;padding-top:34px}
 </style>
@@ -147,8 +159,96 @@ const clientTools = {
     ev('CarlaMostroEnlace', { tipo });
     return 'mostrado';
   },
-  mostrar_lamina: async ({ titulo, texto }) => { tarjeta(titulo || '', texto || ''); return 'mostrada'; }
+  mostrar_lamina: async ({ tema }) => {
+    const L = LAMINAS[tema];
+    if (!L) return 'tema no reconocido';
+    lamina(L);
+    ev('CarlaMostroLamina', { tema });
+    return 'mostrada';
+  }
 };
+
+// ===== Láminas (contenido de la página de venta del Plan 90 Días) =====
+const TASA_BS = 1100, PRECIO = 167;
+const fmtBs = (n) => 'Bs. ' + n.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const LAMINAS = {
+  incluye: { t: 'Todo lo que recibes en tu Plan 90 Días', items: [
+    ['📱', 'App Excedente', 'De cero al Método RCR completo, con lecciones cortas y mi voz.'],
+    ['🤖', 'Copiloto con IA 24/7', 'Resuelve tus dudas mientras estudias y practicas.'],
+    ['🎥', 'Clases en vivo conmigo', 'Con el mercado abierto, y sus grabaciones.'],
+    ['🧰', 'Herramientas del Método RCR', 'Registro de operaciones, radares y screener.'],
+    ['👥', 'Comunidad privada Excedente', 'Avanzas acompañado, nunca solo.'],
+    ['👧', '1 acceso gratis para tu hijo', 'De 8 a 17 años, lecciones adaptadas a su edad.'],
+    ['📘', 'Bono: mi libro «La Arquitectura del Dinero»', 'En PDF, desde la primera unidad.']
+  ]},
+  precio: { t: 'Tu inversión hoy', html: () => `
+    <div class="precio"><s>US$397</s><b>US$167</b><span>en un solo pago · ahorras 58 %</span></div>
+    <div class="precio2">o <b>3 pagos mensuales de US$67</b></div>
+    <p class="aviso">⏳ Este precio especial dura solo 48 horas desde que abres la página del plan. Después sube a US$397 de contado o 3 pagos de US$147.</p>
+    <p class="aviso">🛡️ Garantía de 7 días: si no es para ti, te devuelven el 100 %.</p>` },
+  metodos: { t: () => esVzla ? 'Cómo pagar desde Venezuela' : 'Cómo pagar desde tu país', html: () => esVzla ? `
+    <ul class="met">
+      <li><b>📱 Pago Móvil</b><span>${fmtBs(PRECIO * TASA_BS)} (tasa ${TASA_BS.toLocaleString('es-VE')} Bs/$)</span></li>
+      <li><b>🏦 Transferencia Banesco</b><span>${fmtBs(PRECIO * TASA_BS)}</span></li>
+      <li><b>🟡 Binance (USDT)</b><span>167 USDT</span></li>
+      <li><b>💜 Zelle</b><span>US$167</span></li>
+      <li><b>🅿️ PayPal</b><span>US$174,65 (incluye la comisión)</span></li>
+      <li><b>💳 Tarjeta internacional</b><span>US$167 por Hotmart</span></li>
+    </ul>
+    <p class="aviso">Los datos para pagar están en la página de pago. Al terminar, llenas «Ya pagué» y envías la captura por WhatsApp para activar tu acceso.</p>` : `
+    <ul class="met">
+      <li><b>💳 Tarjeta de crédito o débito</b><span>Pago seguro con Hotmart</span></li>
+      <li><b>🅿️ PayPal</b><span>Aceptado</span></li>
+      <li><b>🏦 Pagos locales</b><span>PSE, Efecty y otros según tu país</span></li>
+    </ul>
+    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam', 'Ir a pagar'] },
+  caminos: { t: 'Eliges tu camino', items: [
+    ['⚡', 'Inversión de tiempo corto', 'Operar para tomar ganancias.'],
+    ['🌱', 'Inversión de mediano y largo plazo', 'Construir patrimonio.'],
+    ['🏆', 'Completo', 'Las dos puertas.']
+  ]},
+  hijo: { t: 'Tu hijo también aprende', items: [
+    ['👧', 'Versión niños (8 a 12)', 'Con Bruno, nuestra mascota.'],
+    ['🧑', 'Versión jóvenes (13 a 17)', 'A su ritmo, con audio y animaciones.'],
+    ['📲', 'Tú lo invitas', 'Él instala la app en su celular.']
+  ]},
+  garantia: { t: 'Garantía de 7 días', html: () => `<p class="aviso" style="font-size:1rem">Si en los primeros 7 días sientes que el Plan 90 Días no te da la claridad o el impulso que necesitas, te devuelven el <b>100 %</b> de tu dinero. Sin preguntas incómodas.</p>` },
+  practica: { t: 'Practicas sin arriesgar tu dinero', items: [
+    ['🎯', 'Demo con el mercado real', 'Primero practicas, luego decides.'],
+    ['🧭', 'Desde cero', 'No necesitas saber de finanzas.'],
+    ['⏱️', 'A tu ritmo', 'Lecciones cortas desde el celular.']
+  ]},
+  testimonios: { t: 'Lo que dicen mis alumnos', items: [
+    ['⭐', 'Ana Caicedo', '«Aprender con usted es la mejor decisión que he tomado.»'],
+    ['⭐', 'Silvia Hernández', '«El detalle y la facilidad con que explicas genera confianza.»'],
+    ['⭐', 'Yuly Sosa', '«Al principio estuve a punto de tirar la toalla. Gracias por tu método.»']
+  ], nota: 'Experiencias individuales. Los resultados pasados no garantizan resultados futuros.' },
+  alejandro: { t: 'Quién te guía', items: [
+    ['🎓', 'Más de 15 años', 'Invirtiendo y enseñando.'],
+    ['👥', 'Más de 45.000 personas formadas', 'En toda América Latina.'],
+    ['📺', 'Experto en medios', 'Fui conductor de «Economía Mía» en Globovisión.']
+  ]}
+};
+
+function lamina(L) {
+  const d = document.createElement('div');
+  d.className = 'tarjeta lamina';
+  const t = typeof L.t === 'function' ? L.t() : L.t;
+  let h = '<b class="lt"></b>';
+  if (L.items) h += '<ul class="items">' + L.items.map(([i, a, b]) => `<li><i>${i}</i><div><b>${a}</b><span>${b}</span></div></li>`).join('') + '</ul>';
+  if (L.html) h += L.html();
+  if (L.nota) h += `<p class="aviso">${L.nota}</p>`;
+  d.innerHTML = h;
+  d.querySelector('.lt').textContent = t;
+  if (L.boton) {
+    const [u, txt] = L.boton();
+    const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = txt;
+    a.addEventListener('click', () => ev('CarlaClicTarjeta', { destino: u }));
+    d.appendChild(a);
+  }
+  tarjetas.prepend(d);
+  d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 btnH.addEventListener('click', async () => {
   err.style.display = 'none';
