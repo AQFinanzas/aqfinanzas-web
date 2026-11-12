@@ -1,5 +1,5 @@
 /* ============================================================
-   Plan 90 Días · Contador de 48 horas por persona (11-nov-2026)
+   Plan 90 Días · Contador de 24 horas por persona (48 h el 11-nov; 24 h desde el 12-nov-2026)
    - Arranca la PRIMERA vez que la persona abre cualquier página del
      Plan 90 Días en aqfinanzas.com (90dias, vzla, latam, copias y pago).
    - Se guarda en su navegador (localStorage + cookie), así que si vuelve
@@ -7,16 +7,11 @@
    - Mientras corre: US$167 contado o 3 × US$67.
    - Al vencer: US$397 contado o 3 × US$147.
    Pruebas: ?reloj=vencido (ver precio vencido sin tocar nada)
-            ?reloj=reiniciar (volver a empezar las 48 h en ese navegador)
+            ?reloj=reiniciar (volver a empezar las 24 h en ese navegador)
    ============================================================ */
 (function () {
-  /* 12-nov-2026: dos plazos. Webinar = 24 h (?plazo=24 o src/utm con "webinar"/"clase"); app y demás = 48 h.
-     El plazo queda fijo en el navegador desde la primera visita (aq_p90_horas). */
-  var qs0 = location.search || '';
-  var HK = 'aq_p90_horas', HORAS = 0;
-  try { HORAS = +localStorage.getItem(HK) || 0; } catch (e) {}
-  var esWeb = /(^|[?&])plazo=24(&|$)/.test(qs0) || /(^|[?&])(src|utm_source|utm_campaign|origen)=[^&]*(webinar|clase)/i.test(qs0);
-  if (!HORAS || /(^|[?&])reloj=reiniciar/.test(qs0)) { HORAS = esWeb ? 24 : 48; try { localStorage.setItem(HK, String(HORAS)); } catch (e) {} }
+  /* 12-nov-2026: el precio especial dura 24 horas (webinar y app) desde la primera visita. */
+  var HORAS = 24;
   // Ofertas de Hotmart del producto 8906272 (checkout O108374792Q)
   var OFF = {
     contado: 'zujvlt0g',   // US$167

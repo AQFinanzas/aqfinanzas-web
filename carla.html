@@ -120,10 +120,10 @@ let conv = null;
 // País (para mostrar el enlace de pago correcto: Venezuela → /vzla, otro país → /latam)
 let tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
 const esVzla = tz === 'America/Caracas' || q.get('pais') === 've';
-// 12-nov-2026: webinar = 24 h para comprar; app/WhatsApp = 48 h
+// 12-nov-2026: el precio especial dura 24 h (webinar y app)
 const esWebinar = /webinar|clase/i.test(src);
-const PLAZO = esWebinar ? 24 : 48;
-const urlPago = (esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam') + (esWebinar ? '?plazo=24&src=webinar' : '?src=' + encodeURIComponent(src));
+const PLAZO = 24;
+const urlPago = (esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam') + '?src=' + encodeURIComponent(src);
 
 function ev(n, extra) {
   try { fbq('trackCustom', n, Object.assign({ pagina: 'carla', origen: src }, extra || {})); } catch (e) {}
