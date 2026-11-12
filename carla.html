@@ -123,7 +123,25 @@ const esVzla = tz === 'America/Caracas' || q.get('pais') === 've';
 // 12-nov-2026: el precio especial dura 24 h (webinar y app)
 const esWebinar = /webinar|clase/i.test(src);
 const PLAZO = 24;
-const urlPago = (esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam') + '?src=' + encodeURIComponent(src);
+// 12-nov-2026: "pago" lleva directo a pagar (Venezuela → página con todos los métodos; otro país → Hotmart).
+// "info" lleva a la página de venta. El reloj de 24 h es el mismo de las páginas de venta (aq_p90_inicio).
+const OFF = { contado: 'zujvlt0g', partes: 'zb6j76vv', contado2: '28pgkdq6', partes2: '3lj92rbi' };
+const RELOJ_K = 'aq_p90_inicio';
+let relojIni = 0;
+try { relojIni = +localStorage.getItem(RELOJ_K) || 0; } catch (e) {}
+if (!relojIni) { const m = document.cookie.match(/(?:^|; )aq_p90_inicio=(\d+)/); relojIni = m ? +m[1] : 0; }
+if (!relojIni || relojIni > Date.now()) {
+  relojIni = Date.now();
+  try { localStorage.setItem(RELOJ_K, String(relojIni)); } catch (e) {}
+  try { document.cookie = RELOJ_K + '=' + relojIni + ';max-age=31536000;path=/;SameSite=Lax'; } catch (e) {}
+}
+const precioVencido = Date.now() >= relojIni + PLAZO * 3600e3;
+function urlPago(forma) {
+  if (esVzla) return 'https://aqfinanzas.com/pago-plan90';
+  const off = forma === 'partes' ? (precioVencido ? OFF.partes2 : OFF.partes) : (precioVencido ? OFF.contado2 : OFF.contado);
+  return 'https://pay.hotmart.com/O108374792Q?off=' + off;
+}
+const urlInfo = esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam';
 
 function ev(n, extra) {
   try { fbq('trackCustom', n, Object.assign({ pagina: 'carla', origen: src }, extra || {})); } catch (e) {}
@@ -143,7 +161,7 @@ function tarjeta(titulo, texto, enlace, boton) {
   d.innerHTML = '<b></b><p></p>' + (enlace ? '<a target="_blank" rel="noopener"></a>' : '');
   d.querySelector('b').textContent = titulo;
   d.querySelector('p').textContent = texto || '';
-  if (enlace) { const a = d.querySelector('a'); a.href = enlace; a.textContent = boton || 'Abrir'; a.addEventListener('click', () => ev('CarlaClicTarjeta', { destino: enlace })); }
+  if (enlace) { const a = d.querySelector('a'); a.href = enlace; a.textContent = boton || 'Abrir'; a.addEventListener('click', () => { ev('CarlaClicTarjeta', { destino: enlace }); colgar(); }); }
   tarjetas.prepend(d);
   d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
@@ -151,8 +169,12 @@ function tarjeta(titulo, texto, enlace, boton) {
 // Herramientas que Carla puede usar en la pantalla de la persona
 const clientTools = {
   mostrar_enlace: async ({ tipo }) => {
-    if (tipo === 'pago') {
-      tarjeta('Tu acceso al Plan 90 Días', 'Aquí puedes hacer tu pago de forma segura. Tu precio especial dura ' + PLAZO + ' horas.', urlPago, 'Ir a pagar');
+    if (tipo === 'pago' || tipo === 'pago_cuotas') {
+      const partes = tipo === 'pago_cuotas';
+      const monto = partes ? '3 pagos de US$' + (precioVencido ? 147 : 67) : 'US$' + (precioVencido ? 397 : 167) + ' de contado';
+      tarjeta('Paga tu Plan 90 Días', esVzla ? 'Aquí tienes todos los métodos de pago de Venezuela (Pago Móvil, Banesco, Binance, Zelle, PayPal o tarjeta).' : 'Pago seguro con Hotmart: ' + monto + '. Tu acceso te llega por correo al instante.', urlPago(partes ? 'partes' : 'contado'), 'Ir a pagar');
+    } else if (tipo === 'info') {
+      tarjeta('Toda la información del Plan 90 Días', 'La página con todo lo que incluye el plan, los caminos y la garantía.', urlInfo, 'Ver el Plan 90 Días');
     } else if (tipo === 'llamada') {
       tarjeta('Agenda una llamada con Alejandro', 'Elige el día y la hora que mejor te queden.', 'https://calendly.com/aqfinanzas-info/llamada-1-a-1-campanas', 'Agendar llamada');
     } else if (tipo === 'clase') {
@@ -205,7 +227,7 @@ const LAMINAS = {
       <li><b>🅿️ PayPal</b><span>Aceptado</span></li>
       <li><b>🏦 Pagos locales</b><span>PSE, Efecty y otros según tu país</span></li>
     </ul>
-    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [urlPago, 'Ir a pagar'] },
+    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [urlPago('contado'), 'Ir a pagar'] },
   caminos: { t: 'Eliges tu camino', items: [
     ['⚡', 'Inversión de tiempo corto', 'Operar para tomar ganancias.'],
     ['🌱', 'Inversión de mediano y largo plazo', 'Construir patrimonio.'],
@@ -249,7 +271,7 @@ function lamina(L) {
   d.querySelector('.lt').textContent = t;
   if (L.boton) {
     const [u, txt] = L.boton();
-    const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = txt;
+    const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = txt; a.addEventListener('click', () => { ev('CarlaClicTarjeta', { destino: u }); colgar(); });
     a.addEventListener('click', () => ev('CarlaClicTarjeta', { destino: u }));
     d.appendChild(a);
   }
@@ -301,9 +323,14 @@ btnH.addEventListener('click', async () => {
   }
 });
 
+async function colgar() {
+  if (!conv) return;
+  const c = conv; conv = null;
+  try { await c.endSession(); } catch (e) {}
+  ui(''); ev('CarlaFin');
+}
 btnC.addEventListener('click', async () => {
-  try { if (conv) await conv.endSession(); } catch (e) {}
-  conv = null; ui(''); ev('CarlaFin');
+  await colgar();
 });
 </script>
 <script>
