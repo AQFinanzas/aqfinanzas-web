@@ -199,6 +199,18 @@ const clientTools = {
     ev('CarlaMostroEnlace', { tipo });
     return 'mostrado';
   },
+  // 12-nov-2026: duda que Carla no puede resolver → correo a Alejandro (Make: escenario 7016645 → info@)
+  avisar_alejandro: async ({ pregunta, whatsapp, correo, nombre: nom, contexto }) => {
+    const datos = new URLSearchParams({
+      pregunta: pregunta || '', whatsapp: whatsapp || '', correo: correo || q.get('e') || '',
+      nombre: nom || q.get('n') || '', contexto: contexto || '', origen: src,
+      pais: esVzla ? 'Venezuela' : (tz || ''), fecha: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' })
+    });
+    try { await fetch('https://hook.us2.make.com/yt6k07ld6v3ga5r3hppsj7dpig56f128', { method: 'POST', mode: 'no-cors', body: datos }); }
+    catch (e) { return 'no se pudo enviar'; }
+    ev('CarlaDudaAlejandro');
+    return 'enviado';
+  },
   mostrar_lamina: async ({ tema }) => {
     const L = LAMINAS[tema];
     if (!L) return 'tema no reconocido';
