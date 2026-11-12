@@ -112,7 +112,7 @@ import { Conversation } from 'https://esm.sh/@elevenlabs/client@0';
 
 const AGENT_ID = 'agent_4901m78hbc0xfeb9ntytntkwa88a';
 const q = new URLSearchParams(location.search);
-const src = q.get('src') || 'directo';
+const src = q.get('src') || (/clase|webinar/i.test(location.pathname) ? 'webinar' : 'whatsapp');
 const $ = (id) => document.getElementById(id);
 const orbe = $('orbe'), estado = $('estado'), btnH = $('btnHablar'), btnC = $('btnColgar'), err = $('error'), tarjetas = $('tarjetas');
 let conv = null;

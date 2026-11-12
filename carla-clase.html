@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Habla con Carla · Asistente de Alejandro Quiñones</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Habla por voz con Carla, la asistente de inteligencia artificial de Alejandro Quiñones. Resuelve tus dudas al momento, desde cualquier país.">
+<meta property="og:title" content="Habla con Carla · Asistente de Alejandro Quiñones">
+<meta property="og:description" content="Toca el botón y conversa por voz con Carla, desde tu celular o computador.">
+<meta property="og:image" content="https://aqfinanzas.com/img/og.jpg">
+<link rel="icon" href="img/logo-aq-color.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--marino:#01005A;--noche:#05061C;--naranja:#F04A03;--naranja-h:#D63F00;--azul:#2A94F8;--claro:#B9C2E8;--r:18px}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:clip}
+body{background:radial-gradient(120% 70% at 50% 0%,#0b1290 0%,var(--marino) 45%,var(--noche) 100%);color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;min-height:100vh}
+h1{margin:0;font-weight:900;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:520px;margin:0 auto;padding:0 20px 40px;min-height:100vh;display:flex;flex-direction:column}
+.top{display:flex;justify-content:center;padding:18px 0 4px}
+.top img{height:34px}
+.hero{text-align:center;padding:18px 0 0}
+.chip{display:inline-flex;align-items:center;gap:8px;background:rgba(42,148,248,.16);border:1px solid rgba(42,148,248,.55);color:#cfe6ff;font-weight:800;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.chip i{width:8px;height:8px;border-radius:50%;background:#2fd27a}
+.hero h1{font-size:clamp(1.9rem,8vw,2.6rem);margin-top:14px}
+.hero h1 .n{color:var(--naranja)}
+.sub{color:var(--claro);margin-top:10px}
+
+/* Orbe de Carla */
+.orbe-box{display:grid;place-items:center;margin:30px 0 8px}
+.orbe{position:relative;width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ffd2bd 0%,#ff8a52 22%,var(--naranja) 45%,#5a1ad8 80%,#1d0f7a 100%);
+  box-shadow:0 0 60px -6px rgba(240,74,3,.65),inset 0 -14px 40px rgba(0,0,0,.35);transition:transform .25s}
+.orbe::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(255,255,255,.14)}
+.orbe.escucha{animation:respira 2.6s ease-in-out infinite}
+.orbe.habla{animation:habla .5s ease-in-out infinite alternate}
+.orbe.conectando{animation:gira 1.2s linear infinite;filter:saturate(.6)}
+@keyframes respira{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes habla{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+@keyframes gira{to{transform:rotate(360deg)}}
+.estado{text-align:center;color:var(--claro);font-weight:600;min-height:1.6em;margin-top:6px}
+
+.cta{margin-top:18px;text-align:center}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;font:800 1.15rem/1.2 Inter,sans-serif;padding:1.1em 1.4em;border-radius:999px;border:0;cursor:pointer;text-decoration:none;background:var(--naranja);color:#fff;box-shadow:0 16px 34px -12px rgba(240,74,3,.85);transition:background .15s}
+.btn:hover{background:var(--naranja-h)}
+.btn.late{animation:late 2.4s ease-in-out infinite}
+@keyframes late{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.btn svg{width:24px;height:24px;flex:none}
+.btn.colgar{background:transparent;border:2px solid rgba(255,255,255,.35);box-shadow:none}
+.btn.colgar:hover{background:#c0262d;border-color:#c0262d}
+.nota{margin-top:12px;font-size:.84rem;color:var(--claro);text-align:center}
+
+/* Tarjetas que Carla muestra en pantalla */
+#tarjetas{display:grid;gap:12px;margin-top:22px}
+.tarjeta{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:16px;animation:entra .35s ease-out}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tarjeta b{display:block;font-size:1.05rem}
+.tarjeta p{color:var(--claro);font-size:.95rem;margin-top:4px}
+.tarjeta a{display:inline-flex;margin-top:12px;padding:.75em 1.3em;border-radius:999px;border:2px solid var(--naranja);color:#fff;font-weight:800;text-decoration:none;transition:background .15s}
+.tarjeta a:hover{background:var(--naranja)}
+
+.lamina .lt{font-size:1.2rem;font-weight:900;margin-bottom:6px}
+.items,.met{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.items li{display:flex;gap:12px;align-items:flex-start}
+.items i{font-style:normal;font-size:1.4rem;line-height:1.2;flex:none;width:30px;text-align:center}
+.items b{font-size:1rem}.items span{display:block;color:var(--claro);font-size:.92rem}
+.met li{display:flex;justify-content:space-between;gap:10px;background:rgba(0,0,0,.25);border-radius:12px;padding:10px 12px;flex-wrap:wrap}
+.met span{color:var(--claro);font-size:.92rem}
+.precio{text-align:center;margin-top:8px}.precio s{color:var(--claro);font-size:1.1rem}
+.precio b{display:block;font-size:2.6rem;color:var(--naranja);line-height:1.1}
+.precio span{color:var(--claro);font-size:.92rem}
+.precio2{text-align:center;margin-top:8px}
+.aviso{margin-top:12px!important;font-size:.88rem!important;color:#e6e9f8!important}
+.error{display:none;margin-top:16px;background:rgba(192,38,45,.18);border:1px solid rgba(192,38,45,.6);border-radius:14px;padding:12px 14px;font-size:.92rem}
+footer{margin-top:auto;text-align:center;color:#7e86b8;font-size:.76rem;padding-top:34px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img src="img/logo-aq-blanco.webp" alt="AQ Finanzas"></div>
+
+  <section class="hero">
+    <span class="chip"><i></i>Disponible ahora</span>
+    <h1>Habla con <span class="n">Carla</span>, mi asistente</h1>
+    <p class="sub">Toca el botón y conversa por voz con ella. Resuelve tus dudas al momento, desde cualquier país.</p>
+  </section>
+
+  <div class="orbe-box"><div class="orbe" id="orbe"></div></div>
+  <div class="estado" id="estado">Lista para hablar contigo</div>
+
+  <div class="cta">
+    <button class="btn late" id="btnHablar" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg>
+      Hablar con Carla
+    </button>
+    <button class="btn colgar" id="btnColgar" type="button" hidden>Terminar la conversación</button>
+    <p class="nota" id="nota">Tu navegador te pedirá permiso para usar el micrófono. Carla es una asistente de inteligencia artificial.</p>
+  </div>
+
+  <div class="error" id="error"></div>
+  <div id="tarjetas"></div>
+
+  <footer>© AQ Finanzas · Alejandro A. Quiñones Y. · Contenido educativo, no es asesoría financiera.</footer>
+</div>
+
+<script type="module">
+import { Conversation } from 'https://esm.sh/@elevenlabs/client@0';
+
+const AGENT_ID = 'agent_4901m78hbc0xfeb9ntytntkwa88a';
+const q = new URLSearchParams(location.search);
+const src = q.get('src') || (/clase|webinar/i.test(location.pathname) ? 'webinar' : 'whatsapp');
+const $ = (id) => document.getElementById(id);
+const orbe = $('orbe'), estado = $('estado'), btnH = $('btnHablar'), btnC = $('btnColgar'), err = $('error'), tarjetas = $('tarjetas');
+let conv = null;
+
+// País (para mostrar el enlace de pago correcto: Venezuela → /vzla, otro país → /latam)
+let tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+const esVzla = tz === 'America/Caracas' || q.get('pais') === 've';
+// 12-nov-2026: el precio especial dura 24 h (webinar y app)
+const esWebinar = /webinar|clase/i.test(src);
+const PLAZO = 24;
+const urlPago = (esVzla ? 'https://aqfinanzas.com/vzla' : 'https://aqfinanzas.com/latam') + '?src=' + encodeURIComponent(src);
+
+function ev(n, extra) {
+  try { fbq('trackCustom', n, Object.assign({ pagina: 'carla', origen: src }, extra || {})); } catch (e) {}
+  try { if (window.clarity) clarity('event', n); } catch (e) {}
+}
+
+function ui(modo) {
+  orbe.className = 'orbe' + (modo ? ' ' + modo : '');
+  const enLlamada = modo === 'escucha' || modo === 'habla' || modo === 'conectando';
+  btnH.hidden = enLlamada; btnC.hidden = !enLlamada; $('nota').hidden = enLlamada;
+  estado.textContent = { conectando: 'Conectando con Carla…', escucha: 'Carla te escucha', habla: 'Carla está hablando', '': 'Lista para hablar contigo' }[modo || ''] ?? '';
+}
+
+function tarjeta(titulo, texto, enlace, boton) {
+  const d = document.createElement('div');
+  d.className = 'tarjeta';
+  d.innerHTML = '<b></b><p></p>' + (enlace ? '<a target="_blank" rel="noopener"></a>' : '');
+  d.querySelector('b').textContent = titulo;
+  d.querySelector('p').textContent = texto || '';
+  if (enlace) { const a = d.querySelector('a'); a.href = enlace; a.textContent = boton || 'Abrir'; a.addEventListener('click', () => ev('CarlaClicTarjeta', { destino: enlace })); }
+  tarjetas.prepend(d);
+  d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Herramientas que Carla puede usar en la pantalla de la persona
+const clientTools = {
+  mostrar_enlace: async ({ tipo }) => {
+    if (tipo === 'pago') {
+      tarjeta('Tu acceso al Plan 90 Días', 'Aquí puedes hacer tu pago de forma segura. Tu precio especial dura ' + PLAZO + ' horas.', urlPago, 'Ir a pagar');
+    } else if (tipo === 'llamada') {
+      tarjeta('Agenda una llamada con Alejandro', 'Elige el día y la hora que mejor te queden.', 'https://calendly.com/aqfinanzas-info/llamada-1-a-1-campanas', 'Agendar llamada');
+    } else if (tipo === 'clase') {
+      tarjeta('Clase en vivo', 'Construye un patrimonio de $200K mínimo, desde cero.', 'https://aqfinanzas.com/clase', 'Ver la clase');
+    } else if (tipo === 'app') {
+      tarjeta('App AQ Finanzas', 'Tu app gratis para empezar a invertir.', 'https://app.aqfinanzas.com', 'Abrir la app');
+    } else { return 'tipo no reconocido'; }
+    ev('CarlaMostroEnlace', { tipo });
+    return 'mostrado';
+  },
+  mostrar_lamina: async ({ tema }) => {
+    const L = LAMINAS[tema];
+    if (!L) return 'tema no reconocido';
+    lamina(L);
+    ev('CarlaMostroLamina', { tema });
+    return 'mostrada';
+  }
+};
+
+// ===== Láminas (contenido de la página de venta del Plan 90 Días) =====
+const TASA_BS = 1100, PRECIO = 167;
+const fmtBs = (n) => 'Bs. ' + n.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const LAMINAS = {
+  incluye: { t: 'Todo lo que recibes en tu Plan 90 Días', items: [
+    ['📱', 'App Excedente', 'De cero al Método RCR completo, con lecciones cortas y mi voz.'],
+    ['🤖', 'Copiloto con IA 24/7', 'Resuelve tus dudas mientras estudias y practicas.'],
+    ['🎥', 'Clases en vivo conmigo', 'Con el mercado abierto, y sus grabaciones.'],
+    ['🧰', 'Herramientas del Método RCR', 'Registro de operaciones, radares y screener.'],
+    ['👥', 'Comunidad privada Excedente', 'Avanzas acompañado, nunca solo.'],
+    ['👧', '1 acceso gratis para tu hijo', 'De 8 a 17 años, lecciones adaptadas a su edad.'],
+    ['📘', 'Bono: mi libro «La Arquitectura del Dinero»', 'En PDF, desde la primera unidad.']
+  ]},
+  precio: { t: 'Tu inversión hoy', html: () => `
+    <div class="precio"><s>US$397</s><b>US$167</b><span>en un solo pago · ahorras 58 %</span></div>
+    <div class="precio2">o <b>3 pagos mensuales de US$67</b></div>
+    <p class="aviso">⏳ Este precio especial dura solo ${PLAZO} horas. Después sube a US$397 de contado o 3 pagos de US$147.</p>
+    <p class="aviso">🛡️ Garantía de 7 días: si no es para ti, te devuelven el 100 %.</p>` },
+  metodos: { t: () => esVzla ? 'Cómo pagar desde Venezuela' : 'Cómo pagar desde tu país', html: () => esVzla ? `
+    <ul class="met">
+      <li><b>📱 Pago Móvil</b><span>${fmtBs(PRECIO * TASA_BS)} (tasa ${TASA_BS.toLocaleString('es-VE')} Bs/$)</span></li>
+      <li><b>🏦 Transferencia Banesco</b><span>${fmtBs(PRECIO * TASA_BS)}</span></li>
+      <li><b>🟡 Binance (USDT)</b><span>167 USDT</span></li>
+      <li><b>💜 Zelle</b><span>US$167</span></li>
+      <li><b>🅿️ PayPal</b><span>US$174,65 (incluye la comisión)</span></li>
+      <li><b>💳 Tarjeta internacional</b><span>US$167 por Hotmart</span></li>
+    </ul>
+    <p class="aviso">Los datos para pagar están en la página de pago. Al terminar, llenas «Ya pagué» y envías la captura por WhatsApp para activar tu acceso.</p>` : `
+    <ul class="met">
+      <li><b>💳 Tarjeta de crédito o débito</b><span>Pago seguro con Hotmart</span></li>
+      <li><b>🅿️ PayPal</b><span>Aceptado</span></li>
+      <li><b>🏦 Pagos locales</b><span>PSE, Efecty y otros según tu país</span></li>
+    </ul>
+    <p class="aviso">El acceso te llega al instante por correo después del pago.</p>`, boton: () => [urlPago, 'Ir a pagar'] },
+  caminos: { t: 'Eliges tu camino', items: [
+    ['⚡', 'Inversión de tiempo corto', 'Operar para tomar ganancias.'],
+    ['🌱', 'Inversión de mediano y largo plazo', 'Construir patrimonio.'],
+    ['🏆', 'Completo', 'Las dos puertas.']
+  ]},
+  hijo: { t: 'Tu hijo también aprende', items: [
+    ['👧', 'Versión niños (8 a 12)', 'Con Bruno, nuestra mascota.'],
+    ['🧑', 'Versión jóvenes (13 a 17)', 'A su ritmo, con audio y animaciones.'],
+    ['📲', 'Tú lo invitas', 'Él instala la app en su celular.']
+  ]},
+  garantia: { t: 'Garantía de 7 días', html: () => `<p class="aviso" style="font-size:1rem">Si en los primeros 7 días sientes que el Plan 90 Días no te da la claridad o el impulso que necesitas, te devuelven el <b>100 %</b> de tu dinero. Sin preguntas incómodas.</p>` },
+  practica: { t: 'Practicas sin arriesgar tu dinero', items: [
+    ['🎯', 'Demo con el mercado real', 'Primero practicas, luego decides.'],
+    ['🧭', 'Desde cero', 'No necesitas saber de finanzas.'],
+    ['⏱️', 'A tu ritmo', 'Lecciones cortas desde el celular.']
+  ]},
+  testimonios: { t: 'Lo que dicen mis alumnos', items: [
+    ['⭐', 'Ana Caicedo', '«Aprender con usted es la mejor decisión que he tomado.»'],
+    ['⭐', 'Silvia Hernández', '«El detalle y la facilidad con que explicas genera confianza.»'],
+    ['⭐', 'Yuly Sosa', '«Al principio estuve a punto de tirar la toalla. Gracias por tu método.»']
+  ], nota: 'Experiencias individuales. Los resultados pasados no garantizan resultados futuros.' },
+  alejandro: { t: 'Quién te guía', items: [
+    ['🎓', 'Más de 15 años', 'Invirtiendo y enseñando.'],
+    ['👥', 'Más de 45.000 personas formadas', 'En toda América Latina.'],
+    ['📺', 'Experto en medios', 'Fui conductor de «Economía Mía» en Globovisión.']
+  ]}
+};
+
+// Vista previa de todas las láminas: aqfinanzas.com/carla?demo=1
+if (q.get('demo')) setTimeout(() => { Object.keys(LAMINAS).reverse().forEach(k => lamina(LAMINAS[k])); window.scrollTo(0, 0); }, 0);
+
+function lamina(L) {
+  const d = document.createElement('div');
+  d.className = 'tarjeta lamina';
+  const t = typeof L.t === 'function' ? L.t() : L.t;
+  let h = '<b class="lt"></b>';
+  if (L.items) h += '<ul class="items">' + L.items.map(([i, a, b]) => `<li><i>${i}</i><div><b>${a}</b><span>${b}</span></div></li>`).join('') + '</ul>';
+  if (L.html) h += L.html();
+  if (L.nota) h += `<p class="aviso">${L.nota}</p>`;
+  d.innerHTML = h;
+  d.querySelector('.lt').textContent = t;
+  if (L.boton) {
+    const [u, txt] = L.boton();
+    const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = txt;
+    a.addEventListener('click', () => ev('CarlaClicTarjeta', { destino: u }));
+    d.appendChild(a);
+  }
+  tarjetas.prepend(d);
+  d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+btnH.addEventListener('click', async () => {
+  err.style.display = 'none';
+  ui('conectando');
+  ev('CarlaInicio');
+  try {
+    await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (e) {
+    ui('');
+    err.textContent = 'Necesito permiso para usar tu micrófono. Actívalo en tu navegador y vuelve a tocar «Hablar con Carla».';
+    err.style.display = 'block';
+    ev('CarlaSinMicrofono');
+    return;
+  }
+  try {
+    conv = await Conversation.startSession({
+      agentId: AGENT_ID,
+      connectionType: 'webrtc',
+      dynamicVariables: {
+        nombre: q.get('n') || '',
+        correo: q.get('e') || '',
+        pais: esVzla ? 'Venezuela' : (tz || ''),
+        origen: src,
+        plazo: PLAZO + ' horas',
+        pregunta_origen: /webinar|clase/i.test(src)
+          ? '¿Qué fue lo que más te gustó de la clase de Alejandro?'
+          : /app|whatsapp/i.test(src)
+            ? 'De la app, ¿qué es lo que más te ha gustado?'
+            : '¿Vienes de la app de Alejandro o de su clase en vivo?'
+      },
+      clientTools,
+      onConnect: () => { ui('escucha'); ev('CarlaConectada'); },
+      onDisconnect: () => { ui(''); conv = null; },
+      onModeChange: ({ mode }) => ui(mode === 'speaking' ? 'habla' : 'escucha'),
+      onError: (m) => { console.error('Carla', m); }
+    });
+  } catch (e) {
+    console.error(e);
+    ui('');
+    err.textContent = 'No pude conectar con Carla en este momento. Revisa tu conexión a internet e inténtalo de nuevo.';
+    err.style.display = 'block';
+    ev('CarlaErrorConexion');
+  }
+});
+
+btnC.addEventListener('click', async () => {
+  try { if (conv) await conv.endSession(); } catch (e) {}
+  conv = null; ui(''); ev('CarlaFin');
+});
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1875412480497286');
+fbq('track','PageView');
+</script>
+</body>
+</html>
