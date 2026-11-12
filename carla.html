@@ -274,7 +274,12 @@ btnH.addEventListener('click', async () => {
         nombre: q.get('n') || '',
         correo: q.get('e') || '',
         pais: esVzla ? 'Venezuela' : (tz || ''),
-        origen: src
+        origen: src,
+        pregunta_origen: /webinar|clase/i.test(src)
+          ? '¿Qué fue lo que más te gustó de la clase de Alejandro?'
+          : /app|whatsapp/i.test(src)
+            ? 'De la app, ¿qué es lo que más te ha gustado?'
+            : '¿Vienes de la app de Alejandro o de su clase en vivo?'
       },
       clientTools,
       onConnect: () => { ui('escucha'); ev('CarlaConectada'); },
