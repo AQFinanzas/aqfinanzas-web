@@ -230,6 +230,9 @@ const LAMINAS = {
   ]}
 };
 
+// Vista previa de todas las láminas: aqfinanzas.com/carla?demo=1
+if (q.get('demo')) setTimeout(() => { Object.keys(LAMINAS).reverse().forEach(k => lamina(LAMINAS[k])); window.scrollTo(0, 0); }, 0);
+
 function lamina(L) {
   const d = document.createElement('div');
   d.className = 'tarjeta lamina';
