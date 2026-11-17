@@ -91,6 +91,8 @@
 <p>El emprendimiento está de moda, pero si creías que los profesionales solo salen de las universidades, estás muy equivocado. El empresario que no sea capaz de profesionalizarse, de conocer su industria y de apasionarse inteligentemente por lo que hace, tarde o temprano desaparecerá: se quedará sin negocio, sin dinero y sin aquello que nunca se podrá recuperar, <strong>el tiempo</strong>.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (jun 2019), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/cuanto-dinero-necesito-para-invertir-en-bolsa/">¿Cuánto dinero necesitas para empezar a invertir en bolsa? La respuesta real</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -116,8 +118,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/cuanto-dinero-necesito-para-invertir-en-bolsa/"><div class="foto" style="background-image:url('/blog/img/cuanto-dinero-necesito-para-invertir-en-bolsa.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>¿Cuánto dinero necesitas para empezar a invertir en bolsa? La respuesta real</h3><p class="resumen">No necesitas miles de dólares. Te explico con números cuánto necesitas, qué son las acciones fraccionadas y por qué la constancia vale más que el monto.</p></div></a><a class="tarjeta" href="/blog/impuestos-invertir-en-estados-unidos-desde-latinoamerica/"><div class="foto" style="background-image:url('/blog/img/impuestos-invertir-en-estados-unidos-desde-latinoamerica.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>Impuestos al invertir en Estados Unidos desde Latinoamérica: lo que debes saber</h3><p class="resumen">W-8BEN, retenciones sobre dividendos y el impuesto que casi nadie menciona. Lo básico que debes saber antes de invertir en Estados Unidos.</p></div></a><a class="tarjeta" href="/blog/ojos-en-el-cielo-pies-en-la-tierra/"><div class="foto" style="background-image:url('/blog/img/ojos-en-el-cielo-pies-en-la-tierra.jpg')"></div><div class="txt"><span class="chip">Emprendimiento</span><h3>Emprender con los ojos en el cielo, pero con los pies en la tierra</h3><p class="resumen">Soñar no basta para emprender: el éxito exige equilibrio entre pasión y pragmatismo, con planificación financiera, sistema y metas medibles.</p></div></a></div></div>
   </section>
 </main>
 
@@ -152,7 +154,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

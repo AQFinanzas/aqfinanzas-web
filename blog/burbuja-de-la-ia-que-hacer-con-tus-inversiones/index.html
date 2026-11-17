@@ -119,8 +119,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/impuestos-invertir-en-estados-unidos-desde-latinoamerica/"><div class="foto" style="background-image:url('/blog/img/impuestos-invertir-en-estados-unidos-desde-latinoamerica.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>Impuestos al invertir en Estados Unidos desde Latinoamérica: lo que debes saber</h3><p class="resumen">W-8BEN, retenciones sobre dividendos y el impuesto que casi nadie menciona. Lo básico que debes saber antes de invertir en Estados Unidos.</p></div></a><a class="tarjeta" href="/blog/trading-o-inversion-a-largo-plazo/"><div class="foto" style="background-image:url('/blog/img/trading-o-inversion-a-largo-plazo.jpg')"></div><div class="txt"><span class="chip">Método RCR</span><h3>Trading o inversión a largo plazo: cuál es para ti (y por qué no tienes que elegir uno)</h3><p class="resumen">Day trading, swing o largo plazo: diferencias reales de tiempo, riesgo y capital, y cómo combinarlos con un método.</p></div></a><a class="tarjeta" href="/blog/como-invertir-en-la-bolsa-de-nueva-york-desde-latinoamerica/"><div class="foto" style="background-image:url('/blog/img/como-invertir-en-la-bolsa-de-nueva-york-desde-latinoamerica.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>Cómo invertir en la bolsa de Nueva York desde Latinoamérica: guía 2026</h3><p class="resumen">Desde Colombia, Venezuela, México o cualquier país: qué necesitas, cómo elegir el bróker, cómo hacer tu primera compra y los errores que debes evitar.</p></div></a></div></div>
   </section>
 </main>
 
@@ -155,7 +155,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

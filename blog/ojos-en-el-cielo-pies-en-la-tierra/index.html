@@ -95,6 +95,8 @@
 <p>Sueña en grande, pero planifica, sistematiza y mide. Mantén siempre los ojos en el cielo y los pies en la tierra: solo así podrás garantizar tu éxito financiero en cada etapa de tu negocio.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (abr 2017), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/como-invertir-en-el-sp-500/">Cómo invertir en el S&amp;P 500 desde Latinoamérica (y por qué tanta gente lo hace)</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -120,8 +122,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/como-invertir-en-el-sp-500/"><div class="foto" style="background-image:url('/blog/img/como-invertir-en-el-sp-500.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>Cómo invertir en el S&amp;P 500 desde Latinoamérica (y por qué tanta gente lo hace)</h3><p class="resumen">El índice más famoso del mundo, explicado: qué es, cómo invertir en él con un ETF y qué debes saber sobre sus caídas.</p></div></a><a class="tarjeta" href="/blog/invertir-en-dividendos/"><div class="foto" style="background-image:url('/blog/img/invertir-en-dividendos.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>Invertir en dividendos: cómo construir ingresos pasivos con acciones y ETF</h3><p class="resumen">Cobrar por ser socio de grandes empresas. Qué son los dividendos, cómo elegir buenas pagadoras y las trampas que debes evitar.</p></div></a><a class="tarjeta" href="/blog/dinero-facil-no-es-rentable/"><div class="foto" style="background-image:url('/blog/img/dinero-facil-no-es-rentable.jpg')"></div><div class="txt"><span class="chip">Emprendimiento</span><h3>¿Ser chanchullero es rentable? Por qué el dinero fácil empobrece</h3><p class="resumen">Vivir de chanchullo en chanchullo parece rentable, pero te deja ahogado financieramente. Los problemas de dinero se resuelven con educación financiera.</p></div></a></div></div>
   </section>
 </main>
 
@@ -156,7 +158,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

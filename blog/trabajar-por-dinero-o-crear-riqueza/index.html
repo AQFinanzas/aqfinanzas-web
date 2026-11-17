@@ -90,6 +90,8 @@
 <p>Hagamos una pausa en nuestras ocupaciones y busquemos educación para entender el dinero desde su esencia, porque solo mejorando nuestra relación con él podremos crear prosperidad y abundancia. Haz aquello que sabes hacer con pasión, fuerza, determinación, calidad y humanidad, y verás cómo el éxito financiero comienza a sonreírte.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (may 2018), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/invertir-en-dividendos/">Invertir en dividendos: cómo construir ingresos pasivos con acciones y ETF</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -115,8 +117,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/invertir-en-dividendos/"><div class="foto" style="background-image:url('/blog/img/invertir-en-dividendos.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>Invertir en dividendos: cómo construir ingresos pasivos con acciones y ETF</h3><p class="resumen">Cobrar por ser socio de grandes empresas. Qué son los dividendos, cómo elegir buenas pagadoras y las trampas que debes evitar.</p></div></a><a class="tarjeta" href="/blog/trading-o-inversion-a-largo-plazo/"><div class="foto" style="background-image:url('/blog/img/trading-o-inversion-a-largo-plazo.jpg')"></div><div class="txt"><span class="chip">Método RCR</span><h3>Trading o inversión a largo plazo: cuál es para ti (y por qué no tienes que elegir uno)</h3><p class="resumen">Day trading, swing o largo plazo: diferencias reales de tiempo, riesgo y capital, y cómo combinarlos con un método.</p></div></a><a class="tarjeta" href="/blog/oportunidades-se-ven-con-la-mente/"><div class="foto" style="background-image:url('/blog/img/oportunidades-se-ven-con-la-mente.jpg')"></div><div class="txt"><span class="chip">Mentalidad</span><h3>Las oportunidades no se ven con los ojos, se ven con una mente educada</h3><p class="resumen">Las oportunidades casi nunca llegan como un diamante pulido, sino como un carbón por transformar. Solo una mente educada financieramente sabe verlas.</p></div></a></div></div>
   </section>
 </main>
 
@@ -151,7 +153,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

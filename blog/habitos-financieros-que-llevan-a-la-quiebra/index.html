@@ -93,6 +93,8 @@
 <p>Conoce tus gastos, aparta al menos el 10&nbsp;% de tus ingresos, no compres lo que no puedes pagar, escribe tus metas y pon a invertir parte de tu capital. Eliminemos todo hábito que atente contra nuestro bienestar financiero: solo así lograremos riqueza y prosperidad.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (oct 2017), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/burbuja-de-la-ia-que-hacer-con-tus-inversiones/">¿Burbuja de la IA? Qué hacer con tus inversiones cuando todos hablan de crash</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -118,8 +120,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/burbuja-de-la-ia-que-hacer-con-tus-inversiones/"><div class="foto" style="background-image:url('/blog/img/burbuja-de-la-ia-que-hacer-con-tus-inversiones.jpg')"></div><div class="txt"><span class="chip">Bolsa de Nueva York</span><h3>¿Burbuja de la IA? Qué hacer con tus inversiones cuando todos hablan de crash</h3><p class="resumen">Los videos más vistos de bolsa hablan de burbujas y caídas. Qué nos enseña la historia y cómo proteger tu portafolio sin dejarte llevar por el miedo.</p></div></a><a class="tarjeta" href="/blog/tasas-de-interes-de-la-fed-y-la-bolsa/"><div class="foto" style="background-image:url('/blog/img/tasas-de-interes-de-la-fed-y-la-bolsa.jpg')"></div><div class="txt"><span class="chip">Economía</span><h3>Tasas de interés de la Fed y la bolsa: qué pasa con tus acciones cuando se mueven</h3><p class="resumen">Cada anuncio de la Reserva Federal mueve los mercados. Te explico por qué pasa, qué sectores sufren o ganan y cómo no perder la cabeza.</p></div></a><a class="tarjeta" href="/blog/aparentar-lo-que-no-eres-quiebra/"><div class="foto" style="background-image:url('/blog/img/aparentar-lo-que-no-eres-quiebra.jpg')"></div><div class="txt"><span class="chip">Finanzas personales</span><h3>Aparentar lo que no eres te llevará a la quiebra: cómo evitarlo</h3><p class="resumen">Mantener un estilo de vida que no puedes pagar te aleja de la riqueza. Tres consejos para sincerar tus finanzas y crear activos que no dependan de ti.</p></div></a></div></div>
   </section>
 </main>
 
@@ -154,7 +156,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

@@ -85,6 +85,8 @@
 <p>El estudio también reflejó que solo un 2&nbsp;% de los encuestados dijo que usaría parte de su dinero para adquirir tiempo. Aunque el tiempo se puede comprar y puede aliviar el estrés y mejorar la calidad de vida, todavía son pocos los que lo hacen, incluso pudiendo permitírselo. Así que sí: <strong>el dinero nos puede ayudar a generar felicidad</strong>, si sabemos en qué usarlo.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (ene 2018), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/que-es-un-etf/">Qué es un ETF y por qué es la mejor puerta de entrada a la bolsa</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -110,8 +112,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/que-es-un-etf/"><div class="foto" style="background-image:url('/blog/img/que-es-un-etf.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>Qué es un ETF y por qué es la mejor puerta de entrada a la bolsa</h3><p class="resumen">Con una sola compra puedes ser socio de cientos de empresas. Qué es un ETF, cómo funciona y por qué lo recomiendo a quien empieza.</p></div></a><a class="tarjeta" href="/blog/cuanto-dinero-necesito-para-invertir-en-bolsa/"><div class="foto" style="background-image:url('/blog/img/cuanto-dinero-necesito-para-invertir-en-bolsa.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>¿Cuánto dinero necesitas para empezar a invertir en bolsa? La respuesta real</h3><p class="resumen">No necesitas miles de dólares. Te explico con números cuánto necesitas, qué son las acciones fraccionadas y por qué la constancia vale más que el monto.</p></div></a><a class="tarjeta" href="/blog/presupuesto-familiar-punto-de-partida/"><div class="foto" style="background-image:url('/blog/img/presupuesto-familiar-punto-de-partida.jpg')"></div><div class="txt"><span class="chip">Finanzas personales</span><h3>Presupuesto familiar: nadie sabe hacia dónde va si no sabe dónde está</h3><p class="resumen">El presupuesto familiar es tu punto de partida: te muestra dónde estás, te ayuda a manejar deudas y a crear excedentes. Así puedes empezar hoy.</p></div></a></div></div>
   </section>
 </main>
 
@@ -146,7 +148,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }

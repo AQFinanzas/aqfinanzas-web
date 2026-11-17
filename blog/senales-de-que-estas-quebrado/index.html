@@ -94,6 +94,8 @@
 <p>Más allá de las posibilidades que tengas para salir adelante, en mi experiencia ayuda mucho el deseo de no querer vivir tantas carencias, tener un sentido de merecimiento mucho mayor y desear con fervor una mejor calidad de vida. Ese deseo es el motor que te empuja a hacer los cambios.</p>
 <p class="aviso-art" style="margin-top:1.6em">Columna publicada originalmente en Caraota Digital (may 2020), revisada y actualizada para este blog.</p>
 
+<p class="lee-tambien"><strong>Para dar el siguiente paso:</strong> cuando tengas tus finanzas en orden, pon tu dinero a trabajar. Te lo explico en <a href="/blog/que-es-un-etf/">Qué es un ETF y por qué es la mejor puerta de entrada a la bolsa</a>.</p>
+
         <section class="banda" style="margin:2em 0 0" aria-label="Siguiente paso">
           <div>
             <h2 style="margin:0;color:#fff">Da el siguiente paso con <span class="clave">tu</span> dinero</h2>
@@ -119,8 +121,8 @@
     </div>
   </div>
 
-  <section class="relacionados" id="relacionados" hidden>
-    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"></div></div>
+  <section class="relacionados" id="relacionados">
+    <div class="wrap"><h2>Sigue aprendiendo</h2><div class="grilla" id="rel"><a class="tarjeta" href="/blog/que-es-un-etf/"><div class="foto" style="background-image:url('/blog/img/que-es-un-etf.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>Qué es un ETF y por qué es la mejor puerta de entrada a la bolsa</h3><p class="resumen">Con una sola compra puedes ser socio de cientos de empresas. Qué es un ETF, cómo funciona y por qué lo recomiendo a quien empieza.</p></div></a><a class="tarjeta" href="/blog/cuanto-dinero-necesito-para-invertir-en-bolsa/"><div class="foto" style="background-image:url('/blog/img/cuanto-dinero-necesito-para-invertir-en-bolsa.jpg')"></div><div class="txt"><span class="chip">Primeros pasos</span><h3>¿Cuánto dinero necesitas para empezar a invertir en bolsa? La respuesta real</h3><p class="resumen">No necesitas miles de dólares. Te explico con números cuánto necesitas, qué son las acciones fraccionadas y por qué la constancia vale más que el monto.</p></div></a><a class="tarjeta" href="/blog/riqueza-detras-de-un-cafe/"><div class="foto" style="background-image:url('/blog/img/riqueza-detras-de-un-cafe.jpg')"></div><div class="txt"><span class="chip">Finanzas personales</span><h3>La riqueza o la pobreza puede estar detrás de un simple café</h3><p class="resumen">Un pequeño hábito diario, como dos cafés, puede cambiar tus finanzas a largo plazo. Así se combinan el cambio de hábitos, la inversión y el interés compuesto.</p></div></a></div></div>
   </section>
 </main>
 
@@ -155,7 +157,7 @@
   const todos=(window.ARTICULOS||[]).filter(a=>a.slug!==slug);
   const yo=(window.ARTICULOS||[]).find(a=>a.slug===slug);
   const rel=todos.sort((a,b)=>((b.categoria===yo?.categoria)-(a.categoria===yo?.categoria))||b.fecha.localeCompare(a.fecha)).slice(0,3);
-  if(rel.length){
+  if(rel.length&&!document.getElementById('rel').children.length){
     document.getElementById('relacionados').hidden=false;
     document.getElementById('rel').innerHTML=rel.map(a=>`<a class="tarjeta" href="/blog/${a.slug}/"><div class="foto" style="${a.imagen?`background-image:url('${a.imagen}')`:''}"></div><div class="txt"><span class="chip">${a.categoria}</span><h3>${a.titulo}</h3><p class="resumen">${a.resumen}</p></div></a>`).join('');
   }
