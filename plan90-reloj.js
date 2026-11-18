@@ -1,5 +1,5 @@
 /* ============================================================
-   Plan 90 Días · Contador de 24 horas por persona (48 h el 11-nov; 24 h desde el 12-nov-2026)
+   Plan 90 Días · Carrito con horario fijo desde el 18-nov-2026 (antes: 24 h por persona; ver abajo)
    - Arranca la PRIMERA vez que la persona abre cualquier página del
      Plan 90 Días en aqfinanzas.com (90dias, vzla, latam, copias y pago).
    - Se guarda en su navegador (localStorage + cookie), así que si vuelve
@@ -30,14 +30,23 @@
     try { localStorage.setItem(K, String(t)); } catch (e) {}
     try { document.cookie = K + '=' + t + ';max-age=31536000;path=/;SameSite=Lax'; } catch (e) {}
   }
-  var ini = leer();
-  if (!ini || ini > ahora || /(^|[?&])reloj=reiniciar/.test(qs)) { ini = ahora; guardar(ini); }
-  else guardar(ini); // repone la otra copia si una se perdió
-  var fin = ini + HORAS * 3600e3;
-  var forzar = /(^|[?&])reloj=vencido/.test(qs);
-  function vencido() { return forzar || Date.now() >= fin; }
+  /* 18-nov-2026: CARRITO CON HORARIO FIJO (reemplaza las 24 h por persona).
+     Abre vie 20-nov-2026 8:00 a. m. Colombia (9:00 a. m. Venezuela) y cierra el mismo día 8:00 p. m. Colombia (9:00 p. m. Venezuela).
+     Antes de abrir: página completa con contador «El carrito abre en…» y botones de pago bloqueados.
+     Al cerrar: AL_CERRAR = 'cerrar' → no se puede comprar (aviso + WhatsApp); 'subir' → sigue abierto a US$397 / 3 × US$147.
+     Pruebas: ?carrito=antes | abierto | cerrado */
+  var ABRE = Date.parse('2026-11-20T08:00:00-05:00'), CIERRA = Date.parse('2026-11-20T20:00:00-05:00');
+  var AL_CERRAR = 'cerrar';
+  var mq = qs.match(/(?:^|[?&])carrito=(antes|abierto|cerrado)/), FORZ = mq ? mq[1] : '';
+  function estado() { if (FORZ) return FORZ; var t = Date.now(); return t < ABRE ? 'antes' : t < CIERRA ? 'abierto' : 'cerrado'; }
+  var EST = estado();
+  var fin = EST === 'antes' ? ABRE : CIERRA;
+  var forzar = /(^|[?&])reloj=vencido/.test(qs) || (EST === 'cerrado' && AL_CERRAR === 'subir');
+  function vencido() { return forzar; }
+  var CERRADO = EST === 'cerrado' && AL_CERRAR === 'cerrar', ANTES = EST === 'antes';
 
   var P90 = window.P90 = {
+    estado: EST, bloqueado: ANTES || CERRADO,
     fin: fin, horas: HORAS, vencido: vencido(), OFF: OFF, WA: WA,
     contado: vencido() ? 397 : 167, cuota: vencido() ? 147 : 67,
     offContado: function () { return vencido() ? OFF.contado2 : OFF.contado; },
@@ -84,17 +93,18 @@
   }
   function caja(clase) {
     var d = document.createElement('div'); d.className = 'p90r ' + (clase || '');
-    d.innerHTML = '<div><div class="t">⏳ Este precio se mantiene solo por ' + HORAS + ' horas</div><small>Después sube a US$397 (o 3 pagos de US$147).</small></div>' +
-      '<div class="d"><span data-h>' + HORAS + '<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
+    d.innerHTML = (ANTES ? '<div><div class="t">🛒 El carrito abre el viernes 20 de noviembre</div><small>8:00 a. m. Colombia · 9:00 a. m. Venezuela. Abre en:</small></div>'
+      : '<div><div class="t">⏳ El carrito cierra hoy, viernes, a las 8:00 p. m. Colombia</div><small>9:00 p. m. Venezuela. Solo 12 horas abierto.</small></div>') +
+      '<div class="d"><span data-h>00<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
     return d;
   }
   var relojes = [];
   function tic() {
     var r = fin - Date.now();
-    if (r <= 0 && !P90.vencido) { location.reload(); return; } // se venció con la página abierta: se muestra el precio nuevo
+    if (r <= 0 && !FORZ) { location.reload(); return; } // se venció con la página abierta: se muestra el precio nuevo
     var p = partesT(r);
     relojes.forEach(function (el) {
-      if (el.classList.contains('p90fijo')) { el.textContent = '⏳ Tu precio de US$167 vence en ' + p.join(':'); return; }
+      if (el.classList.contains('p90fijo')) { el.textContent = (ANTES ? '🛒 El carrito abre en ' : '⏳ El carrito cierra en ') + p.join(':'); return; }
       el.querySelector('[data-h]').firstChild.nodeValue = p[0];
       el.querySelector('[data-m]').firstChild.nodeValue = p[1];
       el.querySelector('[data-s]').firstChild.nodeValue = p[2];
@@ -115,8 +125,29 @@
   function q(s) { return document.querySelector(s); }
   function qa(s) { return document.querySelectorAll(s); }
 
+  function aviso(txt) {
+    var v = document.createElement('div'); v.setAttribute('role', 'alert');
+    v.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:10000;max-width:92%;background:#01005A;color:#fff;padding:14px 18px;border-radius:14px;font-weight:700;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.35)';
+    v.textContent = txt; document.body.appendChild(v); setTimeout(function () { v.remove(); }, 4500);
+  }
+  var waCerrado = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola Alejandro, quiero entrar al Plan 90 Días Excedente.');
+  if (ANTES || CERRADO) document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    aviso(ANTES ? 'El carrito abre el viernes 20 de noviembre a las 8:00 a. m. (Colombia) · 9:00 a. m. (Venezuela).' : 'El carrito ya cerró. Escríbeme por WhatsApp.');
+  }, true);
+
   /* ---------- Página de venta (90dias, vzla, latam y copias) ---------- */
   function venta() {
+    if (CERRADO) {
+      qa('.p90r').forEach(function (x) { x.remove(); });
+      qa('a.pagar').forEach(function (a) { a.style.display = 'none'; });
+      var hy = q('.hoy'); if (hy) hy.insertAdjacentHTML('beforeend', '<div class="p90v" style="text-align:center;font-weight:700;color:#01005A">El carrito se cerró el viernes 20 de noviembre a las 8:00 p. m. (Colombia).<br><a href="' + waCerrado + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#F14900;color:#fff;padding:12px 18px;border-radius:999px;text-decoration:none">Escríbeme por WhatsApp →</a></div>');
+      var pm0 = q('.precio-mini'); if (pm0) pm0.insertAdjacentHTML('afterend', '<div class="p90v">🛒 El carrito ya cerró.</div>');
+      try { if (window.clarity) clarity('set', 'carrito', 'cerrado'); } catch (e) {}
+      return;
+    }
+    if (ANTES) qa('a.pagar').forEach(function (a) { a.style.opacity = '.55'; a.setAttribute('aria-disabled', 'true'); });
     if (!P90.vencido) {
       var pm = q('.precio-mini'); if (pm) { var c1 = caja(); pm.insertAdjacentElement('afterend', c1); relojes.push(c1); }
       var hoy = q('.hoy .ahorro'); if (hoy) { var c2 = caja('cen'); hoy.insertAdjacentElement('afterend', c2); relojes.push(c2); }
@@ -128,7 +159,7 @@
     // Venció: precio normal
     cambiarTextos(document.body);
     qa('.precio-mini .tachado-total').forEach(function (s) { s.style.display = 'none'; });
-    var pm2 = q('.precio-mini'); if (pm2) pm2.insertAdjacentHTML('afterend', '<div class="p90v">Tu precio especial de ' + HORAS + ' horas (US$167) ya venció.</div>');
+    var pm2 = q('.precio-mini'); if (pm2) pm2.insertAdjacentHTML('afterend', '<div class="p90v">El precio especial de US$167 ya terminó.</div>');
     var tot = q('.total'); if (tot) tot.style.display = 'none'; var np = q('.no-pagas'); if (np) np.style.display = 'none';
     var mo = q('.hoy .monto span'); if (mo) mo.textContent = '397';
     var ah = q('.hoy .ahorro'); if (ah) ah.textContent = 'Un solo pago';
@@ -148,6 +179,17 @@
   /* ---------- Página de pago (pago-plan90) ---------- */
   function pago() {
     if (/(^|[?&])cuota=[23]/.test(qs)) return; // pago de cuota 2/3: monto fijo, sin contador
+    if (ANTES || CERRADO) { // sin métodos de pago fuera del horario del carrito
+      ['#forma', '#methods', '#form'].forEach(function (s) { var x = q(s); if (x) x.style.display = 'none'; });
+      qa('.pais, #pais').forEach(function (x) { x.style.display = 'none'; });
+      var pr0 = q('header .price .chips') || q('#methods');
+      var msg = ANTES ? '🛒 El carrito abre el viernes 20 de noviembre a las 8:00 a. m. (Colombia) · 9:00 a. m. (Venezuela).' : '🛒 El carrito se cerró el viernes 20 de noviembre a las 8:00 p. m. (Colombia).';
+      var box = document.createElement('div'); box.className = 'p90v'; box.style.cssText = 'background:#FFF4EE;color:#01005A;font-weight:700;text-align:center;font-size:1rem;margin:16px auto;max-width:560px';
+      box.innerHTML = msg + (CERRADO ? '<br><a href="' + waCerrado + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#F14900;color:#fff;padding:12px 18px;border-radius:999px;text-decoration:none">Escríbeme por WhatsApp →</a>' : '');
+      var mt = q('#methods'); if (mt && mt.parentNode) mt.parentNode.insertBefore(box, mt); else document.body.insertBefore(box, document.body.firstChild);
+      if (ANTES) { var pr1 = q('header .price .chips'); if (pr1) { var c0 = caja('cen'); pr1.insertAdjacentElement('beforebegin', c0); relojes.push(c0); } tic(); setInterval(tic, 1000); }
+      return;
+    }
     if (!P90.vencido) {
       var pr = q('header .price .chips'); if (pr) { var c = caja('cen'); pr.insertAdjacentElement('beforebegin', c); relojes.push(c); }
       tic(); setInterval(tic, 1000);
@@ -155,7 +197,7 @@
     }
     cambiarTextos(document.body);
     qa('header .price s').forEach(function (s) { s.parentNode.style.display = 'none'; });
-    var pr2 = q('header .price .chips'); if (pr2) pr2.insertAdjacentHTML('beforebegin', '<div class="p90v" style="background:rgba(255,255,255,.1);color:#fff">Tu precio especial de ' + HORAS + ' horas (US$167) ya venció.</div>');
+    var pr2 = q('header .price .chips'); if (pr2) pr2.insertAdjacentHTML('beforebegin', '<div class="p90v" style="background:rgba(255,255,255,.1);color:#fff">El precio especial de US$167 ya terminó.</div>');
     // Los textos que la página vuelve a pintar al elegir forma de pago
     new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) cambiarTextos(n); }); }); })
       .observe(document.body, { childList: true, subtree: true });
