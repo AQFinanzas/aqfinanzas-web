@@ -193,6 +193,7 @@ p{margin:0}
 .pila li span{display:flex;gap:10px;align-items:flex-start}
 .pila li span::before{content:"✓";flex:none;color:var(--verde);font-weight:900}
 .pila li.bn span::before{content:"🎁"}
+.pila li.tit{display:block;border-bottom:0;padding:16px 0 4px;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja)}.pila li.tit span::before{content:none}
 .pila li s{color:var(--gris);white-space:nowrap;font-variant-numeric:tabular-nums}
 .total{padding:18px 26px 6px;display:flex;justify-content:space-between;align-items:baseline;font-weight:800;color:var(--marino)}
 .total s{font-size:1.4rem;color:#9AA1BD}
@@ -628,6 +629,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     <div class="oferta">
       <div class="cab"><b>Plan 90 Días Excedente</b><span>Acceso inmediato después del pago</span></div>
       <ul class="pila">
+        <li class="tit">7 beneficios del plan</li>
         <li><span id="p-todo">App Excedente (Método RCR completo)</span></li>
         <li><span>Copiloto de inversión con IA 24/7</span></li>
         <li><span>Tu progreso siempre a la vista: avance, premios y estadísticas</span></li>
@@ -635,8 +637,10 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
         <li><span>Clases en vivo + grabaciones</span></li>
         <li><span>Herramientas del Método RCR</span></li>
         <li><span>Comunidad privada "Excedente"</span></li>
-        <li class="bn"><span>2 accesos gratis para tus hijos (8 a 17 años)</span><s>US$74</s></li>
-        <li class="bn"><span>Bono: libro "La Arquitectura del Dinero"</span></li>
+        <li class="tit">Bonos especiales</li>
+        <li class="bn"><span>Libro "La Arquitectura del Dinero"</span></li>
+        <li class="bn"><span>2 accesos a Hijos Prósperos para tus hijos (8 a 17 años)</span><s>US$74</s></li>
+        <li class="bn"><span>Sesión personalizada 1 a 1 unas semanas antes de cumplir tus 90 días, para revisar tu avance y tu siguiente paso</span></li>
       </ul>
       <div class="total"><span>Valor total</span><s class="tachado-total">US$397</s></div>
       <div class="hoy">
