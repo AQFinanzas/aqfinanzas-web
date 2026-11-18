@@ -129,7 +129,7 @@
     cambiarTextos(document.body);
     qa('.precio-mini .tachado-total').forEach(function (s) { s.style.display = 'none'; });
     var pm2 = q('.precio-mini'); if (pm2) pm2.insertAdjacentHTML('afterend', '<div class="p90v">Tu precio especial de ' + HORAS + ' horas (US$167) ya venció.</div>');
-    var tot = q('.total'); if (tot) tot.style.display = 'none';
+    var tot = q('.total'); if (tot) tot.style.display = 'none'; var np = q('.no-pagas'); if (np) np.style.display = 'none';
     var mo = q('.hoy .monto span'); if (mo) mo.textContent = '397';
     var ah = q('.hoy .ahorro'); if (ah) ah.textContent = 'Un solo pago';
     qa('a.pagar').forEach(function (a) {
