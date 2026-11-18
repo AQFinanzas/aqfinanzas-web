@@ -105,14 +105,14 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
   <div class="wrap">
     <img class="logo" src="img/logo-aq-blanco.webp" alt="AQ Finanzas">
     <h1>Plan 90 Días Excedente</h1>
-    <p class="sub">App Excedente, copiloto con IA, clases en vivo y comunidad, con 1 acceso gratis para tu hijo.</p>
+    <p class="sub">App Excedente, copiloto con IA, clases en vivo y comunidad, con 2 accesos gratis para tus hijos.</p>
     <div class="price">
       <div class="k" style="margin-bottom:4px">Valor <s>US$397</s></div><div class="usd"><span id="precioTop">$167</span> <small>USD</small></div><div class="k">o 3 pagos de US$67</div>
       <div class="bs" id="bsLine"></div>
       <div class="chips">
         <span class="chip">📱 App Excedente</span>
         <span class="chip">🤖 Copiloto con IA</span>
-        <span class="chip">👧 1 acceso gratis para tu hijo</span>
+        <span class="chip">👧 2 accesos gratis para tus hijos</span>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
     </div>
     <div class="solo-webinar">
     <h2 style="margin-top:18px">2. ¿Sumas accesos para más hijos?</h2>
-    <div class="k">Tu plan ya incluye 1 acceso gratis para un hijo. Cada acceso adicional cuesta US$37 (pago único) y es solo para niños y jóvenes de 8 a 17 años. <b style="color:#F14900">Solo por el webinar: disponible hasta el viernes 13 de noviembre a las 9:00 p. m. (hora Colombia). Es una sola compra: después no se pueden sumar más hijos.</b></div>
+    <div class="k">Tu plan ya incluye 2 accesos gratis para hijos. Cada acceso adicional cuesta US$37 (pago único) y es solo para niños y jóvenes de 8 a 17 años. <b style="color:#F14900">Solo por el webinar: disponible hasta el viernes 13 de noviembre a las 9:00 p. m. (hora Colombia). Es una sola compra: después no se pueden sumar más hijos.</b></div>
     <div class="hijos" id="hijos">
       <button type="button" data-h="0" class="on">No</button><button type="button" data-h="1">+1</button><button type="button" data-h="2">+2</button><button type="button" data-h="3">+3</button><button type="button" data-h="4">+4</button><button type="button" data-h="5">+5</button>
     </div>
@@ -188,7 +188,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("a,button")
       <li>Copiloto de inversión con IA</li>
       <li>Clases en vivo y comunidad privada</li>
       <li>Herramientas del Método RCR y el libro "La Arquitectura del Dinero"</li>
-      <li>1 acceso gratis para tu hijo (8 a 17 años), con lecciones adaptadas a su edad</li>
+      <li>2 accesos gratis para tus hijos (8 a 17 años), con lecciones adaptadas a su edad</li>
       <li>90 días de acceso desde tu pago</li>
     </ul>
   </section>
@@ -311,7 +311,7 @@ METODOS.forEach(function(m){
 });
 if(selPrev) sel.value = selPrev;
 var r = '<div class="l"><span>Plan 90 Días ('+(FORMA==='contado'?'pago completo':'pago '+(CUOTA_N?CUOTA_N.n:1)+' de 3')+')</span><b>US$'+(FORMA==='contado'?CONFIG.CONTADO:CONFIG.CUOTA)+'</b></div>';
-r += '<div class="l"><span>1 acceso para tu hijo</span><b>Gratis</b></div>';
+r += '<div class="l"><span>2 accesos para tus hijos</span><b>Gratis</b></div>';
 if(HIJOS>0) r += '<div class="l"><span>'+HIJOS+' acceso'+(HIJOS>1?'s':'')+' adicional'+(HIJOS>1?'es':'')+' × US$37</span><b>US$'+(HIJOS*CONFIG.HIJO)+'</b></div>';
 r += '<div class="l t"><span>Pagas hoy</span><span>US$'+hoy()+'</span></div>';
 if(FORMA==='partes' && !CUOTA_N) r += '<div class="k" style="margin-top:6px">Después pagas 2 cuotas más de US$'+CONFIG.CUOTA+', una cada mes.</div>';
