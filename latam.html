@@ -785,15 +785,51 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&'); // 11-nov-2026: sin checkoutMode=10 (acceso de hijos US$37 suspendido)
   }
   if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
-  // 10-nov-2026: desde Venezuela (enlace con ?pais=ve o zona horaria de Caracas) los botones van a la página de pago con Pago Móvil, Binance y Zelle; desde otros países, directo a Hotmart.
-  var ES_VE = /venezuela|vzla/i.test(location.pathname) || /(^|[?&])pais=ve(&|$)/i.test(q); try { if (!/otro-pais|latam/i.test(location.pathname) && !/(^|[?&])pais=/i.test(q) && Intl.DateTimeFormat().resolvedOptions().timeZone === 'America/Caracas') ES_VE = true; } catch(e){}
-  function urlVE(off){ return '/pago-plan90?pais=ve&forma=' + (off === 'zb6j76vv' ? 'partes' : 'contado') + '&src=90dias' + (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : ''); }
-  if (ES_VE) $$('a.pagar').forEach(function(a){ a.href = urlVE(a.getAttribute('data-off')); });
+  // 18-nov-2026: UN SOLO enlace para todos (aqfinanzas.com/90dias; /vzla y /latam son la misma página).
+  // Al tocar un botón de pago se abre una cortina con la lista de países (bandera + nombre):
+  // Venezuela → página de pago con Pago Móvil, Binance, Zelle o tarjeta; cualquier otro país → Hotmart.
   var metodosEl = document.querySelector('.hoy .metodos');
-  if (ES_VE && metodosEl) metodosEl.innerHTML = '<span>📱 Pago Móvil</span><span>🏦 Transferencia Banesco</span><span>🟡 Binance (USDT)</span><span>💜 Zelle</span><span>🅿️ PayPal</span><span>💳 Tarjeta</span>'; // 10-nov-2026: en Venezuela se muestran todos sus métodos
-  if (metodosEl) metodosEl.insertAdjacentHTML('afterend', ES_VE
-    ? '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">🇻🇪 Pagas desde Venezuela: Pago Móvil, Binance, Zelle o tarjeta. <a href="/latam" style="color:var(--azul);font-weight:700">¿Estás en otro país?</a></p>'
-    : '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">¿Estás en Venezuela? <a href="/pago-plan90?pais=ve&src=90dias" style="color:var(--azul);font-weight:700">Paga con Pago Móvil, Binance o Zelle →</a></p>');
+  if (metodosEl) metodosEl.innerHTML = '<span>💳 Tarjeta de crédito o débito</span><span>PayPal</span><span>📱 Pago Móvil</span><span>🟡 Binance</span><span>💜 Zelle</span><span>Pago local</span>';
+  if (metodosEl) metodosEl.insertAdjacentHTML('afterend', '<p class="nota-pais" style="margin-top:12px;font-size:.92rem;color:var(--gris)">Al tocar el botón eliges tu país y ves sus formas de pago.</p>');
+  var PAISES = [['ve','Venezuela'],['co','Colombia'],['us','Estados Unidos'],['pa','Panamá'],['mx','México'],['pe','Perú'],['cl','Chile'],['ar','Argentina'],['ec','Ecuador'],['es','España'],
+    ['bo','Bolivia'],['br','Brasil'],['ca','Canadá'],['cr','Costa Rica'],['sv','El Salvador'],['gt','Guatemala'],['hn','Honduras'],['ni','Nicaragua'],['py','Paraguay'],['pr','Puerto Rico'],['do','República Dominicana'],['uy','Uruguay']];
+  var TOP = 10;
+  var cssP = '.cp-fondo{position:fixed;inset:0;z-index:9999;background:rgba(1,0,90,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;animation:cpIn .2s ease}' +
+    '@keyframes cpIn{from{opacity:0}to{opacity:1}}.cp-caja{position:relative;background:#fff;border-radius:22px;width:100%;max-width:440px;max-height:88vh;overflow:auto;padding:24px 16px 16px;color:#01005A;box-shadow:0 20px 60px rgba(0,0,0,.3)}' +
+    '.cp-x{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:none;font-size:26px;color:#8A8FA6;cursor:pointer}.cp-t{font-size:1.3rem;font-weight:800;text-align:center;margin:0}.cp-s{font-size:.92rem;color:#5B6075;text-align:center;margin:4px 0 14px}' +
+    '.cp-busca{width:100%;box-sizing:border-box;border:1.5px solid #E3E5F0;border-radius:12px;padding:11px 12px;font:inherit;font-size:16px;margin-bottom:10px}.cp-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}' +
+    '.cp-p{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1.5px solid #E3E5F0;border-radius:12px;background:#fff;color:#01005A;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;text-align:left;min-height:48px}.cp-p:hover,.cp-p:focus-visible{border-color:#F14900;background:#FFF3EC}' +
+    '.cp-p img{width:26px;height:19px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}.cp-mas{display:block;margin:12px auto 0;border:0;background:none;color:#F14900;font:inherit;font-weight:800;cursor:pointer}';
+  var st = document.createElement('style'); st.textContent = cssP; document.head.appendChild(st);
+  var utm = (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : '');
+  function urlVE(a){ var off = a.getAttribute('data-off'), partes = off === 'zb6j76vv' || off === '3lj92rbi', k = (window.P90 && P90.puerta && P90.puerta()) || '';
+    return '/pago-plan90?pais=ve&forma=' + (partes ? 'partes' : 'contado') + '&src=90dias' + (k ? '&puerta=' + k : '') + utm; }
+  function boton(p){ return '<button type="button" class="cp-p" data-p="' + p[0] + '"><img src="/img/banderas/' + p[0] + '.png" alt="" loading="lazy">' + p[1] + '</button>'; }
+  function cortina(a){
+    var todos = false, m = document.createElement('div'); m.className = 'cp-fondo'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-label', 'Elige tu país');
+    m.innerHTML = '<div class="cp-caja"><button type="button" class="cp-x" aria-label="Cerrar">×</button><p class="cp-t">¿En qué país estás?</p><p class="cp-s">Te muestro las formas de pago de tu país</p>' +
+      '<input class="cp-busca" type="search" placeholder="Busca tu país" aria-label="Busca tu país" autocomplete="off"><div class="cp-lista"></div><button type="button" class="cp-mas">Ver todos los países</button></div>';
+    var lista = m.querySelector('.cp-lista'), mas = m.querySelector('.cp-mas'), bus = m.querySelector('.cp-busca');
+    function sinT(t){ return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+    function pintar(){ var t = sinT(bus.value.trim()), L = t ? PAISES.filter(function(p){ return sinT(p[1]).indexOf(t) >= 0; }) : (todos ? PAISES : PAISES.slice(0, TOP));
+      lista.innerHTML = L.map(boton).join('') + ((t || todos) ? boton(['xx', 'Otro país']).replace('<img src="/img/banderas/xx.png" alt="" loading="lazy">', '<span style="width:26px;text-align:center;flex:none">🌎</span>') : '');
+      mas.hidden = todos || !!t; }
+    function cerrar(){ m.remove(); document.removeEventListener('keydown', esc); }
+    function esc(e){ if (e.key === 'Escape') cerrar(); }
+    pintar(); document.body.appendChild(m); document.addEventListener('keydown', esc);
+    bus.oninput = pintar; mas.onclick = function(){ todos = true; pintar(); };
+    m.querySelector('.cp-x').onclick = cerrar; m.onclick = function(e){ if (e.target === m) cerrar(); };
+    lista.onclick = function(e){ var b = e.target.closest('.cp-p'); if (!b) return; var p = b.getAttribute('data-p');
+      try { fbq('trackCustom', 'EligioPais', { pais: p, pagina: '90dias' }); clarity('event', 'pais_' + p); } catch (x) {}
+      try { localStorage.setItem('p90-pais', p); } catch (x) {}
+      location.href = p === 've' ? urlVE(a) : a.href; };
+    try { clarity('event', 'cortina_pais'); } catch (x) {}
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
+    if (!/pay\.hotmart\.com/.test(a.href)) return; // p. ej. WhatsApp cuando el precio vencido no tiene oferta
+    e.preventDefault(); cortina(a);
+  });
 
   // Videos de testimonios: uno a la vez
   document.querySelectorAll('.reel').forEach(function(r){
