@@ -42,6 +42,7 @@ p{margin:0}
 .lista li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:15px}
 .lista .num{flex:none;width:32px;height:32px;border-radius:50%;background:var(--naranja);display:grid;place-items:center;font-weight:900;font-size:.92rem}
 .lista b{display:block;font-size:1.02rem}
+.lista li{cursor:pointer;transition:background .15s,border-color .15s}.lista li:hover{background:rgba(255,255,255,.09);border-color:rgba(240,74,3,.5)}.lista em{font-style:normal;color:var(--naranja);font-weight:700;font-size:.85rem}
 .lista span{color:var(--claro);font-size:.95rem}
 .caminos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 .camino{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
@@ -73,22 +74,21 @@ footer{text-align:center;color:rgba(185,194,232,.6);font-size:.78rem;padding:40p
   </section>
 
   <div class="video">
-    <iframe src="https://player.vimeo.com/video/1248544099?h=14a258fcf7&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Grabación de la clase · 19 de noviembre"></iframe>
+    <iframe id="vid" src="https://player.vimeo.com/video/1248544099?h=14a258fcf7&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Grabación de la clase · 19 de noviembre"></iframe>
   </div>
   <div class="meta"><span>📅 <b>Jueves 19 de noviembre</b></span><span>⏱️ <b>1 h 25 min</b></span><span>🎙️ <b>Alejandro Quiñones</b></span></div>
 
   <section class="bloque angosto">
     <h2>Lo que vas a aprender</h2>
-    <p class="intro">Las ideas clave de la clase, para que no se te escape ninguna.</p>
+    <p class="intro">Toca cualquier tema y el video salta a ese momento.</p>
     <ul class="lista">
-      <li><div class="num">1</div><div><b>Por qué invertir y no solo ahorrar</b><span>Si quieres pagar la universidad de tus hijos o tener tu propio fondo para no depender de nadie en tu vejez, el ahorro solo no te va a llevar ahí.</span></div></li>
-      <li><div class="num">2</div><div><b>Una advertencia honesta</b><span>Esto no es para quien busca fórmulas mágicas: es un proceso con método, paciencia y disciplina.</span></div></li>
-      <li><div class="num">3</div><div><b>Los 3 tipos de inversión</b><span>Bienes raíces, negocios y mercado bursátil, y por qué nos enfocamos en el mercado bursátil.</span></div></li>
-      <li><div class="num">4</div><div><b>Los dos caminos para invertir</b><span>Mediano y largo plazo para crear riqueza, o corto plazo para tomar ganancias más rápido. Cada uno con su paso a paso.</span></div></li>
-      <li><div class="num">5</div><div><b>Se puede empezar con poco</b><span>En el camino de largo plazo puedes arrancar con aportes desde US$75 al mes, con índices y ETF como base.</span></div></li>
-      <li><div class="num">6</div><div><b>El Método RCR: Rentabilidad, Consistencia y Riesgo</b><span>Pérdidas pequeñas y ganancias grandes. Viste operaciones reales donde la ganancia más pequeña supera varias pérdidas juntas.</span></div></li>
-      <li><div class="num">7</div><div><b>Inteligencia artificial a tu favor</b><span>Cómo el Método RCR + IA te ayuda a detectar acciones con alto potencial y oportunidades en el mercado.</span></div></li>
-      <li><div class="num">8</div><div><b>Testimonios y herramientas reales</b><span>La experiencia de alumnos aplicando el método y las herramientas que usamos para escanear el mercado.</span></div></li>
+      <li data-t="0"><div class="num">1</div><div><b>Las creencias que nos frenan <em>· min 0</em></b><span>Por qué tanta gente no aprovecha las oportunidades de la bolsa: pensar que necesita un gran capital o saber muchísimo.</span></div></li>
+      <li data-t="540"><div class="num">2</div><div><b>Una advertencia honesta <em>· min 9</em></b><span>Esto no es una fórmula mágica: es un proceso con método, paciencia y disciplina.</span></div></li>
+      <li data-t="1260"><div class="num">3</div><div><b>Los 3 tipos de inversión <em>· min 21</em></b><span>Bienes raíces, negocios y mercado bursátil, y por qué nos enfocamos en la bolsa.</span></div></li>
+      <li data-t="2160"><div class="num">4</div><div><b>Secreto 1: la riqueza se construye a mediano y largo plazo <em>· min 36</em></b><span>Olvídate del golpe de suerte. Viste cómo se puede empezar con aportes de US$75 al mes y el poder del tiempo.</span></div></li>
+      <li data-t="2340"><div class="num">5</div><div><b>Ahorrar no es lo mismo que invertir <em>· min 39</em></b><span>El ahorro es un paso importante, pero solo con él no vas a llegar a tu meta financiera.</span></div></li>
+      <li data-t="2700"><div class="num">6</div><div><b>Secreto 2: necesitas al menos tres tipos de ingresos <em>· min 45</em></b><span>Si no los tienes, tus finanzas están en riesgo. Aquí entra el camino de corto plazo y el Método RCR: pérdidas controladas, ganancias grandes.</span></div></li>
+      <li data-t="3120"><div class="num">7</div><div><b>Secreto 3: un método probado + inteligencia artificial <em>· min 52</em></b><span>De dónde viene el Método RCR, cómo lo unimos con la IA para encontrar oportunidades y las herramientas que usamos.</span></div></li>
     </ul>
   </section>
 
@@ -134,7 +134,9 @@ footer{text-align:center;color:rgba(185,194,232,.6);font-size:.78rem;padding:40p
 </div>
 <footer>© AQ Finanzas · Las operaciones mostradas son ejemplos. Los resultados pasados no garantizan resultados futuros.</footer>
 
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
+try{var pl=new Vimeo.Player(document.getElementById("vid"));document.querySelectorAll(".lista li[data-t]").forEach(function(li){li.addEventListener("click",function(){var t=+li.dataset.t;pl.setCurrentTime(t).then(function(){pl.play()});document.querySelector(".video").scrollIntoView({behavior:"smooth",block:"center"});try{clarity("event","capitulo_"+t)}catch(e){}})})}catch(e){}
 (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z3rvf294da");
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1875412480497286');
