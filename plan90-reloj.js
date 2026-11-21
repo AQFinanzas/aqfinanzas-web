@@ -31,11 +31,11 @@
     try { document.cookie = K + '=' + t + ';max-age=31536000;path=/;SameSite=Lax'; } catch (e) {}
   }
   /* 18-nov-2026: CARRITO CON HORARIO FIJO (reemplaza las 24 h por persona).
-     Abre vie 20-nov-2026 8:00 a. m. Colombia (9:00 a. m. Venezuela) y cierra el mismo día 8:00 p. m. Colombia (9:00 p. m. Venezuela).
+     Abre vie 20-nov-2026 8:00 a. m. Colombia (9:00 a. m. Venezuela) y cierra el mismo día 10:00 p. m. Colombia (11:00 p. m. Venezuela; extendido el 20-nov a pedido de Alejandro, antes 8:00 p. m.).
      Antes de abrir: página completa con contador «El carrito abre en…» y botones de pago bloqueados.
      Al cerrar: AL_CERRAR = 'cerrar' → no se puede comprar (aviso + WhatsApp); 'subir' → sigue abierto a US$397 / 3 × US$147.
      Pruebas: ?carrito=antes | abierto | cerrado */
-  var ABRE = Date.parse('2026-11-20T08:00:00-05:00'), CIERRA = Date.parse('2026-11-20T20:00:00-05:00');
+  var ABRE = Date.parse('2026-11-20T08:00:00-05:00'), CIERRA = Date.parse('2026-11-20T22:00:00-05:00');
   var AL_CERRAR = 'cerrar';
   var mq = qs.match(/(?:^|[?&])carrito=(antes|abierto|cerrado)/), FORZ = mq ? mq[1] : '';
   function estado() { if (FORZ) return FORZ; var t = Date.now(); return t < ABRE ? 'antes' : t < CIERRA ? 'abierto' : 'cerrado'; }
@@ -94,7 +94,7 @@
   function caja(clase) {
     var d = document.createElement('div'); d.className = 'p90r ' + (clase || '');
     d.innerHTML = (ANTES ? '<div><div class="t">🛒 El carrito abre el viernes 20 de noviembre</div><small>8:00 a. m. Colombia · 9:00 a. m. Venezuela. Abre en:</small></div>'
-      : '<div><div class="t">⏳ El carrito cierra hoy, viernes, a las 8:00 p. m. Colombia</div><small>9:00 p. m. Venezuela. Solo 12 horas abierto.</small></div>') +
+      : '<div><div class="t">⏳ El carrito cierra hoy, viernes, a las 10:00 p. m. Colombia</div><small>11:00 p. m. Venezuela. Últimas horas abierto.</small></div>') +
       '<div class="d"><span data-h>00<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
     return d;
   }
@@ -142,7 +142,7 @@
     if (CERRADO) {
       qa('.p90r').forEach(function (x) { x.remove(); });
       qa('a.pagar').forEach(function (a) { a.style.display = 'none'; });
-      var hy = q('.hoy'); if (hy) hy.insertAdjacentHTML('beforeend', '<div class="p90v" style="text-align:center;font-weight:700;color:#01005A">El carrito se cerró el viernes 20 de noviembre a las 8:00 p. m. (Colombia).<br><a href="' + waCerrado + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#F14900;color:#fff;padding:12px 18px;border-radius:999px;text-decoration:none">Escríbeme por WhatsApp →</a></div>');
+      var hy = q('.hoy'); if (hy) hy.insertAdjacentHTML('beforeend', '<div class="p90v" style="text-align:center;font-weight:700;color:#01005A">El carrito se cerró el viernes 20 de noviembre a las 10:00 p. m. (Colombia).<br><a href="' + waCerrado + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#F14900;color:#fff;padding:12px 18px;border-radius:999px;text-decoration:none">Escríbeme por WhatsApp →</a></div>');
       var pm0 = q('.precio-mini'); if (pm0) pm0.insertAdjacentHTML('afterend', '<div class="p90v">🛒 El carrito ya cerró.</div>');
       try { if (window.clarity) clarity('set', 'carrito', 'cerrado'); } catch (e) {}
       return;
@@ -183,7 +183,7 @@
       ['#forma', '#methods', '#form'].forEach(function (s) { var x = q(s); if (x) x.style.display = 'none'; });
       qa('.pais, #pais').forEach(function (x) { x.style.display = 'none'; });
       var pr0 = q('header .price .chips') || q('#methods');
-      var msg = ANTES ? '🛒 El carrito abre el viernes 20 de noviembre a las 8:00 a. m. (Colombia) · 9:00 a. m. (Venezuela).' : '🛒 El carrito se cerró el viernes 20 de noviembre a las 8:00 p. m. (Colombia).';
+      var msg = ANTES ? '🛒 El carrito abre el viernes 20 de noviembre a las 8:00 a. m. (Colombia) · 9:00 a. m. (Venezuela).' : '🛒 El carrito se cerró el viernes 20 de noviembre a las 10:00 p. m. (Colombia).';
       var box = document.createElement('div'); box.className = 'p90v'; box.style.cssText = 'background:#FFF4EE;color:#01005A;font-weight:700;text-align:center;font-size:1rem;margin:16px auto;max-width:560px';
       box.innerHTML = msg + (CERRADO ? '<br><a href="' + waCerrado + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#F14900;color:#fff;padding:12px 18px;border-radius:999px;text-decoration:none">Escríbeme por WhatsApp →</a>' : '');
       var mt = q('#methods'); if (mt && mt.parentNode) mt.parentNode.insertBefore(box, mt); else document.body.insertBefore(box, document.body.firstChild);
