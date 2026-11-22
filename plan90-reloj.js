@@ -1,5 +1,5 @@
 /* ============================================================
-   Plan 90 Días · Carrito con horario fijo desde el 18-nov-2026 (antes: 24 h por persona; ver abajo)
+   Plan 90 Días · Precio especial de 24 h por persona; carrito abierto siempre (desde el 22-nov-2026)
    - Arranca la PRIMERA vez que la persona abre cualquier página del
      Plan 90 Días en aqfinanzas.com (90dias, vzla, latam, copias y pago).
    - Se guarda en su navegador (localStorage + cookie), así que si vuelve
@@ -20,30 +20,28 @@
     partes2: '3lj92rbi'    // 3 × US$147, Pago Inteligente (creada 11-nov-2026)
   };
   var WA = '573105104847';
-  var K = 'aq_p90_inicio', ahora = Date.now(), qs = location.search || '';
+  var K = 'aq_p90_ini22', ahora = Date.now(), qs = location.search || '';
 
   function leer() {
     try { var v = +localStorage.getItem(K); if (v) return v; } catch (e) {}
-    var m = document.cookie.match(/(?:^|; )aq_p90_inicio=(\d+)/); return m ? +m[1] : 0;
+    var m = document.cookie.match(/(?:^|; )aq_p90_ini22=(\d+)/); return m ? +m[1] : 0;
   }
   function guardar(t) {
     try { localStorage.setItem(K, String(t)); } catch (e) {}
     try { document.cookie = K + '=' + t + ';max-age=31536000;path=/;SameSite=Lax'; } catch (e) {}
   }
-  /* 18-nov-2026: CARRITO CON HORARIO FIJO (reemplaza las 24 h por persona).
-     Abre vie 20-nov-2026 8:00 a. m. Colombia (9:00 a. m. Venezuela) y cierra el mismo día 10:00 p. m. Colombia (11:00 p. m. Venezuela; extendido el 20-nov a pedido de Alejandro, antes 8:00 p. m.).
-     Antes de abrir: página completa con contador «El carrito abre en…» y botones de pago bloqueados.
-     Al cerrar: AL_CERRAR = 'cerrar' → no se puede comprar (aviso + WhatsApp); 'subir' → sigue abierto a US$397 / 3 × US$147.
-     Pruebas: ?carrito=antes | abierto | cerrado */
-  var ABRE = Date.parse('2026-11-20T08:00:00-05:00'), CIERRA = Date.parse('2026-11-20T22:00:00-05:00');
-  var AL_CERRAR = 'cerrar';
+  /* 22-nov-2026: CARRITO ABIERTO SIEMPRE (orden de Alejandro: "abre todo y déjalo así abierto").
+     Vuelve el precio especial de 24 h POR PERSONA desde su primera visita (US$167 / 3 × US$67);
+     al vencer sigue abierto a US$397 / 3 × US$147. (Antes, 18–20 nov: carrito con horario fijo.)
+     Pruebas: ?reloj=vencido | ?reloj=reiniciar | ?carrito=antes | cerrado */
   var mq = qs.match(/(?:^|[?&])carrito=(antes|abierto|cerrado)/), FORZ = mq ? mq[1] : '';
-  function estado() { if (FORZ) return FORZ; var t = Date.now(); return t < ABRE ? 'antes' : t < CIERRA ? 'abierto' : 'cerrado'; }
-  var EST = estado();
-  var fin = EST === 'antes' ? ABRE : CIERRA;
-  var forzar = /(^|[?&])reloj=vencido/.test(qs) || (EST === 'cerrado' && AL_CERRAR === 'subir');
+  var EST = FORZ || 'abierto';
+  var ini = leer();
+  if (!ini || /(^|[?&])reloj=reiniciar/.test(qs)) { ini = ahora; guardar(ini); }
+  var fin = ini + HORAS * 3600 * 1000;
+  var forzar = /(^|[?&])reloj=vencido/.test(qs) || Date.now() >= fin;
   function vencido() { return forzar; }
-  var CERRADO = EST === 'cerrado' && AL_CERRAR === 'cerrar', ANTES = EST === 'antes';
+  var CERRADO = EST === 'cerrado', ANTES = EST === 'antes';
 
   var P90 = window.P90 = {
     estado: EST, bloqueado: ANTES || CERRADO,
@@ -94,7 +92,7 @@
   function caja(clase) {
     var d = document.createElement('div'); d.className = 'p90r ' + (clase || '');
     d.innerHTML = (ANTES ? '<div><div class="t">🛒 El carrito abre el viernes 20 de noviembre</div><small>8:00 a. m. Colombia · 9:00 a. m. Venezuela. Abre en:</small></div>'
-      : '<div><div class="t">⏳ El carrito cierra hoy, viernes, a las 10:00 p. m. Colombia</div><small>11:00 p. m. Venezuela. Últimas horas abierto.</small></div>') +
+      : '<div><div class="t">⏳ Tu precio especial de US$167 termina en</div><small>Después sube a US$397. Este tiempo es solo para ti.</small></div>') +
       '<div class="d"><span data-h>00<i>HORAS</i></span><span data-m>00<i>MIN</i></span><span data-s>00<i>SEG</i></span></div>';
     return d;
   }
@@ -104,7 +102,7 @@
     if (r <= 0 && !FORZ) { location.reload(); return; } // se venció con la página abierta: se muestra el precio nuevo
     var p = partesT(r);
     relojes.forEach(function (el) {
-      if (el.classList.contains('p90fijo')) { el.textContent = (ANTES ? '🛒 El carrito abre en ' : '⏳ El carrito cierra en ') + p.join(':'); return; }
+      if (el.classList.contains('p90fijo')) { el.textContent = (ANTES ? '🛒 El carrito abre en ' : '⏳ Precio especial termina en ') + p.join(':'); return; }
       el.querySelector('[data-h]').firstChild.nodeValue = p[0];
       el.querySelector('[data-m]').firstChild.nodeValue = p[1];
       el.querySelector('[data-s]').firstChild.nodeValue = p[2];
