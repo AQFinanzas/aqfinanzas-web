@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Clase en vivo · Construye un patrimonio de $200K · Alejandro Quiñones</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="Clase en vivo y gratuita con Alejandro Quiñones: construye un patrimonio de $200K mínimo, desde cero e incluso con poco capital. Jueves 19 de noviembre.">
+<meta name="description" content="Clase en vivo y gratuita con Alejandro Quiñones: construye un patrimonio de $200K mínimo, desde cero e incluso con poco capital. Jueves 3 de diciembre.">
 <meta property="og:title" content="Clase en vivo · Construye un patrimonio de $200K mínimo">
-<meta property="og:description" content="Jueves 19 de noviembre · 7:00 p. m. hora Colombia. Agéndala en tu calendario.">
+<meta property="og:description" content="Jueves 3 de diciembre · 7:00 p. m. hora Colombia. Agéndala en tu calendario.">
 <meta property="og:image" content="https://aqfinanzas.com/img/og.jpg">
 <link rel="icon" href="img/logo-aq-color.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +82,7 @@ footer{text-align:center;color:#7e86b8;font-size:.78rem;padding:34px 0 40px}
     <div class="firma"><b>Alejandro Quiñones</b><span>Estratega de inversión · Creador del Método RCR</span></div>
 
     <div class="cuando">
-      <div class="dia">Jueves 19 de noviembre</div>
+      <div class="dia">Jueves 3 de diciembre</div>
       <div class="hora">7:00 p. m. Colombia · 8:00 p. m. Venezuela · 6:00 p. m. México</div>
       <div class="local" id="local" hidden>En tu país: <b id="localHora"></b></div>
       <div class="reloj" id="reloj">
@@ -120,7 +120,7 @@ footer{text-align:center;color:#7e86b8;font-size:.78rem;padding:34px 0 40px}
 
   <section class="final">
     <h2>Guarda tu lugar ahora</h2>
-    <p>Jueves 19 de noviembre · 7:00 p. m. hora Colombia</p>
+    <p>Jueves 3 de diciembre · 7:00 p. m. hora Colombia</p>
     <div class="cta"><a class="btn js-cal" href="#" target="_blank" rel="noopener">Agendar la clase en mi calendario</a></div>
   </section>
 
@@ -129,10 +129,10 @@ footer{text-align:center;color:#7e86b8;font-size:.78rem;padding:34px 0 40px}
 
 <script>
 (function(){
-  // Clase: jueves 19-nov-2026, 7:00 p. m. hora Colombia (UTC-5) = 00:00 UTC del 20-nov. Duración 90 min.
-  var INICIO = Date.UTC(2026,10,20,0,0,0), FIN = INICIO + 90*60000;
+  // Clase: jueves 3-dic-2026, 7:00 p. m. hora Colombia (UTC-5) = 00:00 UTC del 4-dic. Duración 90 min.
+  var INICIO = Date.UTC(2026,11,4,0,0,0), FIN = INICIO + 90*60000;
   var TITULO = 'Clase en vivo: Construye un patrimonio de $200K mínimo, desde cero · Alejandro Quiñones';
-  var DETALLE = 'Clase en vivo y gratuita con Alejandro Quiñones (AQ Finanzas).\n\nConstruye un patrimonio de $200K mínimo, desde cero e incluso con poco capital.\n\nEl enlace de Zoom se comparte el jueves 19 de noviembre. Conéctate puntual: al final hay algo especial para quienes estén en vivo.\n\nMás información: https://aqfinanzas.com/clase';
+  var DETALLE = 'Clase en vivo y gratuita con Alejandro Quiñones (AQ Finanzas).\n\nConstruye un patrimonio de $200K mínimo, desde cero e incluso con poco capital.\n\nEl enlace de Zoom se comparte el jueves 3 de diciembre. Conéctate puntual: al final hay algo especial para quienes estén en vivo.\n\nMás información: https://aqfinanzas.com/clase';
   function z(t){ return new Date(t).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
   var src = (new URLSearchParams(location.search).get('src') || 'directo');
   var gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
@@ -142,7 +142,7 @@ footer{text-align:center;color:#7e86b8;font-size:.78rem;padding:34px 0 40px}
     + '&location=' + encodeURIComponent('En línea · el enlace de Zoom se comparte el jueves')
     + '&ctz=America/Bogota';
   var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AQ Finanzas//Clase//ES','BEGIN:VEVENT',
-    'UID:clase-20261119@aqfinanzas.com','DTSTAMP:' + z(Date.now()),'DTSTART:' + z(INICIO),'DTEND:' + z(FIN),
+    'UID:clase-20261203@aqfinanzas.com','DTSTAMP:' + z(Date.now()),'DTSTART:' + z(INICIO),'DTEND:' + z(FIN),
     'SUMMARY:' + TITULO,'DESCRIPTION:' + DETALLE.replace(/\n/g,'\\n').replace(/,/g,'\\,'),
     'LOCATION:En línea','BEGIN:VALARM','TRIGGER:-PT60M','ACTION:DISPLAY','DESCRIPTION:Tu clase empieza en 1 hora','END:VALARM',
     'END:VEVENT','END:VCALENDAR'].join('\r\n');
