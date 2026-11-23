@@ -238,7 +238,7 @@ if (CUOTA_N) { CONFIG.CUOTA = CUOTA_N.m; METODOS = METODOS.filter(function(x){ r
 
 function fmtBs(n){return 'Bs. '+n.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})}
 var FORMA='contado', HIJOS=0, BS=0, PAYPAL=0; // fuera de la ventana del webinar la sección de hijos está oculta y HIJOS queda en 0
-var HOTMART_RETO = ''; // PENDIENTE: enlace del producto Hotmart del reto US$27
+var HOTMART_RETO = 'https://pay.hotmart.com/P108620574U?off=zlazi0yq'; // producto Hotmart 9046575
 var HOT = {contado: HOTMART_RETO || 'https://wa.me/573105104847?text='+encodeURIComponent('Hola Alejandro, quiero pagar mi Reto 14 días Excedente (US$27) con tarjeta'), partes:'', hijo:''};
 if (false) { // 11-nov-2026: venció el precio de 48 h → ofertas de US$397 / 3 × US$147 (o WhatsApp si aún no existen)
   HOT.contado = P90.OFF.contado2 ? 'https://pay.hotmart.com/O108374792Q?off='+P90.OFF.contado2 : P90.waPrecio('contado');
