@@ -376,7 +376,8 @@ $('#form').addEventListener('submit', function(e){
   $('#err').style.display='none';
   var met = METODOS.filter(function(x){return x.nombre===m})[0]||{};
   var pais = met.donde==='ve' || /^(\+?58|0?4\d{2})/.test(w.replace(/\s/g,'')) ? 'Venezuela' : 'Otro país';
-  var data = {producto:'Reto 14 días', nombre:n, correo:c, whatsapp:w, referencia:r, plan:'Reto 14 días US$27 · Puerta: completa', hijos:HIJOS, pais:pais, metodo:m,
+  var data = {producto:'Plan 90 Días', // 22-nov-2026: el reto se registra en la misma pestaña «Plan 90 Días»; el plan dice «Reto 14 días US$27»
+    nombre:n, correo:c, whatsapp:w, referencia:r, plan:'Reto 14 días US$27 · Puerta: completa', hijos:HIJOS, pais:pais, metodo:m,
     monto:montoTexto(met), tasa: met.moneda==='bs'?String(CONFIG.TASA_BS):'', fuente: 'pago-reto14'+(src?'-'+src:'')};
   var btn=$('#send'); btn.disabled=true; btn.textContent='Enviando…';
   var msg = 'Hola, soy '+n+'. Ya pagué el Reto 14 días Excedente con '+m+' ('+montoTexto(met)+').'+(r?' Referencia: '+r+'.':'')+' Mi correo es '+c+'. Te envío la captura.';
