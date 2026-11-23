@@ -30,6 +30,17 @@ p{margin:0}
 [hidden]{display:none!important}
 
 /* Barra superior con contador */
+.promo24{background:linear-gradient(90deg,#B91C1C,#F04A03);color:#fff;text-align:center;font-size:.88rem;padding:7px 12px;font-weight:600;letter-spacing:.01em}
+.promo24 .t24{font-variant-numeric:tabular-nums;font-weight:800;background:rgba(0,0,0,.25);border-radius:6px;padding:1px 7px;margin-left:4px}
+.aviso24{margin:14px 0 4px;font-weight:700;color:#B91C1C;font-size:.98rem}
+.aviso24 .t24{font-variant-numeric:tabular-nums}
+.oscuro .aviso24,.fijo .aviso24,.portada .aviso24{color:#FFB38A}
+.fijo .aviso24{margin:0 0 6px;text-align:center;font-size:.8rem}
+.reloj24{margin:14px auto 12px;display:flex;justify-content:center;gap:8px}
+.reloj24 div{background:var(--noche,#05061C);color:#fff;border-radius:12px;padding:8px 0;width:68px;text-align:center}
+.reloj24 b{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.reloj24 small{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.btn.cerrada,.btn.cerrada:hover{background:#9AA3B5!important;color:#fff!important;box-shadow:none!important;transform:none!important;cursor:not-allowed;pointer-events:none}
 .barra{position:sticky;top:0;z-index:50;background:#000;color:#fff;border-bottom:2px solid var(--naranja)}
 .barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
 .barra img{height:34px}
@@ -466,6 +477,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     <div class="cuenta"><span>Reto 14 días</span> <b>US$27</b></div>
     <a class="btn btn-pago pagar" data-off="zlazi0yq" href="#oferta">Quiero entrar</a>
   </div>
+  <div class="promo24" id="promo24">⏰ <span class="m24">Promoción solo por 24 horas · se cierra en</span> <span class="t24">24:00:00</span></div>
 </header>
 
 <section class="portada">
@@ -475,6 +487,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
       <h1 id="p-h1">Empieza a invertir en la bolsa de Nueva York con un <span class="clave">reto de 14 días</span> por solo US$27</h1>
       <p class="sub" id="p-sub">Desde hoy tienes acceso completo. La App Excedente te lleva paso a paso, desde cero, en el Método RCR, con un <strong>copiloto de inteligencia artificial</strong>, clases en vivo conmigo y una comunidad privada. Y con tu reto recibes <strong>2 accesos gratis para tus hijos</strong>.</p>
       <div class="precio-mini precio-reto"><span class="pr-tag">Precio especial del reto</span><div class="pr-fila"><s class="tachado-total">US$397</s><b>US$27</b><span class="pr-ahorro">-93&nbsp;%</span></div><span class="pr-sub">Acceso completo por 14 días · pago único</span></div>
+      <p class="aviso24">⏰ <span class="m24">Promoción solo por 24 horas · quedan</span> <span class="t24">24:00:00</span></p>
       <div class="acciones"><a class="btn btn-pago btn-grande pagar" data-off="zlazi0yq" href="#oferta">Quiero empezar mi reto →</a></div>
       <p class="seguro">🔒 Pago seguro con Hotmart · Garantía de 7 días</p>
       <div class="mini-testi"><span style="font-size:1.6rem">💬</span><div><span class="st">★★★★★</span><br>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado." <b>— Ana Caicedo, alumna</b></div></div>
@@ -656,6 +669,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
         <div class="eti">Tu inversión hoy</div>
         <div class="monto"><small>US$</small><span>27</span></div>
         <div class="ahorro">Un solo pago · tus primeros 14 días</div>
+        <p class="aviso24" style="text-align:center">⏰ <span class="m24">Promoción solo por 24 horas. Después se cierra.</span></p>
+        <div class="reloj24" id="reloj24"><div><b class="h24">24</b><small>horas</small></div><div><b class="mi24">00</b><small>min</small></div><div><b class="s24">00</b><small>seg</small></div></div>
         <a class="btn btn-pago btn-grande pagar" data-off="zlazi0yq" href="#oferta">Empezar mi reto por US$27 →</a>
         <p class="aviso197">Acceso inmediato después del pago.</p>
         <div class="metodos"><span>💳 Tarjeta de crédito o débito</span><span>PayPal</span><span>PSE</span><span>Efecty</span><span>Pago local</span></div>
@@ -790,6 +805,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   <div class="wrap">
     <h2 id="p-cierre">El mejor momento para empezar a invertir con método <span class="clave">es hoy</span></h2>
     <p class="intro">Empieza hoy tu reto de 14 días, con acceso completo y 2 accesos para tus hijos, por <b style="color:#fff">US$27</b>.</p>
+    <p class="aviso24">⏰ <span class="m24">Promoción solo por 24 horas · quedan</span> <span class="t24">24:00:00</span></p>
     <a class="btn btn-pago btn-grande pagar" data-off="zlazi0yq" href="#oferta">Quiero empezar mi reto →</a>
     <p class="seguro">🔒 Pago seguro · Garantía de 7 días · Acceso inmediato</p>
   </div>
@@ -803,7 +819,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   </div>
 </footer>
 
-<div class="fijo"><a class="btn btn-pago pagar" data-off="zlazi0yq" href="#oferta">Empezar mi reto por US$27 →</a></div>
+<div class="fijo"><p class="aviso24">⏰ <span class="m24">Promoción solo por 24 horas ·</span> <span class="t24">24:00:00</span></p><a class="btn btn-pago pagar" data-off="zlazi0yq" href="#oferta">Empezar mi reto por US$27 →</a></div>
 
 <script>
 (function(){
@@ -980,5 +996,33 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 </script>
 <script>/* barra fija: aparece al bajar de la primera pantalla */addEventListener("scroll",function(){var f=document.querySelector(".fijo");if(f)f.classList.toggle("ver",scrollY>650)},{passive:true});</script>
 
+<script>
+// 22-nov-2026: promoción personal de 24 horas desde la primera visita. Al vencer, los botones de pago se apagan.
+(function(){
+  var K='reto14_inicio', PLAZO=24*3600*1000, ini=0;
+  try{ ini=+localStorage.getItem(K)||0; if(!ini){ ini=Date.now(); localStorage.setItem(K,ini); } }catch(e){ ini=Date.now(); }
+  var fin=ini+PLAZO, cerrado=false;
+  function dos(n){ return (n<10?'0':'')+n; }
+  function q(s){ return document.querySelectorAll(s); }
+  function cerrar(){
+    if(cerrado) return; cerrado=true;
+    q('a.pagar').forEach(function(a){ a.classList.add('cerrada'); a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.textContent='Promoción cerrada'; });
+    q('.m24').forEach(function(e){ e.textContent='La promoción de 24 horas terminó'; });
+    q('.t24').forEach(function(e){ e.hidden=true; });
+    var r=document.getElementById('reloj24'); if(r) r.hidden=true;
+    try{ clarity('event','promo24_cerrada'); }catch(e){}
+  }
+  document.addEventListener('click',function(e){ if(cerrado && e.target.closest && e.target.closest('a.pagar')){ e.preventDefault(); e.stopImmediatePropagation(); } },true);
+  function tic(){
+    var f=fin-Date.now();
+    if(f<=0){ cerrar(); return; }
+    var h=Math.floor(f/3600000), m=Math.floor(f%3600000/60000), sg=Math.floor(f%60000/1000), t=dos(h)+':'+dos(m)+':'+dos(sg);
+    q('.t24').forEach(function(e){ e.textContent=t; });
+    q('.h24').forEach(function(e){ e.textContent=dos(h); }); q('.mi24').forEach(function(e){ e.textContent=dos(m); }); q('.s24').forEach(function(e){ e.textContent=dos(sg); });
+    setTimeout(tic,1000);
+  }
+  tic();
+})();
+</script>
 </body>
 </html>
