@@ -483,6 +483,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 .vsl-caja video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .vsl-caja video::-webkit-media-controls{display:none!important}
 .sonido{position:absolute;top:10px;right:10px;border:0;border-radius:999px;background:rgba(240,74,3,.96);color:#fff;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;padding:9px 16px 9px 12px;box-shadow:0 6px 18px rgba(1,0,90,.35);animation:pulsoS 1.6s ease-in-out infinite;transform-origin:top right;z-index:2}
+.vsl-play{position:absolute;left:31%;top:83%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(240,74,3,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.45);animation:pulsoS 1.6s ease-in-out infinite;z-index:2;pointer-events:none}.vsl-play svg{width:40px;height:40px;margin-left:5px}
+@media (max-width:900px){.vsl-play{width:54px;height:54px;margin:-27px 0 0 -27px}.vsl-play svg{width:30px;height:30px}}
 .sonido svg{width:24px;height:24px;flex:none}.sonido b{font-size:clamp(13px,2.6vw,17px);font-weight:900;white-space:nowrap}
 @keyframes pulsoS{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .portada .app-hero{display:none!important}
@@ -519,8 +521,9 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     </div>
     <div class="media">
       <div id="con-video" class="vsl-caja">
-        <video id="vsl" src="img/oferta/vsl-reto14.mp4" poster="img/oferta/vsl-reto14-poster.webp" muted playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nofullscreen noplaybackrate"></video>
+        <video id="vsl" src="img/oferta/vsl-reto14.mp4" poster="img/oferta/vsl-reto14-poster.webp" muted playsinline webkit-playsinline preload="none" disablepictureinpicture controlslist="nodownload nofullscreen noplaybackrate"></video>
         <button class="sonido" id="sonido" type="button" aria-label="Activar el sonido del video"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg><b>Toca para escuchar</b></button>
+        <span class="vsl-play" id="vsl-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
       </div></div>
     </div>
   </div>
@@ -1105,7 +1108,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   if (!v || !btn || !caja) return;
   function ev(n, d){ d = d || {}; d.pagina = 'reto14'; try { fbq('trackCustom', n, d); } catch(e){} try { if (window.clarity) clarity('event', n); } catch(e){} }
   var conSonido = false, hitos = {}, pausa = false;
-  setTimeout(function(){ v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }, 1200);
+  // 23-nov-2026: al entrar se ve fija la portada con su foto; el video arranca (con sonido, desde el inicio) solo al tocar.
+  var play = document.getElementById('vsl-play');
   function respaldo(){ try { v.pause(); } catch(e){} v.muted = false; v.removeAttribute('controls'); pausa = true; btn.querySelector('b').textContent = 'Toca para seguir'; btn.style.display = 'flex'; ev('VSL_respaldo_toque'); }
   function engancha(el){
     el.addEventListener('pause', function(){ if (conSonido && !pausa && !el.ended) { setTimeout(function(){ var p = el.play(); if (p && p.catch) p.catch(respaldo); }, 50); } });
@@ -1120,7 +1124,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   engancha(v);
   function activar(){
     if (conSonido && !v.muted) return;
-    conSonido = true; btn.style.display = 'none';
+    conSonido = true; btn.style.display = 'none'; if (play) play.style.display = 'none';
     // En iPhone (sobre todo dentro de Instagram/Facebook) no se le puede quitar el silencio a un video que arrancó silenciado:
     // se cambia por uno nuevo, con sonido, desde el inicio.
     var n = document.createElement('video');
