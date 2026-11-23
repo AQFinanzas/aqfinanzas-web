@@ -887,28 +887,38 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
         '<label class="cp-l">Tu WhatsApp<span class="cp-tel">' + (p !== 'xx' ? '<img src="/img/banderas/' + p + '.png" alt="">' : '🌎') + '<input class="cp-cod" name="c" inputmode="tel" aria-label="Código del país" value="+' + cod + '"' + (cod ? ' readonly tabindex="-1"' : ' placeholder="+"') + '>' +
         '<input class="cp-in cp-num" name="w" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Tu número"></span></label>' +
         '<p class="cp-err" hidden></p><button type="submit" class="cp-ok">Continuar al pago →</button><p class="cp-pr">🔒 Solo lo uso para enviarte tu acceso y ayudarte con tu reto.</p></form>';
-      var f = caja.querySelector('.cp-f'), err = caja.querySelector('.cp-err');
+      var f = caja.querySelector('.cp-f'), err = caja.querySelector('.cp-err'), enviado = '';
       if (prev.nombre) f.n.value = prev.nombre; if (prev.apellido) f.ap.value = prev.apellido;
       if (prev.pais === p && prev.num) f.w.value = prev.num;
       caja.querySelector('.cp-x').onclick = cerrar;
       setTimeout(function(){ (!f.n.value ? f.n : !f.ap.value ? f.ap : f.w).focus(); }, 60);
-      f.onsubmit = function(e){ e.preventDefault();
-        var nom = f.n.value.trim().replace(/\s+/g, ' '), ape = f.ap.value.trim().replace(/\s+/g, ' '), nombre = (nom + ' ' + ape).trim(), c = (f.c.value || '').replace(/\D/g, ''), num = (f.w.value || '').replace(/\D/g, '');
+      // 23-nov-2026: lo escrito se guarda al instante (si cierra y vuelve, sigue ahí) y el lead se guarda apenas haya un WhatsApp válido, aunque no llegue al pago.
+      function leer(){ var nom = f.n.value.trim().replace(/\s+/g, ' '), ape = f.ap.value.trim().replace(/\s+/g, ' '), c = (f.c.value || '').replace(/\D/g, ''), num = (f.w.value || '').replace(/\D/g, '');
         if (c && num.indexOf(c) === 0 && num.length > c.length + 6) num = num.slice(c.length);
-        num = num.replace(/^0+/, '');
-        if (nom.length < 2) { err.textContent = 'Escribe tu nombre.'; err.hidden = false; f.n.focus(); return; }
-        if (ape.length < 2) { err.textContent = 'Escribe tu apellido.'; err.hidden = false; f.ap.focus(); return; }
-        if (!c) { err.textContent = 'Escribe el código de tu país.'; err.hidden = false; f.c.focus(); return; }
-        if (num.length < 6 || num.length > 12) { err.textContent = 'Revisa tu número de WhatsApp.'; err.hidden = false; f.w.focus(); return; }
-        var wa = c + num, d = { nombre: nombre, whatsapp: wa };
-        try { localStorage.setItem('reto14_datos', JSON.stringify({ nombre: nom, apellido: ape, pais: p, num: num })); } catch (x) {}
+        num = num.replace(/^0+/, ''); return { nom: nom, ape: ape, c: c, num: num, nombre: (nom + ' ' + ape).trim(), ok: !!c && num.length >= 6 && num.length <= 12 }; }
+      function recordar(){ var v = leer(); try { localStorage.setItem('reto14_datos', JSON.stringify({ nombre: v.nom, apellido: v.ape, pais: p, num: f.w.value })); } catch (x) {} }
+      function guardarLead(etapa){ var v = leer(); if (!v.ok) return; var huella = v.c + v.num + '|' + v.nombre; if (huella === enviado) return; enviado = huella;
+        var wa = v.c + v.num;
         try { var dev = localStorage.getItem('aq_dev'); if (!dev) { dev = 'web-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem('aq_dev', dev); }
           fetch('https://app.aqfinanzas.com/api/lead', { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, keepalive: true,
-            body: JSON.stringify({ tipo: 'reto14', dev: dev, nombre: nombre, whatsapp: wa, origen: (q.match(/utm_campaign=([^&]+)/) || [,'reto14'])[1] + ' · ' + ((q.match(/utm_content=([^&]+)/) || [,''])[1] || 'directo'),
-              detalle: { producto: 'Reto 14 días US$27', apellido: ape, pais_elegido: nomPais, codigo: '+' + c, nombre: nombre, whatsapp: wa, fuente: 'reto14 · antes del pago' } }) }).catch(function(){}); } catch (x) {}
+            body: JSON.stringify({ tipo: 'reto14', dev: dev, nombre: v.nombre || '(sin nombre)', whatsapp: wa, origen: (q.match(/utm_campaign=([^&]+)/) || [,'reto14'])[1] + ' · ' + ((q.match(/utm_content=([^&]+)/) || [,''])[1] || 'directo'),
+              detalle: { producto: 'Reto 14 días US$27', apellido: v.ape, pais_elegido: nomPais, codigo: '+' + v.c, nombre: v.nombre, whatsapp: wa, fuente: 'reto14 · ' + etapa } }) }).catch(function(){}); } catch (x) {} }
+      function marcar(campo, txt){ [f.n, f.ap, f.w, f.c].forEach(function(i){ i.style.borderColor = ''; }); err.hidden = true; if (!campo) return;
+        campo.style.borderColor = '#B91C1C'; err.textContent = txt; err.hidden = false; var lab = campo.closest('.cp-l'); if (lab) lab.appendChild(err); campo.focus();
+        try { campo.scrollIntoView({ block: 'center', behavior: 'smooth' }); clarity('event', 'error_form_reto14'); } catch (x) {} }
+      f.oninput = function(e){ recordar(); if (e.target.style.borderColor) marcar(null); };
+      f.w.onblur = function(){ guardarLead('dejó su WhatsApp'); };
+      f.onsubmit = function(e){ e.preventDefault();
+        var v = leer();
+        if (v.ok) guardarLead('tocó continuar al pago');
+        if (v.nom.length < 2) { marcar(f.n, 'Escribe tu nombre aquí.'); return; }
+        if (v.ape.length < 2) { marcar(f.ap, 'Escribe tu apellido aquí.'); return; }
+        if (!v.c) { marcar(f.c, 'Escribe el código de tu país.'); return; }
+        if (!v.ok) { marcar(f.w, 'Revisa tu número de WhatsApp.'); return; }
+        marcar(null); recordar();
         try { fbq('trackCustom', 'DatosReto14', { pais: p }); clarity('event', 'datos_reto14'); clarity('set', 'pais', p); } catch (x) {}
         f.querySelector('.cp-ok').disabled = true; f.querySelector('.cp-ok').textContent = 'Abriendo el pago…';
-        ir(p, d); };
+        ir(p, { nombre: v.nombre, whatsapp: v.c + v.num }); };
       try { clarity('event', 'form_datos_reto14'); } catch (x) {}
     }
     lista.onclick = function(e){ var b = e.target.closest('.cp-p'); if (!b) return; var p = b.getAttribute('data-p');
