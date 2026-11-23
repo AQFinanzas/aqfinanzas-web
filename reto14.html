@@ -845,11 +845,15 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   var PAISES = [['ve','Venezuela'],['co','Colombia'],['us','Estados Unidos'],['pa','Panamá'],['mx','México'],['pe','Perú'],['cl','Chile'],['ar','Argentina'],['ec','Ecuador'],['es','España'],
     ['bo','Bolivia'],['br','Brasil'],['ca','Canadá'],['cr','Costa Rica'],['sv','El Salvador'],['gt','Guatemala'],['hn','Honduras'],['ni','Nicaragua'],['py','Paraguay'],['pr','Puerto Rico'],['do','República Dominicana'],['uy','Uruguay']];
   var TOP = 10;
+  var CODIGOS = { ve:'58', co:'57', us:'1', pa:'507', mx:'52', pe:'51', cl:'56', ar:'54', ec:'593', es:'34', bo:'591', br:'55', ca:'1', cr:'506', sv:'503', gt:'502', hn:'504', ni:'505', py:'595', pr:'1', do:'1', uy:'598' };
   var cssP = '.cp-fondo{position:fixed;inset:0;z-index:9999;background:rgba(1,0,90,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;animation:cpIn .2s ease}' +
     '@keyframes cpIn{from{opacity:0}to{opacity:1}}.cp-caja{position:relative;background:#fff;border-radius:22px;width:100%;max-width:440px;max-height:88vh;overflow:auto;padding:24px 16px 16px;color:#01005A;box-shadow:0 20px 60px rgba(0,0,0,.3)}' +
     '.cp-x{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:none;font-size:26px;color:#8A8FA6;cursor:pointer}.cp-t{font-size:1.3rem;font-weight:800;text-align:center;margin:0}.cp-s{font-size:.92rem;color:#5B6075;text-align:center;margin:4px 0 14px}' +
     '.cp-busca{width:100%;box-sizing:border-box;border:1.5px solid #E3E5F0;border-radius:12px;padding:11px 12px;font:inherit;font-size:16px;margin-bottom:10px}.cp-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}' +
     '.cp-p{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1.5px solid #E3E5F0;border-radius:12px;background:#fff;color:#01005A;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;text-align:left;min-height:48px}.cp-p:hover,.cp-p:focus-visible{border-color:#F14900;background:#FFF3EC}' +
+    '.cp-f{display:grid;gap:12px;margin-top:4px}.cp-l{display:grid;gap:6px;font-weight:700;font-size:.92rem}.cp-in{width:100%;box-sizing:border-box;border:1.5px solid #E3E5F0;border-radius:12px;padding:12px;font:inherit;font-size:16px;color:#01005A}.cp-in:focus,.cp-cod:focus{outline:none;border-color:#F14900}' +
+    '.cp-tel{display:flex;align-items:center;gap:8px}.cp-tel img{width:26px;height:19px;border-radius:3px;object-fit:cover;flex:none}.cp-cod{width:72px;flex:none;box-sizing:border-box;border:1.5px solid #E3E5F0;border-radius:12px;padding:12px 8px;font:inherit;font-size:16px;font-weight:700;color:#01005A;background:#F6F7FB;text-align:center}.cp-num{flex:1;min-width:0}' +
+    '.cp-err{margin:0;color:#B91C1C;font-weight:700;font-size:.9rem}.cp-ok{border:0;border-radius:999px;background:#F14900;color:#fff;font:inherit;font-weight:800;font-size:1.05rem;padding:15px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(240,74,3,.8)}.cp-ok:disabled{opacity:.7}.cp-pr{margin:0;text-align:center;font-size:.8rem;color:#5B6075}' +
     '.cp-p img{width:26px;height:19px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}.cp-mas{display:block;margin:12px auto 0;border:0;background:none;color:#F14900;font:inherit;font-weight:800;cursor:pointer}';
   var st = document.createElement('style'); st.textContent = cssP; document.head.appendChild(st);
   var utm = (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : '');
@@ -870,11 +874,46 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     pintar(); document.body.appendChild(m); document.addEventListener('keydown', esc);
     bus.oninput = pintar; mas.onclick = function(){ todos = true; pintar(); };
     m.querySelector('.cp-x').onclick = cerrar; m.onclick = function(e){ if (e.target === m) cerrar(); };
+    function ir(p, d){
+      if (p !== 've' && /pay\.hotmart\.com/.test(a.href)) { try { fbq('track', 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Reto 14 dias Excedente' }); } catch (x) {} } // 22-nov-2026: quien va directo a Hotmart también cuenta como inicio de pago
+      var hm = a.href; if (d && d.nombre && /pay\.hotmart\.com/.test(hm)) hm += (hm.indexOf('?') < 0 ? '?' : '&') + 'name=' + encodeURIComponent(d.nombre);
+      setTimeout(function(){ location.href = p === 've' ? urlVE(a) : (/pay\.hotmart\.com/.test(a.href) ? hm : '/pago-reto14?pais=otro&src=reto14' + utm); }, 250); }
+    // 22-nov-2026: antes del pago se pide nombre y WhatsApp (con el código del país elegido) y se guardan como lead.
+    function datos(p, nomPais){
+      var cod = CODIGOS[p] || '', prev = {}; try { prev = JSON.parse(localStorage.getItem('reto14_datos') || '{}'); } catch (x) {}
+      var caja = m.querySelector('.cp-caja');
+      caja.innerHTML = '<button type="button" class="cp-x" aria-label="Cerrar">×</button><p class="cp-t">¿A dónde te envío tu acceso?</p><p class="cp-s">Déjame tu nombre y tu WhatsApp y sigues al pago.</p>' +
+        '<form class="cp-f" novalidate><label class="cp-l">Tu nombre<input class="cp-in" name="n" autocomplete="name" required placeholder="Nombre y apellido"></label>' +
+        '<label class="cp-l">Tu WhatsApp<span class="cp-tel">' + (p !== 'xx' ? '<img src="/img/banderas/' + p + '.png" alt="">' : '🌎') + '<input class="cp-cod" name="c" inputmode="tel" aria-label="Código del país" value="+' + cod + '"' + (cod ? ' readonly tabindex="-1"' : ' placeholder="+"') + '>' +
+        '<input class="cp-in cp-num" name="w" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Tu número"></span></label>' +
+        '<p class="cp-err" hidden></p><button type="submit" class="cp-ok">Continuar al pago →</button><p class="cp-pr">🔒 Solo lo uso para enviarte tu acceso y ayudarte con tu reto.</p></form>';
+      var f = caja.querySelector('.cp-f'), err = caja.querySelector('.cp-err');
+      if (prev.nombre) f.n.value = prev.nombre;
+      if (prev.pais === p && prev.num) f.w.value = prev.num;
+      caja.querySelector('.cp-x').onclick = cerrar;
+      setTimeout(function(){ (f.n.value ? f.w : f.n).focus(); }, 60);
+      f.onsubmit = function(e){ e.preventDefault();
+        var nombre = f.n.value.trim().replace(/\s+/g, ' '), c = (f.c.value || '').replace(/\D/g, ''), num = (f.w.value || '').replace(/\D/g, '');
+        if (c && num.indexOf(c) === 0 && num.length > c.length + 6) num = num.slice(c.length);
+        num = num.replace(/^0+/, '');
+        if (nombre.length < 2) { err.textContent = 'Escribe tu nombre.'; err.hidden = false; f.n.focus(); return; }
+        if (!c) { err.textContent = 'Escribe el código de tu país.'; err.hidden = false; f.c.focus(); return; }
+        if (num.length < 6 || num.length > 12) { err.textContent = 'Revisa tu número de WhatsApp.'; err.hidden = false; f.w.focus(); return; }
+        var wa = c + num, d = { nombre: nombre, whatsapp: wa };
+        try { localStorage.setItem('reto14_datos', JSON.stringify({ nombre: nombre, pais: p, num: num })); } catch (x) {}
+        try { var dev = localStorage.getItem('aq_dev'); if (!dev) { dev = 'web-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem('aq_dev', dev); }
+          fetch('https://app.aqfinanzas.com/api/lead', { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, keepalive: true,
+            body: JSON.stringify({ tipo: 'reto14', dev: dev, nombre: nombre, whatsapp: wa, origen: (q.match(/utm_campaign=([^&]+)/) || [,'reto14'])[1] + ' · ' + ((q.match(/utm_content=([^&]+)/) || [,''])[1] || 'directo'),
+              detalle: { producto: 'Reto 14 días US$27', pais_elegido: nomPais, codigo: '+' + c, nombre: nombre, whatsapp: wa, fuente: 'reto14 · antes del pago' } }) }).catch(function(){}); } catch (x) {}
+        try { fbq('trackCustom', 'DatosReto14', { pais: p }); clarity('event', 'datos_reto14'); clarity('set', 'pais', p); } catch (x) {}
+        f.querySelector('.cp-ok').disabled = true; f.querySelector('.cp-ok').textContent = 'Abriendo el pago…';
+        ir(p, d); };
+      try { clarity('event', 'form_datos_reto14'); } catch (x) {}
+    }
     lista.onclick = function(e){ var b = e.target.closest('.cp-p'); if (!b) return; var p = b.getAttribute('data-p');
       try { fbq('trackCustom', 'EligioPais', { pais: p, pagina: 'reto14' }); clarity('event', 'pais_' + p); } catch (x) {}
       try { localStorage.setItem('p90-pais', p); } catch (x) {}
-      if (p !== 've' && /pay\.hotmart\.com/.test(a.href)) { try { fbq('track', 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Reto 14 dias Excedente' }); } catch (x) {} } // 22-nov-2026: quien va directo a Hotmart también cuenta como inicio de pago
-      setTimeout(function(){ location.href = p === 've' ? urlVE(a) : (/pay\.hotmart\.com/.test(a.href) ? a.href : '/pago-reto14?pais=otro&src=reto14' + utm); }, 250); };
+      datos(p, b.textContent.trim()); };
     try { clarity('event', 'cortina_pais'); } catch (x) {}
   }
   document.addEventListener('click', function(e){
