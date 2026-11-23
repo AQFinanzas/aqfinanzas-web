@@ -817,10 +817,10 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   function precio(){ return 27; }
   function urlPago(off){
     var extra = q.replace(/^\?/, '').split('&').filter(function(x){ return x && !/^(off|src|pais|puerta)=/.test(x); });
-    extra.push('src=plan90'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&'); // 11-nov-2026: sin checkoutMode=10 (acceso de hijos US$37 suspendido)
+    extra.push('src=reto14'); extra.push('sck=reto14'); return 'https://pay.hotmart.com/' + CHECKOUT + '?off=' + off + '&' + extra.join('&'); // 11-nov-2026: sin checkoutMode=10 (acceso de hijos US$37 suspendido)
   }
   if (CHECKOUT) $$('a.pagar').forEach(function(a){ a.href = urlPago(a.getAttribute('data-off')); });
-  else $$('a.pagar').forEach(function(a){ a.href = 'https://wa.me/573105104847?text=' + encodeURIComponent('Hola Alejandro, quiero empezar mi Reto 14 días Excedente por US$27'); a.target = '_blank'; a.rel = 'noopener'; }); // 22-nov-2026: provisional hasta crear el producto en Hotmart
+  else $$('a.pagar').forEach(function(a){ a.href = '/pago-reto14'; }); // 22-nov-2026: sin producto Hotmart aún → página de pago propia
   // 18-nov-2026: UN SOLO enlace para todos (aqfinanzas.com/90dias; /vzla y /latam son la misma página).
   // Al tocar un botón de pago se abre una cortina con la lista de países (bandera + nombre):
   // Venezuela → página de pago con Pago Móvil, Binance, Zelle o tarjeta; cualquier otro país → Hotmart.
@@ -839,7 +839,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   var st = document.createElement('style'); st.textContent = cssP; document.head.appendChild(st);
   var utm = (/(^|[?&])utm_/.test(q) ? '&' + q.replace(/^\?/, '').split('&').filter(function(x){ return /^utm_/.test(x); }).join('&') : '');
   function urlVE(a){ var off = a.getAttribute('data-off'), partes = off === 'zb6j76vv' || off === '3lj92rbi', k = (window.P90 && P90.puerta && P90.puerta()) || '';
-    return '/pago-plan90?pais=ve&forma=' + (partes ? 'partes' : 'contado') + '&src=90dias' + (k ? '&puerta=' + k : '') + utm; }
+    return '/pago-reto14?pais=ve&src=reto14' + utm; }
   function boton(p){ return '<button type="button" class="cp-p" data-p="' + p[0] + '"><img src="/img/banderas/' + p[0] + '.png" alt="" loading="lazy">' + p[1] + '</button>'; }
   function cortina(a){
     var todos = false, m = document.createElement('div'); m.className = 'cp-fondo'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-label', 'Elige tu país');
@@ -856,14 +856,14 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     bus.oninput = pintar; mas.onclick = function(){ todos = true; pintar(); };
     m.querySelector('.cp-x').onclick = cerrar; m.onclick = function(e){ if (e.target === m) cerrar(); };
     lista.onclick = function(e){ var b = e.target.closest('.cp-p'); if (!b) return; var p = b.getAttribute('data-p');
-      try { fbq('trackCustom', 'EligioPais', { pais: p, pagina: '90dias' }); clarity('event', 'pais_' + p); } catch (x) {}
+      try { fbq('trackCustom', 'EligioPais', { pais: p, pagina: 'reto14' }); clarity('event', 'pais_' + p); } catch (x) {}
       try { localStorage.setItem('p90-pais', p); } catch (x) {}
-      location.href = p === 've' ? urlVE(a) : a.href; };
+      location.href = p === 've' ? urlVE(a) : (/pay\.hotmart\.com/.test(a.href) ? a.href : '/pago-reto14?pais=otro&src=reto14' + utm); };
     try { clarity('event', 'cortina_pais'); } catch (x) {}
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
-    if (!/pay\.hotmart\.com/.test(a.href)) return; // p. ej. WhatsApp cuando el precio vencido no tiene oferta
+    if (!/pay\.hotmart\.com|pago-reto14/.test(a.href)) return;
     e.preventDefault(); cortina(a);
   });
 
@@ -873,7 +873,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     b.addEventListener('click', function(){
       document.querySelectorAll('.reel video').forEach(function(o){ if (o !== v) { o.pause(); o.closest('.reel').classList.remove('sonando'); } });
       v.controls = true; v.play(); r.classList.add('sonando');
-      try { clarity('event', 'video_testimonio'); fbq('trackCustom', 'VioTestimonio', { pagina: 'plan90', alumno: b.querySelector('b').textContent }); } catch (x) {}
+      try { clarity('event', 'video_testimonio'); fbq('trackCustom', 'VioTestimonio', { pagina: 'reto14', alumno: b.querySelector('b').textContent }); } catch (x) {}
     });
   });
   var rp = $('#rpista'), rcs = rp.querySelectorAll('.reel'), rpu = $('#rpuntos');
@@ -903,13 +903,13 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   // Medición: Clarity (mapas de calor y grabaciones) etiquetado por variante, fuente y anuncio; hasta dónde baja cada visita.
   var P = {}; q.replace(/^\?/, '').split('&').forEach(function(x){ var k = x.split('='); if (k[0]) P[k[0]] = decodeURIComponent((k[1] || '').replace(/\+/g, ' ')); });
   function cl(){ try { if (window.clarity) clarity.apply(null, arguments); } catch (e) {} }
-  cl('set', 'landing', 'plan90'); cl('set', 'variante', variante); cl('set', 'fuente', P.utm_source || 'directo');
+  cl('set', 'landing', 'reto14'); cl('set', 'variante', variante); cl('set', 'fuente', P.utm_source || 'directo');
   if (P.utm_campaign) cl('set', 'campana', P.utm_campaign); if (P.utm_content) cl('set', 'anuncio', P.utm_content);
   cl('set', 'precio', String(precio()));
   var hitos = {}, secciones = [['videos', '#videos'], ['oferta', '#oferta'], ['bonos', '.bonos'], ['testimonios', '.testis'], ['preguntas', '.faq'], ['productos', '.productos']];
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (!en.isIntersecting) return; var n = en.target.getAttribute('data-sec'); if (hitos[n]) return; hitos[n] = 1;
-      cl('event', 'vio_' + n); try { fbq('trackCustom', 'VioSeccion', { pagina: 'plan90', seccion: n, variante: variante }); } catch (x) {} }); }, { threshold: .35 });
+      cl('event', 'vio_' + n); try { fbq('trackCustom', 'VioSeccion', { pagina: 'reto14', seccion: n, variante: variante }); } catch (x) {} }); }, { threshold: .35 });
     secciones.forEach(function(x){ var el = $(x[1]); if (el) { el.setAttribute('data-sec', x[0]); io.observe(el); } });
   }
   var marcas = {};
@@ -918,8 +918,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   document.addEventListener('toggle', function(e){ if (e.target.tagName === 'DETAILS' && e.target.open) cl('event', 'faq_' + e.target.querySelector('summary').textContent.slice(0, 30)); }, true);
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a.pagar'); if (!a) return;
-    var alPago = a.getAttribute('href').indexOf('http') === 0;
-    try { fbq('trackCustom', alPago ? 'ClicPagoPlan90' : 'ClicVerOferta', { pagina: 'plan90', variante: variante, precio: precio() }); } catch (x) {}
+    var alPago = !/^#/.test(a.getAttribute('href'));
+    try { fbq('trackCustom', alPago ? 'ClicPagoReto14' : 'ClicVerOferta', { pagina: 'reto14', variante: variante, precio: precio() }); } catch (x) {}
     cl('event', alPago ? 'clic_pago' : 'clic_ver_oferta'); if (alPago) cl('upgrade', 'clic_pago');
     // InitiateCheckout lo envía la página de pago al abrir (una sola vez por persona).
   });
@@ -946,10 +946,10 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 /* ===== Medición extra (2-nov-2026): todo lo que se puede marcar ===== */
 (function(){
   var q = location.search, variante = /[?&]v=sin\b/.test(q) ? 'sin-video' : 'con-video';
-  function ev(n, d){ d = d || {}; d.pagina = 'plan90'; d.variante = variante; try { fbq('trackCustom', n, d); } catch (e) {} try { if (window.clarity) clarity('event', n); } catch (e) {} }
+  function ev(n, d){ d = d || {}; d.pagina = 'reto14'; d.variante = variante; try { fbq('trackCustom', n, d); } catch (e) {} try { if (window.clarity) clarity('event', n); } catch (e) {} }
   var vencida = false;
   try { if (window.clarity) { clarity('set', 'variante', variante); clarity('set', 'precio', '27'); } } catch (e) {}
-  ev('VioPlan90');
+  ev('VioReto14');
   // Profundidad de lectura
   var hechos = {}; function scroll(){ var h = document.documentElement, p = Math.round(100 * (h.scrollTop + innerHeight) / h.scrollHeight); [25,50,75,90].forEach(function(x){ if (p >= x && !hechos[x]) { hechos[x] = 1; ev('Scroll' + x); } }); }
   addEventListener('scroll', scroll, { passive: true });
