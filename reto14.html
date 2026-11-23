@@ -4,11 +4,11 @@
 <!-- reto14.html: versión del Plan 90 Días con entrada de US$27 por un reto de 14 días (22-nov-2026). Sin las puertas: solo plan completo. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reto 14 días Excedente · Aprende a invertir en la bolsa · Alejandro Quiñones</title>
-<link rel="preload" as="image" href="/img/oferta/reto14-app-hero.webp" fetchpriority="high" media="(max-width:900px)"><link rel="preload" as="image" href="/img/aq-hero.webp" fetchpriority="high" media="(min-width:901px)">
+<title>La primera app de América Latina que te enseña a invertir · Reto 14 días Excedente</title>
+<link rel="preload" as="image" href="/img/oferta/vsl-reto14-poster.webp" fetchpriority="high">
 <meta name="robots" content="noindex">
 <meta name="description" content="En un reto de 14 días aprende a invertir en la bolsa de Nueva York desde cero con la App Excedente, el Método RCR, copiloto con IA y clases en vivo. Incluye 2 accesos gratis para tus hijos.">
-<meta property="og:title" content="Reto 14 días Excedente · Aprende a invertir desde cero">
+<meta property="og:title" content="La primera app de América Latina que te enseña a invertir · Reto 14 días">
 <meta property="og:description" content="App Excedente, Método RCR, copiloto con IA, clases en vivo y 2 accesos gratis para tus hijos. Empieza con un reto de 14 días por US$27.">
 <meta property="og:image" content="https://aqfinanzas.com/img/og.jpg">
 <link rel="icon" href="img/logo-aq-color.webp">
@@ -477,6 +477,18 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 @media (max-width:640px){.portada .precio-mini.precio-reto{display:flex;align-self:stretch;padding:14px 16px;margin-top:12px}.portada .precio-reto .pr-fila b{font-size:3.4rem!important}.precio-reto .pr-sub{font-size:.88rem}}
 @media (prefers-reduced-motion:reduce){.portada .precio-mini.precio-reto{animation:none}}
 </style>
+<style>/* 23-nov-2026: VSL de la app en la portada (como en Hijos Prósperos): arranca solo en silencio, sin barra ni controles; al tocar empieza desde el inicio con sonido */
+.h1-bajada{margin-top:10px;font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:700;color:#FFC24B}
+.vsl-caja{position:relative;aspect-ratio:16/9;width:100%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14);cursor:pointer}
+.vsl-caja video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vsl-caja video::-webkit-media-controls{display:none!important}
+.sonido{position:absolute;top:10px;right:10px;border:0;border-radius:999px;background:rgba(240,74,3,.96);color:#fff;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;padding:9px 16px 9px 12px;box-shadow:0 6px 18px rgba(1,0,90,.35);animation:pulsoS 1.6s ease-in-out infinite;transform-origin:top right;z-index:2}
+.sonido svg{width:24px;height:24px;flex:none}.sonido b{font-size:clamp(13px,2.6vw,17px);font-weight:900;white-space:nowrap}
+@keyframes pulsoS{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.portada .app-hero{display:none!important}
+@media (min-width:901px){.portada .wrap{grid-template-columns:1fr 1.15fr;align-items:start}.portada #p-h1{font-size:clamp(2rem,3.4vw,3rem)}.portada .media{margin-top:58px}}
+@media (max-width:900px){.portada .media{order:3!important;margin-top:14px!important}.sonido{top:7px;right:7px;padding:7px 12px 7px 9px;gap:6px}.sonido svg{width:20px;height:20px}.portada .h1-bajada{order:2;margin-top:6px;font-size:1.05rem}}
+</style>
 </head>
 <body>
 
@@ -494,7 +506,8 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
   <div class="wrap">
     <div>
       <span class="eyebrow" id="p-eyebrow">Reto 14 días Excedente</span>
-      <h1 id="p-h1">Empieza a invertir en la bolsa de Nueva York con un <span class="clave">reto de 14 días</span> por solo US$27</h1>
+      <h1 id="p-h1">La primera app de América Latina que te enseña a <span class="clave">invertir en la bolsa de Nueva York</span></h1>
+      <p class="h1-bajada">Empieza hoy con un reto de 14 días por solo US$27.</p>
       <figure class="app-hero"><img src="img/oferta/reto14-app-hero.webp" alt="La App Excedente: tu camino de lecciones con Bruno y una lección animada" width="640" height="479" fetchpriority="high" decoding="async"><figcaption>Tu reto: <b>una lección corta por día</b> en la App Excedente, con tu copiloto con IA.</figcaption></figure>
       <p class="sub" id="p-sub">Desde hoy tienes acceso completo. La App Excedente te lleva paso a paso, desde cero, en el Método RCR, con un <strong>copiloto de inteligencia artificial</strong>, clases en vivo conmigo y una comunidad privada. Y con tu reto recibes <strong>2 accesos gratis para tus hijos</strong>.</p>
       <div class="precio-mini precio-reto"><span class="pr-tag">Precio especial del reto</span><div class="pr-fila"><s class="tachado-total">US$397</s><b>US$27</b><span class="pr-ahorro">-93&nbsp;%</span></div><span class="pr-sub">Acceso completo por 14 días · pago único</span></div>
@@ -505,10 +518,9 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
       <div class="mini-testi"><span style="font-size:1.6rem">💬</span><div><span class="st">★★★★★</span><br>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado." <b>— Ana Caicedo, alumna</b></div></div>
     </div>
     <div class="media">
-      <div id="sin-video" class="heroft">
-        <picture><source media="(max-width:900px)" srcset="img/aq-hero-m.webp"><img decoding="async" src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136"></picture>
-        <div class="ins ins-a"><b>+15 años</b><span>invirtiendo y enseñando</span></div>
-        <div class="ins ins-b"><b>+45.000</b><span>personas formadas</span></div>
+      <div id="con-video" class="vsl-caja">
+        <video id="vsl" src="img/oferta/vsl-reto14.mp4" poster="img/oferta/vsl-reto14-poster.webp" muted playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nofullscreen noplaybackrate"></video>
+        <button class="sonido" id="sonido" type="button" aria-label="Activar el sonido del video"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg><b>Toca para escuchar</b></button>
       </div></div>
     </div>
   </div>
@@ -1084,6 +1096,46 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     setTimeout(tic,1000);
   }
   tic();
+})();
+</script>
+<script>
+/* 23-nov-2026: VSL de la portada, igual que en padres.hijosprosperos.com */
+(function(){
+  var v = document.getElementById('vsl'), btn = document.getElementById('sonido'), caja = document.getElementById('con-video');
+  if (!v || !btn || !caja) return;
+  function ev(n, d){ d = d || {}; d.pagina = 'reto14'; try { fbq('trackCustom', n, d); } catch(e){} try { if (window.clarity) clarity('event', n); } catch(e){} }
+  var conSonido = false, hitos = {}, pausa = false;
+  setTimeout(function(){ v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }, 1200);
+  function respaldo(){ try { v.pause(); } catch(e){} v.muted = false; v.removeAttribute('controls'); pausa = true; btn.querySelector('b').textContent = 'Toca para seguir'; btn.style.display = 'flex'; ev('VSL_respaldo_toque'); }
+  function engancha(el){
+    el.addEventListener('pause', function(){ if (conSonido && !pausa && !el.ended) { setTimeout(function(){ var p = el.play(); if (p && p.catch) p.catch(respaldo); }, 50); } });
+    el.addEventListener('timeupdate', function(){
+      if (!el.duration) return; var pct = el.currentTime / el.duration * 100;
+      if (!conSonido) { [10,25,50].forEach(function(h){ if (pct >= h && !hitos['m'+h]) { hitos['m'+h] = 1; try { clarity('event', 'VSL_mudo_' + h); } catch(e){} } }); return; }
+      [25,50,75,95].forEach(function(h){ if (pct >= h && !hitos[h]) { hitos[h] = 1; ev('VSL_' + h); } });
+      var d = Math.floor(pct / 10) * 10; if (d > 0 && !hitos['c'+d]) { hitos['c'+d] = 1; try { clarity('event', 'VSL_c' + d); } catch(e){} }
+    });
+    el.addEventListener('ended', function(){ ev('VSL_fin'); });
+  }
+  engancha(v);
+  function activar(){
+    if (conSonido && !v.muted) return;
+    conSonido = true; btn.style.display = 'none';
+    // En iPhone (sobre todo dentro de Instagram/Facebook) no se le puede quitar el silencio a un video que arrancó silenciado:
+    // se cambia por uno nuevo, con sonido, desde el inicio.
+    var n = document.createElement('video');
+    n.id = 'vsl'; n.setAttribute('playsinline', ''); n.setAttribute('webkit-playsinline', ''); n.playsInline = true;
+    n.setAttribute('disablepictureinpicture', ''); n.setAttribute('controlslist', 'nodownload nofullscreen noplaybackrate');
+    n.preload = 'auto'; n.poster = v.poster; n.muted = false; n.volume = 1; n.src = v.currentSrc || v.src;
+    try { v.pause(); } catch(e){}
+    v.parentNode.replaceChild(n, v); v = n; engancha(v);
+    var p = v.play();
+    if (p && p.then) p.then(function(){ setTimeout(function(){ if (v.muted || v.paused) respaldo(); }, 600); }).catch(respaldo);
+    ev('VSL_sonido'); ev('ViewContent');
+  }
+  function reanudar(){ var p = v.play(); btn.style.display = 'none'; if (p && p.then) p.then(function(){ pausa = false; }).catch(function(){ pausa = true; btn.style.display = 'flex'; }); else pausa = false; }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); if (pausa) reanudar(); else activar(); });
+  caja.addEventListener('click', function(){ if (pausa) reanudar(); else if (!conSonido || v.muted) activar(); });
 })();
 </script>
 </body>
