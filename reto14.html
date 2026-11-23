@@ -490,6 +490,18 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 .portada .app-hero{display:none!important}
 @media (min-width:901px){.portada .wrap{grid-template-columns:1fr 1.15fr;align-items:start}.portada #p-h1{font-size:clamp(2rem,3.4vw,3rem)}.portada .media{margin-top:58px}}
 @media (max-width:900px){.portada .media{order:3!important;margin-top:14px!important}.sonido{top:7px;right:7px;padding:7px 12px 7px 9px;gap:6px}.sonido svg{width:20px;height:20px}.portada .h1-bajada{order:2;margin-top:6px;font-size:1.05rem}}
+/* 23-nov-2026: en celular, título + video + precio + botón caben en la primera pantalla (Clarity: 8 de 10 se iban sin tocar nada) */
+@media (max-width:900px){
+ .portada .wrap{padding-top:14px}
+ .portada .eyebrow,.portada .h1-bajada{display:none!important}
+ .portada h1{font-size:1.45rem;margin-top:0;line-height:1.15}
+ .portada .media{margin-top:10px!important}
+ .portada .precio-mini{margin-top:10px}
+ .portada .precio-mini b{font-size:2rem!important}
+ .portada .acciones{margin-top:8px}
+ .portada .btn-grande{padding:.95em 1.4em}
+ .portada .seguro{margin-top:8px}
+}
 </style>
 </head>
 <body>
