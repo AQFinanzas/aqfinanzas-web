@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reto 14 días Excedente · Aprende a invertir en la bolsa · Alejandro Quiñones</title>
-<link rel="preload" as="image" href="/img/aq-hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/img/oferta/reto14-app-hero.webp" fetchpriority="high" media="(max-width:900px)"><link rel="preload" as="image" href="/img/aq-hero.webp" fetchpriority="high" media="(min-width:901px)">
 <meta name="robots" content="noindex">
 <meta name="description" content="En un reto de 14 días aprende a invertir en la bolsa de Nueva York desde cero con la App Excedente, el Método RCR, copiloto con IA y clases en vivo. Incluye 2 accesos gratis para tus hijos.">
 <meta property="og:title" content="Reto 14 días Excedente · Aprende a invertir desde cero">
@@ -14,7 +14,7 @@
 <link rel="icon" href="img/logo-aq-color.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@1,500&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@1,500&display=swap"></noscript>
 <style>
 :root{--marino:#01005A;--noche:#05061C;--papel:#F5F7FC;--blanco:#fff;--naranja:#F04A03;--naranja-h:#D63F00;--azul:#2A94F8;--tinta:#1B1D3A;--gris:#5B6080;--linea:#DDE3F0;--claro:#B9C2E8;--verde:#1DB954;--r:18px}
 *{box-sizing:border-box}
@@ -410,15 +410,21 @@ window.CLARITY_ID = "z3rvf294da";
  .portada .wrap>div:first-child{display:contents}
  .portada .eyebrow{order:1}
  .portada h1{order:2;font-size:1.75rem;margin-top:8px;line-height:1.12}
- .portada .media{order:6;margin-top:16px}
- .portada .precio-mini{order:3;margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+ .portada .media{order:9;margin-top:16px}
+ .app-hero{order:3}
+ .portada .precio-mini{order:4;margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
  .portada .precio-mini b{font-size:2.4rem!important;line-height:1}
  .portada .precio-mini .ahorro-pct{margin:0!important}
- .portada .acciones{order:4;margin-top:10px}
- .portada .seguro{order:5}
- .mini-testi{order:7;display:flex!important}
- .portada .sub{order:8;margin-top:18px;font-size:1rem}
- .portada .chips{order:9}
+ .portada .acciones{order:5;margin-top:10px}
+ .portada .seguro{order:6}
+ .prueba-top{order:7}
+ .portada .app-hero{margin-top:10px}
+ .portada .app-hero img{max-height:150px;object-fit:cover;object-position:center 30%}
+ .portada .app-hero figcaption{font-size:.85rem;margin-top:6px}
+ .portada .aviso24{display:none}
+ .mini-testi{order:8;display:flex!important}
+ .portada .sub{order:10;margin-top:18px;font-size:1rem}
+ .portada .chips{order:11}
  .video-nota{display:none}
  .heroft{max-width:none!important;height:230px;overflow:hidden;border-radius:16px}
  .heroft img{height:230px;width:auto;margin:0 auto;display:block}
@@ -426,6 +432,10 @@ window.CLARITY_ID = "z3rvf294da";
  .fijo{transform:translateY(120%);transition:transform .3s}
  .fijo.ver{transform:none}
 }
+.app-hero{margin:14px 0 0;max-width:520px}.app-hero img{width:100%;height:auto;border-radius:16px;display:block}.app-hero figcaption{margin-top:8px;font-size:.92rem;color:#E6E8FF;line-height:1.35}.app-hero b{color:#fff}
+.prueba-top{display:flex;align-items:center;gap:12px;margin-top:14px;text-decoration:none;color:#E6E8FF;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px}
+.prueba-top .caras{display:flex;flex:none}.prueba-top .caras img{width:40px;height:40px;border-radius:50%;border:2px solid #0B0D2C;object-fit:cover;margin-left:-10px}.prueba-top .caras img:first-child{margin-left:0}
+.prueba-top b{display:block;color:#FFC24B;font-size:.92rem}.prueba-top small{display:block;font-size:.85rem;color:#fff;text-decoration:underline}
 .mini-testi{display:none;gap:10px;align-items:center;margin-top:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px;font-size:.92rem;color:#E6E8FF}
 .mini-testi b{color:#fff}.mini-testi .st{color:#FFC24B;font-size:.85rem}
 </style>
@@ -473,7 +483,7 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
 
 <header class="barra">
   <div class="wrap">
-    <img loading="lazy" decoding="async" src="img/logo-aq-blanco.webp" alt="AQ Finanzas" width="45" height="34">
+    <img decoding="async" src="img/logo-aq-blanco.webp" alt="AQ Finanzas" width="45" height="34">
     <div class="cuenta"><span>Reto 14 días</span> <b>US$27</b></div>
     <a class="btn btn-pago pagar" data-off="zlazi0yq" href="#oferta">Quiero entrar</a>
   </div>
@@ -485,16 +495,18 @@ html[data-puerta] #p-h1{font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.08}
     <div>
       <span class="eyebrow" id="p-eyebrow">Reto 14 días Excedente</span>
       <h1 id="p-h1">Empieza a invertir en la bolsa de Nueva York con un <span class="clave">reto de 14 días</span> por solo US$27</h1>
+      <figure class="app-hero"><img src="img/oferta/reto14-app-hero.webp" alt="La App Excedente: tu camino de lecciones con Bruno y una lección animada" width="640" height="479" fetchpriority="high" decoding="async"><figcaption>Tu reto: <b>una lección corta por día</b> en la App Excedente, con tu copiloto con IA.</figcaption></figure>
       <p class="sub" id="p-sub">Desde hoy tienes acceso completo. La App Excedente te lleva paso a paso, desde cero, en el Método RCR, con un <strong>copiloto de inteligencia artificial</strong>, clases en vivo conmigo y una comunidad privada. Y con tu reto recibes <strong>2 accesos gratis para tus hijos</strong>.</p>
       <div class="precio-mini precio-reto"><span class="pr-tag">Precio especial del reto</span><div class="pr-fila"><s class="tachado-total">US$397</s><b>US$27</b><span class="pr-ahorro">-93&nbsp;%</span></div><span class="pr-sub">Acceso completo por 14 días · pago único</span></div>
       <p class="aviso24">⏰ <span class="m24">Promoción solo por 24 horas · quedan</span> <span class="t24">24:00:00</span></p>
       <div class="acciones"><a class="btn btn-pago btn-grande pagar" data-off="zlazi0yq" href="#oferta">Quiero empezar mi reto →</a></div>
       <p class="seguro">🔒 Pago seguro con Hotmart · Garantía de 7 días</p>
+      <a class="prueba-top" href="#videos"><span class="caras"><img src="img/oferta/cara-otoniel.webp" alt="" width="40" height="40"><img src="img/oferta/cara-kenya-fernandez.webp" alt="" width="40" height="40"><img src="img/oferta/cara-aleida-palma.webp" alt="" width="40" height="40"></span><span><b>★★★★★ +45.000 personas formadas</b><small>Mira a mis alumnos contarlo en video →</small></span></a>
       <div class="mini-testi"><span style="font-size:1.6rem">💬</span><div><span class="st">★★★★★</span><br>"Lo veía muy lejano hasta que lo vi a usted. Aprender con usted es la mejor decisión que he tomado." <b>— Ana Caicedo, alumna</b></div></div>
     </div>
     <div class="media">
       <div id="sin-video" class="heroft">
-        <img fetchpriority="high" decoding="async" src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136">
+        <picture><source media="(max-width:900px)" srcset="img/aq-hero-m.webp"><img decoding="async" src="img/aq-hero.webp" alt="Alejandro Quiñones" width="1000" height="1136"></picture>
         <div class="ins ins-a"><b>+15 años</b><span>invirtiendo y enseñando</span></div>
         <div class="ins ins-b"><b>+45.000</b><span>personas formadas</span></div>
       </div></div>
