@@ -36,8 +36,12 @@
      Pruebas: ?reloj=vencido | ?reloj=reiniciar | ?carrito=antes | cerrado */
   var mq = qs.match(/(?:^|[?&])carrito=(antes|abierto|cerrado)/), FORZ = mq ? mq[1] : '';
   var EST = FORZ || 'abierto';
+  /* 27-nov-2026: REINICIO para la clase del jue 3-dic (orden de Alejandro: "que entre desde cero").
+     Quien abrió la página ANTES del inicio de la clase (jue 3-dic 7:00 p. m. COL) arranca sus 24 h de nuevo
+     la primera vez que vuelva desde ese momento. Para el próximo lanzamiento: cambiar REINICIO. */
+  var REINICIO = Date.parse('2026-12-04T00:00:00Z');
   var ini = leer();
-  if (!ini || /(^|[?&])reloj=reiniciar/.test(qs)) { ini = ahora; guardar(ini); }
+  if (!ini || /(^|[?&])reloj=reiniciar/.test(qs) || (ahora >= REINICIO && ini < REINICIO)) { ini = ahora; guardar(ini); }
   var fin = ini + HORAS * 3600 * 1000;
   var forzar = /(^|[?&])reloj=vencido/.test(qs) || Date.now() >= fin;
   function vencido() { return forzar; }
