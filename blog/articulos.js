@@ -24,6 +24,42 @@ window.CATEGORIAS = [
 
 window.ARTICULOS = [
  {
+   "slug": "comprar-acciones-de-estados-unidos-desde-venezuela",
+   "titulo": "Cómo comprar acciones de Estados Unidos desde Venezuela en 2026",
+   "resumen": "Bróker internacional, Binance o apps: los tres caminos reales para invertir en Wall Street desde Venezuela, cómo fondear tu cuenta y qué errores evitar.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 7,
+   "imagen": "/blog/img/comprar-acciones-de-estados-unidos-desde-venezuela.jpg"
+ },
+ {
+   "slug": "aprender-a-invertir-en-acciones-en-venezuela",
+   "titulo": "Aprender a invertir en acciones en Venezuela paso a paso (guía para principiantes)",
+   "resumen": "Siete pasos para empezar desde cero: ordenar tus finanzas, entender qué compras, elegir mercado y bróker, practicar y hacer tu primera inversión con riesgo controlado.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-27",
+   "minutos": 7,
+   "imagen": "/blog/img/aprender-a-invertir-en-acciones-en-venezuela.jpg"
+ },
+ {
+   "slug": "curso-de-inversiones-en-venezuela",
+   "titulo": "Curso de inversiones en Venezuela: cómo elegir el mejor (y no caer en una estafa)",
+   "resumen": "Las 7 señales de un buen curso de inversiones, las alertas que delatan una estafa y el temario mínimo que debe enseñarte para invertir en la bolsa de Nueva York.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/curso-de-inversiones-en-venezuela.jpg"
+ },
+ {
+   "slug": "mejores-apps-para-invertir-en-la-bolsa",
+   "titulo": "Mejores apps para invertir en la bolsa en 2026: cómo elegir desde Latinoamérica",
+   "resumen": "Interactive Brokers, Hapi, Binance, eToro y las locales: qué ofrece cada una, para quién sirve y los 5 criterios para elegir sin equivocarte.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 7,
+   "imagen": "/blog/img/mejores-apps-para-invertir-en-la-bolsa.jpg"
+ },
+ {
    "slug": "como-invertir-en-la-bolsa-de-nueva-york-desde-latinoamerica",
    "titulo": "Cómo invertir en la bolsa de Nueva York desde Latinoamérica: guía 2026",
    "resumen": "Desde Colombia, Venezuela, México o cualquier país: qué necesitas, cómo elegir el bróker, cómo hacer tu primera compra y los errores que debes evitar.",

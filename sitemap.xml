@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aqfinanzas.com/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://aqfinanzas.com/blog/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -387,5 +387,29 @@
     <loc>https://aqfinanzas.com/blog/trading-o-inversion-a-largo-plazo/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aqfinanzas.com/blog/comprar-acciones-de-estados-unidos-desde-venezuela/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aqfinanzas.com/blog/aprender-a-invertir-en-acciones-en-venezuela/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aqfinanzas.com/blog/curso-de-inversiones-en-venezuela/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aqfinanzas.com/blog/mejores-apps-para-invertir-en-la-bolsa/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
