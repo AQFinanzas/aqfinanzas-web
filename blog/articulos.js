@@ -24,6 +24,69 @@ window.CATEGORIAS = [
 
 window.ARTICULOS = [
  {
+   "slug": "curso-de-inversiones-online",
+   "titulo": "Curso de inversiones online: cómo elegir uno para invertir en la bolsa desde Latinoamérica",
+   "resumen": "Qué debe tener un buen curso de inversiones online, las alertas que delatan una estafa y cómo aprender a invertir en Wall Street desde cualquier país hispanohablante.",
+   "categoria": "Primeros pasos",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/curso-de-inversiones-online.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-colombia",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde Colombia (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde Colombia, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-colombia.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-mexico",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde México (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde México, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-mexico.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-argentina",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde Argentina (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde Argentina, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-argentina.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-peru",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde Perú (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde Perú, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-peru.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-chile",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde Chile (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde Chile, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-chile.jpg"
+ },
+ {
+   "slug": "invertir-en-la-bolsa-de-estados-unidos-desde-ecuador",
+   "titulo": "Cómo invertir en la bolsa de Estados Unidos desde Ecuador (guía 2026)",
+   "resumen": "Las opciones reales para invertir en Wall Street desde Ecuador, cómo mover tu dinero, qué pasa con los impuestos y cómo dar tu primer paso con riesgo controlado.",
+   "categoria": "Bolsa de Nueva York",
+   "fecha": "2026-11-27",
+   "minutos": 6,
+   "imagen": "/blog/img/invertir-en-la-bolsa-de-estados-unidos-desde-ecuador.jpg"
+ },
+ {
    "slug": "comprar-acciones-de-estados-unidos-desde-venezuela",
    "titulo": "Cómo comprar acciones de Estados Unidos desde Venezuela en 2026",
    "resumen": "Bróker internacional, Binance o apps: los tres caminos reales para invertir en Wall Street desde Venezuela, cómo fondear tu cuenta y qué errores evitar.",
